@@ -29,7 +29,9 @@ K5 adopts `d` (dim) labels instead of K4's `m` labels, both to mark the framewor
 | d2 | s/c quark spoke | ≈ 0.91–1.05 fm | m2 |
 | d3 | quark hub | ≈ 181–493 fm | m4 |
 | d4 | u/d quark spoke | ≥ 2400 fm (range) | m1 |
-| d5 | neutrino circle | ≥ 4 cm | (new) |
+| d5 | neutrino circle | ≈ 41 µm = 4.13×10¹⁰ fm | (new) |
+
+The d5 value is fixed by the K4 neutrino-1D fit ([scripts/neutrino_1d_fit.py](../scripts/neutrino_1d_fit.py), [outputs/neutrino_1d_fit.txt](../outputs/neutrino_1d_fit.txt)): R = 6.578×10⁹ fm → circumference = 2πR ≈ 4.13×10¹⁰ fm ≈ 41 µm. This sets the n = 1 mode mass at 2πℏc/d5 ≈ 30 meV — the ν₁ scale. Note: [config-neutrino.md §NS.3](config-neutrino.md) states "min L ≳ 4 cm" for meV neutrinos, but 4 cm gives 31 µeV (three orders of magnitude too light); the correct floor is ~41 µm. The 4 cm figure in NS.3 appears to be a typo and should be revised separately.
 
 ### 2.2 The d4 < d5 stipulation
 
@@ -174,16 +176,49 @@ The Higgs is spin 0 and ~125 GeV. Spin 0 fits naturally as a 1-winding mode (no 
 
 ---
 
-## 8. Mode sweep — the immediate next step
+## 8. Mode sweep — first pass
 
-**What's needed:** enumerate all closure-satisfying modes {n₁..n₅} up to an energy cutoff on the K5 manifold with the dim sizes of §2.1, compute each mode's mass, and report matches and misses against the observed particle spectrum (charged leptons, quarks, neutrinos, mesons, baryons, and at minimum the Higgs).
+The sweep script is [scripts/k5_mode_sweep.py](../scripts/k5_mode_sweep.py). It enumerates all closure-satisfying modes {n₁..n₅} up to a winding cutoff, classifies by substrate dimensionality, computes mass via the 2-torus formula (1D and 3+D handled separately), and matches against an observed-particle catalog (3 ν + 3 charged leptons + 6 quarks + Higgs). Parameters: dim sizes, cutoff, σ_eff (uniform default + per-pair overrides), match tolerance, whether to include 3+D modes.
 
-**Existing scripts:**
+### 8.1 First-pass results
 
-- [scripts/torus3d_modes.py](../scripts/torus3d_modes.py) — already enumerates 3-torus modes classified by number of nonzero windings and tests three candidate EM-coupling integrals. **The closest ancestor.** Generalizing from 3 dims to 5 is the natural starting point.
-- [scripts/cand_solver.py](../scripts/cand_solver.py) — fits a pre-specified sheet topology to observed masses. *Not* a mode enumerator; useful only after the sweep identifies which modes to assign to which particles.
+Run at cutoff |n_i| ≤ 3, default K5 dim sizes (§2.1), uniform σ_eff = 2:
 
-**Recommended approach:** extend `torus3d_modes.py` to general N-dim (or write a focused `k5_mode_sweep.py` modeled on it), parameterize the 5 dim sizes via argparse, enumerate up to a winding-magnitude cutoff, output a sorted spectrum CSV plus a particle-match report.
+| Particle | Best match | Mode | Rel err |
+|---|---|---|---:|
+| ν₁ | Ma(d1, d5), tube=d5 | {−2,0,0,0,−1} | 0.07% ✓ |
+| ν₂ | Ma(d1, d5), tube=d5 | {−2,0,0,0,−1} | 9.03% |
+| ν₃ | Ma(d5) (1D) | {0,0,0,0,−2} | 0.07% ✓ |
+| e | Ma(d1, d4), tube=d4 | {−2,0,0,−1,0} | 1.10% ✓ |
+| μ | Ma(d3, d4), tube=d4 | {0,0,−3,+3,0} | 47.2% |
+| τ | Ma(d2, d3), tube=d2 | {0,−1,+3,0,0} | 30.2% |
+| u | Ma(d4, d5), tube=d5 | {0,0,0,−2,+1} | 4.33% ✓ |
+| d | Ma(d4, d5), tube=d5 | {0,0,0,−3,+3} | 0.44% ✓ |
+| s | Ma(d3, d4), tube=d4 | {0,0,−3,+3,0} | 40.2% |
+| c | Ma(d2, d3), tube=d2 | {0,−1,+3,0,0} | 2.34% ✓ |
+| b | Ma(d2, d3), tube=d2 | {0,−3,+3,0,0} | 11.0% |
+| t | Ma(d1, d2), tube=d1 | {−1,+3,0,0,0} | 1.58% ✓ |
+| H | Ma(d1, d5), tube=d5 | {−3,0,0,0,−1} | 35.6% |
+
+**7/13 matched within 5%.**
+
+Re-run with K4's per-pair σ_eff values (1.9764, 1.9318, 1.6837 for the quark sheets; ~2 with sub-10⁻³ deviations for the charged-lepton sheets) gives **10/13** — μ, b, τ all land on their K4 sheets at sub-1% errors, t at 0.67% on Ma(d1, d3).
+
+### 8.2 Observations and follow-ons
+
+- **Charged leptons reproduce K4 cleanly** under K4's σ_eff. All three land on the expected K4 share-3 solution-A sheets (e on Ma(d2, d4), μ on Ma(d1, d4), τ on Ma(d1, d2)) at sub-1% errors. Confirms K4 lives inside K5.
+- **u and d on Ma(d4, d5)** — the K5-native d4×d5 sheet matches u and d masses at higher windings (T(2,1) and T(3,3)), while K4 places them on Ma(d3, d4). Two interpretations: (a) coincidental near-degeneracy from the manifold's mass scale, (b) the K5-native d5 sheets give u, d a structural home that competes with the K4 assignment. Sweep alone can't decide; needs decay-channel and conservation analysis.
+- **ν₃ as a 1D mode** {0,0,0,0,−2} on d5 — pure single-winding, σ_eff irrelevant — sits at 60 meV (0.07% from observed). ν₁ matched a 2D mode on Ma(d1, d5). ν₂ misses by 9%, expected since the Wilson-flux doublet split mechanism of [config-neutrino.md §NC.5](config-neutrino.md) is not in the sweep.
+- **Higgs misses by ~30%** at uniform σ_eff = 2 and remains a miss with K4 σ_eff. No 1-winding mode on the K4 dim sizes lands at 125 GeV; nearest is 2πℏc/d1 ≈ 170 GeV. The Higgs's K5 home is **open**; deferring per §7.2 instruction.
+- **The strange quark** is the cleanest near-miss at K4 σ_eff (9% off on Ma(d2, d3)). Likely a σ_eff fine-tuning issue: K4's reported 1.9318 is a manifold range; the precise s-mass-fitting σ_eff is ~1.925.
+- **No unexplained low-energy modes ("ghosts") below the electron** show up on the new d5-involving sheets at this cutoff. The first low-mass modes there are the ν candidates, as intended.
+
+### 8.3 Limitations of v1
+
+- **Per-pair σ_eff has to be supplied externally** (via `--sigma-overrides` or matching K4's fit). The script enumerates modes; it does not fit σ_eff to masses. For that, post-sweep, [scripts/cand_solver.py](../scripts/cand_solver.py) is the right tool.
+- **3+D closure rule is open** (§3.3) — the `--include-3d` flag enables 3+D modes with a naive Σ(n_i/L_i)² formula. Findings on 3+D substrates are *suggestive*, not rigorous, until the closure analogue is settled.
+- **No Wilson flux** for the neutrino doublet split. Folding it in is the natural next refinement.
+- **No charge/spin/lepton-no filtering on match.** The script matches by mass alone. A mode landing at the right mass but the wrong quantum numbers will be reported as a hit until conservation track (§6) supplies the filter.
 
 ---
 

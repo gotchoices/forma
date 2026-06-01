@@ -1,0 +1,49 @@
+K5 mode sweep — summary
+==============================================================================
+
+Parameters:
+  dim sizes (fm):  d1=0.0073  d2=1  d3=200  d4=2400  d5=4.13e+10
+  winding cutoff:  |n_i| <= 3
+  sigma_eff:       2.0 (uniform default)
+                   d1,d2: 2.0075
+                   d1,d3: 1.9764
+                   d1,d4: 1.999376
+                   d2,d3: 1.9318
+                   d2,d4: 1.99968
+                   d3,d4: 1.6837
+  include 3+D:     True
+
+Mode counts by substrate kind:
+  1D: 30
+  2D: 400
+  3D: 2160
+  4D: 6480
+  5D: 7776
+  total: 16846
+
+Mode counts by substrate (top 25):
+  Ma(d1,d2,d3,d4,d5): 7776
+  Ma(d1,d2,d3,d4): 1296
+  Ma(d1,d2,d3,d5): 1296
+  Ma(d1,d2,d4,d5): 1296
+  Ma(d1,d3,d4,d5): 1296
+  Ma(d2,d3,d4,d5): 1296
+  Ma(d1,d2,d3): 216
+  Ma(d1,d2,d4): 216
+  Ma(d1,d2,d5): 216
+  Ma(d1,d3,d4): 216
+  Ma(d1,d3,d5): 216
+  Ma(d1,d4,d5): 216
+  Ma(d2,d3,d4): 216
+  Ma(d2,d3,d5): 216
+  Ma(d2,d4,d5): 216
+  Ma(d3,d4,d5): 216
+  Ma(d1,d2): 40
+  Ma(d1,d3): 40
+  Ma(d1,d4): 40
+  Ma(d1,d5): 40
+  Ma(d2,d3): 40
+  Ma(d2,d4): 40
+  Ma(d2,d5): 40
+  Ma(d3,d4): 40
+  Ma(d3,d5): 40
