@@ -4,34 +4,98 @@
 **Grade:** [reduced] — standard math (U(1) ↔ ℤ, Fourier series) shown to rest on one GRID ingredient. The integer label rests on chapter 6's import; the grade is final only once that import is settled.
 **Role:** the core. State what light-quantization *is* in the model — the mechanism that makes integer photon counts a fact about a periodic phase, not about discrete values.
 
-## 5.0 A signals warm-up, before any math
+## 5.0 The bounded-substrate thought experiment
 
-A signal that is **periodic** in time has, in its frequency content, a
-**line spectrum**: it carries energy only at integer multiples of one
-fundamental frequency f₀ = 1/T. A sine wave at f₀ is a single line; a
-square wave is f₀, 3f₀, 5f₀, …; a more complicated periodic shape adds
-lines at 2f₀, 4f₀, and so on — but in every case only at *integer*
-multiples. A signal that is *not* periodic — a single isolated pulse,
-say — has instead a **continuous** spectrum: energy spread over a
-continuum of frequencies, no lines.
+The keystone of this chapter is best approached not from mathematics but
+from the substrate itself. Imagine the lattice at its smallest scale:
+time advances in clock ticks of length τ, and each cell stores one of a
+small finite set of values. Two cases to keep in mind throughout:
 
-That is the fact this chapter rests on. The math behind it is the
-Fourier series: *periodic ⟺ discrete (integer-indexed)* in the
-conjugate variable. It is well-known to any reader who has plotted a
-square wave's spectrum on a scope.
+- **Base 2** (binary): each cell is either −1 or +1.
+- **Base n** (general bounded): each cell takes one of n equally-spaced
+  values centred on zero, for example {−2, −1, 0, +1, +2} for n = 5.
 
-The point of the chapter is that **the same fact applies to a phase.**
-If a wave's phase lives on a compact circle — closes back on itself
-after 2π — then the variable conjugate to it (the occupation number)
-has a discrete, integer spectrum. **Not because anything is digital.
-Not because the values are quantised. Because the phase is periodic.**
-The lattice's job is to provide such a compact phase; the integer
-ladder follows from the same Fourier-series fact that puts a line
-spectrum on a square wave.
+The clock and the bounded dial together set a **maximum frequency**: a
+cell can change at most once per tick — you cannot change faster than
+your own clock — so the fastest possible oscillation has period 2τ.
+This is the substrate's Nyquist limit; call it ω_max.
 
-The rest of the chapter says this carefully, separates two converging
-arguments for it, and marks the one piece that has to come in from
-chapter 6.
+**The fastest photon.** A wave at ω_max is forced to alternate between
+two values, one per tick. The natural choice — the one that puts
+maximum energy into the wave — is to use the **extreme** values of the
+dial: +A and −A, where A is the largest value available (A = 1 in base
+2, A = (n−1)/2 in base n). Intermediate values like 0 in base 3 or
+±1 in base 5 cannot enter at this frequency: there is no tick to spare
+for them. **At ω_max, every bounded substrate behaves the same — like
+a binary substrate operating on its outer values.** The intermediate
+values are reserved for lower frequencies. The substrate's tightest
+possible wave packet is one cycle at ω_max: two transitions of size 2A,
+each costing some quantum of work. Call its total energy **E_max**.
+
+**Half-frequency.** Now stretch the pattern in time: hold each value
+for two ticks instead of one, giving …, −A, −A, +A, +A, …, with period
+4τ. This is a wave at frequency ω_max / 2. The cycle still has two
+transitions of size 2A — **the same E_max per cycle as before** — but
+each cycle takes twice as long, so the power is **half**.
+
+This is the central observation. In base 2 there is no other choice:
+with only two values on the dial, the stretched square is the only
+half-frequency option. **In base 3 the substrate gains a second
+option** — the smoother staircase −1, 0, +1, 0, −1, …, taking the
+same 4τ per cycle but with four small transitions instead of two
+large ones. The shape differs; the scaling does not. Either pattern
+still cuts the power by half when frequency is cut by half. The
+intermediate value provides a *different shape* at lower frequency,
+not a *different scaling*.
+
+The pattern generalises directly. At ω_max / k, the stretched square
+(using only the extremes) carries two transitions of size 2A per cycle
+in period 2kτ, with power = E_max / (2kτ) ∝ ω. Smoother patterns
+available in higher bases trade fewer large transitions for more small
+ones; the precise per-cycle figure changes, but the power-vs-frequency
+slope does not. **Lower frequency means proportionally fewer
+transitions per unit time, which means proportionally lower power.
+Power is proportional to ω.**
+
+**Generalisation to any bounded base.** The argument turns on a single
+feature: the substrate has **no amplitude knob**. Finitely many
+discrete values on a fixed dial, nothing in between. Any finite n ≥ 2
+has this property. A continuous-amplitude substrate would break the
+argument — with a continuous amplitude knob, a low-frequency wave
+could carry as much energy as a high-frequency one by simply being
+*bigger*. The "no amplitude knob" property is what forces lower
+frequency to mean lower power, and it requires *bounded*, not
+specifically binary. The proportionality constant in "power = (const)
+× ω" depends on n; the proportionality itself does not.
+
+**ℏ falls out, in natural units.** The substrate's smallest action —
+its smallest energy step times its smallest time step — is dW · τ. In
+substrate-natural units (dW = τ = 1) this is **ℏ = 1**. The familiar
+value 1.054 × 10⁻³⁴ J·s in SI is the conversion factor between
+substrate units and lab units, not a prediction (chapter 4). What the
+thought experiment *does* fix is the *structure*: ℏ is
+energy-grain × time-grain.
+
+**The stop point.** This delivers Planck's *scaling* — power ∝ ω,
+equivalently *one cycle of squiggle at frequency ω carries an action
+of order h*, derived from the substrate's grain bounds alone, without
+invoking periodicity or any quantum-mechanical machinery. It does
+**not** deliver the per-mode integer ladder: the further fact that a
+mode at frequency ω carries exactly 0, 1, 2, … photons of ℏω each,
+regardless of how the wave packet is shaped. That is a *per-mode*
+statement, not a *per-cycle* one, and the bounded substrate alone
+does not know what a "mode" is or that packets of any shape should
+carry the same total energy. The rest of the chapter builds the
+structure that closes that gap — and it is honest about the fact that
+it has to *import* one piece (a complex amplitude on a compact phase)
+from chapter 6 to do so.
+
+What this chapter therefore delivers is a **reduction**, not a
+from-scratch derivation: GRID's bounded substrate gives the Planck
+*scaling* automatically; one well-localised import promotes that
+scaling into the per-mode integer ladder. The bounded substrate is the
+real GRID work here; the math that follows is the *structure of the
+import's consequence*, not the substance of the derivation.
 
 ## 5.1 What is being explained — P3 and P4
 
@@ -160,47 +224,50 @@ any observational reach today, but it is in principle a sharp
 signature. Both limits use the *same* compact phase and the *same*
 periodicity-⇒-integer mechanism; they differ only in resolution.
 
-## 5.6 What the energy route rigorously delivers, and what it does not
+## 5.6 Where the energy route stops
 
-The energetic route deserves a careful accounting, because it is easy
-to mistake what it does. On a bounded, periodic cell whose magnitude
-is *pinned* (a value on a circle has no separate amplitude — Chapter 1
-§1.2), the energy of a wave is carried by **transitions**, and the
-number of transitions per unit time is proportional to frequency. The
-result is the rigorous scaling
+The §5.0 thought experiment *is* the energy route, stated in the
+substrate's own terms. To recap its honest accounting: a bounded
+substrate (any finite n ≥ 2) delivers the **scaling** rigorously —
+power ∝ ω, with proportionality set by the substrate's grain bounds.
+That much is GRID-derived, without reference to periodicity or quantum
+amplitudes.
 
-> power ∝ ω.
-
-In concrete terms: on a binary ±1 substrate driven at the clock's
-maximum frequency the cell flips every tick — maximum transition rate,
-maximum power; halve the drive frequency and the flip rate halves and
-so does the power. There is *no amplitude knob* on a pinned-magnitude
-cell to hide energy in — frequency is the only variable that can carry
-it. So far, so rigorous.
-
-The step from this scaling to the *quantum* relation E = ℏω is
-different. "Action per cycle = h" is the Bohr–Sommerfeld /
-single-valuedness postulate that §5.2 used to get integer N̂ — it is
-what *promotes* the classical scaling into a quantised step. The
-energy route delivers Planck's *scaling* on its own; the *quantisation
-of action* into integer-h units is the same import as P3's integer N̂,
-brought in from chapter 6. So this route is rigorous on E ∝ ω, and
-imports the rest. Stated otherwise: bounding the magnitude buys the
-scaling; getting the rungs themselves takes the complex amplitude.
+The step from this scaling to the per-mode quantum E = ℏω — the
+integer ladder, every rung the same size — is the **import**.
+"Action per cycle = h" (the Bohr–Sommerfeld / single-valuedness
+postulate that §5.2 used to get an integer-spectrum N̂) is what
+promotes the classical scaling into a quantised step, and it requires
+the complex amplitude on the compact phase that chapter 6 supplies.
+*Bounding the magnitude buys the scaling; getting the rungs themselves
+takes the complex amplitude.*
 
 ## 5.7 What light-quantization *is*, in the model
 
-Putting it together: in this model, "light is quantized" is the
-statement that a wave on the lattice has a phase that lives on a
-compact circle (the ℵ-line of A3), and that the state on that circle
-is a single-valued complex amplitude. From those two ingredients —
-periodicity and a complex amplitude — the Fourier-series fact forces
-the occupation ladder to be integer (P3), and action-per-cycle = h
-forces the rung size to be ℏω (P4). The compact circle is grid-derived;
-the complex amplitude is the imported piece. **Periodicity, not
-discreteness, is what does the quantising.** That is what
-light-quantization *is*, in the model — modulo the one import named in
-the next entry of the [arc](README.md#presentation-arc).
+Putting it together honestly: "light is quantized" in this model rests
+on **two GRID-derived ingredients and one import**.
+
+- The substrate is **bounded** (a finite dial — Chapter 1), so it has
+  no amplitude knob. That alone, by the §5.0 thought experiment,
+  delivers **Planck's scaling**: power ∝ ω. Discreteness does this
+  work — no periodicity required.
+- The substrate has a **compact phase** (the ℵ-line of A3). If the
+  state on that phase is a single-valued **complex amplitude**, then
+  the Fourier-series fact of §5.2 delivers the **per-mode integer
+  ladder**: 0, 1, 2, … photons of ℏω each, every rung the same size.
+  Periodicity does this work — discreteness is not required here.
+
+Together these supply P1–P4. **The bounded substrate and the compact
+phase are both GRID-derived; the *complex amplitude* on the phase is
+the one import**, taken up next.
+
+The full picture is therefore not "periodicity, not discreteness" —
+both do work, in different roles. **Discreteness gives the scaling.
+Periodicity gives the ladder.** And the project reduces
+light-quantization to one precisely-located import: the substrate's
+state being a complex amplitude over A3's compact phase. That is what
+light-quantization *is*, in the model. The arc continues
+([next](README.md#presentation-arc)).
 
 ---
 
