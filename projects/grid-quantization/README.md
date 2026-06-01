@@ -1,8 +1,12 @@
 # grid-quantization
 
 **Type:** Exploratory / speculative project (see [../README.md](../README.md))
-**Scope:** A GRID-only account of why light is quantized — and whether
-h and α can be *derived* (not assumed) from lattice recirculation.
+**Scope:** A GRID-only account of why light is quantized — what light
+quantization *is* in the model. ℏ is treated as a substrate *unit* and α
+as the A6 input (see ch. 4); the targets are the dimensionless principle
+of quantization, not the scales of ℏ or α. (An earlier framing asked
+"whether h and α can be derived"; chapter 4 retires that as a category
+error.)
 **Method:** Working hypothesis first; computational probes where they
 settle a question; mathematical derivation as the eventual target.
 **Status:** Tier 1 + band structure + scale-invariance complete;

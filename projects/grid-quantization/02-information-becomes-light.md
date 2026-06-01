@@ -17,10 +17,15 @@ those apart is the point of the chapter.
 
 Recall the junction rule's reflection coefficient: −1/3. A signal
 arriving at a junction is partly sent back along its own edge with its
-sign flipped. Consider a static disturbance — a fixed pattern of phase
-differences, held in place. At the next tick the sign-flipped reflection
+sign flipped. Consider a static *transverse* disturbance — a fixed
+pattern of phase differences in which the three edges of a junction do
+*not* all hold the same value. The next tick's sign-flipped reflection
 sends back the negative of what is there, so the pattern cannot persist;
-it is driven toward its own inversion.
+it is driven toward its own inversion. (One mode is the exception: the
+fully symmetric, all-edges-equal "breathing" pattern is preserved by the
+rule unchanged. It reappears in §2.4 as a per-junction eigenmode and in
+§3.3 as the ω = 0 flat band. The argument here is for the
+non-symmetric, dynamical disturbances.)
 
 This is a **restoring force** — the same thing that makes a spring
 oscillate: displace it, and it pushes back. A medium with a restoring
@@ -36,8 +41,9 @@ continuum limit — the ordinary **wave equation** ∂²a/∂t² = c²∇²a
 ([Q140](../../qa/Q140-light-quantization-from-recirculation.md) §2): the
 restoring force at each junction, coupled to its neighbours, hands the
 oscillation from edge to edge. A localized disturbance therefore does not
-merely wobble in place — it travels, at the one-edge-per-tick speed of
-Chapter 1. The [sim-maxwell](../../grid/sim-maxwell/) study confirms this
+merely wobble in place — it travels, at a speed bounded above by
+Chapter 1's one-edge-per-tick causal ceiling (and measured below at
+≈ 0.41 of that ceiling). The [sim-maxwell](../../grid/sim-maxwell/) study confirms this
 directly: directional propagation, energy conserved, and disturbances
 adding linearly (exact superposition). An injected pattern of phase
 differences — "information" placed on the lattice — propagates away as a
@@ -53,11 +59,14 @@ long-wavelength regime,
 > ω ≈ 0.41 · k,
 
 a **linear** relation (`scripts/run_recirculation.py --test disp`).
-Linear means **non-dispersive**: every wavelength travels at the same
-speed, so a wave packet holds its shape as it moves — the signature of a
-genuine wave equation, and of light. (The 0.41 is the phase velocity
-along one lattice axis: a lattice-specific figure, not a fundamental
-constant; other directions or measures give other values.)
+Linear means **non-dispersive**: with ω = v · k, the group velocity
+dω/dk equals the phase velocity ω/k, so the carrier and the envelope
+travel at exactly the same speed and a wave packet holds its shape as
+it moves — the signature of a genuine wave equation, and of light.
+(The 0.41 is the phase velocity along one lattice axis, in units of one
+edge per tick — well below the §1.3 causal ceiling, and a
+lattice-specific figure, not a fundamental constant; other directions
+or measures give other values.)
 
 ## 2.4 The two polarizations, and where handedness comes from
 
@@ -73,31 +82,50 @@ the junction's response into three modes ([fields.md](../../grid/fields.md)):
 - a **symmetric** mode (1, 1, 1): all edges in phase — a breathing
   (monopole) excitation that *pools at the node* rather than propagating.
   It is not the photon.
-- two **transverse (helical)** modes, (1, e^{2πi/3}, e^{4πi/3}) and
-  (1, e^{4πi/3}, e^{2πi/3}): the phase advances steadily *around* the
-  junction, one way in each. These are the modes that oscillate and
-  propagate — the photon — and they span its two-dimensional polarization
-  space.
+- two **transverse (helical)** basis modes, (1, e^{2πi/3}, e^{4πi/3})
+  and (1, e^{4πi/3}, e^{2πi/3}): the phase advances steadily *around*
+  the junction, one way in each. As *per-junction* eigenmodes these
+  carry eigenvalue −1 under the scatter rule — the sign-flip that
+  drives oscillation. They are not themselves the propagating photon
+  (which is a lattice-wide Bloch mode in a dispersive band — §3.2);
+  they supply the **two-dimensional polarisation basis** that a
+  transverse propagating mode carries at each junction.
 
-(The oscillation of §2.1 is really the oscillation of *these* transverse
-modes: under the scattering rule they carry the sign-flip — the restoring
-effect — while the symmetric mode is left unchanged.)
+(So the oscillation of §2.1 is the oscillation of the *transverse
+sector*: locally, the helical basis carries the eigenvalue −1 sign-flip;
+globally, that sector becomes the dispersive Bloch bands of §3.2 — the
+modes that actually carry energy across the lattice. The symmetric mode
+is left unchanged by the rule and reappears as the ω = 0 flat band of
+§3.3.)
 
-The two transverse modes are the two **circular polarizations**, the
-combinations E + iB and E − iB. Here is the point to hold onto. A definite
-circulation sense — a definite **handedness** — exists only when the
-edges carry *relative phase*, i.e. only for complex (phasor) amplitudes.
-Real amplitudes give linear polarization: the wave propagates, but with
-no definite handedness. So the wave's **handedness — its spin — is set by
-the phase** (the clock face of Chapter 1), while its **propagation** is
-the work of the restoring sign-flip. Two features of the same transverse
-wave, from two different sources: the spring makes it oscillate and move;
-the phase decides which way it circulates.
+The bridge from the per-edge phases to this junction basis is a
+discrete Fourier transform: the three edges' phasor representations
+e^{iθ₁}, e^{iθ₂}, e^{iθ₃} are projected onto the cube-root weights
+(1, e^{2πi/3}, e^{4πi/3}) to read off the symmetric and the two helical
+components. The per-edge compact phase of A3 *enters* the junction
+description through that projection.
 
-(The phase at work here is the **classical** field phase — circular
-polarization is ordinary classical electromagnetism. It is not the
-quantum amplitude, which is a separate ingredient taken up later in the
-arc.)
+The two transverse basis modes are the two **circular polarisations**,
+the combinations E + iB and E − iB. Here is the point to hold onto. A
+definite circulation sense — a definite **handedness** — exists only
+when the edges carry *relative phase*, i.e. only for complex (phasor)
+amplitudes. Real amplitudes give linear polarisation: the wave
+propagates, but with no definite handedness. So the wave's
+**handedness — its spin — is set by the phase** (the clock face of
+Chapter 1), while its **propagation** is the work of the restoring
+sign-flip. Two features of the same transverse wave, from two different
+sources: the spring makes it oscillate and move; the phase decides
+which way it circulates.
+
+(Two notes on the *layer* this story lives in. **Classical, not
+quantum:** the phase at work here is the classical field phase —
+circular polarisation is ordinary classical electromagnetism. It is
+not the quantum amplitude, a separate ingredient taken up later in the
+arc. **Not exhibited by the cited sim:** the simulated `scripts/lib.py`
+carries real (a_fwd, a_bwd) amplitudes per edge and so does *not*
+directly show the helical / spin structure — that requires the
+complex / phasor extension flagged in
+[tier2-design.md](work/tier2-design.md) §4.)
 
 ## 2.4a The handedness lives on the ℵ-line — a unification, not an evasion
 

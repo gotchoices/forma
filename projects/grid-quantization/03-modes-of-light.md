@@ -54,38 +54,48 @@ per frequency: a flat band appears as a spike in the **density of states**
 (the number of modes in a frequency interval). Exactly one-sixth of all
 modes pile up at ω = 0 and one-sixth at ω = π.
 
-## 3.2 The dispersive bands are the free photons
+## 3.2 The dispersive bands — free photons (and additional modes)
 
-The dispersive bands are the propagating modes — free light. They carry
-non-zero group velocity (up to ≈ 0.86 of the lattice speed) and span a
-continuous range of frequencies. That continuum is the answer to *which
-frequencies exist* — the piece the arc labels **P1**. The slope of the
-lowest dispersive band at small k is exactly the ω ≈ 0.41·k phase velocity
-measured in Chapter 2: the long-wavelength photon and the band-structure
-photon are one object, seen two ways.
+The dispersive bands are the propagating modes. The **lowest** of the
+four — the acoustic band, with slope ≈ 0.41 at small k — is the free
+photon: its long-wavelength dispersion is exactly the ω ≈ 0.41·k of
+Chapter 2, so the long-wavelength photon and the band-structure photon
+are one object, seen two ways. The other three dispersive bands are
+additional propagating modes whose physical interpretation (longitudinal,
+gauge, or sublattice-doubled polarisation — the honeycomb has two
+sublattices) is not pinned down here; they are simply additional
+branches in the lattice's spectrum. All four together carry non-zero
+group velocity (up to ≈ 0.86 of the §1.3 causal ceiling) and cover a
+continuous range of frequencies — the answer to *which frequencies
+exist*, the piece the arc labels **P1**.
 
 ## 3.3 The flat bands are trapped modes — not mass
 
-A flat band has zero group velocity, so its modes do not travel: they are
-**localized**, sitting where they are put. Such a mode is a **compact
-localized state** (CLS). The flat bands therefore predict trapped,
-non-radiating excitations, and the simulation finds them: a circulating
-excitation placed on a single hexagon deposits about half of itself into
-a non-propagating mode that then persists indefinitely, while the rest
-radiates away in one tick (`run_recirculation.py --test bound`; the
-surviving state is a CLS on the ω = 0 flat band). Flat-band localized
-states are familiar from other edge / line-graph networks; what is new
-here is only their reading inside GRID.
+A flat band has zero group velocity, so its modes do not travel: they
+are **localized**, sitting where they are put. Such a mode is a
+**compact localized state** (CLS). The flat bands therefore predict
+trapped, non-radiating excitations, and the simulation finds them: a
+circulating excitation placed on a single hexagon deposits about half of
+itself into a non-propagating mode that then persists indefinitely,
+while the rest radiates away in one tick
+(`run_recirculation.py --test bound`; the surviving state is a CLS on
+the ω = 0 flat band). That ω = 0 flat band is the lattice form of
+Chapter 2's symmetric (1, 1, 1) breathing mode — the per-junction
+eigenmode that the rule leaves unchanged — which is exactly the static
+exception §2.1's "cannot persist" argument set aside. Flat-band
+localized states are familiar from other edge / line-graph networks;
+what is new here is only their reading inside GRID.
 
 Two cautions, both load-bearing:
 
 - **This is not a massive particle.** The demonstrated CLS sits at
-  ω = 0 — it is *static*, and a static excitation carries zero energy
-  (E = ℏω = 0). A massive particle would be a localized mode at a
-  *finite* (Compton) frequency, and the lattice has **no** localized mode
-  at a generic finite ω (the flat bands lie only at ω = 0 and ω = π). So
-  this is a genuine bound / zero-mode, not the rest-energy of matter;
-  mass proper belongs to the MaSt sheet construction, not here.
+  ω = 0 — it is *static*, and a static excitation carries no
+  oscillatory energy (its wave-energy measure vanishes). A massive
+  particle would be a localized mode at a *finite* (Compton) frequency,
+  and the lattice has **no** localized mode at a generic finite ω (the
+  flat bands lie only at ω = 0 and ω = π). So this is a genuine bound /
+  zero-mode, not the rest-energy of matter; mass proper belongs to the
+  MaSt sheet construction, not here.
 - **The ~½ is not the zero-point ½.** Projecting excitations exactly onto
   the bound subspace gives 0.571, and the figure depends on the
   excitation (a random state hits 1/3) — it is not a universal one-half,
@@ -96,19 +106,25 @@ Two cautions, both load-bearing:
 
 The lattice dynamics are exactly linear: disturbances add without
 interacting (exact superposition, confirmed in sim-maxwell). So every
-mode above — dispersive or flat — is an exact **harmonic oscillator**: a
-clean, independent sinusoid at its own frequency, with no mixing into
-other modes. This is the piece the arc labels **P2**, and it is not a
-small thing: it is what makes each frequency a sharp, self-contained
-degree of freedom rather than one smeared into its neighbours.
+mode above — dispersive or flat — is an exact **classical harmonic
+oscillator**: a clean, independent sinusoid at its own frequency, with
+continuous amplitude and no mixing into other modes. This is the piece
+the arc labels **P2**, and it is not a small thing: it is what makes
+each frequency a sharp, self-contained degree of freedom rather than
+one smeared into its neighbours. The *quantum* ladder of integer
+occupation — the photon-counting structure — is a separate piece (P3),
+addressed later in the arc; this chapter delivers the classical
+linear-oscillator skeleton on which any such ladder would sit.
 
 ## 3.5 The photon band is scale-free
 
 How linear is the photon band? Its deviation from a straight line ω = v·k
 falls as ~k² toward long wavelength — about 0.1% at λ ≈ 9 lattice units,
-1% at λ ≈ 4 (`scripts/scale_invariance.py`). Real light has wavelengths
-vastly longer than a lattice cell, so across any observable range the
-dispersion is **scale-free**: no preferred length scale in the
+1% at λ ≈ 4 (`scripts/scale_invariance.py`). Under Chapter 4 §4.4's
+identification of the lattice cell with the Planck length (a
+*consistency* of the framework, not a theorem), real light has
+wavelengths vastly longer than a lattice cell, so across any observable
+range the dispersion is **scale-free**: no preferred length scale in the
 low-frequency (infrared) behaviour — a property called an **IR fixed
 point** — with scale-dependence appearing only near the lattice scale
 itself. The trapped fraction of §3.3 is scale-free in the same sense: it

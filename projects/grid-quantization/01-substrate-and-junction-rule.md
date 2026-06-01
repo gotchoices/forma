@@ -30,15 +30,16 @@ node is a junction — a place where cells meet and interact
 coordination that lets a signal both continue onward and branch, and it
 is the choice that gives the medium its particular scattering behaviour
 (§1.4). The honeycomb used here is the two-dimensional sheet; the full
-lattice is three-dimensional, but the account of light can be developed
-on the sheet.
+GRID lattice has **three spatial dimensions** (plus the timelike axis
+A2 supplies), but the account of light can be developed on the sheet.
 
 ## 1.2 The cell's state: a bounded, periodic phase
 
 Each edge carries one degree of freedom: a **phase** θ — an angle, a
 position on a circle, with θ and θ + 2π denoting the *same* state. It is
-like a clock face: the cell's state is where a hand points, and the
-angle is all that matters. This is **axiom A3**.
+like a clock face: the cell's state is where a hand points, and **only
+the angle matters — the cell has no separate amplitude or magnitude,
+only the phase**. This is **axiom A3**.
 
 Two properties of this choice are used repeatedly and are worth naming
 before they are needed:
@@ -60,11 +61,17 @@ governs how that pattern moves.
 ## 1.3 The clock
 
 Time on the lattice is **discrete**: the network advances in synchronous
-steps called **ticks** (axiom A2 supplies discrete time and the causal
-ordering). At each tick, every junction reads its current inputs and
-produces its outputs, and nothing propagates faster than **one edge per
-tick**. That one-edge-per-tick ceiling is the lattice's maximum signal
-speed — the role the speed of light plays in the continuum.
+steps called **ticks**. The discreteness comes from **axiom A1** (the
+four-dimensional causal lattice supplies discrete time and the length
+scale L); **axiom A2** then fixes the Lorentzian signature (1,3) that
+distinguishes timelike from spacelike, and so the causal ordering. At
+each tick, every junction reads its current inputs and produces its
+outputs, and nothing propagates faster than **one edge per tick** —
+the lattice's *causal* ceiling, the analog of the speed of light's
+limiting role in the continuum. (Actual wave packets move slower than
+this ceiling: the photon's measured phase velocity is ≈ 0.41 of one edge
+per tick — §2.3. The ceiling and the measured wave speed are different
+numbers on the lattice; the continuum *c* is both at once.)
 
 So the substrate is a clocked network: edges hold phases, the clock
 ticks, and at each tick the junctions act. What remains is to say what
@@ -81,7 +88,9 @@ fixed by two requirements:
 - **equal impedance** — the three edges are physically equivalent, so
   the junction treats them symmetrically.
 
-For a junction of N equal edges, the unique rule meeting both is
+For a junction of N equal edges, the impedance-matched rule meeting both
+— unique under the standard convention of real, time-symmetric scattering
+— is
 
 > outgoing_i = (2/N) · (total incoming) − incoming_i.
 
@@ -99,6 +108,19 @@ The coefficients and their derivation from impedance matching are in
 [hexagonal.md](../../grid/hexagonal.md); the rule is the one simulated in
 [sim-maxwell](../../grid/sim-maxwell/) and reimplemented in this
 project's `scripts/lib.py`.
+
+Two things this form glosses, both worth flagging up front. **What the
+rule operates on:** in the simulated form each edge carries not a single
+number but a *pair* of real directed amplitudes (a_fwd, a_bwd) — the
+right-moving and left-moving components of the signal — and the rule is
+applied to those amplitudes at the junctions (`scripts/lib.py:scatter_step`).
+**Which layer that is:** this real-amplitude form is the *wave*
+description, a linearisation around A3's compact phase rather than a
+direct rule on the phase itself (the arithmetic *(2/3)·total − incoming*
+is not defined on a circle). The relation between A3's underlying compact
+phase and these linearised amplitudes is itself an open item — the
+bit-conserving rule of [work/energy-and-coherence.md](work/energy-and-coherence.md)
+§5–§6 — not addressed in this chapter.
 
 ## 1.5 Nothing electromagnetic was put in
 
@@ -121,7 +143,7 @@ what lives on this stage.
 
 ## Sources
 
-- [foundations.md](../../grid/foundations.md) — A2 (discrete time), A3 (compact phase / ℵ-line), A4 (gauge)
+- [foundations.md](../../grid/foundations.md) — A1 (4D discrete lattice; length scale L), A2 ((1,3) Lorentzian signature → causal ordering), A3 (compact phase / ℵ-line), A4 (gauge)
 - [hexagonal.md](../../grid/hexagonal.md) — N = 3 scattering; the 2/3 transmission, −1/3 reflection
 - [sim-maxwell](../../grid/sim-maxwell/) — the substrate simulation; Maxwell from the rule
 - `scripts/lib.py` — this project's lattice / scatter / evolve implementation
@@ -132,4 +154,5 @@ what lives on this stage.
 cited rather than re-derived. No quantum content, and no claim beyond
 "this is the medium and its rule." The sign-flipped reflection is
 recorded but not yet exploited; the ℵ-line is named but its role is not
-yet drawn on.
+yet drawn on; the gap between A3's compact phase and the simulated
+real-amplitude wave form is flagged as an open item, not resolved here.
