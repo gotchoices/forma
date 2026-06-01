@@ -80,7 +80,9 @@ number, fixed by the grain.
 
 This does not yet say *how large* L, τ, and dW are; the grain ratios c
 and ℏ leave the overall scale free. A third dimensionful input is needed
-to fix it, and GRID supplies one through gravity: from axiom A5 the
+to fix it, and GRID supplies one through gravity: from
+[axiom A5](../../grid/foundations.md) (each cell carries ζ = ¼ bit of
+information — the foundational holographic-density axiom) the
 gravitational coupling is
 
 > G = 1 / (4 ζ),

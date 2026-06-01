@@ -68,13 +68,44 @@ frequency to mean lower power, and it requires *bounded*, not
 specifically binary. The proportionality constant in "power = (const)
 × ω" depends on n; the proportionality itself does not.
 
-**ℏ falls out, in natural units.** The substrate's smallest action —
-its smallest energy step times its smallest time step — is dW · τ. In
-substrate-natural units (dW = τ = 1) this is **ℏ = 1**. The familiar
-value 1.054 × 10⁻³⁴ J·s in SI is the conversion factor between
-substrate units and lab units, not a prediction (chapter 4). What the
-thought experiment *does* fix is the *structure*: ℏ is
-energy-grain × time-grain.
+**Two technical notes on the model.** *First*, the cells described
+above — n values centred on zero — are an *amplitude ladder*. The
+technically tighter object, used by
+[energy-and-coherence.md](work/energy-and-coherence.md) §1, is a
+**phase dial**: n positions equally spaced on the unit circle, where
+the value is an angle and magnitude is rigidly 1 by construction. The
+binary case (±1) coincides under both readings (two antipodal points
+on the circle); for n ≥ 3 they diverge. The "no amplitude knob"
+property is *structural* on the phase dial — magnitude is pinned by
+construction — and *contingent* on the amplitude ladder (true when
+restricted to extreme-value oscillations, as the thought experiment
+does). The chapter uses amplitude-ladder language for visual
+intuition; the phase-dial framing is the formal anchor.
+
+*Second*, the per-transition cost is left implicit above. The
+qualitative claim "power ∝ ω" holds under any well-defined transition
+cost for the **stretched-square** pattern (two transitions per cycle at
+any base, scaling cleanly as 1/cycle-length). Smoother patterns
+available in higher bases (e.g. the −1, 0, +1, 0 staircase in base 3)
+give different per-cycle figures whose exact value depends on the cost
+model — linear-in-size cost coincides with the stretched-square figure;
+constant-per-step cost gives more per cycle. The **scaling** itself
+(power vs frequency) is robust across these choices; the *prefactor*
+is not.
+
+**ℏ falls out as a dimensional identity, in natural units.** The
+substrate's smallest action — its smallest energy step times its
+smallest time step — is dW · τ. In substrate-natural units
+(dW = τ = 1) this is **ℏ = 1**. The familiar value 1.054 × 10⁻³⁴ J·s
+in SI is the conversion factor between substrate units and lab units,
+not a prediction (chapter 4). What the thought experiment *does* fix
+is the *structure*: ℏ is energy-grain × time-grain. (Important
+clarification: this is the **dimensional** grain identification from
+chapter 4. It is *not yet* the Bohr–Sommerfeld quantisation postulate
+"action per cycle = h" that §5.6 will later need to get the *rungs* of
+the ladder — that is the import from chapter 6. The dimensional ℏ and
+the quantisation-step h are two different statements; this paragraph
+is only the first.)
 
 **The stop point.** This delivers Planck's *scaling* — power ∝ ω,
 equivalently *one cycle of squiggle at frequency ω carries an action
@@ -117,6 +148,14 @@ with time. As time goes on the phase winds around the unit circle: φ
 and φ + 2π denote the *same* point on that circle. The phase is
 **compact** — a closed loop of circumference 2π.
 
+(One distinction worth flagging before the argument starts: this
+*per-mode oscillation phase* φ is a *distinct object* from A3's
+per-edge compact phase, the ℵ-line. Many edges' ℵ-line phases
+aggregate into one per-mode φ when a wave forms; the Fourier-series
+argument below operates on the per-mode φ alone. The aggregation step
+from per-edge to per-mode is part of what chapter 6 §6.1's import
+covers, not a free consequence of A3.)
+
 Suppose the state of the mode is described by a function ψ(φ) over that
 phase circle — a **complex amplitude** that has a value at every point
 on the loop. (The role of this object, and what makes it complex rather
@@ -151,6 +190,16 @@ state.** That is P3: occupation is integer because the phase is
 compact, by Fourier-series. And because each unit of n corresponds to
 the same step of action ∮ p dφ = h, the energy per quantum is the same
 ℏω at every n — that is P4. The two collapse onto one mechanism.
+
+(One subtlety worth flagging: the spectrum of N̂ = −i ∂/∂φ on the
+circle is all of ℤ, positive *and* negative, while physical occupation
+is the non-negative half ℤ_{≥0}. The mapping integer-Fourier-index ↔
+photon-number is exact only on the non-negative side — the well-known
+Susskind–Glogower / Carruthers–Nieto number–phase subtlety, flagged in
+[work/countability-from-information.md](work/countability-from-information.md)
+§1. For the chapter's argument the robust part — that the spectrum
+forced by single-valuedness on a compact angle is the integers — is
+what carries the load.)
 
 Two clarifications are essential.
 
@@ -190,17 +239,21 @@ about what their agreement does and does not buy:
   E ∝ ω — Planck's *scaling* — from a pinned-magnitude argument on the
   substrate's transitions.
 
-The two are **complementary, not independent**. The topological route
-supplies the *integer label* — that occupation is integer at all — and
-rests on the single-valued complex amplitude over the compact phase.
-The energetic route supplies the *ω-scaling* — that energy goes as ω —
-and rests on the *same* compact-phase structure plus the substrate's
-grain bounds. The same chapter-6 reading underwrites both, so they
-agree because they share their hinge; they are not independent
-verifications. The agreement is meaningful — it shows the same
-mechanism is recognisable from very different starting points — but it
-is not corroboration of the kind two genuinely independent arguments
-would provide.
+The two are **complementary, not independent** — and the way they are
+complementary is worth spelling out precisely, because it is easy to
+overstate. The topological route supplies the *integer label* — that
+occupation is integer at all — and rests on the single-valued complex
+amplitude over the compact phase. The energetic route's *scaling* part
+(E ∝ ω) rests on the substrate's grain bounds *alone* — pinned
+magnitude + fixed transition cost — and does **not** need the
+compact-phase / Fourier structure to deliver it. The two routes share
+chapter 6's import (the complex amplitude on the compact phase) only
+for the **integer-ladder** part: that is what makes the rungs agree
+across routes. The scaling itself is delivered by GRID's bounded
+discreteness alone, via the energetic route. So the agreement is more
+local than "two routes converging on one mechanism": the *rungs*
+inherit from a shared hinge; the *scaling* is delivered independently
+by the substrate.
 
 ## 5.5 Continuous vs finite phase: textbook QED vs a GRID deviation
 
@@ -247,25 +300,32 @@ takes the complex amplitude.*
 Putting it together honestly: "light is quantized" in this model rests
 on **two GRID-derived ingredients and one import**.
 
-- The substrate is **bounded** (a finite dial — Chapter 1), so it has
-  no amplitude knob. That alone, by the §5.0 thought experiment,
-  delivers **Planck's scaling**: power ∝ ω. Discreteness does this
-  work — no periodicity required.
-- The substrate has a **compact phase** (the ℵ-line of A3). If the
-  state on that phase is a single-valued **complex amplitude**, then
-  the Fourier-series fact of §5.2 delivers the **per-mode integer
-  ladder**: 0, 1, 2, … photons of ℏω each, every rung the same size.
-  Periodicity does this work — discreteness is not required here.
+- The substrate is **bounded and discrete** — a finite phase dial. The
+  finite dial is the contribution of
+  [A5](../../grid/foundations.md) (each cell carries ζ = ¼ bit of
+  information), discretising the continuous compact phase Chapter 1
+  introduces. Bounded discreteness gives the substrate no amplitude
+  knob, and from the §5.0 thought experiment this delivers **Planck's
+  scaling**: power ∝ ω. Boundedness *and* discreteness together do
+  this work — no periodicity required.
+- The substrate has a **compact phase** (the ℵ-line of A3 per edge;
+  the per-mode oscillation phase φ when waves form, aggregating the
+  per-edge phases — cf. §5.2 and ch. 6 §6.1). If the state on the
+  per-mode φ is a single-valued **complex amplitude**, then the
+  Fourier-series fact of §5.2 delivers the **per-mode integer ladder**:
+  0, 1, 2, … photons of ℏω each, every rung the same size. Periodicity
+  does this work — discreteness is not required here.
 
-Together these supply P1–P4. **The bounded substrate and the compact
-phase are both GRID-derived; the *complex amplitude* on the phase is
-the one import**, taken up next.
+Together these supply P1–P4. **The bounded discrete substrate
+(A5-derived) and the compact phase (A3-derived) are both
+GRID-derived; the *complex amplitude* on the phase is the one
+import**, taken up next.
 
 The full picture is therefore not "periodicity, not discreteness" —
-both do work, in different roles. **Discreteness gives the scaling.
-Periodicity gives the ladder.** And the project reduces
+both do work, in different roles. **Bounded discreteness gives the
+scaling. Periodicity gives the ladder.** And the project reduces
 light-quantization to one precisely-located import: the substrate's
-state being a complex amplitude over A3's compact phase. That is what
+state being a complex amplitude over the compact phase. That is what
 light-quantization *is*, in the model. The arc continues
 ([next](README.md#presentation-arc)).
 
