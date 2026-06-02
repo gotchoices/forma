@@ -1,0 +1,97 @@
+==============================================================================
+CANDIDATE: K5
+  K5 five-torus manifold: K4 (= QY-ED-share3, the complete graph K4 on 4 dims) plus a fifth dim (the neutrino circle) hosting all 3 nu mass eigenstates on a single NS-trio 2-torus Ma(d4, d5). Dims renamed to d1..d5 in size order: d1 smallest (b/t spoke), d5 largest (nu circle). 5 dims, 7 sheets, 12 mass constraints, 0 DOF (just-determined). See work/k5-manifold.md.
+==============================================================================
+
+Topology: 5 dims, 7 sheets
+  Ma('d1', 'd3')  [quark]
+  Ma('d2', 'd3')  [quark]
+  Ma('d3', 'd4')  [quark]
+  Ma('d1', 'd2')  [electron]
+  Ma('d1', 'd4')  [electron]
+  Ma('d2', 'd4')  [electron]
+  Ma('d4', 'd5')  [neutrino_ns]
+
+R1 (one sheet per dim-pair): SATISFIED
+
+Degrees of freedom:
+  free params  = 12  (5 dim sizes + 7 sigma_eff)
+  constraints  = 12  (one per hosted mass)
+  DOF          = 0  (just-determined)
+
+FIT: compliant solution found (best max |Delta%| = 0.0000%).
+  discrete (assignment + tube/ring) combos scanned : 27648
+  discrete combos that reach a compliant fit       : 24
+  -> multiple discrete solutions exist (see list below).
+
+Compliant discrete combos (best first):
+  err=0.0000%  tube/ring=RRRTRRR  Ma('d1', 'd3'):s/c, Ma('d2', 'd3'):b/t, Ma('d3', 'd4'):u/d, Ma('d1', 'd2'):tau, Ma('d1', 'd4'):e, Ma('d2', 'd4'):mu, Ma('d4', 'd5'):nu1/nu2/nu3
+  err=0.0000%  tube/ring=RRRTRRT  Ma('d1', 'd3'):s/c, Ma('d2', 'd3'):b/t, Ma('d3', 'd4'):u/d, Ma('d1', 'd2'):tau, Ma('d1', 'd4'):e, Ma('d2', 'd4'):mu, Ma('d4', 'd5'):nu1/nu3/nu2
+  err=0.0000%  tube/ring=RRRTRRT  Ma('d1', 'd3'):s/c, Ma('d2', 'd3'):b/t, Ma('d3', 'd4'):u/d, Ma('d1', 'd2'):tau, Ma('d1', 'd4'):e, Ma('d2', 'd4'):mu, Ma('d4', 'd5'):nu2/nu3/nu1
+  err=0.0000%  tube/ring=RRRTRRR  Ma('d1', 'd3'):s/c, Ma('d2', 'd3'):b/t, Ma('d3', 'd4'):u/d, Ma('d1', 'd2'):tau, Ma('d1', 'd4'):e, Ma('d2', 'd4'):mu, Ma('d4', 'd5'):nu2/nu3/nu1
+  err=0.0000%  tube/ring=RRRRRRT  Ma('d1', 'd3'):b/t, Ma('d2', 'd3'):s/c, Ma('d3', 'd4'):u/d, Ma('d1', 'd2'):tau, Ma('d1', 'd4'):mu, Ma('d2', 'd4'):e, Ma('d4', 'd5'):nu2/nu3/nu1
+  err=0.0000%  tube/ring=RRRRRRT  Ma('d1', 'd3'):b/t, Ma('d2', 'd3'):s/c, Ma('d3', 'd4'):u/d, Ma('d1', 'd2'):tau, Ma('d1', 'd4'):mu, Ma('d2', 'd4'):e, Ma('d4', 'd5'):nu1/nu3/nu2
+  err=0.0000%  tube/ring=RRRTRRR  Ma('d1', 'd3'):s/c, Ma('d2', 'd3'):b/t, Ma('d3', 'd4'):u/d, Ma('d1', 'd2'):tau, Ma('d1', 'd4'):e, Ma('d2', 'd4'):mu, Ma('d4', 'd5'):nu1/nu3/nu2
+  err=0.0000%  tube/ring=RRRTRRT  Ma('d1', 'd3'):s/c, Ma('d2', 'd3'):b/t, Ma('d3', 'd4'):u/d, Ma('d1', 'd2'):tau, Ma('d1', 'd4'):e, Ma('d2', 'd4'):mu, Ma('d4', 'd5'):nu1/nu2/nu3
+  err=0.0000%  tube/ring=RRRRRRR  Ma('d1', 'd3'):b/t, Ma('d2', 'd3'):s/c, Ma('d3', 'd4'):u/d, Ma('d1', 'd2'):tau, Ma('d1', 'd4'):mu, Ma('d2', 'd4'):e, Ma('d4', 'd5'):nu1/nu3/nu2
+  err=0.0000%  tube/ring=RRRRRRT  Ma('d1', 'd3'):b/t, Ma('d2', 'd3'):s/c, Ma('d3', 'd4'):u/d, Ma('d1', 'd2'):tau, Ma('d1', 'd4'):e, Ma('d2', 'd4'):mu, Ma('d4', 'd5'):nu2/nu3/nu1
+  err=0.0000%  tube/ring=RRRTRRR  Ma('d1', 'd3'):s/c, Ma('d2', 'd3'):b/t, Ma('d3', 'd4'):u/d, Ma('d1', 'd2'):tau, Ma('d1', 'd4'):mu, Ma('d2', 'd4'):e, Ma('d4', 'd5'):nu1/nu3/nu2
+  err=0.0000%  tube/ring=RRRRRRR  Ma('d1', 'd3'):b/t, Ma('d2', 'd3'):s/c, Ma('d3', 'd4'):u/d, Ma('d1', 'd2'):tau, Ma('d1', 'd4'):mu, Ma('d2', 'd4'):e, Ma('d4', 'd5'):nu1/nu2/nu3
+  ... and 12 more
+
+Best discrete solution — assignment:
+  Ma('d1', 'd3') [quark]  hosts s/c  (tube=d3, ring=d1)
+  Ma('d2', 'd3') [quark]  hosts b/t  (tube=d3, ring=d2)
+  Ma('d3', 'd4') [quark]  hosts u/d  (tube=d4, ring=d3)
+  Ma('d1', 'd2') [electron]  hosts tau  (tube=d1, ring=d2)
+  Ma('d1', 'd4') [electron]  hosts e  (tube=d4, ring=d1)
+  Ma('d2', 'd4') [electron]  hosts mu  (tube=d4, ring=d2)
+  Ma('d4', 'd5') [neutrino_ns]  hosts nu1/nu2/nu3  (tube=d5, ring=d4)
+
+Continuous-parameter manifold (24 sampled solutions):
+  L[d1]                        RANGED  [0.9097, 1.053] fm
+  L[d2]                        PINNED  ~= 0.007344 fm
+  L[d3]                        RANGED  [181.5, 494] fm
+  L[d4]                        PINNED  ~= 4.062e+10 fm
+  L[d5]                        PINNED  ~= 1.593e+11 fm
+  sigma_eff[Ma('d1', 'd3')]    RANGED  [1.932, 2.079] 
+  sigma_eff[Ma('d2', 'd3')]    RANGED  [1.976, 2.025] 
+  sigma_eff[Ma('d3', 'd4')]    RANGED  [1.684, 2.861] 
+  sigma_eff[Ma('d1', 'd2')]    PINNED  ~= 1.9932
+  sigma_eff[Ma('d1', 'd4')]    PINNED  ~= 1.9996
+  sigma_eff[Ma('d2', 'd4')]    PINNED  ~= 2.0000
+  sigma_eff[Ma('d4', 'd5')]    PINNED  ~= 0.0507
+
+  5 parameter(s) vary across the solution manifold; 7 are invariant (pinned).
+  The manifold is 0-dimensional (DOF = 0). A parameter is 'ranged' if it moves anywhere on that manifold, so the ranged count is >= DOF, not equal to it.
+
+sigma/tau decomposition  (sigma_eff = sigma + c*tau; tau and c posited per sector):
+  Ma('d1', 'd3') [quark   ] clover (N=3), tau = 0.3333, c = 2:
+                sigma_eff in [1.932, 2.079]  ->  sigma in [+1.265, +1.412]
+  Ma('d2', 'd3') [quark   ] clover (N=3), tau = 0.3333, c = 2:
+                sigma_eff in [1.976, 2.025]  ->  sigma in [+1.310, +1.358]
+  Ma('d3', 'd4') [quark   ] clover (N=3), tau = 0.3333, c = 2:
+                sigma_eff in [1.684, 2.861]  ->  sigma in [+1.017, +2.194]
+  Ma('d1', 'd2') [electron] ellipse (N=2), tau = 2, c = 1:
+                sigma_eff = 1.9932  ->  sigma = -0.0068  [OK: matches posited sigma = 0]
+  Ma('d1', 'd4') [electron] ellipse (N=2), tau = 2, c = 1:
+                sigma_eff = 1.9996  ->  sigma = -0.0004  [OK: matches posited sigma = 0]
+  Ma('d2', 'd4') [electron] ellipse (N=2), tau = 2, c = 1:
+                sigma_eff = 2.0000  ->  sigma = +0.0000  [OK: matches posited sigma = 0]
+  Ma('d4', 'd5') [neutrino_ns] construction not yet settled — no decomposition
+
+Predicted vs observed masses (best solution, max |Delta%| = 0.0000%):
+  s     pred =          93  obs =          93  Delta% = +0.000%
+  c     pred =        1270  obs =        1270  Delta% = +0.000%
+  b     pred =        4180  obs =        4180  Delta% = +0.000%
+  t     pred =    1.73e+05  obs =    1.73e+05  Delta% = +0.000%
+  u     pred =        2.16  obs =        2.16  Delta% = -0.000%
+  d     pred =        4.67  obs =        4.67  Delta% = -0.000%
+  tau   pred =      1776.9  obs =      1776.9  Delta% = +0.000%
+  e     pred =       0.511  obs =       0.511  Delta% = -0.000%
+  mu    pred =      105.66  obs =      105.66  Delta% = +0.000%
+  nu1   pred =       3e-08  obs =       3e-08  Delta% = +0.000%
+  nu2   pred =     3.3e-08  obs =     3.3e-08  Delta% = +0.000%
+  nu3   pred =       6e-08  obs =       6e-08  Delta% = +0.000%
+
+==============================================================================

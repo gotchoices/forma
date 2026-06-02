@@ -1,0 +1,14 @@
+{
+  "name": "K5",
+  "note": "K5 five-torus manifold: K4 (= QY-ED-share3, the complete graph K4 on 4 dims) plus a fifth dim (the neutrino circle) hosting all 3 nu mass eigenstates on a single NS-trio 2-torus Ma(d4, d5). Dims renamed to d1..d5 in size order: d1 smallest (b/t spoke), d5 largest (nu circle). 5 dims, 7 sheets, 12 mass constraints, 0 DOF (just-determined). See work/k5-manifold.md.",
+  "dims": ["d1", "d2", "d3", "d4", "d5"],
+  "sheets": [
+    {"pair": ["d1", "d3"], "sector": "quark"},
+    {"pair": ["d2", "d3"], "sector": "quark"},
+    {"pair": ["d3", "d4"], "sector": "quark"},
+    {"pair": ["d1", "d2"], "sector": "electron"},
+    {"pair": ["d1", "d4"], "sector": "electron"},
+    {"pair": ["d2", "d4"], "sector": "electron"},
+    {"pair": ["d4", "d5"], "sector": "neutrino_ns"}
+  ]
+}

@@ -28,19 +28,16 @@ K5 adopts `d` (dim) labels instead of K4's `m` labels, both to mark the framewor
 | d1 | b/t quark spoke | ≈ 0.0073 fm (pinned) | m3 |
 | d2 | s/c quark spoke | ≈ 0.91–1.05 fm | m2 |
 | d3 | quark hub | ≈ 181–493 fm | m4 |
-| d4 | u/d quark spoke | ≥ 2400 fm (range) | m1 |
-| d5 | neutrino circle | ≈ 41 µm = 4.13×10¹⁰ fm | (new) |
+| d4 | u/d quark spoke / ν ring | **≈ 40 µm = 4.06×10¹⁰ fm** (pinned by K5 fit) | m1 |
+| d5 | neutrino tube | **≈ 160 µm = 1.59×10¹¹ fm** (pinned by K5 fit) | (new) |
 
-The d5 value is fixed by the K4 neutrino-1D fit ([scripts/neutrino_1d_fit.py](../scripts/neutrino_1d_fit.py), [outputs/neutrino_1d_fit.txt](../outputs/neutrino_1d_fit.txt)): R = 6.578×10⁹ fm → circumference = 2πR ≈ 4.13×10¹⁰ fm ≈ 41 µm. This sets the n = 1 mode mass at 2πℏc/d5 ≈ 30 meV — the ν₁ scale. Note: [config-neutrino.md §NS.3](config-neutrino.md) states "min L ≳ 4 cm" for meV neutrinos, but 4 cm gives 31 µeV (three orders of magnitude too light); the correct floor is ~41 µm. The 4 cm figure in NS.3 appears to be a typo and should be revised separately.
+The d4 and d5 values are *fit results* of the K5 joint fit ([scripts/cand_solver.py](../scripts/cand_solver.py) on [cand_specs/K5.json](../scripts/cand_specs/K5.json), [outputs/cand_K5.txt](../outputs/cand_K5.txt)), pinned by the NS-trio neutrino sheet (§8.3). K4 alone left d4 ranged from 3876 fm to 10¹⁵ fm; the three ν mass constraints collapse that to a single value at 40 µm and pin d5 at 160 µm. Both dims are macroscopic; the (d4, d5) sheet is the project's first 2-torus where both companion sizes are at the same (cm-µm) scale.
 
-### 2.2 The d4 < d5 stipulation
+**Discrepancy with prior ν substrate estimates.** The K5 fit values (40 µm × 160 µm) differ from the K4 + NC neutrino-1D fit (radius 6.578×10⁹ fm → circumference 41 µm) by a factor of ~4 on the tube dim. These are two different mechanisms — NC's 1D shaped curve vs K5's NS-trio 2-torus — so they're not expected to land on the same L. [config-neutrino.md §NS.3](config-neutrino.md) also states "min L ≳ 4 cm", which gives 31 µeV not 30 meV and appears to be a separate doc error.
 
-K4's manifold permits m1 (= d4) up to ~10¹⁵ fm, which would let d4 exceed d5's ~4 cm floor in some range. K5 stipulates **d4 < d5** as a structural assumption, justified by:
+### 2.2 The d4 < d5 stipulation — confirmed by the fit
 
-- No observed particle is lighter than the lightest neutrino mass eigenstate (~30 meV). If d5 is to set the neutrino mass floor and the framework's stability story (§5) anchors stability at the lowest available substrate, the neutrino dim should be the largest.
-- It puts d4/d3 ≈ 12 (sensible ratio) and keeps the electron's required L ≳ 2400 fm comfortably inside d4's range.
-
-If the mode sweep produces a conflict (e.g., a low-energy mode that requires d4 > d5), the assumption is revisited.
+K4's manifold permits m1 (= d4) up to ~10¹⁵ fm. K5 originally stipulated **d4 < d5** as a structural assumption. The K5 joint fit (§8.3) confirms it: d4 pins to 40 µm and d5 to 160 µm — d5/d4 ≈ 4. The stipulation now stands as a fit result rather than an a-priori assumption.
 
 ---
 
@@ -63,7 +60,7 @@ This is the natural restriction of [architecture.md §2](architecture.md#L40-L51
 
 The existing `Ma(i, j)` pair notation extends naturally:
 
-- `Ma(i)` — a 1-winding mode's support (a single closed dim — what NC calls a "1D curve")
+- `Ma(i)` — a 1-winding mode's support (a single closed dim — what the [NC config](config-neutrino.md) (Neutrino Curve) calls a "1D curve")
 - `Ma(i, j)` — a 2-winding mode's support (a 2-torus — the current sheet model)
 - `Ma(i, j, k)` — a 3-winding mode's support (a 3-torus)
 - `Ma(i, j, k, l)`, `Ma(1..5)` — higher
@@ -82,18 +79,48 @@ C(5, 2) = 10 pairs; C(5, 3) = 10 triples; C(5, 4) = 5 quadruples; one 5-torus.
 
 | Pair | Role in K4 | Status in K5 |
 |---|---|---|
-| Ma(d1, d2) | electron μ-leg (b/t × s/c spokes) | occupied — μ at T(1, 2) |
+| Ma(d1, d2) | electron τ-leg (b/t × s/c spokes) | occupied — τ at T(1, 2) |
 | Ma(d1, d3) | quark b/t sheet | occupied — b at T(1, 2), t at T(1, 1) |
-| Ma(d1, d4) | electron e-leg (b/t × u/d spokes) | occupied — e at T(1, 2) |
+| Ma(d1, d4) | electron μ-leg (b/t × u/d spokes) | occupied — μ at T(1, 2) |
 | Ma(d2, d3) | quark s/c sheet | occupied — s at T(1, 2), c at T(1, 1) |
-| Ma(d2, d4) | electron τ-leg (s/c × u/d spokes) | occupied — τ at T(1, 2) |
+| Ma(d2, d4) | electron e-leg (s/c × u/d spokes) | occupied — e at T(1, 2) |
 | Ma(d3, d4) | quark u/d sheet | occupied — u at T(1, 2), d at T(1, 1) |
-| **Ma(d1, d5)** | — | **new** — candidate ν host (smallest companion → heaviest ν) |
-| **Ma(d2, d5)** | — | **new** — candidate ν host |
-| **Ma(d3, d5)** | — | **new** — open candidate (hub × ν) |
-| **Ma(d4, d5)** | — | **new** — candidate ν host (largest companion → lightest ν) |
+| **Ma(d1, d5)** | — | **new** — open (heavy-particle scale, ~170 GeV; §7.2 Higgs candidate) |
+| **Ma(d2, d5)** | — | **new** — open (~1.2 GeV scale; meson candidates) |
+| **Ma(d3, d5)** | — | **new** — open (~6 MeV scale) |
+| **Ma(d4, d5)** | — | **new** — **3-neutrino host** at NS-style shear (§7.1) |
+
+Particle-to-leg assignment for the electron delta follows [cand-QY-ED.md §4.1 Solution A](cand-QY-ED.md#L168-L226): e on the leg sharing the u/d spoke (d2 × d4), μ on the leg sharing the b/t spoke (d1 × d4), τ on the leg opposite u/d (d1 × d2).
 
 K4's 6 sheets are exactly the C(4, 2) = 6 pairs on (d1..d4), filled at machine precision. K5's 4 new pairs all involve d5. **All 10 pairs are admissible substrates by default**; the sweep decides which actually host observed modes. No a-priori exclusions in v1 — the model has no current reason to forbid any pair. If the sweep produces a low-energy charged mode on a pair that doesn't correspond to a known particle (a "ghost"), that is the cue to look for a structural exclusion reason; until then, every pair stays in.
+
+### 4.1.1 Topology figure
+
+K4's six sheets (red wye + blue delta) plus the three K5-native d5 sheets (green, dashed). The Ma(d3, d5) pair is admissible but unlabelled here to avoid cluttering the hub. Heavy-line styles match [cand-QY-ED.md §6](cand-QY-ED.md) conventions.
+
+```mermaid
+%%{init: { "flowchart": { "nodeSpacing": 30, "rankSpacing": 55, "curve": "basis" }, "themeVariables": { "fontSize": "12px" } } }%%
+graph LR
+    d1["d1<br/>b/t spoke"]
+    d2["d2<br/>s/c spoke"]
+    d3["d3<br/>quark hub"]
+    d4["d4<br/>u/d spoke"]
+    d5["d5<br/>ν circle"]
+
+    d1 ==>|b/t| d3
+    d2 ==>|s/c| d3
+    d4 ==>|u/d| d3
+    d1 ===|τ| d2
+    d1 ===|μ| d4
+    d2 ===|e| d4
+    d1 -.-|"~170 GeV"| d5
+    d2 -.-|"~1.2 GeV"| d5
+    d4 -.-|ν₁ν₂ν₃| d5
+
+    linkStyle 0,1,2 stroke:red,stroke-width:2px
+    linkStyle 3,4,5 stroke:blue,stroke-width:2px
+    linkStyle 6,7,8 stroke:green,stroke-width:1px,stroke-dasharray:5
+```
 
 **Future exclusion criterion to keep in mind:** if any two dims turn out to be *co-planar* under the spatial-relationships reading of §6, that would be a structural argument to forbid their 2-torus pair. No such determination is made in v1.
 
@@ -153,22 +180,47 @@ If it holds, the payoff is concrete: charge quantization in integer units (each 
 
 ## 7. Target cases
 
-### 7.1 The three neutrino mass eigenstates as 2D sheets
+### 7.1 The three neutrino mass eigenstates — all on Ma(d4, d5)
 
-The K4 + NC picture hosts ν as a 1D-curve mode on a single extra dim. K5 replaces this with **three new 2-tori**: `Ma(d1, d5)`, `Ma(d2, d5)`, `Ma(d4, d5)`. Each hosts one ν mass eigenstate. Implications:
+The K4 + NC picture hosts ν as a 1D-curve mode on a single extra dim. K5 puts **all three ν mass eigenstates on the single 2-torus Ma(d4, d5)** via the [NS-style sign-flipped-trio mechanism](config-neutrino.md#L52-L57): three close-but-distinct closure-satisfying modes on one sheet, masses split by the shared σ_eff.
+
+The three modes are T(1, 1), T(1, −1), T(1, 2) (or equivalently T(1, 1), T(−1, 1), T(1, 2) — sign-flipped variants). Their detunings on the sheet are:
+
+- T(1, 1): δ = 1 − σ_eff
+- T(1, −1): δ = −1 − σ_eff
+- T(1, 2): δ = 2 − σ_eff
+
+For σ_eff ≠ 0, all three are distinct, yielding three different masses. The sheet's two size parameters (d4, d5) and σ_eff give three free parameters against three observed masses — **just-determined**, no DOF left over. This is the strong constraint that K4 + NC lacked.
+
+**Why all three ν fit on this sheet and not the others:**
+
+| New sheet | Light scale (tube=d5, δ=0) | Heavy scale (δ ≠ 0, dominated by 1/L_small) |
+|---|---|---|
+| Ma(d1, d5) | 30 meV | ~170 GeV — far too heavy for ν₂, ν₃ |
+| Ma(d2, d5) | 30 meV | ~1.2 GeV |
+| Ma(d3, d5) | 30 meV | ~6 MeV |
+| **Ma(d4, d5)** | 30 meV | ~0.5 MeV — close enough that small δ ≠ 0 keeps all three in meV range |
+
+Only Ma(d4, d5) has a heavy scale close enough to the light scale that three modes at small δ can sit in the 30–60 meV band simultaneously. The other three d5-sheets jump too high for ν₂ or ν₃.
+
+**Implications:**
 
 - **Spin ½ recovered structurally.** A 2-torus admits the WvM (1, 2) construction; ν spin ½ falls out the same way the electron's does, instead of needing NC's separate accounting.
-- **Q = 0 from σ_eff = 0**, by the same mechanism as [config-neutrino.md §NS.5](config-neutrino.md#L81-L83) — sign-symmetric ±n mode pairs cancel charge. Applied per-sheet across the three new sheets.
-- **Mass ordering tied to dim sizes.** Heaviest ν on the sheet with the smallest companion dim (Ma(d1, d5), since d1 is smallest), lightest on Ma(d4, d5). This is a *prediction* — the assignment of ν₁/ν₂/ν₃ to the three sheets is structurally pinned, not a fit choice. Whether it produces normal or inverted ordering is checked by the fit.
-- **Constrains d4.** With three ν sheets all anchored to d5, the d4 dim's size enters the lightest-ν mass directly — gives a path to pinning d4 that K4 lacked.
-- **Ma(d3, d5) — open candidate.** The fourth d5-pair (quark hub × ν) is not assigned to any neutrino mass eigenstate, but is admissible in the sweep (§4.1). Whether anything observed lives there is a sweep question.
-- **NC's status.** Becomes an alternative reading rather than the working model. If the three-sheet picture fits, NC is the 1D-limit interpretation of the same modes; if it doesn't, NC remains in play.
+- **Q = 0 from σ_eff = 0 (approximately).** Per [config-neutrino.md §NS.5](config-neutrino.md#L81-L83), sign-symmetric ±n mode pairs cancel charge. With σ_eff small (close to but not exactly 0) the cancellation is approximate; the three modes' charge contributions still sum to zero at the integer-quantization level, but the small σ_eff breaks the exact ±n degeneracy and gives the mass splits. This is the same "Q = 0 consistent but not automatic" story NS already articulates, transferred to Ma(d4, d5).
+- **d4 and σ_eff get pinned by the ν masses.** With three observed masses against (d4, d5, σ_eff), the system is just-determined. d4 was the most-ranged of K4's parameters (3876 fm to 10¹⁵ fm); the ν fit pins it.
+- **Ma(d1, d5), Ma(d2, d5), Ma(d3, d5) — open for heavier particles.** The ~170 GeV, ~1.2 GeV, ~6 MeV scales are not neutrino territory. They are now hunting grounds for whatever sits at those scales: Higgs candidate on Ma(d1, d5) (see §7.2), meson candidates on Ma(d2, d5), and Ma(d3, d5) sits at an awkward scale (between e and μ) that may not host anything observed.
+- **NC's status.** Becomes an alternative reading. If the Ma(d4, d5) fit closes, NC is its 1D-limit interpretation (one of the two windings goes to zero). If it doesn't, NC remains in play as the working model.
 
 ### 7.2 Higgs — included in the sweep, not tuned for
 
-The Higgs is spin 0 and ~125 GeV. Spin 0 fits naturally as a 1-winding mode (no second dim → no double-cover → integer spin), and the energy scale 2πℏc/d1 ≈ 170 GeV at d1's K4-fit size is in the right neighborhood — suggestive but not load-bearing. The sweep should include 1-winding modes across all five dims and report whatever lands near 125 GeV, or nothing.
+The Higgs is spin 0 and ~125 GeV. Two K5 substrates land near the right scale:
 
-**The model is not contorted to make the Higgs appear.** If the sweep finds a near-match on a regular-range dim, that's a hit. If not, the Higgs's home is an open question — possibly outside K5, possibly indicating a dim size K4 left under-constrained. Pinning a dim *to* the Higgs's mass is acceptable only if it doesn't displace particles already accounted for on that dim.
+- **A 1-winding {n, 0, 0, 0, 0} mode on d1** at n=1 gives 2πℏc/d1 ≈ 170 GeV — 36% off. Spin 0 fits naturally on a 1D substrate (no second dim → no double-cover → integer spin).
+- **A 2-torus mode on Ma(d1, d5)** with appropriate σ_eff could land at 125 GeV; the sheet's heavy scale is ~170 GeV (dominated by 1/d1) with shear free to bring it down. Spin on a 2-torus is more complex to argue, but worth checking whether a (1, 0) or (1, 1) style mode can yield integer spin under the σ_eff structure.
+
+The sweep should include both modes and report whatever lands near 125 GeV, or nothing.
+
+**The model is not contorted to make the Higgs appear.** If the sweep finds a near-match at K4-baseline dim sizes, that's a hit. If not, the Higgs's home is an open question — possibly Ma(d1, d5) with a specific σ_eff, possibly outside K5. Pinning a dim *to* the Higgs's mass is acceptable only if it doesn't displace particles already accounted for on that dim.
 
 ### 7.3 Doubly-charmed baryons (Ξcc-like)
 
@@ -179,6 +231,8 @@ The Higgs is spin 0 and ~125 GeV. Spin 0 fits naturally as a 1-winding mode (no 
 ## 8. Mode sweep — first pass
 
 The sweep script is [scripts/k5_mode_sweep.py](../scripts/k5_mode_sweep.py). It enumerates all closure-satisfying modes {n₁..n₅} up to a winding cutoff, classifies by substrate dimensionality, computes mass via the 2-torus formula (1D and 3+D handled separately), and matches against an observed-particle catalog (3 ν + 3 charged leptons + 6 quarks + Higgs). Parameters: dim sizes, cutoff, σ_eff (uniform default + per-pair overrides), match tolerance, whether to include 3+D modes.
+
+**Note on stale framing in §8.1–§8.2.** The v1 results below predate the §7.1 reframing (all three ν on Ma(d4, d5) via NS shear) and the discovery that the d4-tube degeneracy at σ_eff = 2 makes the sweep unable to distinguish which sheet the electron actually lives on. They are kept as a record. The next sweep — once the K4 best-fit point is extracted from `cand_solver` — should be re-run with K4 values pinned and σ_eff varied only on the four new d5-sheets.
 
 ### 8.1 First-pass results
 
@@ -213,7 +267,38 @@ Re-run with K4's per-pair σ_eff values (1.9764, 1.9318, 1.6837 for the quark sh
 - **The strange quark** is the cleanest near-miss at K4 σ_eff (9% off on Ma(d2, d3)). Likely a σ_eff fine-tuning issue: K4's reported 1.9318 is a manifold range; the precise s-mass-fitting σ_eff is ~1.925.
 - **No unexplained low-energy modes ("ghosts") below the electron** show up on the new d5-involving sheets at this cutoff. The first low-mass modes there are the ν candidates, as intended.
 
-### 8.3 Limitations of v1
+### 8.3 K5 joint fit — just-determined at machine precision
+
+The K5 spec [cand_specs/K5.json](../scripts/cand_specs/K5.json) — K4's six sheets plus one neutrino_ns sheet on Ma(d4, d5) — is **just-determined**: 5 dim sizes + 7 σ_eff = 12 parameters; 6 quark + 3 lepton + 3 ν = 12 mass constraints; DOF = 0. The [scripts/cand_solver.py](../scripts/cand_solver.py) `neutrino_ns` sector type (added for K5) places three ν mass eigenstates on a single sheet at T(1, 1), T(−1, 1), T(1, 2), fitting one σ_eff to all three masses.
+
+**Result** ([outputs/cand_K5.txt](../outputs/cand_K5.txt)): compliant fit found at max |Δ%| = **0.0000%** (machine precision) on all 12 masses. 24 of the 27,648 discrete (assignment + tube/ring) combos reach a compliant fit — all permutation-equivalent under the K4 wye/delta symmetries and the three-ν permutation on the NS sheet.
+
+**Best-fit parameter values:**
+
+| Parameter | Value | Status |
+|---|---|---|
+| L[b/t spoke] | 0.0073 fm | pinned (from K4) |
+| L[s/c spoke] | 0.91–1.05 fm | ranged (K4 1-DOF remnant on this dim) |
+| L[quark hub] | 181–494 fm | ranged (K4 1-DOF remnant) |
+| L[u/d spoke / ν ring] (d4) | **4.06×10¹⁰ fm ≈ 40 µm** | **pinned by NS-trio** |
+| L[ν tube] (d5) | **1.59×10¹¹ fm ≈ 160 µm** | **pinned by NS-trio** |
+| σ_eff[quark b/t sheet] | 1.932–2.079 | ranged |
+| σ_eff[quark s/c sheet] | 1.976–2.025 | ranged |
+| σ_eff[quark u/d sheet] | 1.684–2.861 | ranged |
+| σ_eff[electron τ sheet] | 1.9932 | pinned |
+| σ_eff[electron μ sheet] | 1.9996 | pinned |
+| σ_eff[electron e sheet] | 2.0000 | pinned |
+| **σ_eff[NS ν sheet]** | **0.0507** | **pinned** |
+
+**What K5 adds vs K4:**
+
+- **Pins d4 and d5** — K4 left d4 ranged across 12 orders of magnitude; the NS-trio fixes it to 40 µm.
+- **σ_eff for the ν sheet is small but nonzero** (0.0507). Close enough to 0 that the Q ≈ 0 mechanism of [config-neutrino.md §NS.5](config-neutrino.md#L81-L83) applies (sign-symmetric ±n cancellation). Nonzero is what splits T(1, 1) and T(−1, 1) — the doublet-split mechanism that NC needed Wilson flux for. **NS-trio on a 2-torus gets the doublet split for free**, structurally, via the shear that's already there.
+- **K4's residual 1-DOF freedom on (d2, d3, σ_eff[b/t], σ_eff[s/c], σ_eff[u/d])** is untouched by the NS sheet — the ν masses sit on d4 and d5 only.
+
+**Open: the residual K4 1-DOF.** d2 and d3 (s/c spoke and quark hub) and the three quark-sheet σ_eff still range together — K4's 1-DOF manifold survives inside K5. Pinning these would need an additional constraint from outside the K4 + 3-ν system. The Higgs (§7.2) is the obvious candidate target: if it lands on Ma(d1, d5), Ma(d2, d5), or one of the K4 sheets, it adds a constraint and could pin the remainder.
+
+### 8.4 Limitations of v1
 
 - **Per-pair σ_eff has to be supplied externally** (via `--sigma-overrides` or matching K4's fit). The script enumerates modes; it does not fit σ_eff to masses. For that, post-sweep, [scripts/cand_solver.py](../scripts/cand_solver.py) is the right tool.
 - **3+D closure rule is open** (§3.3) — the `--include-3d` flag enables 3+D modes with a naive Σ(n_i/L_i)² formula. Findings on 3+D substrates are *suggestive*, not rigorous, until the closure analogue is settled.

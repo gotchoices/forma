@@ -80,11 +80,30 @@ NEUTRINO = {"nu1": 3.0e-8, "nu2": 3.3e-8, "nu3": 6.0e-8}  # R49 / model-F Family
 QUARK_GENS = [("u", "d"), ("s", "c"), ("b", "t")]
 
 # Per-sector item lists. A quark sheet hosts a generation tuple; an electron /
-# neutrino sheet hosts a single particle name.
+# neutrino sheet hosts a single particle name; a neutrino_ns sheet hosts all
+# three nu mass eigenstates simultaneously on the NS sign-flipped trio
+# T(1,1), T(-1,1), T(1,2), in some permutation.
 SECTOR_ITEMS = {
     "quark": QUARK_GENS,
     "electron": list(LEPTON.keys()),
     "neutrino": list(NEUTRINO.keys()),
+    "neutrino_ns": list(permutations(NEUTRINO.keys())),
+}
+
+# How many sheets each present sector must have.
+SECTOR_SHEET_COUNT = {
+    "quark": 3,
+    "electron": 3,
+    "neutrino": 3,
+    "neutrino_ns": 1,
+}
+
+# Mass constraints per sheet, by sector.
+SECTOR_CONSTRAINTS = {
+    "quark": 2,
+    "electron": 1,
+    "neutrino": 1,
+    "neutrino_ns": 3,
 }
 
 # Per-sector cross-section construction (posited by the framework). The fit
@@ -103,7 +122,7 @@ SECTOR_CONSTRUCTION = {
                  "sigma_posited": None},
     "electron": {"shape": "ellipse (N=2)", "tau": 2.0,       "monodromy_c": 1,
                  "sigma_posited": 0.0},
-    # neutrino — cross-section construction not yet settled (Phase 3)
+    # neutrino, neutrino_ns — cross-section construction not yet settled
 }
 
 # log10(L/fm) search/seed bounds and sigma_eff bounds.
@@ -137,15 +156,16 @@ class Spec:
                     f"unknown sector '{sector}' (expected one of "
                     f"{sorted(SECTOR_ITEMS)})")
             self.sheets.append({"pair": pair, "sector": sector})
-        # Each present sector must have exactly 3 sheets.
+        # Each present sector must have its expected number of sheets.
         for sector in self.sectors():
             n = sum(1 for s in self.sheets if s["sector"] == sector)
-            if n != 3:
+            expected = SECTOR_SHEET_COUNT[sector]
+            if n != expected:
                 raise ValueError(
-                    f"sector '{sector}' has {n} sheets; the one-particle-per-"
-                    f"sheet model needs exactly 3 (3 generations / 3 leptons / "
-                    f"3 nu). Multi-mode-per-pair configs (NS, NC) are not "
-                    f"supported by this solver.")
+                    f"sector '{sector}' has {n} sheets; expected {expected}. "
+                    f"(quark/electron/neutrino: 3 sheets, one item per sheet. "
+                    f"neutrino_ns: 1 sheet hosting all 3 nu mass eigenstates "
+                    f"on the sign-flipped trio.)")
 
     def sectors(self) -> list:
         seen = []
@@ -183,7 +203,7 @@ def dof_analysis(spec: Spec) -> dict:
     n_dims = len(spec.dims)
     n_sheets = len(spec.sheets)
     n_params = n_dims + n_sheets  # one L per dim, one sigma_eff per sheet
-    n_constraints = sum(2 if s["sector"] == "quark" else 1 for s in spec.sheets)
+    n_constraints = sum(SECTOR_CONSTRAINTS[s["sector"]] for s in spec.sheets)
     return {
         "n_params": n_params, "n_dims": n_dims, "n_sheets": n_sheets,
         "n_constraints": n_constraints, "dof": n_params - n_constraints,
@@ -198,13 +218,28 @@ LN10 = float(np.log(10.0))
 
 
 def _hosted(sector: str, item) -> list:
-    """(particle name, observed mass, m_r) for each mode a sheet hosts."""
+    """(particle name, observed mass, m_t, m_r) for each mode a sheet hosts.
+
+    Charged leptons and 'neutrino' sector sit at T(1, 2). Quark sheets host
+    a generation: lighter at T(1, 2), heavier at T(1, 1). The 'neutrino_ns'
+    sector hosts all three nu mass eigenstates on the sign-flipped trio
+    T(1, 1), T(-1, 1), T(1, 2); item is a 3-tuple (nu_T11, nu_Tn11, nu_T12).
+    """
     if sector == "quark":
         light, heavy = item
-        return [(light, QUARK[light], 2), (heavy, QUARK[heavy], 1)]
+        return [(light, QUARK[light], 1, 2), (heavy, QUARK[heavy], 1, 1)]
     if sector == "electron":
-        return [(item, LEPTON[item], 2)]
-    return [(item, NEUTRINO[item], 2)]
+        return [(item, LEPTON[item], 1, 2)]
+    if sector == "neutrino":
+        return [(item, NEUTRINO[item], 1, 2)]
+    if sector == "neutrino_ns":
+        a, b, c = item
+        return [
+            (a, NEUTRINO[a],  1, 1),
+            (b, NEUTRINO[b], -1, 1),
+            (c, NEUTRINO[c],  1, 2),
+        ]
+    raise ValueError(f"unknown sector: {sector}")
 
 
 def build_fit(spec: Spec, assignment: list, tube_first: tuple):
@@ -221,32 +256,36 @@ def build_fit(spec: Spec, assignment: list, tube_first: tuple):
     n_params = n_dims + n_sheets
     dim_idx = {d: i for i, d in enumerate(dims)}
 
-    mt_idx, mr_idx, sheet_idx, mr_val, obs_l, names = [], [], [], [], [], []
+    mt_idx, mr_idx, sheet_idx = [], [], []
+    mt_val, mr_val, obs_l, names = [], [], [], []
     for s, sh in enumerate(spec.sheets):
         d1, d2 = sh["pair"]
         tube, ring = (d1, d2) if tube_first[s] else (d2, d1)
-        for name, m_obs, m_r in _hosted(sh["sector"], assignment[s]):
+        for name, m_obs, m_t, m_r in _hosted(sh["sector"], assignment[s]):
             mt_idx.append(dim_idx[tube])
             mr_idx.append(dim_idx[ring])
             sheet_idx.append(s)
+            mt_val.append(float(m_t))
             mr_val.append(float(m_r))
             obs_l.append(m_obs)
             names.append(name)
     mt_idx = np.array(mt_idx)
     mr_idx = np.array(mr_idx)
     sheet_idx = np.array(sheet_idx)
+    mt_val = np.array(mt_val, dtype=float)
     mr_val = np.array(mr_val, dtype=float)
     obs = np.array(obs_l, dtype=float)
     n_modes = len(names)
     rows = np.arange(n_modes)
+    mt_sq = mt_val ** 2  # used in LT-Jacobian; equals 1 for m_t = ±1
 
     def _common(x):
         L = 10.0 ** np.asarray(x[:n_dims], dtype=float)
         sig = np.asarray(x[n_dims:], dtype=float)
         LT = L[mt_idx]
         LR = L[mr_idx]
-        delta = mr_val - sig[sheet_idx]  # m_t = 1
-        A = (1.0 / LT) ** 2 + (delta / LR) ** 2
+        delta = mr_val - sig[sheet_idx] * mt_val
+        A = (mt_val / LT) ** 2 + (delta / LR) ** 2
         return LT, LR, delta, A
 
     def residual(x):
@@ -258,9 +297,9 @@ def build_fit(spec: Spec, assignment: list, tube_first: tuple):
         LT, LR, delta, A = _common(x)
         J = np.zeros((n_modes, n_params))
         # r = log10(COEFF*sqrt(A)/obs);  dr/dx via the chain rule (see header).
-        J[rows, mt_idx] = -1.0 / (A * LT ** 2)
+        J[rows, mt_idx] = -mt_sq / (A * LT ** 2)
         J[rows, mr_idx] = -(delta ** 2) / (A * LR ** 2)
-        J[rows, n_dims + sheet_idx] = -delta / (LN10 * A * LR ** 2)
+        J[rows, n_dims + sheet_idx] = -mt_val * delta / (LN10 * A * LR ** 2)
         return J
 
     def predict(x):
@@ -302,16 +341,29 @@ def fit_combo(spec: Spec, assignment: list, tube_first: tuple,
 
 
 def enumerate_combos(spec: Spec):
-    """Yield (assignment, tube_first) over all discrete choices."""
+    """Yield (assignment, tube_first) over all discrete choices.
+
+    For sectors where #sheets == #items (quark, electron, neutrino), each
+    discrete option is a permutation of items over sheets. For sectors
+    where #sheets != #items (neutrino_ns: 1 sheet, multiple perm-items),
+    each discrete option is a single item assignment to the single sheet.
+    """
     sectors = spec.sectors()
     sector_sheet_idx = {sec: [i for i, s in enumerate(spec.sheets)
                               if s["sector"] == sec] for sec in sectors}
-    per_sector_perms = [list(permutations(SECTOR_ITEMS[sec])) for sec in sectors]
+    per_sector_options = []
+    for sec in sectors:
+        n_sec_sheets = len(sector_sheet_idx[sec])
+        items = SECTOR_ITEMS[sec]
+        if n_sec_sheets == len(items):
+            per_sector_options.append(list(permutations(items)))
+        else:
+            per_sector_options.append([(it,) for it in items])
     n_sheets = len(spec.sheets)
-    for perm_combo in product(*per_sector_perms):
+    for opt_combo in product(*per_sector_options):
         assignment = [None] * n_sheets
-        for sec, perm in zip(sectors, perm_combo):
-            for sheet_idx, item in zip(sector_sheet_idx[sec], perm):
+        for sec, opts in zip(sectors, opt_combo):
+            for sheet_idx, item in zip(sector_sheet_idx[sec], opts):
                 assignment[sheet_idx] = item
         for tube_first in product((True, False), repeat=n_sheets):
             yield assignment, tube_first
@@ -420,7 +472,9 @@ def solve(spec: Spec, scan_seeds: int, map_seeds: int, threshold: float) -> dict
 # ---------------------------------------------------------------------------
 
 def _fmt_item(item) -> str:
-    return f"{item[0]}/{item[1]}" if isinstance(item, tuple) else str(item)
+    if isinstance(item, tuple):
+        return "/".join(str(x) for x in item)
+    return str(item)
 
 
 def format_report(result: dict) -> str:
