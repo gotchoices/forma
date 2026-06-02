@@ -2,48 +2,49 @@ K5 mode sweep — summary
 ==============================================================================
 
 Parameters:
-  dim sizes (fm):  d1=0.0073  d2=1  d3=200  d4=2400  d5=4.13e+10
-  winding cutoff:  |n_i| <= 3
+  dim sizes (fm):  d1=0.0073  d2=0.91  d3=181  d4=4.06e+10  d5=1.59e+11
+  winding cutoff:  |n_i| <= 6
   sigma_eff:       2.0 (uniform default)
-                   d1,d2: 2.0075
-                   d1,d3: 1.9764
-                   d1,d4: 1.999376
-                   d2,d3: 1.9318
-                   d2,d4: 1.99968
-                   d3,d4: 1.6837
+                   d1,d2: 1.9932
+                   d1,d3: 1.932
+                   d1,d4: 1.9996
+                   d2,d3: 1.976
+                   d2,d4: 2.0
+                   d3,d4: 1.684
+                   d4,d5: 0.0507
   include 3+D:     True
 
 Mode counts by substrate kind:
-  1D: 30
-  2D: 400
-  3D: 2160
-  4D: 6480
-  5D: 7776
-  total: 16846
+  1D: 60
+  2D: 1120
+  3D: 17280
+  4D: 103680
+  5D: 248832
+  total: 370972
 
 Mode counts by substrate (top 25):
-  Ma(d1,d2,d3,d4,d5): 7776
-  Ma(d1,d2,d3,d4): 1296
-  Ma(d1,d2,d3,d5): 1296
-  Ma(d1,d2,d4,d5): 1296
-  Ma(d1,d3,d4,d5): 1296
-  Ma(d2,d3,d4,d5): 1296
-  Ma(d1,d2,d3): 216
-  Ma(d1,d2,d4): 216
-  Ma(d1,d2,d5): 216
-  Ma(d1,d3,d4): 216
-  Ma(d1,d3,d5): 216
-  Ma(d1,d4,d5): 216
-  Ma(d2,d3,d4): 216
-  Ma(d2,d3,d5): 216
-  Ma(d2,d4,d5): 216
-  Ma(d3,d4,d5): 216
-  Ma(d1,d2): 40
-  Ma(d1,d3): 40
-  Ma(d1,d4): 40
-  Ma(d1,d5): 40
-  Ma(d2,d3): 40
-  Ma(d2,d4): 40
-  Ma(d2,d5): 40
-  Ma(d3,d4): 40
-  Ma(d3,d5): 40
+  Ma(d1,d2,d3,d4,d5): 248832
+  Ma(d1,d2,d3,d4): 20736
+  Ma(d1,d2,d3,d5): 20736
+  Ma(d1,d2,d4,d5): 20736
+  Ma(d1,d3,d4,d5): 20736
+  Ma(d2,d3,d4,d5): 20736
+  Ma(d1,d2,d3): 1728
+  Ma(d1,d2,d4): 1728
+  Ma(d1,d2,d5): 1728
+  Ma(d1,d3,d4): 1728
+  Ma(d1,d3,d5): 1728
+  Ma(d1,d4,d5): 1728
+  Ma(d2,d3,d4): 1728
+  Ma(d2,d3,d5): 1728
+  Ma(d2,d4,d5): 1728
+  Ma(d3,d4,d5): 1728
+  Ma(d1,d2): 112
+  Ma(d1,d3): 112
+  Ma(d1,d4): 112
+  Ma(d1,d5): 112
+  Ma(d2,d3): 112
+  Ma(d2,d4): 112
+  Ma(d2,d5): 112
+  Ma(d3,d4): 112
+  Ma(d3,d5): 112

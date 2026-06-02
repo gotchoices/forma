@@ -308,7 +308,25 @@ The K5 spec [cand_specs/K5.json](../scripts/cand_specs/K5.json) — K4's six she
 
 **Open: the residual K4 1-DOF.** d2 and d3 (s/c spoke and quark hub) and the three quark-sheet σ_eff still range together — K4's 1-DOF manifold survives inside K5. Pinning these would need an additional constraint from outside the K4 + 3-ν system. The Higgs (§7.2) is the obvious candidate target: if it lands on Ma(d1, d5), Ma(d2, d5), or one of the K4 sheets, it adds a constraint and could pin the remainder.
 
-### 8.4 Limitations of v1
+### 8.4 Hadron survey — K5 fermion fit does not naturally host model-F hadrons
+
+A survey of the model-F hadron inventory (8 mesons + 8 baryons + p, n; PDG masses) was run against K5 at the just-determined fermion-fit point (§8.3, with d2 = 0.91 fm and d3 = 181 fm at the lower-bound corner of K4's residual 1-DOF). Cutoff |n_i| ≤ 6 (to allow model-F's (3, 6) proton mode), with 3+-torus modes admitted via a per-pair σ_eff extension `mass_nd_with_sigma()` ([scripts/k5_mode_sweep.py](../scripts/k5_mode_sweep.py)). Hadron list and decay-content hints in `HADRONS` constant.
+
+**Result:** 6 of 18 hadrons "match" within 5%, but **every match is a numerical coincidence** — the closest K5 mode by mass, not by quark-content correspondence. E.g.:
+
+- π⁰ (134.98 MeV) matched Ma(d1, d2, d4) at 135.9 MeV (0.66%) — but π⁰ is u-ū/d-d̄, which should live on Ma(d3, d4). The Ma(d1, d2, d4) match has no quark-content basis.
+- Many hadrons (K, η, ρ, ω, φ, p, n, Λ, Σ) all collapsed to the same mode — Ma(d2, d3) T(1, 1) at 1330 MeV (which is the c-quark prediction in K5). The matcher just picks whichever observed mass is closest.
+
+**Why model-F's hadron inventory does not transfer:** model-F's p-sheet has L_ring_p = 47 fm and L_tube_p = 26 fm; K5's u/d sheet has L_ring (d3) = 181-494 fm and L_tube (d4) = 4×10¹⁰ fm. The model-F (3, 6) proton mode on K5's u/d sheet at K5's σ_u/d = 1.684 gives mass = COEFF·(6 − 1.684·3)/d3 ≈ **6.5 MeV** at d3 = 181 fm — three orders of magnitude below the proton's 938 MeV. The 2-torus mass formula on K5's u/d sheet caps at a few MeV for any closure-mode within cutoff 6.
+
+**Status:** K5's fermion sector is solved (just-determined, machine precision). K5's hadron sector is **unsolved** — needs either:
+
+- **Path A — sheet/substrate model per hadron's quark content,** extending cand_solver with a hadron sector and joint fit. Likely requires new dim freedoms (the K4 + 3ν system has no slack for hadrons at the current dim sizes).
+- **Path B — reparameterize sheets** to a different point on K4's residual 1-DOF that gives hadron-compatible scales. The K5 fit's d3 = 181-494 fm range is much larger than model-F's 47 fm, suggesting K5 may need a structurally different choice (e.g., a separate sheet for hadron-binding, or a multi-component link mechanism not in the current cand_solver).
+
+The model-F approach (link multiplicity on a single sheet) is incompatible with K5's current sheet parameters; a different mechanism is needed.
+
+### 8.5 Limitations of v1
 
 - **Per-pair σ_eff has to be supplied externally** (via `--sigma-overrides` or matching K4's fit). The script enumerates modes; it does not fit σ_eff to masses. For that, post-sweep, [scripts/cand_solver.py](../scripts/cand_solver.py) is the right tool.
 - **3+D closure rule is open** (§3.3) — the `--include-3d` flag enables 3+D modes with a naive Σ(n_i/L_i)² formula. Findings on 3+D substrates are *suggestive*, not rigorous, until the closure analogue is settled.

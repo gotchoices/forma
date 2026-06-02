@@ -81,6 +81,36 @@ OBSERVED_PARTICLES = (
     ('H',    125250.0,  0,    0,    'Higgs boson'),
 )
 
+# Model-F hadron inventory (name, mass_MeV, spin, charge, note).
+# 'note' encodes quark content + K5 substrate hint based on which quark
+# generation sheets the constituents live on:
+#   u/d on Ma(d3, d4); s/c on Ma(d2, d3); b/t on Ma(d1, d3).
+# A hadron drawing from N distinct generation-sheets needs the union of
+# those sheets' dims — a 2-, 3-, or 4-torus in K5.
+HADRONS = (
+    # mesons (spin 0 pseudoscalar)
+    ('pi0',    134.98,  0,    0,  'u-ubar/d-dbar -> Ma(d3,d4)'),
+    ('pi+',    139.57,  0,    1,  'u-dbar -> Ma(d3,d4)'),
+    ('K0',     497.61,  0,    0,  's-dbar -> Ma(d2,d3,d4)'),
+    ('K+',     493.68,  0,    1,  'u-sbar -> Ma(d2,d3,d4)'),
+    ('eta',    547.86,  0,    0,  'u,d,s mix -> Ma(d2,d3,d4)'),
+    ('eta-p',  957.78,  0,    0,  'u,d,s mix -> Ma(d2,d3,d4)'),
+    ('D0',    1864.84,  0,    0,  'c-ubar -> Ma(d2,d3,d4)'),
+    ('Dpm',   1869.65,  0,    1,  'c-dbar -> Ma(d2,d3,d4)'),
+    # mesons (spin 1 vector)
+    ('rho',    775.26,  1,    0,  'u-ubar/d-dbar -> Ma(d3,d4)'),
+    ('omega',  782.66,  1,    0,  'u-ubar/d-dbar -> Ma(d3,d4)'),
+    ('phi',   1019.46,  1,    0,  's-sbar -> Ma(d2,d3)'),
+    # baryons (spin 1/2 octet)
+    ('p',      938.272, 0.5,  1,  'uud -> Ma(d3,d4)'),
+    ('n',      939.565, 0.5,  0,  'udd -> Ma(d3,d4)'),
+    ('Lambda', 1115.68, 0.5,  0,  'uds -> Ma(d2,d3,d4)'),
+    ('Sigma+', 1189.37, 0.5,  1,  'uus -> Ma(d2,d3,d4)'),
+    ('Sigma-', 1197.45, 0.5, -1,  'dds -> Ma(d2,d3,d4)'),
+    ('Xi0',    1314.86, 0.5,  0,  'uss -> Ma(d2,d3,d4)'),
+    ('Xi-',    1321.71, 0.5, -1,  'dss -> Ma(d2,d3,d4)'),
+)
+
 
 @dataclass(frozen=True)
 class Mode:
@@ -124,6 +154,37 @@ def mass_nd_naive(windings, dim_sizes_fm):
     """Naive multi-dim mass with no cross-coupling (3+D closure rule open)."""
     s = sum((n / L) ** 2 for n, L in zip(windings, dim_sizes_fm) if n != 0)
     return TWO_PI_HBARC_MEV_FM * math.sqrt(s)
+
+
+def mass_nd_with_sigma(windings, dim_sizes_fm, sigma_overrides, sigma_default):
+    """Multi-dim mode mass with per-pair sigma_eff.
+
+    Designates the LARGEST dim among the nonzero windings as the common tube;
+    treats the other nonzero dims as rings, each carrying its own detuning
+    delta_i = m_r_i - sigma_(tube,i) * m_t, where sigma comes from the
+    (tube, ring) pair via sigma_overrides (defaulting to sigma_default).
+
+        m² = (n_tube/L_tube)² + Σ_rings (delta_i/L_i)²
+
+    This is a per-pair extension of the 2-torus formula; it ignores
+    ring-ring shears, which are not yet defined in the K5 framework.
+    """
+    nonzero = [i for i, n in enumerate(windings) if n != 0]
+    if not nonzero:
+        return 0.0
+    tube_idx = max(nonzero, key=lambda i: dim_sizes_fm[i])
+    L_T = dim_sizes_fm[tube_idx]
+    n_t = windings[tube_idx]
+    total = (n_t / L_T) ** 2
+    for i in nonzero:
+        if i == tube_idx:
+            continue
+        L_R = dim_sizes_fm[i]
+        pair_key = tuple(sorted((tube_idx + 1, i + 1)))
+        sigma = sigma_overrides.get(pair_key, sigma_default)
+        delta = windings[i] - sigma * n_t
+        total += (delta / L_R) ** 2
+    return TWO_PI_HBARC_MEV_FM * math.sqrt(total)
 
 
 def parse_sigma_overrides(s):
@@ -197,8 +258,11 @@ def enumerate_modes(dim_sizes_fm, cutoff, sigma_default,
                 nonzero_dims=nonzero,
                 n_kind=n_kind,
                 substrate_label=label,
-                closure_status='open',
-                mass_mev=mass_nd_naive(windings, dim_sizes_fm),
+                closure_status='open-3d',
+                sigma_eff=sigma_default,  # per-pair via overrides inside mass fn
+                mass_mev=mass_nd_with_sigma(
+                    windings, dim_sizes_fm, sigma_overrides, sigma_default,
+                ),
             )
 
 
@@ -477,7 +541,10 @@ def main():
     p.add_argument('--tolerance', type=float, default=0.05,
                    help='Relative-mass match tolerance (default: 0.05)')
     p.add_argument('--include-3d', action='store_true',
-                   help='Include 3+-winding modes (naive mass formula)')
+                   help='Include 3+-winding modes (per-pair sigma_eff formula)')
+    p.add_argument('--include-hadrons', action='store_true',
+                   help='Extend particle-match catalog with model-F hadrons '
+                        '(mesons, baryons) in addition to the 13 fundamentals')
     p.add_argument('--target-mass-search', type=float, default=None,
                    metavar='MASS_MEV',
                    help='Inverse search: for the given target mass, find '
@@ -536,9 +603,10 @@ def main():
     ))
     print(f'  {len(modes)} modes admitted')
 
-    matches = match_particles(modes, OBSERVED_PARTICLES, args.tolerance)
+    catalog = OBSERVED_PARTICLES + (HADRONS if args.include_hadrons else ())
+    matches = match_particles(modes, catalog, args.tolerance)
     n_match = sum(1 for m in matches if m['matched'])
-    print(f'  {n_match}/{len(OBSERVED_PARTICLES)} particles matched '
+    print(f'  {n_match}/{len(catalog)} particles matched '
           f'within {args.tolerance:.0%}')
 
     write_spectrum_csv(modes, args.output_dir / 'spectrum.csv')
