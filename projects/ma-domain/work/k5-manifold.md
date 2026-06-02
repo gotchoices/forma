@@ -211,16 +211,26 @@ Only Ma(d4, d5) has a heavy scale close enough to the light scale that three mod
 - **Ma(d1, d5), Ma(d2, d5), Ma(d3, d5) — open for heavier particles.** The ~170 GeV, ~1.2 GeV, ~6 MeV scales are not neutrino territory. They are now hunting grounds for whatever sits at those scales: Higgs candidate on Ma(d1, d5) (see §7.2), meson candidates on Ma(d2, d5), and Ma(d3, d5) sits at an awkward scale (between e and μ) that may not host anything observed.
 - **NC's status.** Becomes an alternative reading. If the Ma(d4, d5) fit closes, NC is its 1D-limit interpretation (one of the two windings goes to zero). If it doesn't, NC remains in play as the working model.
 
-### 7.2 Higgs — included in the sweep, not tuned for
+### 7.2 Higgs — only Ma(d1, d5) hosts it, at one of two σ_eff values
 
-The Higgs is spin 0 and ~125 GeV. Two K5 substrates land near the right scale:
+A target-mass search ([scripts/k5_mode_sweep.py](../scripts/k5_mode_sweep.py) `--target-mass-search 125250`) was run across all K5 1D substrates and the four d5-involving 2-tori with the K5-pinned dim sizes. Result ([outputs/k5_mode_sweep/target_Higgs.txt](../outputs/k5_mode_sweep/target_Higgs.txt)): **18 candidate (mode, σ_eff) triples land at exactly 125 GeV — all on Ma(d1, d5).**
 
-- **A 1-winding {n, 0, 0, 0, 0} mode on d1** at n=1 gives 2πℏc/d1 ≈ 170 GeV — 36% off. Spin 0 fits naturally on a 1D substrate (no second dim → no double-cover → integer spin).
-- **A 2-torus mode on Ma(d1, d5)** with appropriate σ_eff could land at 125 GeV; the sheet's heavy scale is ~170 GeV (dominated by 1/d1) with shear free to bring it down. Spin on a 2-torus is more complex to argue, but worth checking whether a (1, 0) or (1, 1) style mode can yield integer spin under the σ_eff structure.
+The other d5-sheets are structurally excluded:
 
-The sweep should include both modes and report whatever lands near 125 GeV, or nothing.
+- **Ma(d2, d5), Ma(d3, d5):** with d5 as tube the required |δ| > 100; with d2 or d3 as tube the m_t/L_T term is too small to reach Higgs mass at low windings. No σ_eff ∈ [0, 3] gives 125 GeV at |windings| ≤ 3.
+- **Ma(d4, d5):** already the ν sheet at σ_eff = 0.0507; the same parameter constraints leave no Higgs mode.
+- **1D modes** on any dim: integer multiples of 2πℏc/L_i; no L_i puts a low-n mode at 125 GeV.
 
-**The model is not contorted to make the Higgs appear.** If the sweep finds a near-match at K4-baseline dim sizes, that's a hit. If not, the Higgs's home is an open question — possibly Ma(d1, d5) with a specific σ_eff, possibly outside K5. Pinning a dim *to* the Higgs's mass is acceptable only if it doesn't displace particles already accounted for on that dim.
+On Ma(d1, d5) with tube = d5, the integer-spin candidates (single-cover T(±1, ±1) modes — the natural spin-0 fit) sit at:
+
+- **σ_eff = 0.2625** — in the small-σ regime of [config-neutrino.md §NS.5](config-neutrino.md), close to the ν sheet's 0.0507
+- **σ_eff = 1.7375** — mirror reflection through the lepton-tube τ = 2 value (1.7375 = 2 − 0.2625)
+
+The half-spin (WvM-style T(±1, ±2)) candidates land at σ_eff = 1.2625 or 2.7375. Spin 0 favours the T(±1, ±1) options.
+
+**Adding Higgs does not break K4's residual 1-DOF.** The Ma(d1, d5) sheet touches d1 (already pinned by b/t) and d5 (already pinned by NS-trio). Pinning σ_eff[Ma(d1, d5)] adds one constraint to one new parameter. The 1-DOF residual lives on d2, d3, and the quark σ_effs (§8.3) — Higgs doesn't reach them. Breaking it needs a constraint on a sheet involving d2 or d3; the target-mass search shows Higgs can't sit there.
+
+**Discriminating between σ_eff = 0.2625 and σ_eff = 1.7375** is the project's next decision point. The two readings have different downstream content (different couplings to the d1 and d5 sectors), and either may pair more naturally with the ν sheet's σ_eff = 0.0507 under a unified d5-sector story.
 
 ### 7.3 Doubly-charmed baryons (Ξcc-like)
 

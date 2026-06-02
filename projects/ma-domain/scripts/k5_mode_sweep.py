@@ -52,13 +52,15 @@ from pathlib import Path
 HBARC_MEV_FM = 197.3269804
 TWO_PI_HBARC_MEV_FM = 2 * math.pi * HBARC_MEV_FM
 
-# K5 default dim sizes (fm) per work/k5-manifold.md §2.1
+# K5 default dim sizes (fm) per work/k5-manifold.md §2.1 — pinned values
+# come from the K5 just-determined fit (outputs/cand_K5.txt); ranged values
+# use a midpoint within K4's residual 1-DOF.
 DEFAULT_DIM_SIZES_FM = (
-    0.0073,     # d1: b/t spoke (pinned)
-    1.0,        # d2: s/c spoke (mid-range)
-    200.0,      # d3: quark hub (mid-range)
-    2.4e3,      # d4: u/d spoke (electron-host floor)
-    4.13e10,    # d5: neutrino circle (~41 µm, per neutrino_1d_fit R=6.578e9 fm)
+    0.0073,     # d1: b/t spoke (pinned by K4)
+    1.0,        # d2: s/c spoke (mid of K4 range [0.91, 1.05])
+    300.0,      # d3: quark hub (mid of K4 range [181, 494])
+    4.06e10,    # d4: u/d spoke / nu ring (PINNED by K5 NS-trio fit)
+    1.59e11,    # d5: nu tube (PINNED by K5 NS-trio fit)
 )
 
 # Observed fundamental particles (name, mass_MeV, spin, charge, note)
@@ -198,6 +200,132 @@ def enumerate_modes(dim_sizes_fm, cutoff, sigma_default,
                 closure_status='open',
                 mass_mev=mass_nd_naive(windings, dim_sizes_fm),
             )
+
+
+def target_mass_search(dim_sizes_fm, target_mass_mev, cutoff,
+                        sigma_lo=0.0, sigma_hi=3.0, only_substrates=None):
+    """For each candidate substrate and mode within the cutoff, invert the
+    mass formula to find the sigma_eff value(s) that would land the mode at
+    the target mass. Return only candidates with sigma_eff in [sigma_lo, sigma_hi].
+
+    Yields dicts:
+      {substrate, kind, windings, tube_dim, m_t, m_r, sigma_eff, mass_pred,
+       spin_class}
+    spin_class is 'integer' for 1D modes and for 2D T(1,1)-style (single ring
+    wind per tube wind), 'half' for T(1,2)-style (double-cover), or 'mixed'
+    otherwise — a coarse hint for spin filtering, not authoritative.
+
+    only_substrates: optional set of substrate label strings to restrict to
+    (e.g., {'Ma(d1,d5)', 'Ma(d2,d5)'}). None = all substrates.
+    """
+    n_dims = len(dim_sizes_fm)
+    target_norm = target_mass_mev / TWO_PI_HBARC_MEV_FM  # dimensionless m·L^(-1)-like
+
+    # 1D candidates: mass = COEFF · |n| / L. n is integer >= 1.
+    for i, L in enumerate(dim_sizes_fm):
+        label = substrate_label((i + 1,))
+        if only_substrates and label not in only_substrates:
+            continue
+        n_required = target_mass_mev * L / TWO_PI_HBARC_MEV_FM
+        n_int = round(n_required)
+        if 1 <= n_int <= cutoff:
+            err = abs(n_required - n_int) / n_int
+            if err < 0.01:  # within 1% of integer winding
+                wins = [0] * n_dims
+                wins[i] = n_int
+                yield {
+                    'substrate': label, 'kind': '1D',
+                    'windings': tuple(wins),
+                    'tube_dim': 0, 'm_t': None, 'm_r': None,
+                    'sigma_eff': None,
+                    'mass_pred': TWO_PI_HBARC_MEV_FM * n_int / L,
+                    'spin_class': 'integer',
+                }
+
+    # 2D candidates: for each pair, mode, and orientation, solve for sigma_eff.
+    for i in range(n_dims):
+        for j in range(i + 1, n_dims):
+            label = substrate_label((i + 1, j + 1))
+            if only_substrates and label not in only_substrates:
+                continue
+            L_a, L_b = dim_sizes_fm[i], dim_sizes_fm[j]
+            for tube_idx, L_T, L_R in (
+                (i + 1, L_a, L_b), (j + 1, L_b, L_a),
+            ):
+                # Enumerate signed m_t, m_r within cutoff, closure m_t | m_r.
+                for m_t in range(-cutoff, cutoff + 1):
+                    if m_t == 0:
+                        continue
+                    for m_r in range(-cutoff, cutoff + 1):
+                        if m_r == 0 or abs(m_r) % abs(m_t) != 0:
+                            continue
+                        # Solve for sigma_eff giving target mass:
+                        #   m² = COEFF² · ((m_t/L_T)² + (δ/L_R)²)
+                        # so δ² = (m/COEFF)² - (m_t/L_T)²
+                        rhs = target_norm ** 2 - (m_t / L_T) ** 2
+                        if rhs < 0:
+                            continue  # tube alone heavier than target
+                        delta_mag = math.sqrt(rhs) * L_R
+                        for delta in (delta_mag, -delta_mag):
+                            sigma = (m_r - delta) / m_t
+                            if not (sigma_lo <= sigma <= sigma_hi):
+                                continue
+                            wins = [0] * n_dims
+                            wins[i] = m_t if tube_idx == i + 1 else m_r
+                            wins[j] = m_r if tube_idx == i + 1 else m_t
+                            # Spin classification heuristic
+                            if abs(m_t) == 1 and abs(m_r) == 1:
+                                spin = 'integer'  # single-cover both ways
+                            elif abs(m_t) == 1 and abs(m_r) == 2:
+                                spin = 'half'  # WvM (1,2) double-cover
+                            else:
+                                spin = 'mixed'
+                            yield {
+                                'substrate': label, 'kind': '2D',
+                                'windings': tuple(wins),
+                                'tube_dim': tube_idx,
+                                'm_t': m_t, 'm_r': m_r,
+                                'sigma_eff': sigma,
+                                'mass_pred': target_mass_mev,  # by construction
+                                'spin_class': spin,
+                            }
+
+
+def write_target_search_report(candidates, out_path, target_name,
+                                 target_mass_mev, dim_sizes_fm):
+    lines = []
+    lines.append(f'K5 target-mass search — {target_name} at {target_mass_mev} MeV')
+    lines.append('=' * 80)
+    lines.append('')
+    lines.append(f'  dim sizes (fm):  d1={dim_sizes_fm[0]:.4g}  '
+                  f'd2={dim_sizes_fm[1]:.4g}  d3={dim_sizes_fm[2]:.4g}  '
+                  f'd4={dim_sizes_fm[3]:.4g}  d5={dim_sizes_fm[4]:.4g}')
+    lines.append('')
+    lines.append(f'{"Substrate":<14}{"Mode":<14}{"Tube":<6}{"sigma_eff":>12}'
+                  f'  {"spin":<8}{"windings":<22}')
+    lines.append('-' * 80)
+    for c in candidates:
+        if c['kind'] == '1D':
+            mode_str = f'1D n={max(abs(w) for w in c["windings"])}'
+            sig_str = '(N/A)'
+            tube_str = '-'
+        else:
+            mode_str = f'T({c["m_t"]:+d},{c["m_r"]:+d})'
+            sig_str = f'{c["sigma_eff"]:.4f}'
+            tube_str = f'd{c["tube_dim"]}'
+        wins_str = '{' + ','.join(f'{w:+d}' for w in c['windings']) + '}'
+        lines.append(
+            f'{c["substrate"]:<14}{mode_str:<14}{tube_str:<6}'
+            f'{sig_str:>12}  {c["spin_class"]:<8}{wins_str:<22}'
+        )
+    if not candidates:
+        lines.append('  (no candidates found in sigma_eff range)')
+    lines.append('')
+    lines.append('spin: "integer" = single-cover (T(±1, ±1) or 1D);')
+    lines.append('      "half" = WvM double-cover T(±1, ±2);')
+    lines.append('      "mixed" = higher windings, classification heuristic only.')
+    with open(out_path, 'w') as f:
+        f.write('\n'.join(lines) + '\n')
 
 
 def match_particles(modes, particles, tolerance):
@@ -350,6 +478,16 @@ def main():
                    help='Relative-mass match tolerance (default: 0.05)')
     p.add_argument('--include-3d', action='store_true',
                    help='Include 3+-winding modes (naive mass formula)')
+    p.add_argument('--target-mass-search', type=float, default=None,
+                   metavar='MASS_MEV',
+                   help='Inverse search: for the given target mass, find '
+                        '(substrate, mode, sigma_eff) candidates that land at '
+                        'it. Skips the regular sweep.')
+    p.add_argument('--target-name', type=str, default='target',
+                   help='Label for the target-mass-search output (e.g. "Higgs")')
+    p.add_argument('--restrict-substrates', type=str, default='',
+                   help='Semicolon-separated list of substrates to restrict '
+                        'target-mass search to, e.g. "Ma(d1,d5);Ma(d2,d5)"')
     p.add_argument('--output-dir', type=Path,
                    default=Path('outputs/k5_mode_sweep'),
                    help='Output directory (default: outputs/k5_mode_sweep)')
@@ -363,6 +501,27 @@ def main():
     args.output_dir.mkdir(parents=True, exist_ok=True)
     dim_sizes_fm = tuple(args.dim_sizes)
     sigma_overrides = parse_sigma_overrides(args.sigma_overrides)
+
+    if args.target_mass_search is not None:
+        only_subs = None
+        if args.restrict_substrates:
+            only_subs = {s.strip() for s in args.restrict_substrates.split(';')}
+        print(f'K5 target-mass search: {args.target_name} at '
+              f'{args.target_mass_search} MeV')
+        print(f'  dim sizes (fm): {dim_sizes_fm}')
+        if only_subs:
+            print(f'  restricted to: {sorted(only_subs)}')
+        candidates = list(target_mass_search(
+            dim_sizes_fm, args.target_mass_search, args.cutoff,
+            only_substrates=only_subs,
+        ))
+        print(f'  {len(candidates)} candidate (substrate, mode, sigma_eff) '
+              f'triples in sigma_eff range [0, 3]')
+        out_path = args.output_dir / f'target_{args.target_name}.txt'
+        write_target_search_report(candidates, out_path, args.target_name,
+                                    args.target_mass_search, dim_sizes_fm)
+        print(f'  output: {out_path}')
+        return
 
     print('K5 mode sweep')
     print(f'  dim sizes (fm): {dim_sizes_fm}')
