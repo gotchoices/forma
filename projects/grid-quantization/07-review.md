@@ -103,3 +103,60 @@ wavelengths vastly longer than a lattice cell" holds *under* ch. 4
 as a posit. The ledger should reference §4.4's posit when leaning on
 it for the scale-invariance bullet, otherwise the bullet quietly
 upgrades a posit into a fact.
+
+---
+
+## Author response
+
+Integrated all seven items. (Items 4 and 5 verified against ch. 2 as
+the reviewer asked; the ledger then inherits the relevant caveats.)
+
+- **Item 1 (state-model question, first probe).** Accepted as the
+  reviewer's framing: it is genuinely upstream of probes 2 and 3.
+  §7.5 has been re-opened with the state-model question as the
+  *first* item, naming it as load-bearing for the bounded-substrate
+  scaling, the 1/3-obstruction motivation, and the bounded-ladder
+  prediction — and noting that several "derived" entries are graded
+  for one substrate and arguably mis-graded for the other until it is
+  settled. The remaining probes follow it.
+- **Item 2 (ℤ vs ℤ_{≥0} bridge for occupation).** Accepted. §7.2's
+  integer-ladder bullet now carries an explicit residual-gap
+  parenthetical: the Fourier integer runs over all of ℤ while photon
+  occupation is ℤ_{≥0}; identifying the two invokes the
+  Susskind–Glogower / Carruthers–Nieto delicacy already flagged in
+  ch. 5 §5.3, and the import is what covers the restriction. The
+  ledger no longer quietly identifies the two halves.
+- **Item 3 (screening / running-coupling probe).** Accepted as the
+  natural fourth open probe. §7.5 now lists "nonlinear running of the
+  loop coupling" as a forward-looking probe of whether a bit-conserving
+  substrate exhibits the intrinsically nonlinear screening that would
+  make a loop coupling scale toward 1/137 at long distance — citing
+  [work/loop-recirculation-attempt.md](work/loop-recirculation-attempt.md)
+  §5 and noting that this is the probe that would promote the
+  α-leakage observation from *[suggestive]* to either *[predicted]*
+  or *[ruled out]*. Explicit dependency on probes 1 and 2 is noted.
+- **Item 4 (spin / polarisation — helical-vs-dispersive
+  status).** Verified. Ch. 2 §2.4 *has* been revised: helical
+  eigenmodes are now explicitly described as the "two-dimensional
+  polarisation basis" of the dispersive bands rather than as the
+  propagating modes themselves (ch. 2 lines 85–108). So §7.1's
+  "derived" grade with the §2.4a caveat is in fact accurate; no
+  change needed on this axis.
+- **Item 5 (sim coverage of helicity).** Accepted. §7.1's spin row
+  now carries an explicit caveat that the helical structure requires
+  complex / phasor amplitudes, which `scripts/lib.py`'s real-only
+  `(a_fwd, a_bwd)` representation does not carry — pointing back to
+  ch. 2 §2.4's closing note. The "derived" grade is preserved but the
+  sim-coverage gap is now visible at the ledger level.
+- **Item 6 (sync issue between §7.1 and the README's phenomenon
+  table).** Accepted. The README table has been brought into line
+  with §7.1's richer wording — the spin row, photon-spectrum row, ℏ
+  row, bound-mode row, and α row now match the ledger's version. The
+  README also now explicitly names the chapter-7 §7.1 table as
+  canonical, so the Sources pointer is honest.
+- **Item 7 (scale-invariance Planck-cell-posit dependency).**
+  Accepted. §7.2's scale-invariance bullet now explicitly flags that
+  the "real light has wavelengths vastly longer than a lattice cell"
+  reading rests on ch. 4 §4.4's cell-Planck identification, which
+  §4.4 itself marks as a posit. The bullet no longer quietly upgrades
+  a posit into a fact.

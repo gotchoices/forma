@@ -20,7 +20,7 @@ the GRID model, and the *status* of that identification.
 |---|---|---|
 | EM wave / light | a propagating excitation of the edge-wave (junction-scatter) network | derived |
 | wave propagation | the −1/3 restoring term → oscillation; linear dispersion ω ≈ 0.41·k | derived |
-| spin / polarisation | the two helicities (E ± iB) from the ℵ-line phase (A3 per edge), organised by the three-fold junction — the same Kaluza–Klein mechanism MaSt uses for spin | derived (modulo the why/how complementarity flagged in ch. 2 §2.4a) |
+| spin / polarisation | the two helicities (E ± iB) from the ℵ-line phase (A3 per edge), organised by the three-fold junction — the same Kaluza–Klein mechanism MaSt uses for spin | derived (modulo the why/how complementarity flagged in ch. 2 §2.4a; the helical structure requires complex / phasor amplitudes, which the current real-only [`scripts/lib.py`](scripts/lib.py) simulation does not carry — see ch. 2 §2.4 closing note) |
 | photon spectrum (which ω) | the dispersive Bloch bands of chapter 3 (lowest acoustic band = the photon, with measured ω ≈ 0.41·k) | derived |
 | ℏ (quantum of action) | the substrate phase-space grain dW·τ — a unit, not a prediction | identified |
 | **light quantisation** (integer photons) | **single-valuedness of a complex amplitude on the compact phase ⇒ integer occupation** | **candidate** — requires A5 to supply a complex amplitude (the quantum state); not a cheaper stochastic claim |
@@ -56,7 +56,9 @@ computational measurements of chapter 3:
   *ladder* (P3) is separate, taken up later.
 - **Scale-invariance of the photon band** (chapter 3 §3.5). Linear
   dispersion as an IR fixed point, with deviation falling as ~k²
-  toward long wavelength.
+  toward long wavelength. The "real light has wavelengths vastly
+  longer than a lattice cell" gloss is read *under* chapter 4 §4.4's
+  cell-Planck identification, which §4.4 itself flags as a posit.
 - **ℏ is a unit, not a target** (chapter 4). ℏ = dW·τ as a grain
   product, dimensionally forced. Universality of ℏ across fields
   follows automatically — same grains, same ℏ.
@@ -68,7 +70,13 @@ computational measurements of chapter 3:
 - **The integer-ladder mechanism for P3 + P4** (chapter 5 §5.2–§5.3).
   Periodicity of the per-mode oscillation phase ⇒ integer Fourier
   index of the state on it ⇒ integer occupation. *Given* the
-  complex-amplitude state, by Fourier-series.
+  complex-amplitude state, by Fourier-series. (Residual gap inside
+  this step: the Fourier integer runs over all of ℤ, while photon
+  occupation is ℤ_{≥0} — the non-negative half. Identifying the two
+  invokes the Susskind–Glogower / Carruthers–Nieto number-phase
+  delicacy, flagged in chapter 5 §5.3 and
+  [work/countability-from-information.md](work/countability-from-information.md)
+  §1; the import is what covers this restriction.)
 
 ## 7.3 What is imported or conjectured
 
@@ -123,8 +131,18 @@ The arc deliberately does *not* address:
 
 ## 7.5 Open computational and construction probes
 
-Three fronts remain open, each of which would tighten the arc:
+Several fronts remain open, each of which would tighten the arc.
 
+- **The state-model question, first.** The arc has not settled which
+  substrate is canonical: chapter 1 §1.2 introduces a *continuous*
+  compact phase θ ∈ S¹ per edge, while chapter 5 §5.0 and chapter 6
+  §6.6 actually use a *finite-alphabet* ℤ_d dial (A5-derived). This is
+  load-bearing for the chapter-5 bounded-substrate scaling, the
+  chapter-6 1/3-obstruction motivation, and the bounded-ladder
+  prediction. Until it is settled, several "derived" entries above are
+  graded for one substrate and arguably mis-graded for the other. This
+  is the first thing to resolve, because the next two probes depend on
+  it.
 - **The bit-conserving sigma-delta substrate rule** (§6.6). Build a
   simulation that runs the sigma-delta-style accumulator node on the
   honeycomb lattice; verify that its long-time average reproduces the
@@ -140,6 +158,15 @@ Three fronts remain open, each of which would tighten the arc:
   would settle whether the per-edge ℵ-line of A3 *gives rise to* the
   per-mode φ in a derivable way, or whether the connection has to be
   imported.
+- **Nonlinear running of the loop coupling** (cf. [work/loop-recirculation-attempt.md](work/loop-recirculation-attempt.md)
+  §5). The (2/3)¹² leakage figure is suggestive but *forced* (a single
+  pulse around an isolated loop); the actual relevance to α's running
+  is *forward-looking* — does a bit-conserving substrate exhibit the
+  intrinsically nonlinear screening that would make a loop coupling
+  scale toward 1/137 at long distance? This is the probe that would
+  promote the α-leakage observation from *[suggestive]* to either
+  *[predicted]* or *[ruled out]*, and it depends on the previous two
+  fronts being in place.
 - **Loop-closure / emergent-photon sectors.** Quantum-spin-ice and
   related lattice constructions are known to deliver emergent photons
   from bounded discrete substrates. Investigating whether GRID's

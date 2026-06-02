@@ -69,18 +69,20 @@ unified account below, not novel prediction (α is input, ℏ a unit).
 
 ### What GRID says each phenomenon *is*
 
+The chapter-7 ledger ([07-honest-ledger.md §7.1](07-honest-ledger.md#71-what-grid-says-each-phenomenon-is)) carries the canonical version of this table with all caveats; the entries here are kept in sync with it.
+
 | Observed phenomenon | What it *is* in GRID | Status |
 |---|---|---|
 | EM wave / light | a propagating excitation of the edge-wave (junction-scatter) network | derived |
-| wave propagation | the −1/3 restoring term → oscillation; linear dispersion | derived |
-| spin / polarization | the two helicities (E ± iB) from the **ℵ-line** phase (A3's clock face = the smallest compact dimension), organized by the 3-fold junction — the *same* KK mechanism MaSt uses | derived |
-| photon spectrum (which ω) | the dispersive Bloch bands | derived |
-| ℏ (quantum of action) | the substrate phase-space grain, dW·τ (a unit) | identified |
+| wave propagation | the −1/3 restoring term → oscillation; linear dispersion ω ≈ 0.41·k | derived |
+| spin / polarization | the two helicities (E ± iB) from the **ℵ-line** phase (A3's clock face = the smallest compact dimension), organized by the 3-fold junction — the *same* KK mechanism MaSt uses | derived (modulo the why/how complementarity flagged in ch. 2 §2.4a; the helical structure requires complex / phasor amplitudes, which the current real-only [`scripts/lib.py`](scripts/lib.py) simulation does not carry) |
+| photon spectrum (which ω) | the dispersive Bloch bands of chapter 3 (lowest acoustic band = the photon, with measured ω ≈ 0.41·k) | derived |
+| ℏ (quantum of action) | the substrate phase-space grain dW·τ — a unit, not a prediction | identified |
 | **light quantization** (integer photons) | **single-valuedness of a *complex amplitude* on the compact phase ⇒ integer occupation** | **candidate** — requires A5 to supply a complex amplitude (the quantum state itself); *not* a cheaper stochastic claim |
-| localized "bound" mode (the would-be standing limit) | a flat-band compact-localized state at ω = 0, π | shown — but zero / band-edge energy, **not** a finite-rest-energy massive particle; mass proper is MaSt, not here |
+| localized "bound" mode | a flat-band compact-localized state at ω = 0, π | shown — but zero / band-edge energy, **not** a finite-rest-energy massive particle; mass proper is MaSt |
 | charge | a spatial 2π phase winding (classical topological vortex) | derived ([maxwell.md](../../grid/maxwell.md)) |
 | gravity | horizon entropy from finite information (A5 → Jacobson) | derived ([gravity.md](../../grid/gravity.md)) |
-| α (coupling strength) | a loop-leakage / winding coupling; the *value* is input (A6) | input |
+| α (electromagnetic coupling strength) | a loop-leakage / winding coupling; the *value* is input (A6); the single-loop number (2/3)¹² = 1/129.75 sits inside α's running range but is a property of a forced single pulse, not of a free propagating wave | input; numerical observation is *suggestive*, not predicted |
 
 One substrate; most entries are *identifiable structures in the model*,
 not separate postulates. The quantization entry shares its axiom (A5)
