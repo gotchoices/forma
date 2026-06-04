@@ -48,7 +48,20 @@ before they are needed:
   circumference 2π; advancing by a full turn returns to the start. This
   per-edge circle is what GRID calls the **ℵ-line**
   ([foundations.md](../../grid/foundations.md)) — the smallest compact
-  dimension in the framework.
+  dimension in the framework. Whether the resolution on this circle is
+  **continuous** (the angle taking any real value) or
+  **finite-alphabet** (n discrete positions, like a clock with only n
+  marks where the hand can stop) is a substrate-model choice settled
+  at a lower layer — see [grid-primitive
+  01-foundation.md](../grid-primitive/01-foundation.md) §1 and
+  [02-wave-on-a-primitive.md](../grid-primitive/02-wave-on-a-primitive.md)
+  §8 for the cylinder-primitive construction whose compact
+  circumference realises both readings. What is load-bearing
+  throughout this arc is the **boundedness** (compactness) of the
+  phase, not the choice between resolutions; chapters 5 and 6 invoke
+  the finite-alphabet reading where it matters (the bounded-substrate
+  scaling argument and the 1/3 obstruction), the rest of the arc is
+  agnostic.
 - **Only differences are physical.** The absolute value of θ on a single
   cell is not observable; only the *difference* in phase between
   neighbouring cells carries content. A uniform shift of every cell's
@@ -156,3 +169,8 @@ cited rather than re-derived. No quantum content, and no claim beyond
 recorded but not yet exploited; the ℵ-line is named but its role is not
 yet drawn on; the gap between A3's compact phase and the simulated
 real-amplitude wave form is flagged as an open item, not resolved here.
+The chapter is deliberately **neutral on whether the per-edge phase
+resolves to a continuous angle or a finite-alphabet dial** (§1.2);
+boundedness is the only property the arc relies on at this layer, and
+the deeper resolution is settled by the cylinder primitive of
+grid-primitive.
