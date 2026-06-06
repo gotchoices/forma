@@ -206,7 +206,38 @@ the speed limit because the speed of light is the speed of
 everything — particles just divide it between internal and
 external motion.
 
+## 10. GRID-level: where the frame structure comes from
+
+Q117 is the **MaSt-level** account: SR effects emerge from
+the photon's velocity budget partitioned between Ma
+circulation and S translation. The **GRID-level** account
+([Q141](Q141-emergent-lorentz-invariance-from-grid.md))
+supplies the substrate side: the lattice has a preferred
+frame at sub-Planck scale, but every observer above the
+Planck scale sees the same Lorentz-invariant physics —
+concretely demonstrated by the linear photon dispersion
+ω ≈ 0.41·k (scale-invariance / IR fixed point;
+[grid-quantization §3.5](../projects/grid-quantization/03-modes-of-light.md);
+[`scripts/scale_invariance.py`](../projects/grid-quantization/scripts/scale_invariance.py)),
+with sub-leading corrections suppressed as
+~(L_Planck / λ)² ≈ 10⁻⁴⁰ at observable wavelengths.
+
+The two accounts are complementary, not competing. GRID
+supplies the lattice-level reason every observer sees the
+same speed of light (so each can build a self-consistent
+Einstein-synchronized frame). MaSt supplies the *internal*
+mechanism for what those observers then see when they
+compare clocks and rulers — time dilation, contraction,
+mass-energy, muon survival — produced inside each frame by
+the velocity partition.
+
+Take the GRID side as *"why the observer-frame structure
+exists at all"*, and Q117 as *"what happens inside that
+structure for any given particle."* The shared substrate of
+Q50 carries both.
+
 ---
 
 *Connects to: Q116 (T⁶ structure), model-E (particle as torus
-mode), R53 (electron geometry), GRID (photon as fundamental)*
+mode), R53 (electron geometry), GRID (photon as fundamental),
+Q141 (emergent Lorentz invariance), Q50 (shared material space)*

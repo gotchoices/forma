@@ -4,7 +4,9 @@
 **Related:**
   [`grid/foundations.md`](../grid/foundations.md) (ℵ axiom),
   [`primers/physics-from-fabric.md`](../primers/physics-from-fabric.md),
-  Q109 (mode stability)
+  Q109 (mode stability),
+  [Q50](Q50-shared-material-space.md) (shared material space — ℵ-fiber entanglement is exactly the mechanism by which the "fibers connect observations" intuition lives inside the shared-substrate reading),
+  [Q82](Q82-entanglement-as-ma-geometry.md) (entanglement as Ma geometry — phase-locking sibling treatment)
 
 ---
 

@@ -5,6 +5,8 @@
 **Related:** [Q27](Q27-foundational-axioms.md) (foundational axioms),
 [Q32](Q32-energy-geometry-fundamentals.md) (energy/geometry as fundamentals),
 Q71–Q74 (S ↔ Ma perception), Q75 (contingency vs necessity of α),
+[Q138](Q138-time-as-peer-dimension-or-bookkeeping-balance.md) (time as peer dimension vs. bookkeeping balance),
+[Q141](Q141-emergent-lorentz-invariance-from-grid.md) (emergent Lorentz invariance from the GRID lattice — a separate layer: *given* the Lorentzian signature, how the IR-invariance is realized on a discrete substrate),
 R30 (minimal geometry), R31 (alpha derivation)
 
 ---
