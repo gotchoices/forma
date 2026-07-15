@@ -1,0 +1,37 @@
+K5 mode sweep — summary
+==============================================================================
+
+Parameters:
+  dim sizes (fm):  d1=0.0073  d2=0.91  d3=181  d4=4.06e+10  d5=1.59e+11
+  winding cutoff:  |n_i| <= 20
+  sigma_eff:       2.0 (uniform default)
+                   d1,d2: 1.9932
+                   d1,d3: 1.932
+                   d1,d4: 1.9996
+                   d2,d3: 1.976
+                   d2,d4: 2.0
+                   d3,d4: 1.684
+                   d4,d5: 0.0507
+  include 3+D:     False
+
+Mode counts by substrate kind:
+  1D: 200
+  2D: 5280
+  total: 5480
+
+Mode counts by substrate (top 25):
+  Ma(d1,d2): 528
+  Ma(d1,d3): 528
+  Ma(d1,d4): 528
+  Ma(d1,d5): 528
+  Ma(d2,d3): 528
+  Ma(d2,d4): 528
+  Ma(d2,d5): 528
+  Ma(d3,d4): 528
+  Ma(d3,d5): 528
+  Ma(d4,d5): 528
+  Ma(d1): 40
+  Ma(d2): 40
+  Ma(d3): 40
+  Ma(d4): 40
+  Ma(d5): 40
