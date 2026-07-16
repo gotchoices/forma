@@ -181,6 +181,12 @@ Kept visible so the project stays honest:
   attractive channel but cannot by itself produce the signed EM force
   (the scalar/vector sign theorem, and the universality of time dilation).
   Objective 3 is a genuinely harder, separate build.
+- **Dispersive slowing** — if congestion slows different frequencies by
+  different amounts (a low-pass filter rather than a pure delay), a
+  Compton clock and a slow oscillator dilate differently, clocks disagree,
+  and the effect is an optical medium, not time dilation. Decidable from
+  the loaded dispersion relation
+  (see [work/congestion-falloff.md](work/congestion-falloff.md) §6).
 - **The light-bending factor of 2** — a pure time-dilation field
   reproduces Newtonian gravity and gravitational redshift but underbends
   light unless the spatial-metric part is also produced. This project
