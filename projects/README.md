@@ -73,3 +73,11 @@ Each project's README should:
   conjecture. **Status: Tier 1 done — single-hexagon energy return
   (2/3)¹² = 1/129.75 sits in α's running range; Tier 2 (h-universality
   / RG fixed point) not started.**
+- [grid-gravity/](grid-gravity/) — A *mechanical* substrate account of
+  how mass slows local clocks and bends nearby paths — the microscopic
+  counterpart to [grid/gravity.md](../grid/gravity.md)'s statistical
+  (Jacobson) derivation. Mass as a persistent load on finite-bandwidth
+  nodes; congestion → local time dilation → gravity. **Status: framed,
+  feasibility-gated — the go/no-go is whether a lossless buffering rule
+  yields a 1/r isotropic congestion halo; no chapter arc until it
+  clears.**
