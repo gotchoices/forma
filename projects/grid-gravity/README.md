@@ -7,9 +7,10 @@ the "that." Gravity only; the electromagnetic force is a named stretch
 slot, not a deliverable (see Objectives).
 **Method:** Derivation and rule-design first; computation only at the
 explicit go/no-go gates.
-**Status:** Framed; **feasibility-gated**. No chapter arc is committed
-until the gate below (Objective 1) clears. Working hypotheses live in
-[work/](work/) until then.
+**Status:** **Gate CLEARED** — both legs pass, on the single losslessness
+commitment (falloff → massless 1/r-family + isotropic; dispersion →
+non-dispersive). Objective 1 done; next is the coefficient (Objective 2,
+→ G = 1/(4ζ)) and the chapter arc. Working notes in [work/](work/).
 
 ---
 
@@ -320,10 +321,16 @@ The remaining go/no-go:
   **massless** (log r / 1-over-r, R² = 1.00000), **isotropic** (0.2%
   hexagonal) field, and the bandwidth nonlinearity **does not screen** —
   confirming the shunt-check at full nonlinearity.
-- **Dispersion simulation** — *remaining.* Is the load-dependent slowing
-  uniform across frequency (a delay, not a low-pass filter)? Needs wave
-  propagation, not diffusion — measure ω_loaded(k)/ω_unloaded(k) for
-  constancy.
+- **Dispersion simulation** — *done, PASSES*
+  ([work/dispersion-sim-result.md](work/dispersion-sim-result.md),
+  [scripts/gate_dispersion.py](scripts/gate_dispersion.py)). A lossless
+  slowing is non-dispersive (unit transmission, flat group delay = uniform
+  time-rescaling); a lossy edge disperses (transmission collapse).
+  Dispersion is a symptom of loss, so non-dispersivity follows from the
+  *same* losslessness commitment as the 1/r falloff.
 
-Clearing the dispersion leg clears the gate and opens Objective 2 (the
-coefficient, → G = 1/(4ζ)); failing it routes to Fail-fast options.
+**The gate is cleared.** Both legs pass, and both rest on the single
+losslessness commitment: *loss ⟺ shunt ⟺ Yukawa* **and** *loss ⟺ low-pass
+⟺ dispersion*, so *lossless ⟹ 1/r **and** non-dispersive*. Next: Objective
+2 (the coefficient → G = 1/(4ζ)) and — the gate cleared — opening the
+chapter arc.

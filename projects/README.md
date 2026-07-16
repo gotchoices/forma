@@ -77,9 +77,10 @@ Each project's README should:
   how mass slows local clocks and bends nearby paths — the microscopic
   counterpart to [grid/gravity.md](../grid/gravity.md)'s statistical
   (Jacobson) derivation. Mass as a persistent load on finite-bandwidth
-  nodes; congestion → local time dilation → gravity. **Status:
-  feasibility-gated; falloff + isotropy leg PASSES — a lossless buffering
-  rule yields a massless (1/r-family), isotropic, unscreened congestion
-  halo ([sim](grid-gravity/work/falloff-sim-result.md)); the dispersion leg
-  (non-dispersive slowing) is the remaining go/no-go before a chapter
+  nodes; congestion → local time dilation → gravity. **Status: gate
+  CLEARED — a lossless buffering rule yields a massless (1/r-family),
+  isotropic, unscreened congestion halo and a non-dispersive slowing
+  ([falloff sim](grid-gravity/work/falloff-sim-result.md),
+  [dispersion sim](grid-gravity/work/dispersion-sim-result.md)); both legs
+  rest on losslessness. Next: the coefficient (→ G = 1/4ζ) and the chapter
   arc.**
