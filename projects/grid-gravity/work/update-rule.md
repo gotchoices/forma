@@ -135,10 +135,15 @@ the gate passed.
 
 ## 7. What must be nailed to close the gate
 
-1. **The linearization at next order [open].** Expand q → λ → Q
-   self-consistently and confirm the coefficient of the q-term is zero (no
-   effective shunt, §4 caveat). This is the single load-bearing
-   calculation; if a shunt appears, the field is Yukawa.
+1. **The linearization at next order — done, [shunt-check.md](shunt-check.md).**
+   The shunt check passes analytically: losslessness forbids the bulk loss
+   a shunt requires (shunt ⟺ local loss of the conserved backlog), and the
+   nonlinear back-reactions (congestion-dependent transport, dilation-
+   dependent source, varying bandwidth) renormalize D and S and reshape the
+   near field without manufacturing a q-term. The 1/r far-field survives.
+   Two contingencies remain, both settled by the simulation: that the
+   congestion quantity is conserved (not consumable messages), and that
+   transport is diffusive (J ∝ −∇q).
 2. **The constitutive relation [open].** Verify J ∝ −∇q is the correct
    leading-order response of the FIFO edge, not merely the resistor-network
    analogy imported.

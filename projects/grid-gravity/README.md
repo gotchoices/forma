@@ -305,15 +305,25 @@ Three work notes are in place, in order:
    (finite-bandwidth FIFO edge, instantaneous node) that plausibly passes
    both conditions in the weak-field regime at leading order.
 
-The remaining go/no-go, in order:
+The remaining go/no-go:
 
-- **Next-order linearization** — confirm the candidate's congestion
-  balance carries no effective shunt term (else the field is Yukawa). This
-  is the single load-bearing calculation.
-- **Minimal simulation** — inject a persistent localized load; measure the
-  radial falloff of the proper-time field (1/r vs Yukawa vs anisotropic)
-  and the loaded dispersion relation ω_loaded(k)/ω_unloaded(k) for
+- **Next-order linearization** — *done*
+  ([work/shunt-check.md](work/shunt-check.md)). The shunt check passes
+  analytically: losslessness forbids the bulk loss a shunt requires (shunt
+  ⟺ local loss), and the nonlinear back-reactions renormalize coefficients
+  without generating a mass term, so the 1/r far-field survives. Two
+  contingencies remain, both settled by the simulation below.
+- **Falloff + isotropy simulation** — *done, PASSES*
+  ([work/falloff-sim-result.md](work/falloff-sim-result.md),
+  [scripts/gate_falloff.py](scripts/gate_falloff.py)). A lossless
+  finite-bandwidth conservative transport on a hex lattice gives a
+  **massless** (log r / 1-over-r, R² = 1.00000), **isotropic** (0.2%
+  hexagonal) field, and the bandwidth nonlinearity **does not screen** —
+  confirming the shunt-check at full nonlinearity.
+- **Dispersion simulation** — *remaining.* Is the load-dependent slowing
+  uniform across frequency (a delay, not a low-pass filter)? Needs wave
+  propagation, not diffusion — measure ω_loaded(k)/ω_unloaded(k) for
   constancy.
 
-Passing both clears the gate and opens Objective 2 (the coefficient,
-→ G = 1/(4ζ)); failing either routes to Fail-fast options.
+Clearing the dispersion leg clears the gate and opens Objective 2 (the
+coefficient, → G = 1/(4ζ)); failing it routes to Fail-fast options.
