@@ -74,11 +74,18 @@ emergent-gravity result.)
 
 Four claims, each a hypothesis to test, not a result:
 
-1. **Time is local.** Each node advances by processing the information
-   arriving on its edges. Its update rate — the "speed of its clock" —
-   is set by how quickly it can clear that traffic, not by a global
-   master clock. (This is a departure from the current synchronous-lattice
-   model, and reconciling the two is part of the work — see Ground rules.)
+1. **Proper time is local.** All timing lives in the edges
+   (finite-bandwidth transmission lines with load-dependent transit
+   times); nodes redistribute continuously, with no clock of their own. A
+   global bookkeeping parameter may remain — an unobservable *coordinate*
+   time, as in general relativity — but the time any clock *reads* is
+   *proper* time, set locally by the signal-propagation rate, which
+   congestion reduces near mass. The step from "slowed light" to "slowed
+   time" holds only because every clock is itself confined light, so
+   slowing the signal slows every clock uniformly. This claim, its
+   non-dispersive requirement, and its reconciliation with GRID's
+   synchronous-lattice model are developed in
+   [work/local-time.md](work/local-time.md).
 
 2. **Mass is a persistent load.** A massive particle is a standing wave
    on a compact dimension (per [metric-mass](../metric-mass/)). Its
@@ -238,7 +245,16 @@ Kept visible so the project stays honest:
 
 ## Next step
 
-Open [work/](work/) with the feasibility gate: specify a candidate
-lossless finite-bandwidth node rule with the correct low-load limit, and
-determine — by construction and a minimal simulation — whether it yields
-a 1/r, isotropic congestion halo. Everything downstream waits on that.
+Two work notes, in order:
+
+1. [work/local-time.md](work/local-time.md) — *in place.* Settles what
+   "proper time is local" means (Claim 1): delay in the edges, nodes
+   instantaneous, and the identification of slowed light with slowed time
+   (with its non-dispersive requirement). Logically prior to the gate — it
+   fixes how the gate's result is to be read.
+2. **The feasibility gate** — specify a candidate lossless
+   finite-bandwidth *edge* rule with the correct low-load (Maxwell) limit
+   and a non-dispersive, load-dependent delay, and determine — by
+   construction and a minimal simulation — whether a persistent localized
+   load yields a 1/r, isotropic *proper-time* halo. Everything downstream
+   waits on that.
