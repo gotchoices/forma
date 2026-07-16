@@ -110,19 +110,27 @@ Four claims, each a hypothesis to test, not a result:
 
 The mechanism only works if the node/edge rule is simultaneously:
 
-- **Lossless** — it conserves every quantum (delays, never drops). A
-  dissipative buffer relaxes to baseline over a finite length ξ, giving a
-  short-range Yukawa field e^(−r/ξ)/r; a *conserved* congestion field is
-  massless and gives a power law (1/r in 3D, log r in 2D). Long-range
-  gravity requires masslessness, so **losslessness is a prerequisite**,
+- **Lossless (no shunt loss)** — it leaks none of the sourcing quantity
+  (energy) to a bath. *Shunt* loss would add a mass term, giving a
+  short-range Yukawa field e^(−r/ξ)/r; with none, the field is massless and
+  falls off as a power law (1/r in 3D, log r in 2D). Crucially this means
+  *no shunt loss*, **not** *no dissipation at all* — an irreversible
+  *series* impedance is not only allowed but required (see the
+  Irreversible constraint below and
+  [work/congestion-falloff.md](work/congestion-falloff.md) §3). Long-range
+  gravity requires masslessness, so no-shunt-loss is a prerequisite,
   assumed throughout (its necessity is settled; see [work/](work/)).
 - **Nonlinear** — a linear lossless rule has no load-dependent delay
   (it superposes exactly, as [grid/sim-maxwell](../../grid/sim-maxwell/)
   confirmed). Congestion *requires* nonlinearity: a node's delay must
   depend on how much other traffic is present.
-- **Irreversible** — the buffering carries an arrow (the delay/ordering).
-  This is consistent with GRID's A3, which is already energy-conserving
-  but information-discarding, and would supply the microscopic entropy
+- **Irreversible** — the buffering carries an arrow (the delay/ordering),
+  and this is the *series* impedance that lets a static congestion field
+  form at all: a purely reversible (reactive) delay passes the steady
+  component unchanged and forms no static field
+  ([work/congestion-falloff.md](work/congestion-falloff.md) §3).
+  Irreversibility is also consistent with GRID's A3 (energy-conserving but
+  information-discarding) and would supply the microscopic entropy
   production that [grid/bounding-mechanisms.md](../../grid/bounding-mechanisms.md)
   flags as missing.
 
@@ -198,6 +206,39 @@ Kept visible so the project stays honest:
   scaling and coefficient right, not the picture. The discipline is to
   measure the power law and prefactor, not to admire the analogy.
 
+## Fail-fast options
+
+A failed gate is not the death of the general hypothesis (gravity from
+substrate congestion / local time). If a gate fails, these preserve it, in
+descending order of how much they salvage:
+
+1. **Mechanical → entropy → Jacobson (the robust retreat).** If congestion
+   cannot be shown to produce a direct 1/r *force* field but *can* be shown
+   to produce microscopic entropy at the rate Jacobson's argument needs —
+   the dS/dt from phase-wraps/congestion that
+   [grid/bounding-mechanisms.md](../../grid/bounding-mechanisms.md) flags as
+   missing — then the mechanical picture *feeds* the existing statistical
+   machinery instead of replacing it. This drops the risky direct-field
+   claim, keeps "gravity from congestion," and fills the exact gap the repo
+   already names. A retreat from "mechanical force" to "mechanical entropy
+   source."
+2. **Long-range Yukawa.** If the field is e^(−r/ξ)/r with ξ beyond tested
+   scales, it mimics gravity at accessible ranges — massive-gravity
+   territory: weaker, with known issues, but not immediately dead.
+3. **Redshift-only.** Even if the spatial/lensing sector is intractable,
+   clean gravitational time dilation (the Compton-clock slowing) for
+   particles is a real, testable prediction the mechanism may deliver on
+   its own.
+4. **Re-source or coarse-grain.** Reconsider what sources the field (energy
+   flux or winding vs local standing-wave amplitude), or restore isotropy
+   via the continuum / block-spin limit
+   ([grid/foundations.md](../../grid/foundations.md) Q1) if the lattice
+   result is anisotropic.
+
+A clean *negative* — proving congestion gives a Yukawa or a dispersive
+slowing — is itself a result: it rules out a hypothesis at low cost, which
+is the point of gating.
+
 ## Relationship to existing work
 
 | Existing | This project |
@@ -251,16 +292,28 @@ Kept visible so the project stays honest:
 
 ## Next step
 
-Two work notes, in order:
+Three work notes are in place, in order:
 
-1. [work/local-time.md](work/local-time.md) — *in place.* Settles what
-   "proper time is local" means (Claim 1): delay in the edges, nodes
-   instantaneous, and the identification of slowed light with slowed time
-   (with its non-dispersive requirement). Logically prior to the gate — it
-   fixes how the gate's result is to be read.
-2. **The feasibility gate** — specify a candidate lossless
-   finite-bandwidth *edge* rule with the correct low-load (Maxwell) limit
-   and a non-dispersive, load-dependent delay, and determine — by
-   construction and a minimal simulation — whether a persistent localized
-   load yields a 1/r, isotropic *proper-time* halo. Everything downstream
-   waits on that.
+1. [work/local-time.md](work/local-time.md) — what "proper time is local"
+   means (Claim 1): delay in the edges, nodes instantaneous, slowed-light
+   = slowed-time via confined-light clocks, coordinate vs proper time.
+2. [work/congestion-falloff.md](work/congestion-falloff.md) — the gate
+   derivation: reduces the 1/r question to two rule-level conditions
+   (no-shunt → massless → 1/r; non-dispersive → time dilation), both read
+   off one linearization.
+3. [work/update-rule.md](work/update-rule.md) — a concrete candidate
+   (finite-bandwidth FIFO edge, instantaneous node) that plausibly passes
+   both conditions in the weak-field regime at leading order.
+
+The remaining go/no-go, in order:
+
+- **Next-order linearization** — confirm the candidate's congestion
+  balance carries no effective shunt term (else the field is Yukawa). This
+  is the single load-bearing calculation.
+- **Minimal simulation** — inject a persistent localized load; measure the
+  radial falloff of the proper-time field (1/r vs Yukawa vs anisotropic)
+  and the loaded dispersion relation ω_loaded(k)/ω_unloaded(k) for
+  constancy.
+
+Passing both clears the gate and opens Objective 2 (the coefficient,
+→ G = 1/(4ζ)); failing either routes to Fail-fast options.
