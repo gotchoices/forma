@@ -8,16 +8,24 @@ mechanisms, **one shared evaluation framework**. Gravity only; the
 electromagnetic force is a named stretch slot.
 **Method:** Derivation and rule-design first; computation only at the
 go/no-go gates.
-**Status:** Two candidate mechanisms under a common gate. Congestion
-(mechanism 1) is largely superseded; detour/refractive (mechanism 2) is the
-current focus. Per the critical review ([review.md](review.md)), mechanism 2
-is **not gate-cleared**: two conditions are met in structure, two are
-conditional on an unresolved crux that sits *inside* the "met" set — the
-**compact→spatial-speed transfer** (asserted, not derived) and
-**non-dispersivity for the clock sector at ω ≈ ω_Compton** (delivered only in
-the ω ≪ ω₀ limit). The thesis survives; the status does not yet support a
-chapter. Confront the two crux items before any chapter. Working notes in
-[work/](work/).
+**Status: parked — not yet solved, not refuted.** Two theses for a ground-up
+GRID mechanism of gravity were explored; neither has *yet* produced one, and
+each hit a specific obstruction *in the form tried*:
+- **Mechanism 1 (congestion):** the passive "node eats waves" reading
+  produces no vacuum field.
+- **Mechanism 2 (detour/refractive):** the compact→spatial-transfer
+  derivation forced by the review ([review.md](review.md)) comes out negative
+  ([work/mode-coupling-derivation.md](work/mode-coupling-derivation.md)) — the
+  boundedness (potential) coupling gives the photon a short-range, dispersive,
+  gauge-breaking *mass* shift ∝ energy density, not the long-range,
+  non-dispersive *metric* that gravity is.
+
+These rule out the *specific forms*, **not the thesis** (mass → local-time
+gradient → gravity), which stands open. The lesson is sharp — gravity is a
+**metric (kinetic)** effect — and forma's **Jacobson route** (which produces
+the metric thermodynamically) is the **fallback** until a deeper mechanism is
+found. **Open to revival** if either thesis is seen from a new angle, or a
+metric-producing mechanism appears. Working notes in [work/](work/).
 
 ---
 
@@ -178,38 +186,27 @@ Why it is a better fit to the gate than mechanism 1:
   exact quantum is needed to *initiate* a standing wave, but once one exists
   it enables *sub-quantum* linear coupling of any passing wave.
 
-Vetted against the gate from the rule ([work/detour-refractive.md](work/detour-refractive.md),
-[work/loops-and-range.md](work/loops-and-range.md),
-[work/energy-coupling.md](work/energy-coupling.md)). After the critical
-review ([review.md](review.md)), the honest status is **two conditions met,
-two conditional on an unresolved crux** — the crux sits *inside* the "met"
-conditions, not in the residual:
-- **(3) Coupling ∝ energy** — **met (structure).** The round-trip detour is
-  second order in the parametric coupling (G ∝ A) / the softening is even
-  (∝ A²), so δn ∝ **energy** → universal, attractive. *(Direction of the
-  coefficient ∝ 1/ζ shown; the dimensionless factor 1/(4ζ) is untested.)*
-- **(0) Vacuum field** — **met, but not independent of (1).** A refractive
-  index is a medium property — but δn is nonzero only where the softening
-  reaches, so "a field at range r" *is* the range question (1). Not a
-  separate clean pass (review §4).
-- **(1) Range / 1-over-r** — **conditional.** A massless operator gives a
-  scale-free Green's function *by construction* (the R²=1.00000 sim tests
-  linear algebra, not the detour rule); it *assumes* a scalar-energy source
-  and a still-massless loaded operator (review §5). The 1/r shape is
-  plausible; the detour-specific inputs are deferred.
-- **(2) Non-dispersive — CRUX, unmet for the clock sector.** The slowing is
-  a *Lorentz dielectric*, flat only for ω ≪ ω₀. But a clock is confined
-  light at ω_Compton — it sits *at* the resonance where non-dispersivity
-  (and the Kapitza average) fail. So time dilation is delivered only in the
-  ω ≪ ω₀ approximation, not as exact universality (review §1, §6).
-- **CRUX — compact→spatial transfer, currently asserted.** The softening is
-  derived for the *compact-mode* stiffness; that it lowers the *spatial*
-  photon speed (n > 1) is the whole mechanism and is skipped (review §2).
+**REFUTED.** The critical review ([review.md](review.md)) forced the
+compact→spatial-transfer derivation (review §2), and the mode-coupling
+calculation ([work/mode-coupling-derivation.md](work/mode-coupling-derivation.md))
+comes out **negative**. The photon (n=0) coupling to the compact modes via
+the boundedness (potential) nonlinearity gives the photon an **effective mass
+shift ∝ local energy density** — which is:
+- a **mass/potential** coupling (dispersive), not the **metric/kinetic**
+  coupling (non-dispersive index) that gravity is — confirming review §1/§2;
+- ∝ **local** energy density (contact) — short-range, not 1/r — so the
+  loops-and-range 1/r *assumed* a spreading source the mechanism doesn't
+  produce (review §5);
+- a potential on the U(1) phase, which **breaks gauge invariance** (gives the
+  photon a mass) — while the gauge-invariant version (mere compactness) is
+  linear and has no detour at all.
 
-Remaining (non-gating): the **cross-species mass-scaling** of δn (entangled
-with the sheet geometry — part of the optional coefficient), and full-sheet
-rigor. So mechanism 2's *shape* clears the gate; a scaffolding chapter is now
-defensible.
+Root cause: **gravity is a metric (kinetic) modification** — universal,
+non-dispersive, long-range — whereas **boundedness is potential-like**, giving
+a mass/contact coupling. Wrong tensor character, wrong range, wrong frequency
+behaviour. The earlier "softening → refractive index" step hid this by never
+distinguishing a *compact-stiffness* change (a mass) from a *spatial-speed*
+change (a metric). So the detour route to gravity is dead in this form.
 
 ### (open to further mechanisms)
 
@@ -362,39 +359,31 @@ pedagogical presentation, not new content.
 
 ## Next step
 
-Mechanism 2 has a coherent *shape* — a resident mass softens the local
-ℵ-line (given the reactive-bound premise), giving an energy-sourced,
-attractive refractive well; and it comes with two genuine coherence points
-(even/odd substrate deviation → gravity/charge; both gravities from
-boundedness — reactive/dissipative). But the critical review
-([review.md](review.md)) shows the write-up **overstated** two things: it is
-"grounded" only *given a premise that departs from forma's default wrap*
-(review §3), and two conditions inside the "met" set are **not actually
-met** —
+The compact→spatial-transfer derivation (review §2) was carried out
+([work/mode-coupling-derivation.md](work/mode-coupling-derivation.md)) and
+obstructed mechanism 2 *in the form tried*: the boundedness (potential)
+coupling gives the photon a short-range, dispersive, gauge-breaking *mass*
+shift, not the long-range, non-dispersive *metric* that gravity is. The
+chapter arc above is **withdrawn for now** — a chapter presenting mechanism 2
+as a settled gravity mechanism would be wrong.
 
-1. **The compact→spatial-speed transfer** (review §2): the softening is
-   derived for the compact mode; that it slows the *spatial* photon (the
-   refractive index itself) is asserted. This is the crux link and must be
-   derived before anything rests on it.
-2. **Non-dispersivity for the clock sector** (review §1, §6): the Lorentz
-   softening is flat only for ω ≪ ω₀, but a clock is confined light *at*
-   ω_Compton. Exact universality (the equivalence principle for every clock)
-   is not delivered — only the ω ≪ ω₀ approximation.
+The **thesis is not refuted** — we simply have **not yet** found a ground-up
+GRID mechanism, after two theses. The lesson is sharp and useful: **gravity is
+a metric (kinetic) modification**, so any mechanical mechanism must produce
+*that*, not a potential/mass or contact/short-range effect. Until one is found:
 
-**These two are the real next work — before any chapter.** A chapter written
-on the current framing would overclaim (review Net). Each could resolve
-favourably (the transfer quantifiable via the detour fraction; the clock
-deviation unobservably small for practical clocks) or expose that the
-mechanism is only *approximate* — either outcome must be found in the
-derivation, not asserted in Ch. 5.
+1. **Jacobson is the fallback.** Forma's existing gravity already produces the
+   *metric* (thermodynamically) — the right structure. A mechanical
+   contribution, if any, is the microscopic *dS/dt* that
+   [grid/bounding-mechanisms.md](../../grid/bounding-mechanisms.md) flags,
+   feeding that machinery — not a standalone force field.
+2. **Stay open to a metric-producing mechanism** — an emergent field-dependent
+   *kinetic* term (effective metric) sourced by energy. Not pursued now (it is
+   the hard problem of emergent gravity), but the target is now clear.
+3. **Park the project, don't close it.** The two specific obstructions are
+   recorded; **resurrect** if either thesis is seen from a new perspective, or
+   a deeper mechanism appears. A negative result on the *forms tried* is a
+   legitimate, useful outcome — not a conclusion that the thesis fails.
 
-Also from the review, to fold in: state that the coefficient's *dimensionless*
-content (1/(4ζ)) is untested, not "just a unit" (only the ∝ 1/ζ direction is
-shown); don't count condition (0) as independent of (1); and reconcile the
-light-bending factor-of-2 (flagged [open] in local-time.md, inherited-free in
-detour-refractive.md).
-
-The **chapter arc above stands as a target**, but is on hold pending the two
-crux items. Honest positioning is unchanged: a re-derivation of the
-optical-metric / polarizable-vacuum picture (known physics) with a
-GRID mechanical origin — coherence, not novelty.
+Coherence points that survive independently: the *odd* substrate deviation →
+charge (grid-primitive/09). The even→gravity half awaits a viable mechanism.

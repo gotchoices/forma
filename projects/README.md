@@ -83,14 +83,12 @@ Each project's README should:
   its phenomenological consequences check out but the premise
   (passive capacity-eating) fails the vacuum-field test; mechanism 2
   (detour/refractive, a discrete optical-metric / polarizable-vacuum
-  picture) is the current focus — coupling ∝ energy (even softening) and a
-  coherent shape, resting on a stated reactive-bound premise. **Per an
-  independent critical review ([review](grid-gravity/review.md)), the thesis
-  survives but the mechanism is NOT gate-cleared:** two conditions are met in
-  structure, two are conditional on an unresolved crux inside the "met" set —
-  the compact→spatial-speed transfer (asserted, not derived) and
-  non-dispersivity for the clock sector at ω ≈ ω_Compton (only the ω ≪ ω₀
-  limit). Honest positioning: a re-derivation of the optical-metric /
-  polarizable-vacuum picture (known physics) with a GRID mechanical origin —
-  coherence, not novelty. A 7-chapter arc is drafted but **on hold** pending
-  the two crux items.**
+  picture). **Status: parked — not yet solved, not refuted.** Two theses were
+  explored; each hit a specific obstruction in the form tried (mechanism 1: no
+  vacuum field; mechanism 2: boundedness gives a short-range, dispersive,
+  gauge-breaking *mass* shift, not the *metric* gravity is —
+  [review](grid-gravity/review.md) forced the deciding derivation). These rule
+  out the *forms*, not the **thesis** (mass → local-time gradient → gravity),
+  which stays open. Lesson: gravity is a metric/kinetic effect; forma's
+  Jacobson route (which produces the metric thermodynamically) is the fallback.
+  Open to revival from a new angle.**
