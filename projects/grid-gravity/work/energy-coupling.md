@@ -101,9 +101,21 @@ order) are *why* it lands on energy rather than amplitude — the linear-vs-
 quadratic question that could have sunk the mechanism comes out quadratic,
 i.e. energy.
 
-## 4. Result (b): non-dispersive, and it generalizes to a spectrum [derived]
+## 4. Result (b): non-dispersive for ω ≪ ω₀ — but NOT for the clock sector [derived, with a load-bearing caveat]
 
-From the Lorentz form, for ω ≪ ω₀:
+**Caveat first (review §1, §6).** A Lorentz oscillator is the paradigm
+*dispersive* medium; the flatness below is only asymptotic (ω ≪ ω₀), with
+corrections O((ω/ω₀)²). This is fine for *passing light* → bending. But the
+object whose rate defines proper time is, by this project's own thesis,
+**confined light at ω = ω_Compton** — it sits *at* the resonance, where the
+ω ≪ ω₀ expansion and the Kapitza time-average both break down. So "it is time
+dilation, not an optical medium" holds only for clocks with ω_clock ≪ ω₀
+(practical clocks — atomic ~eV ≪ Compton ~MeV — so the deviation is tiny),
+**not as exact universality for every clock**. The equivalence-principle claim
+is therefore approximate here, not exact — a crux to confront, not a
+coefficient detail.
+
+With that caveat, from the Lorentz form, for ω ≪ ω₀:
 
 <!-- n^2 -> 1 + rho G^2/omega_0^2 = const -->
 $$

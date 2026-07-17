@@ -10,10 +10,14 @@ electromagnetic force is a named stretch slot.
 go/no-go gates.
 **Status:** Two candidate mechanisms under a common gate. Congestion
 (mechanism 1) is largely superseded; detour/refractive (mechanism 2) is the
-current focus. No mission chapter arc until a mechanism clears the gate
-(vacuum field + falloff + dispersion + coupling structure) from its rule,
-not by construction. The *precise* coefficient G is a consistency bonus, not
-a gate (it is largely a unit). Working notes in [work/](work/).
+current focus. Per the critical review ([review.md](review.md)), mechanism 2
+is **not gate-cleared**: two conditions are met in structure, two are
+conditional on an unresolved crux that sits *inside* the "met" set — the
+**compact→spatial-speed transfer** (asserted, not derived) and
+**non-dispersivity for the clock sector at ω ≈ ω_Compton** (delivered only in
+the ω ≪ ω₀ limit). The thesis survives; the status does not yet support a
+chapter. Confront the two crux items before any chapter. Working notes in
+[work/](work/).
 
 ---
 
@@ -176,21 +180,31 @@ Why it is a better fit to the gate than mechanism 1:
 
 Vetted against the gate from the rule ([work/detour-refractive.md](work/detour-refractive.md),
 [work/loops-and-range.md](work/loops-and-range.md),
-[work/energy-coupling.md](work/energy-coupling.md)). **All four conditions are
-met in structure** in the simplified model:
-- **(0) Vacuum field** — met (a refractive index is a medium property).
-- **(1) Range / 1-over-r** — a localized loop-constraint spreads as a
-  scale-free, isotropic 1/r via the lattice's own **massless** Green's
-  function; compact and spatial loops are equivalent as sources
-  (loop-size-independent to 0.06%, R²=1.00000).
-- **(2) Non-dispersive** — the detour coupling is a **Lorentz-oscillator
-  dielectric** (mass = resonant oscillator); n(ω) is flat for ω below the
-  lowest mode, and generalizes to the sheet spectrum as a sum of Lorentz
-  terms.
-- **(3) Coupling ∝ energy** — the round-trip detour is *second order* in the
-  parametric coupling (G ∝ A), so δn ∝ A² = **energy density** → universal
-  gravity (couples to energy, not species), in the equivalence-principle
-  direction.
+[work/energy-coupling.md](work/energy-coupling.md)). After the critical
+review ([review.md](review.md)), the honest status is **two conditions met,
+two conditional on an unresolved crux** — the crux sits *inside* the "met"
+conditions, not in the residual:
+- **(3) Coupling ∝ energy** — **met (structure).** The round-trip detour is
+  second order in the parametric coupling (G ∝ A) / the softening is even
+  (∝ A²), so δn ∝ **energy** → universal, attractive. *(Direction of the
+  coefficient ∝ 1/ζ shown; the dimensionless factor 1/(4ζ) is untested.)*
+- **(0) Vacuum field** — **met, but not independent of (1).** A refractive
+  index is a medium property — but δn is nonzero only where the softening
+  reaches, so "a field at range r" *is* the range question (1). Not a
+  separate clean pass (review §4).
+- **(1) Range / 1-over-r** — **conditional.** A massless operator gives a
+  scale-free Green's function *by construction* (the R²=1.00000 sim tests
+  linear algebra, not the detour rule); it *assumes* a scalar-energy source
+  and a still-massless loaded operator (review §5). The 1/r shape is
+  plausible; the detour-specific inputs are deferred.
+- **(2) Non-dispersive — CRUX, unmet for the clock sector.** The slowing is
+  a *Lorentz dielectric*, flat only for ω ≪ ω₀. But a clock is confined
+  light at ω_Compton — it sits *at* the resonance where non-dispersivity
+  (and the Kapitza average) fail. So time dilation is delivered only in the
+  ω ≪ ω₀ approximation, not as exact universality (review §1, §6).
+- **CRUX — compact→spatial transfer, currently asserted.** The softening is
+  derived for the *compact-mode* stiffness; that it lowers the *spatial*
+  photon speed (n > 1) is the whole mechanism and is skipped (review §2).
 
 Remaining (non-gating): the **cross-species mass-scaling** of δn (entangled
 with the sheet geometry — part of the optional coefficient), and full-sheet
@@ -348,39 +362,39 @@ pedagogical presentation, not new content.
 
 ## Next step
 
-Mechanism 2's *shape* clears the gate on **all four conditions** in the
-simplified model, and its central claim is now **grounded in the substrate**
-rather than an abstraction ([work/detour-refractive.md](work/detour-refractive.md),
-[work/loops-and-range.md](work/loops-and-range.md),
-[work/energy-coupling.md](work/energy-coupling.md),
-[work/aleph-grounding.md](work/aleph-grounding.md)): the detour follows from
-**GRID's boundedness** (a core, established feature — A3/A5,
-grid-quantization) — a resident standing wave softens the local ℵ-line
-stiffness by ∝ A² (Kapitza/effective-potential averaging), so δn ∝ **energy**,
-universally attractive (a *symmetric* bound is even ⇒ ∝ A² ⇒ always positive),
-non-dispersive, and transparent in vacuum (linear KK modes are orthogonal).
-Two coherence points: the *odd* substrate deviation (chirality, χ_anti in
-[grid-primitive/09](../grid-primitive/09-chirality-asymmetry.md)) gives
-**charge**, the *even* one (the symmetric bound) gives **gravity**; and both
-gravities share the root (boundedness) — the **reactive** (lossless) part →
-this mechanical/PV gravity, the **dissipative** (lossy wrap) part → forma's
-Jacobson gravity.
+Mechanism 2 has a coherent *shape* — a resident mass softens the local
+ℵ-line (given the reactive-bound premise), giving an energy-sourced,
+attractive refractive well; and it comes with two genuine coherence points
+(even/odd substrate deviation → gravity/charge; both gravities from
+boundedness — reactive/dissipative). But the critical review
+([review.md](review.md)) shows the write-up **overstated** two things: it is
+"grounded" only *given a premise that departs from forma's default wrap*
+(review §3), and two conditions inside the "met" set are **not actually
+met** —
 
-What remains is **non-gating**: the *flavor* of the bound (we need the
-smooth/lossless/reactive one; forma's default is the lossy wrap, possibly
-reconciled by grid-quantization's sigma-delta coarse-graining), the specific
-bound's coefficient / mass-scaling (entangled with the sheet geometry), and
-full-lattice/sheet rigor. G's precise value is largely a unit.
+1. **The compact→spatial-speed transfer** (review §2): the softening is
+   derived for the compact mode; that it slows the *spatial* photon (the
+   refractive index itself) is asserted. This is the crux link and must be
+   derived before anything rests on it.
+2. **Non-dispersivity for the clock sector** (review §1, §6): the Lorentz
+   softening is flat only for ω ≪ ω₀, but a clock is confined light *at*
+   ω_Compton. Exact universality (the equivalence principle for every clock)
+   is not delivered — only the ω ≪ ω₀ approximation.
 
-**Honest positioning:** the result is a re-derivation of the optical-metric /
-polarizable-vacuum picture (Eddington, Dicke, Puthoff) — *known* physics —
-with a GRID-specific mechanical origin. Its value is framework coherence (a
-mechanical gravity to sit beside the statistical one), not a new prediction.
+**These two are the real next work — before any chapter.** A chapter written
+on the current framing would overclaim (review Net). Each could resolve
+favourably (the transfer quantifiable via the detour fraction; the clock
+deviation unobservably small for practical clocks) or expose that the
+mechanism is only *approximate* — either outcome must be found in the
+derivation, not asserted in Ch. 5.
 
-With the reactive-bound premise stated, the **chapter arc above is drafted**
-and the mechanism is ready to write up. The immediate next step is to
-**develop Chapter 1** (the mechanical-gravity question + thesis + premise +
-scope), submit it to review, then proceed one chapter at a time — the
-standard project cadence. The optional full-sheet coefficient work, or a
-genuine-novelty push (one substrate giving gravity + charge + spectrum with a
-falsifiable prediction), remain as alternatives to the write-up.
+Also from the review, to fold in: state that the coefficient's *dimensionless*
+content (1/(4ζ)) is untested, not "just a unit" (only the ∝ 1/ζ direction is
+shown); don't count condition (0) as independent of (1); and reconcile the
+light-bending factor-of-2 (flagged [open] in local-time.md, inherited-free in
+detour-refractive.md).
+
+The **chapter arc above stands as a target**, but is on hold pending the two
+crux items. Honest positioning is unchanged: a re-derivation of the
+optical-metric / polarizable-vacuum picture (known physics) with a
+GRID mechanical origin — coherence, not novelty.

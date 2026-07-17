@@ -99,14 +99,24 @@ modified average stiffness.
 
 ## 4. What falls out — all from the substrate
 
-- **δn ∝ energy [derived].** Softer stiffness → lower wave speed for the
-  photon → refractive index n > 1, with δn ∝ A²/4. Since A² is the
-  standing-wave **energy**, **δn ∝ energy density** — the coupling gravity
-  needs. And it is ∝ A² (not A) *because a smooth compact potential is
-  **even** about its minimum* (cos is even): the leading correction is
-  quadratic. This replaces the earlier "G ∝ A + round-trip" argument with a
-  more direct one, and it is robust to the specific potential (any smooth
-  compact U → even → ∝ A²).
+> **Crux gap, stated before the result (review §2).** §3 derives that the
+> standing wave softens the **compact-direction** stiffness. The step "softer
+> stiffness → lower wave speed for the **photon**" below crosses from the
+> *compact* mode to the *spatial* n=0 photon, whose propagation speed is set
+> by the lattice scatter, not by the compact restoring force. That
+> compact-softening lowers the *spatial* c_eff **is the whole mechanism** (the
+> compact→4D coupling) and is currently **asserted, not derived** — it needs
+> the photon's detour fraction into the compact dimension made explicit.
+> Everything below holds *for the compact mode*; its transfer to the spatial
+> refractive index is the open crux.
+
+- **δn ∝ energy [derived for the compact mode; transfer to δn open].** Softer
+  stiffness → (via the unproven transfer) lower spatial wave speed →
+  refractive index n > 1, with δn ∝ A²/4. Since A² is the standing-wave
+  **energy**, **δn ∝ energy density** — the coupling gravity needs. And it is
+  ∝ A² (not A) *because a symmetric bound is **even*** (its restoring force is
+  odd, its slope even): the leading correction is quadratic. Robust to the
+  specific bound (any smooth symmetric bound → even → ∝ A²).
 - **Sign: attractive, universal [derived].** Reduced stiffness ⇒ slower ⇒
   n > 1 ⇒ a refractive *well* ⇒ attraction. And ∝ A² is **positive
   regardless of the sign of A** — so every mass attracts, universally. The

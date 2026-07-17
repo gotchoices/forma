@@ -83,16 +83,14 @@ Each project's README should:
   its phenomenological consequences check out but the premise
   (passive capacity-eating) fails the vacuum-field test; mechanism 2
   (detour/refractive, a discrete optical-metric / polarizable-vacuum
-  picture) is the current focus — vacuum field, non-dispersivity, and
-  losslessness met from the rule, the 1/r range resolved (scale-free,
-  isotropic, loop-size-independent from the actual lattice operator), and the
-  coupling shown to be ∝ energy and grounded in A3's compact-phase
-  nonlinearity on the ℵ-line (a standing wave softens the local stiffness by
-  ∝ A² → δn ∝ energy, universally attractive, non-dispersive; shares its root
-  with the statistical gravity). All four gate conditions met in structure
-  and substrate-grounded; remaining is non-gating (the ℵ-line potential /
-  optional coefficient). Honest positioning: a re-derivation of the
-  optical-metric / polarizable-vacuum picture (known physics) with a
-  GRID-specific mechanical origin — value is coherence, not novelty. A
-  7-chapter arc is drafted (reactive-bound premise stated); developing
-  Chapter 1.**
+  picture) is the current focus — coupling ∝ energy (even softening) and a
+  coherent shape, resting on a stated reactive-bound premise. **Per an
+  independent critical review ([review](grid-gravity/review.md)), the thesis
+  survives but the mechanism is NOT gate-cleared:** two conditions are met in
+  structure, two are conditional on an unresolved crux inside the "met" set —
+  the compact→spatial-speed transfer (asserted, not derived) and
+  non-dispersivity for the clock sector at ω ≈ ω_Compton (only the ω ≪ ω₀
+  limit). Honest positioning: a re-derivation of the optical-metric /
+  polarizable-vacuum picture (known physics) with a GRID mechanical origin —
+  coherence, not novelty. A 7-chapter arc is drafted but **on hold** pending
+  the two crux items.**
