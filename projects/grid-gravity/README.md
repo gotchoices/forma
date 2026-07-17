@@ -285,6 +285,67 @@ A clean *negative* is itself a result: it rules out a hypothesis cheaply.
   [grid/sim-gravity-2/](../../grid/sim-gravity-2/) — the precedent for
   adjudicating a mechanism by its power law
 
+## Chapter arc (draft)
+
+**Objective.** Present how GRID's substrate *mechanically* realizes the
+optical-metric / polarizable-vacuum form of gravity — the "how" beneath
+forma's statistical "that" — as an **emergence / coherence result at skeleton
+rigor**, conditional on the reactive-bound premise. Not a new theory of
+gravity: a substrate mechanism for a known one. Its value is framework
+coherence (a mechanical gravity to sit beside the statistical one) and the two
+structural insights below, not a new prediction.
+
+The arc is a sketch — early chapters firmer, later ones a pool; developed one
+at a time and submitted to review (per [../AGENTS.md](../AGENTS.md)).
+
+1. **The mechanical-gravity question.** The gap: GRID's gravity is
+   *statistical* (Jacobson) — *that* spacetime curves, not *how*. The thesis:
+   mass slows local time, and a gradient in the rate of proper time is
+   Newtonian gravity. Clock = confined light, so slowing the signal slows
+   every clock (time dilation, not merely slow light). States the simplified
+   (1D-compact, mass-only) frame and the **reactive-bound premise** up front,
+   and the honest scope (coherence, skeleton rigor).
+
+2. **The players: mass and light on the ℵ-line.** Mass as a compact standing
+   wave (KK; [metric-mass](../metric-mass/)); the ℵ-line with the photon as
+   its n=0 mode and mass as an n≥1 mode; vacuum transparency (linear KK modes
+   are orthogonal — an off-resonant wave doesn't see the compact dimension).
+
+3. **The detour: a resident mass slows the local medium.** Under the reactive
+   bound, a large-amplitude standing wave *softens* the local ℵ-line stiffness
+   (effective-potential / Kapitza averaging); a passing photon sees a slower
+   medium — a refractive perturbation δn — where a mass sits. The core
+   mechanism, from the premise.
+
+4. **Why it couples to energy (and always attracts).** A symmetric bound is
+   *even*, so the softening is ∝ A² = energy — the coupling gravity needs
+   (universal: neutral matter gravitates), always positive (every mass
+   attracts). The Lorentz-dielectric identity: the vacuum near mass *is* a
+   Lorentz medium with the mass as the resonant oscillator.
+
+5. **Why it is time dilation, not an optical medium.** The slowing is
+   non-dispersive (a static effective-medium change; the Lorentz index is flat
+   below the mass frequency), so it rescales all clocks uniformly. With clock =
+   confined light, the refractive slowing *is* gravitational time dilation.
+
+6. **Why it reaches: the 1/r field.** A localized softening spreads by the
+   lattice's own *massless* Green's function; with no length scale, the field
+   is scale-free 1/r, isotropic. The loop-unification — the compact loop and
+   the spatial hexagon loops are the same kind of cycle — and the assembly
+   into the Newtonian potential and light-bending.
+
+7. **Relationships and the honest ledger.** To the statistical gravity: both
+   from boundedness (reactive → this mechanical/PV account; dissipative →
+   Jacobson). To charge: the *even* substrate deviation gives gravity, the
+   *odd* (chirality) gives charge. To full MaSt: what re-derives in 2D sheets
+   (non-dispersivity with a spectrum; the coefficient). Honest positioning (a
+   re-derivation of the optical-metric/PV picture with a GRID mechanical
+   origin — coherence, not novelty), and what is established / premised /
+   deferred.
+
+Each chapter maps to work notes already in [work/](work/); the arc is their
+pedagogical presentation, not new content.
+
 ## Next step
 
 Mechanism 2's *shape* clears the gate on **all four conditions** in the
@@ -316,9 +377,10 @@ polarizable-vacuum picture (Eddington, Dicke, Puthoff) — *known* physics —
 with a GRID-specific mechanical origin. Its value is framework coherence (a
 mechanical gravity to sit beside the statistical one), not a new prediction.
 
-So a **scaffolding chapter** is now defensible — framed as an
-emergence/coherence result at skeleton rigor (GRID *produces* the
-optical-metric form), explicitly labelled as the simplified-model
-conditional. The optional full-sheet coefficient work, or a genuine-novelty
-push (one substrate giving gravity + charge + spectrum with a falsifiable
-prediction), are the alternatives.
+With the reactive-bound premise stated, the **chapter arc above is drafted**
+and the mechanism is ready to write up. The immediate next step is to
+**develop Chapter 1** (the mechanical-gravity question + thesis + premise +
+scope), submit it to review, then proceed one chapter at a time — the
+standard project cadence. The optional full-sheet coefficient work, or a
+genuine-novelty push (one substrate giving gravity + charge + spectrum with a
+falsifiable prediction), remain as alternatives to the write-up.

@@ -94,4 +94,5 @@ Each project's README should:
   optional coefficient). Honest positioning: a re-derivation of the
   optical-metric / polarizable-vacuum picture (known physics) with a
   GRID-specific mechanical origin — value is coherence, not novelty. A
-  scaffolding chapter is defensible.**
+  7-chapter arc is drafted (reactive-bound premise stated); developing
+  Chapter 1.**
