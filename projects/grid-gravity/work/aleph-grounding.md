@@ -42,12 +42,28 @@ don't mix.**
 A3 makes the phase compact. **Compactness alone is *not* enough** — a *free*
 field on S¹ has orthogonal, uncoupled KK modes (that is §2's transparency,
 but it gives no detour). The detour needs a genuine **nonlinearity** on the
-ℵ-line: a smooth compact potential U(θ) ∝ −cos θ (sine-Gordon/pendulum). This
-is natural for a bounded compact field, and any smooth compact potential
-behaves the same way to leading order — but see §6: forma fixes the ℵ-line
-*topology* (S¹), not its potential, so this is a natural **posit**, not an
-established rule. Write the total phase as the mass standing
-wave plus the small photon perturbation:
+ℵ-line.
+
+**The nonlinearity is GRID's boundedness** (A3/A5; the substrate values are
+bounded, even to a single bit — the premise grid-quantization is built on).
+A bounded value is a **saturating** nonlinearity: the output cannot scale
+arbitrarily with the input. A *symmetric* bound has an odd restoring force
+F(θ), so F′ is **even**, and a background oscillation of amplitude A softens
+the effective stiffness a passing photon sees:
+
+<!-- <F'(A cos wt)> = F'(0) - (A^2/4)|F'''(0)| + ... -->
+$$
+\langle F'(A\cos\omega t)\rangle = F'(0) - \tfrac{A^2}{4}\,|F'''(0)| + \dots
+$$
+
+— softening **∝ A² = energy**, from the evenness of any symmetric bound. This
+grounds the nonlinearity in a *core, established* feature rather than a
+posited −cos θ potential (which is just the smooth realization of the same
+bound). **Refinement — the flavor of the bound matters** (see §6): we need
+the *smooth / lossless* saturation, not the lossy hard-clip or A3-wrap.
+
+Concretely, take the smooth realization U(θ) ∝ −cos θ and write the total
+phase as the mass standing wave plus the small photon perturbation:
 
 <!-- theta = theta_mass(t) + delta theta,  theta_mass ~ A cos(omega_0 t) -->
 $$
@@ -94,30 +110,49 @@ modified average stiffness.
   ω ≪ ω₀ — a uniform rescaling, not a filter. Consistent with
   [energy-coupling.md](energy-coupling.md) §4.
 
-## 5. A coherence bonus: shared root with the statistical gravity
+## 5. A coherence bonus: both gravities from boundedness
 
-The nonlinearity used here is **A3's compactness** — the *same* feature that,
-via the phase wrap, gives forma's statistical gravity (entropy → Jacobson;
-[grid/bounding-mechanisms.md](../../grid/bounding-mechanisms.md)). So both
-accounts of gravity trace to one axiom: A3's compact phase gives gravity
-*mechanically* (pendulum-softening → refractive well) and *statistically*
-(wrap → entropy → Einstein). That the two routes share a root is a genuine
-internal-coherence point, not something the abstract oscillator could show.
+The nonlinearity is **GRID's boundedness** — the *same* feature that, via the
+lossy wrap/clip, gives forma's *statistical* gravity (entropy → Jacobson;
+[grid/bounding-mechanisms.md](../../grid/bounding-mechanisms.md), which
+already ties boundedness → gravity). So both accounts trace to one root, as
+two aspects of the same bounded response:
+
+- the **lossless / reactive** aspect (smooth softening → refractive well) →
+  *mechanical* gravity (the PV form derived here);
+- the **lossy / dissipative** aspect (wrap carry-discard → entropy) →
+  *statistical* gravity (Jacobson/Einstein).
+
+That the mechanical and statistical gravities may be the *reactance* and
+*resistance* of one bounded nonlinearity is an appealing coherence hypothesis
+(not established), and it is grounded in an existing forma document rather
+than a fresh posit.
 
 ## 6. Honest limits
 
-- **The load-bearing posit is relocated, not eliminated.** Compactness (S¹)
-  alone is *linear* → no detour. The mechanism needs a **smooth, lossless,
-  compact ℵ-line nonlinearity** (like −cos θ). This is more concrete and
-  natural than the abstract "G ∝ A," and it explains transparency, the ∝ A²
-  energy-coupling, universal attraction, and non-dispersion *given* such a
-  nonlinearity — but forma fixes the ℵ-line *topology*, not its potential, so
-  the nonlinearity's existence is a natural posit, not an established rule.
-  (Note: A3's *wrap* is a nonlinearity, but a **dissipative** one — and
-  losslessness is required — so the relevant object is a *lossless smooth*
-  compact nonlinearity, not the wrap itself.) The *result* (δn ∝ A², even ⇒
-  universal attraction) holds for any such potential; the **coefficient**
-  depends on the specific U(θ) — deferred, optional work.
+- **The nonlinearity is established (boundedness); its *flavor* is the
+  residual.** Boundedness is a core GRID feature (A3/A5; grid-quantization),
+  so the *existence* of the nonlinearity is no longer a posit — a real
+  upgrade over an assumed −cos θ. What is not settled is the **flavor**:
+  the mechanism needs the *smooth / lossless (reactive)* bound (gradual
+  softening ∝ A²), whereas forma's default is the *hard wrap/clip*, which is
+  **lossy** (and linear-until-the-bound, so no weak-field softening). A
+  possible reconciliation: grid-quantization's *sigma-delta* result shows a
+  1-bit (hard) micro-substrate reconstructs a smooth high-resolution response
+  under **time-averaging**, so the smooth effective bound may *emerge* from
+  the hard micro-bound by coarse-graining. This is the located, non-bare
+  residual. The *result* (δn ∝ A², even ⇒ universal attraction) holds for any
+  smooth symmetric bound; the **coefficient** depends on the specific bound —
+  deferred, optional.
+- **Not the *odd* (chirality) deviation — that is charge.**
+  [grid-primitive/09](../../projects/grid-primitive/09-chirality-asymmetry.md)
+  studies the substrate deviation where edges *favor one direction*
+  (χ_anti). That is the wrong tool for gravity: it is *linear* (a background
+  gauge field), *odd* (flips under matter↔antimatter), and *pure-gauge
+  invisible in extended space* (visible only as Wilson-loop phases on compact
+  wraps) — i.e. it is the **charge** sector. Gravity needs the *even*
+  deviation (the symmetric bound, ∝ A², acting in extended space). So the two
+  substrate deviations split cleanly: **odd → charge, even → gravity**.
 - **Effective-potential averaging** assumes ω_photon ≪ ω₀ (the ordinary
   regime); near ω₀ the averaging breaks and dispersion returns (the
   strong-field / high-energy regime), as expected.
@@ -127,16 +162,23 @@ internal-coherence point, not something the abstract oscillator could show.
 
 ## 7. Assessment
 
-The grounding **succeeds and improves the mechanism**. The load-bearing
-posit is no longer an abstract "G ∝ A": the detour and its energy-coupling
-now follow from **A3's compact-phase nonlinearity** (a core forma axiom),
-via standard effective-potential averaging on the ℵ-line —
+The grounding **succeeds and improves the mechanism**. The load-bearing posit
+is no longer an abstract "G ∝ A", nor even a fresh −cos θ potential: the
+detour and its energy-coupling follow from **GRID's boundedness** (a core,
+established feature — A3/A5, grid-quantization), via standard
+effective-potential averaging —
 
 - resonance-gating = orthogonality of linear KK modes;
-- energy-coupling and universal attraction = evenness of any compact
-  potential (δn ∝ A² = energy, always positive);
+- energy-coupling and universal attraction = evenness of any symmetric bound
+  (δn ∝ A² = energy, always positive);
 - non-dispersivity = a static effective-medium change;
-- and it shares its root (A3) with the statistical gravity.
+- and it shares its root (boundedness) with the statistical gravity — the two
+  gravities as the reactive and dissipative parts of one bounded response.
+
+The residual is now sharp and non-bare: the *flavor* of the bound (we need
+the smooth/lossless/reactive one; forma's default is the lossy wrap, possibly
+reconciled by sigma-delta coarse-graining), the specific bound's coefficient
+(optional), and full-lattice/sheet rigor.
 
 The residual is the specific ℵ-line potential (→ coefficient, optional) and
 full-lattice/sheet rigor. So the mechanism's central claim now rests on a

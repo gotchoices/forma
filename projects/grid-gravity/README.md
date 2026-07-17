@@ -277,16 +277,22 @@ rather than an abstraction ([work/detour-refractive.md](work/detour-refractive.m
 [work/loops-and-range.md](work/loops-and-range.md),
 [work/energy-coupling.md](work/energy-coupling.md),
 [work/aleph-grounding.md](work/aleph-grounding.md)): the detour follows from
-**A3's compact-phase nonlinearity** on the ℵ-line — a resident standing wave
-softens the local ℵ-line stiffness by ∝ A² (Kapitza/effective-potential
-averaging on the compact phase), so δn ∝ **energy**, universally attractive
-(the compact potential is *even* ⇒ ∝ A² ⇒ always positive), non-dispersive,
-and transparent in vacuum (linear KK modes are orthogonal). A coherence
-bonus: this shares its root (A3 compactness) with forma's *statistical*
-gravity (wrap → entropy → Jacobson).
+**GRID's boundedness** (a core, established feature — A3/A5,
+grid-quantization) — a resident standing wave softens the local ℵ-line
+stiffness by ∝ A² (Kapitza/effective-potential averaging), so δn ∝ **energy**,
+universally attractive (a *symmetric* bound is even ⇒ ∝ A² ⇒ always positive),
+non-dispersive, and transparent in vacuum (linear KK modes are orthogonal).
+Two coherence points: the *odd* substrate deviation (chirality, χ_anti in
+[grid-primitive/09](../grid-primitive/09-chirality-asymmetry.md)) gives
+**charge**, the *even* one (the symmetric bound) gives **gravity**; and both
+gravities share the root (boundedness) — the **reactive** (lossless) part →
+this mechanical/PV gravity, the **dissipative** (lossy wrap) part → forma's
+Jacobson gravity.
 
-What remains is **non-gating**: the specific ℵ-line potential (→ the optional
-coefficient / mass-scaling, entangled with the sheet geometry) and
+What remains is **non-gating**: the *flavor* of the bound (we need the
+smooth/lossless/reactive one; forma's default is the lossy wrap, possibly
+reconciled by grid-quantization's sigma-delta coarse-graining), the specific
+bound's coefficient / mass-scaling (entangled with the sheet geometry), and
 full-lattice/sheet rigor. G's precise value is largely a unit.
 
 **Honest positioning:** the result is a re-derivation of the optical-metric /
