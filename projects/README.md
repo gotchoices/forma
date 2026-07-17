@@ -79,16 +79,16 @@ Each project's README should:
   [grid/gravity.md](../grid/gravity.md)'s statistical (Jacobson)
   derivation. Several candidate mechanisms under one shared gate (vacuum
   field, massless 1/r, non-dispersive, coefficient — all tracing to
-  losslessness). **Status: mechanism 1 (congestion) largely superseded —
-  its phenomenological consequences check out but the premise
-  (passive capacity-eating) fails the vacuum-field test; mechanism 2
-  (detour/refractive, a discrete optical-metric / polarizable-vacuum
-  picture). **Status: parked — not yet solved, not refuted.** Two theses were
-  explored; each hit a specific obstruction in the form tried (mechanism 1: no
-  vacuum field; mechanism 2: boundedness gives a short-range, dispersive,
-  gauge-breaking *mass* shift, not the *metric* gravity is —
-  [review](grid-gravity/review.md) forced the deciding derivation). These rule
-  out the *forms*, not the **thesis** (mass → local-time gradient → gravity),
-  which stays open. Lesson: gravity is a metric/kinetic effect; forma's
-  Jacobson route (which produces the metric thermodynamically) is the fallback.
-  Open to revival from a new angle.**
+  losslessness). **Status: parked — blocked on a foundations gap, not
+  refuted.** Two theses explored; mechanism 1 (congestion) fails the
+  vacuum-field test. Mechanism 2 (detour/refractive): a gauge-invariant
+  derivation shows the local coupling *is* a refractive index (metric/kinetic,
+  non-dispersive, energy-sourced) — an earlier "photon mass" read was a gauge
+  artifact — so it is **not refuted**, but it is **blocked on range**: a 1/r
+  field needs a massless, neutral, propagating carrier, and GRID's spectrum has
+  none (photon = massless but charge-coupled; KK = neutral but Planck-massive;
+  the ℵ-line size is a per-particle parameter, not a field). The **thesis**
+  (mass → local-time gradient → gravity) stays open; forma's Jacobson route
+  (metric as equation-of-state, needing no such carrier) is the fallback.
+  Revival needs a substrate-level result making the ℵ-line size a massless
+  field.**

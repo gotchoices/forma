@@ -22,17 +22,23 @@ one, and each is blocked at a specific, identified point:
   ([work/gauge-invariant-coupling.md](work/gauge-invariant-coupling.md)), the
   coupling is a genuine **refractive index** — kinetic/metric-like,
   non-dispersive at ω ≪ ω₀, sourced by energy: the structure gravity needs. It
-  is only **local (Planck-contact)**, so the make-or-break returns to **range**:
-  whether a massless, energy-sourced mediator — GRID's own **radion** A₅⁽⁰⁾,
-  which couples to ℵ-line dilation — spreads it to 1/r, and can bend light with
-  the right coefficient.
+  is only **local (Planck-contact)**, so the make-or-break returns to **range**.
+  Derived GRID-natively ([work/range-from-foundations.md](work/range-from-foundations.md)),
+  the range is **blocked on a foundations gap**: a 1/r field needs a
+  **massless, neutral, propagating** carrier, and GRID's specified spectrum has
+  none — the photon is massless but **charge**-coupled (a neutral mass sources
+  none), the KK modes are neutral but **Planck-massive** (short-range), and the
+  ℵ-line size R_ℵ is specified as a per-particle **parameter**, not a
+  propagating **field**. The scatter propagates signals, not the size.
 
 Neither thesis is refuted, and the thesis itself (mass → local-time gradient →
-gravity) stands open. forma's **Jacobson route** (which produces the metric
-thermodynamically) is the **fallback** until a deeper mechanism is found.
-**Open to revival**; the concrete next probe is the **radion-mediator** route
-for mechanism 2's range crux (see [work/gauge-invariant-coupling.md](work/gauge-invariant-coupling.md)
-§4). Working notes in [work/](work/).
+gravity) stands open. But the mechanical route is **blocked at the range** on
+structure GRID does not currently specify — and this is *why* forma's
+**Jacobson route** is the natural home: the metric emerges as an *equation of
+state*, never needing a massless neutral carrier in the spectrum. Jacobson is
+the **fallback**. **Revival** would require a foundations-level result (in
+grid-primitive / a substrate project, not here) making the ℵ-line size a
+dynamical, massless, energy-sourced field. Working notes in [work/](work/).
 
 ---
 
@@ -167,35 +173,40 @@ wave, delays spatial signals; congestion spreads via the surrounding loops.
 The resident standing wave makes the local vacuum a **slower medium**. A
 passing wave briefly **detours into the compact dimension** — a sub-quantum
 phase-nudge of the standing wave, ejected within one cycle — and re-emerges
-*delayed*, not consumed. Its path is elongated by the excursion. This is a
-discrete-lattice mechanism for **optical-metric / polarizable-vacuum
-gravity** (n(r) ≈ 1 + 2GM/rc²), a known framework that reproduces the
-weak-field GR tests, *including* the light-bending factor of 2.
+*delayed*, not consumed. Its path is elongated by the excursion. The *aim* is a
+discrete-lattice mechanism in the family of **optical-metric / polarizable-
+vacuum gravity** (n(r) ≈ 1 + 2GM/rc²) — a known framework that reproduces the
+weak-field GR tests including the factor-of-2 light bending. Whether *this*
+mechanism actually reaches that form is **open**: the local index is
+established (below), but its **1/r range** and the light-bending coefficient
+are not.
 
-> **Working premise (stated, not derived here).** The ℵ-line value is bounded
-> by a **symmetric, smooth, lossless (reactive)** saturation. This is the
-> generic form of any bounded Hamiltonian nonlinearity and is the flavor the
-> derivation needs (even ⇒ universal attraction; smooth ⇒ weak-field;
-> lossless ⇒ no Yukawa/dispersion). It **differs from forma's default A3
-> wrap** (which is lossy) — so this project derives gravity *given* a reactive
-> bound, and hands the bound's *origin* (node/edge mechanics) to
-> grid-primitive / a substrate project. It may emerge from the hard 1-bit
-> bound via grid-quantization's sigma-delta coarse-graining. See
+> **Working premise (stated, not derived here).** The gauge-legitimate form of
+> GRID boundedness is the finite-**bandwidth** bound — a bound on the *rate*
+> (finite bits per tick, a bound on ∂θ; [local-time.md](work/local-time.md)
+> Commitment 2), i.e. a **kinetic** nonlinearity — *not* a bound on the phase
+> *value* (a potential, which would give the photon a mass and is forbidden by
+> its established masslessness, A4). A rate-bound modifies the photon's
+> **kinetic** term → a **refractive index** (metric/kinetic), which is the
+> structure gravity needs. This is the project's *original* congestion premise
+> (finite bandwidth), recovered after a first pass mistakenly reframed it as a
+> value-bound. The bound's *origin* (node/edge mechanics) is handed to
+> grid-primitive / a substrate project. See
+> [work/gauge-invariant-coupling.md](work/gauge-invariant-coupling.md) §2 and
 > [work/aleph-grounding.md](work/aleph-grounding.md).
 
 Why it is a better fit to the gate than mechanism 1:
-- **Lossless by construction** (detour, not absorption) → condition (0)/(1)/(2)
-  linchpin met naturally.
-- **Vacuum field via the refractive index** — n(x) is defined at every
-  point whether or not a wave is present, so condition (0) is met *without*
-  the mass having to actively broadcast (the awkward demand mechanism 1 hit).
-- **Resonance-gating** explains vacuum transparency and universality: an
-  exact quantum is needed to *initiate* a standing wave, but once one exists
-  it enables *sub-quantum* linear coupling of any passing wave.
+- **Lossless by construction** (detour, not absorption) — the linchpin behind
+  conditions (0) and (2). *(Condition (1), range, is the open blocker — below.)*
+- **Local index established, non-dispersively** — the coupling is a genuine
+  refractive index (conditions 2 and 3, met from the rule; see below), *at* the
+  mass. What is not yet met is extending it to range.
+- **Resonance-gating** explains vacuum transparency: an off-resonant wave does
+  not see the compact dimension; a resident standing wave enables the
+  sub-quantum coupling of any passing wave.
 
-**BLOCKED ON RANGE (not refuted).** The critical review
-([review.md](review.md)) forced the compact→spatial-transfer derivation
-(review §2). A first pass
+**BLOCKED ON RANGE (not refuted).** An independent critical review (since
+incorporated) forced the compact→spatial-transfer derivation. A first pass
 ([work/mode-coupling-derivation.md](work/mode-coupling-derivation.md)) read it
 as a refutation — the photon acquiring a gauge-breaking *mass* shift ∝ energy
 density. But that was a **gauge artifact**: it coupled a bare phase *potential*
@@ -211,16 +222,27 @@ a mass:
   discarded as contradicting the confirmed Maxwell result;
 - but the index is **local (Planck-contact)** — a dielectric sits *on* the
   matter. So the one surviving obstruction is **range**: getting a *local* index
-  to extend as **1/r** (review §4/§5).
+  to extend as **1/r**.
 
 Root cause of the first pass's error: it modeled boundedness as a bound on the
 phase *value* (a potential → a mass), whereas the gauge-legitimate reading is
 the finite-**bandwidth** bound on the *rate* (∂θ → a kinetic nonlinearity → an
-index). The surviving question is sharp: does a **massless, energy-sourced
-mediator** — GRID's own **radion** A₅⁽⁰⁾, which couples to ℵ-line dilation
-([grid/photon-from-aleph.md](../../grid/photon-from-aleph.md)) — spread the
-local index to a 1/r field, and bend light with the right coefficient? Two open
-hurdles (source character; the light-bending factor), neither a refutation.
+index).
+
+The surviving **range** question is **GRID-native** and does *not* require
+importing anyone's scalar-tensor theory. The one hard *requirement* is math,
+not borrowed physics: a **1/r** field needs a **massless** carrier (a massive
+one falls off as short-range Yukawa), and the KK modes are Planck-massive — so
+range cannot come from them. The GRID-native question is therefore whether the
+substrate *has* a massless, neutral-energy-sourced mode that carries the local
+index outward. The natural candidate is the **ℵ-line dilation** — the local
+compact-size degree of freedom (whose zero-mode standard physics would call the
+radion; [grid/photon-from-aleph.md](../../grid/photon-from-aleph.md)) — which a
+resident mass shifts locally. Whether that shift propagates as a massless 1/r
+field, is sourced ∝ energy, and slows passing light with the right strength, is
+to be modeled **from GRID's own dynamics** (the update rule / lattice
+propagation), *not* by adopting scalar-tensor formalism. Open — a live crux,
+not a refutation.
 
 ### (open to further mechanisms)
 
@@ -373,8 +395,9 @@ pedagogical presentation, not new content.
 
 ## Next step
 
-The compact→spatial-transfer derivation (review §2) was carried out in two
-passes. The first ([work/mode-coupling-derivation.md](work/mode-coupling-derivation.md))
+The compact→spatial-transfer derivation (forced by the incorporated review)
+was carried out in two passes. The first
+([work/mode-coupling-derivation.md](work/mode-coupling-derivation.md))
 read the coupling as a refutation (a gauge-breaking photon *mass*). The
 gauge-invariant redo ([work/gauge-invariant-coupling.md](work/gauge-invariant-coupling.md))
 shows that was an artifact: the physical coupling is a **refractive index** —
@@ -384,30 +407,36 @@ and extending it to 1/r needs a massless, energy-sourced mediator. The chapter
 arc above stays **on hold** — a chapter presenting mechanism 2 as a *settled*
 gravity mechanism would still be premature — but it is not withdrawn.
 
-The **thesis is not refuted**, and mechanism 2 has a live path. The lesson is
-sharp and useful: **gravity is a metric (kinetic) modification**, so any
-mechanical mechanism must produce *that* — and mechanism 2, redone
-gauge-invariantly, *does* produce a metric-like index; only its **range** is
-open. Standing options:
+That range crux was then **derived GRID-natively**
+([work/range-from-foundations.md](work/range-from-foundations.md)), as the
+foundations demand, and it is **blocked**: GRID's specified spectrum has **no
+massless, neutral, propagating carrier** (photon = massless but charge-coupled;
+KK = neutral but Planck-massive), and the ℵ-line size R_ℵ is specified as a
+per-particle **parameter**, not a propagating **field** — the scatter moves
+signals, not the size. So the local index has nothing to carry it to 1/r. This
+is **not a refutation** (the index is real; the thesis stands) but it locates
+the block precisely: a foundations gap. Standing options:
 
-1. **Probe the radion-mediator route (mechanism 2's live crux).** GRID's own
-   massless scalar A₅⁽⁰⁾ ([grid/photon-from-aleph.md](../../grid/photon-from-aleph.md))
-   couples to ℵ-line dilation; test whether a standing wave sources it as a
-   scalar monopole ∝ energy (→ 1/r index) and whether the resulting light-bending
-   carries the right coefficient
-   ([work/gauge-invariant-coupling.md](work/gauge-invariant-coupling.md) §4).
-   This is the concrete next derivation/sim.
-2. **Jacobson is the fallback.** Forma's existing gravity already produces the
-   *metric* (thermodynamically). A mechanical contribution, if any, is the
-   microscopic *dS/dt* that
+1. **Jacobson is the natural home.** Its metric emerges as an *equation of
+   state*, so it never needs the massless neutral carrier the spectrum lacks —
+   which is *why* the statistical route works where the mechanical one blocks. A
+   mechanical contribution, if any, is the microscopic *dS/dt* that
    [grid/bounding-mechanisms.md](../../grid/bounding-mechanisms.md) flags,
    feeding that machinery — not a standalone force field.
-3. **Park the project, don't close it.** The one live crux (range via a
-   mediator) and its candidate are recorded; **resurrect** on it, or if a new
-   angle appears. A negative on the *forms tried* is a legitimate outcome — and
-   here even the negative turned out to be a gauge artifact, leaving the
-   mechanism blocked, not dead.
+2. **A foundations investigation, elsewhere.** Revival of mechanism 2 requires
+   showing — in grid-primitive / a substrate project, *not* here — that GRID's
+   ℵ-line size is a **dynamical, spatially-varying, massless** degree of freedom
+   sourced by energy. Absent that, there is no carrier. (Even then, two hurdles
+   remain: scalar-monopole sourcing and the light-bending coefficient,
+   [work/gauge-invariant-coupling.md](work/gauge-invariant-coupling.md) §4.)
+3. **Park the project, don't close it.** The block is recorded and precisely
+   located (no massless neutral carrier in the foundations); **resurrect** if a
+   substrate-level result supplies a massless ℵ-line-dilation field, or if a new
+   angle appears. A block on a *foundations gap* is a legitimate, useful outcome
+   — and honestly, this is the recommended state: the mechanical route can't
+   proceed without foundations GRID doesn't yet have.
 
 Coherence points that survive: the *odd* substrate deviation → charge
-(grid-primitive/09). The **even → gravity** half is no longer refuted — it rests
-on mechanism 2's range crux, now the live question.
+(grid-primitive/09). The **even → gravity** half is not refuted, but it is
+**blocked** — it rests on a massless ℵ-line-dilation carrier that GRID does not
+currently specify.
