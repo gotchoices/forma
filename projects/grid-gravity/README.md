@@ -8,24 +8,31 @@ mechanisms, **one shared evaluation framework**. Gravity only; the
 electromagnetic force is a named stretch slot.
 **Method:** Derivation and rule-design first; computation only at the
 go/no-go gates.
-**Status: parked — not yet solved, not refuted.** Two theses for a ground-up
-GRID mechanism of gravity were explored; neither has *yet* produced one, and
-each hit a specific obstruction *in the form tried*:
+**Status: parked — blocked on one crux, not refuted.** Two theses for a
+ground-up GRID mechanism of gravity were explored; neither has *yet* produced
+one, and each is blocked at a specific, identified point:
 - **Mechanism 1 (congestion):** the passive "node eats waves" reading
   produces no vacuum field.
-- **Mechanism 2 (detour/refractive):** the compact→spatial-transfer
-  derivation forced by the review ([review.md](review.md)) comes out negative
-  ([work/mode-coupling-derivation.md](work/mode-coupling-derivation.md)) — the
-  boundedness (potential) coupling gives the photon a short-range, dispersive,
-  gauge-breaking *mass* shift ∝ energy density, not the long-range,
-  non-dispersive *metric* that gravity is.
+- **Mechanism 2 (detour/refractive):** blocked on **range** — does the local
+  refractive perturbation extend as a 1/r field? An earlier note
+  ([work/mode-coupling-derivation.md](work/mode-coupling-derivation.md)) read
+  the coupling as a *refutation* (a gauge-breaking photon **mass** ∝ energy
+  density), but that was a **gauge artifact** of coupling a bare *potential* to
+  the photon (whose masslessness is established, A4). Redone gauge-invariantly
+  ([work/gauge-invariant-coupling.md](work/gauge-invariant-coupling.md)), the
+  coupling is a genuine **refractive index** — kinetic/metric-like,
+  non-dispersive at ω ≪ ω₀, sourced by energy: the structure gravity needs. It
+  is only **local (Planck-contact)**, so the make-or-break returns to **range**:
+  whether a massless, energy-sourced mediator — GRID's own **radion** A₅⁽⁰⁾,
+  which couples to ℵ-line dilation — spreads it to 1/r, and can bend light with
+  the right coefficient.
 
-These rule out the *specific forms*, **not the thesis** (mass → local-time
-gradient → gravity), which stands open. The lesson is sharp — gravity is a
-**metric (kinetic)** effect — and forma's **Jacobson route** (which produces
-the metric thermodynamically) is the **fallback** until a deeper mechanism is
-found. **Open to revival** if either thesis is seen from a new angle, or a
-metric-producing mechanism appears. Working notes in [work/](work/).
+Neither thesis is refuted, and the thesis itself (mass → local-time gradient →
+gravity) stands open. forma's **Jacobson route** (which produces the metric
+thermodynamically) is the **fallback** until a deeper mechanism is found.
+**Open to revival**; the concrete next probe is the **radion-mediator** route
+for mechanism 2's range crux (see [work/gauge-invariant-coupling.md](work/gauge-invariant-coupling.md)
+§4). Working notes in [work/](work/).
 
 ---
 
@@ -186,27 +193,34 @@ Why it is a better fit to the gate than mechanism 1:
   exact quantum is needed to *initiate* a standing wave, but once one exists
   it enables *sub-quantum* linear coupling of any passing wave.
 
-**REFUTED.** The critical review ([review.md](review.md)) forced the
-compact→spatial-transfer derivation (review §2), and the mode-coupling
-calculation ([work/mode-coupling-derivation.md](work/mode-coupling-derivation.md))
-comes out **negative**. The photon (n=0) coupling to the compact modes via
-the boundedness (potential) nonlinearity gives the photon an **effective mass
-shift ∝ local energy density** — which is:
-- a **mass/potential** coupling (dispersive), not the **metric/kinetic**
-  coupling (non-dispersive index) that gravity is — confirming review §1/§2;
-- ∝ **local** energy density (contact) — short-range, not 1/r — so the
-  loops-and-range 1/r *assumed* a spreading source the mechanism doesn't
-  produce (review §5);
-- a potential on the U(1) phase, which **breaks gauge invariance** (gives the
-  photon a mass) — while the gauge-invariant version (mere compactness) is
-  linear and has no detour at all.
+**BLOCKED ON RANGE (not refuted).** The critical review
+([review.md](review.md)) forced the compact→spatial-transfer derivation
+(review §2). A first pass
+([work/mode-coupling-derivation.md](work/mode-coupling-derivation.md)) read it
+as a refutation — the photon acquiring a gauge-breaking *mass* shift ∝ energy
+density. But that was a **gauge artifact**: it coupled a bare phase *potential*
+to the n=0 gauge mode, which the photon's **established** masslessness (A4)
+forbids. Redone respecting gauge invariance
+([work/gauge-invariant-coupling.md](work/gauge-invariant-coupling.md)), the
+Ward identity forces the coupling **transverse** — a **refractive index**, not
+a mass:
+- a **metric/kinetic** coupling (a background-dependent photon kinetic term),
+  **non-dispersive** for ω ≪ ω₀, **sourced by energy** — the structure gravity
+  needs (conditions 2 and 3 met from the rule);
+- **massless in vacuum** — gauge intact; the "photon mass" of the first pass is
+  discarded as contradicting the confirmed Maxwell result;
+- but the index is **local (Planck-contact)** — a dielectric sits *on* the
+  matter. So the one surviving obstruction is **range**: getting a *local* index
+  to extend as **1/r** (review §4/§5).
 
-Root cause: **gravity is a metric (kinetic) modification** — universal,
-non-dispersive, long-range — whereas **boundedness is potential-like**, giving
-a mass/contact coupling. Wrong tensor character, wrong range, wrong frequency
-behaviour. The earlier "softening → refractive index" step hid this by never
-distinguishing a *compact-stiffness* change (a mass) from a *spatial-speed*
-change (a metric). So the detour route to gravity is dead in this form.
+Root cause of the first pass's error: it modeled boundedness as a bound on the
+phase *value* (a potential → a mass), whereas the gauge-legitimate reading is
+the finite-**bandwidth** bound on the *rate* (∂θ → a kinetic nonlinearity → an
+index). The surviving question is sharp: does a **massless, energy-sourced
+mediator** — GRID's own **radion** A₅⁽⁰⁾, which couples to ℵ-line dilation
+([grid/photon-from-aleph.md](../../grid/photon-from-aleph.md)) — spread the
+local index to a 1/r field, and bend light with the right coefficient? Two open
+hurdles (source character; the light-bending factor), neither a refutation.
 
 ### (open to further mechanisms)
 
@@ -359,31 +373,41 @@ pedagogical presentation, not new content.
 
 ## Next step
 
-The compact→spatial-transfer derivation (review §2) was carried out
-([work/mode-coupling-derivation.md](work/mode-coupling-derivation.md)) and
-obstructed mechanism 2 *in the form tried*: the boundedness (potential)
-coupling gives the photon a short-range, dispersive, gauge-breaking *mass*
-shift, not the long-range, non-dispersive *metric* that gravity is. The
-chapter arc above is **withdrawn for now** — a chapter presenting mechanism 2
-as a settled gravity mechanism would be wrong.
+The compact→spatial-transfer derivation (review §2) was carried out in two
+passes. The first ([work/mode-coupling-derivation.md](work/mode-coupling-derivation.md))
+read the coupling as a refutation (a gauge-breaking photon *mass*). The
+gauge-invariant redo ([work/gauge-invariant-coupling.md](work/gauge-invariant-coupling.md))
+shows that was an artifact: the physical coupling is a **refractive index** —
+metric/kinetic, non-dispersive at ω ≪ ω₀, energy-sourced — so **mechanism 2 is
+not refuted**. It is **blocked on range**: the index is local (Planck-contact),
+and extending it to 1/r needs a massless, energy-sourced mediator. The chapter
+arc above stays **on hold** — a chapter presenting mechanism 2 as a *settled*
+gravity mechanism would still be premature — but it is not withdrawn.
 
-The **thesis is not refuted** — we simply have **not yet** found a ground-up
-GRID mechanism, after two theses. The lesson is sharp and useful: **gravity is
-a metric (kinetic) modification**, so any mechanical mechanism must produce
-*that*, not a potential/mass or contact/short-range effect. Until one is found:
+The **thesis is not refuted**, and mechanism 2 has a live path. The lesson is
+sharp and useful: **gravity is a metric (kinetic) modification**, so any
+mechanical mechanism must produce *that* — and mechanism 2, redone
+gauge-invariantly, *does* produce a metric-like index; only its **range** is
+open. Standing options:
 
-1. **Jacobson is the fallback.** Forma's existing gravity already produces the
-   *metric* (thermodynamically) — the right structure. A mechanical
-   contribution, if any, is the microscopic *dS/dt* that
+1. **Probe the radion-mediator route (mechanism 2's live crux).** GRID's own
+   massless scalar A₅⁽⁰⁾ ([grid/photon-from-aleph.md](../../grid/photon-from-aleph.md))
+   couples to ℵ-line dilation; test whether a standing wave sources it as a
+   scalar monopole ∝ energy (→ 1/r index) and whether the resulting light-bending
+   carries the right coefficient
+   ([work/gauge-invariant-coupling.md](work/gauge-invariant-coupling.md) §4).
+   This is the concrete next derivation/sim.
+2. **Jacobson is the fallback.** Forma's existing gravity already produces the
+   *metric* (thermodynamically). A mechanical contribution, if any, is the
+   microscopic *dS/dt* that
    [grid/bounding-mechanisms.md](../../grid/bounding-mechanisms.md) flags,
    feeding that machinery — not a standalone force field.
-2. **Stay open to a metric-producing mechanism** — an emergent field-dependent
-   *kinetic* term (effective metric) sourced by energy. Not pursued now (it is
-   the hard problem of emergent gravity), but the target is now clear.
-3. **Park the project, don't close it.** The two specific obstructions are
-   recorded; **resurrect** if either thesis is seen from a new perspective, or
-   a deeper mechanism appears. A negative result on the *forms tried* is a
-   legitimate, useful outcome — not a conclusion that the thesis fails.
+3. **Park the project, don't close it.** The one live crux (range via a
+   mediator) and its candidate are recorded; **resurrect** on it, or if a new
+   angle appears. A negative on the *forms tried* is a legitimate outcome — and
+   here even the negative turned out to be a gauge artifact, leaving the
+   mechanism blocked, not dead.
 
-Coherence points that survive independently: the *odd* substrate deviation →
-charge (grid-primitive/09). The even→gravity half awaits a viable mechanism.
+Coherence points that survive: the *odd* substrate deviation → charge
+(grid-primitive/09). The **even → gravity** half is no longer refuted — it rests
+on mechanism 2's range crux, now the live question.

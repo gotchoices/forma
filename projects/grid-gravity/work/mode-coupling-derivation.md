@@ -1,5 +1,16 @@
 # The detour, derived: mode-coupling n=0 ↔ n≥1 — a negative result
 
+> **⚠ Superseded in its verdict by
+> [gauge-invariant-coupling.md](gauge-invariant-coupling.md).** The "photon
+> mass ∝ ρ_E" derived below (problems (a) and (c)) is a **gauge artifact**:
+> it couples a bare phase *potential* to the n=0 gauge mode, which the photon's
+> **established** masslessness (A4) forbids. Redone gauge-invariantly, the
+> coupling is a **refractive index** (kinetic/metric-like), not a mass — so
+> mechanism 2 is **not refuted**. Only problem **(b) (range / contact vs 1/r)**
+> below survives, and it is the original make-or-break. Read this note for the
+> (b) argument and the "metric vs potential" framing; disregard its "REFUTED"
+> conclusion.
+
 **Status:** Derivation (the review's §2 crux, in the user's detour framing).
 Sets up the photon–compact-mode coupling from the boundedness nonlinearity
 and asks whether the detour gives a **non-dispersive spatial refractive
