@@ -86,8 +86,12 @@ Each project's README should:
   picture) is the current focus — vacuum field, non-dispersivity, and
   losslessness met from the rule, the 1/r range resolved (scale-free,
   isotropic, loop-size-independent from the actual lattice operator), and the
-  coupling shown to be ∝ energy (the detour is a Lorentz-oscillator
-  dielectric with the mass as the resonant oscillator → non-dispersive and
-  universal). All four gate conditions now met in structure; remaining is
-  non-gating (cross-species mass-scaling / the optional coefficient). A
+  coupling shown to be ∝ energy and grounded in A3's compact-phase
+  nonlinearity on the ℵ-line (a standing wave softens the local stiffness by
+  ∝ A² → δn ∝ energy, universally attractive, non-dispersive; shares its root
+  with the statistical gravity). All four gate conditions met in structure
+  and substrate-grounded; remaining is non-gating (the ℵ-line potential /
+  optional coefficient). Honest positioning: a re-derivation of the
+  optical-metric / polarizable-vacuum picture (known physics) with a
+  GRID-specific mechanical origin — value is coherence, not novelty. A
   scaffolding chapter is defensible.**

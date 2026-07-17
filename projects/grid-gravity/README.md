@@ -271,22 +271,32 @@ A clean *negative* is itself a result: it rules out a hypothesis cheaply.
 
 ## Next step
 
-Mechanism 2's *shape* now clears the gate on **all four conditions** in the
-simplified model ([work/detour-refractive.md](work/detour-refractive.md),
+Mechanism 2's *shape* clears the gate on **all four conditions** in the
+simplified model, and its central claim is now **grounded in the substrate**
+rather than an abstraction ([work/detour-refractive.md](work/detour-refractive.md),
 [work/loops-and-range.md](work/loops-and-range.md),
-[work/energy-coupling.md](work/energy-coupling.md)): vacuum field met,
-scale-free isotropic 1/r range, non-dispersive (a Lorentz dielectric, flat
-below the lowest mode), and coupling ∝ energy (the round-trip detour is
-second-order in the parametric coupling, so δn ∝ A² = energy → universal
-gravity). The mechanism turns out to *be* the Lorentz-oscillator dielectric
-underlying optical-metric gravity, with the mass as the resonant oscillator.
+[work/energy-coupling.md](work/energy-coupling.md),
+[work/aleph-grounding.md](work/aleph-grounding.md)): the detour follows from
+**A3's compact-phase nonlinearity** on the ℵ-line — a resident standing wave
+softens the local ℵ-line stiffness by ∝ A² (Kapitza/effective-potential
+averaging on the compact phase), so δn ∝ **energy**, universally attractive
+(the compact potential is *even* ⇒ ∝ A² ⇒ always positive), non-dispersive,
+and transparent in vacuum (linear KK modes are orthogonal). A coherence
+bonus: this shares its root (A3 compactness) with forma's *statistical*
+gravity (wrap → entropy → Jacobson).
 
-What remains is **non-gating**: the cross-species mass-scaling of δn
-(entangled with the sheet geometry — part of the optional coefficient) and
-full-sheet rigor. The *precise* coefficient (G = 1/(4ζ) / the PV form) is an
-optional consistency bonus — G's value is largely a unit.
+What remains is **non-gating**: the specific ℵ-line potential (→ the optional
+coefficient / mass-scaling, entangled with the sheet geometry) and
+full-lattice/sheet rigor. G's precise value is largely a unit.
 
-So the natural next step is a **scaffolding chapter** on the mechanism (the
-simplified-model skeleton, explicitly labelled), or the optional full-sheet
-mass-scaling / coefficient work. If a later check fails, the fail-fast
-options and further mechanisms remain.
+**Honest positioning:** the result is a re-derivation of the optical-metric /
+polarizable-vacuum picture (Eddington, Dicke, Puthoff) — *known* physics —
+with a GRID-specific mechanical origin. Its value is framework coherence (a
+mechanical gravity to sit beside the statistical one), not a new prediction.
+
+So a **scaffolding chapter** is now defensible — framed as an
+emergence/coherence result at skeleton rigor (GRID *produces* the
+optical-metric form), explicitly labelled as the simplified-model
+conditional. The optional full-sheet coefficient work, or a genuine-novelty
+push (one substrate giving gravity + charge + spectrum with a falsifiable
+prediction), are the alternatives.
