@@ -73,14 +73,16 @@ Each project's README should:
   conjecture. **Status: Tier 1 done — single-hexagon energy return
   (2/3)¹² = 1/129.75 sits in α's running range; Tier 2 (h-universality
   / RG fixed point) not started.**
-- [grid-gravity/](grid-gravity/) — A *mechanical* substrate account of
-  how mass slows local clocks and bends nearby paths — the microscopic
-  counterpart to [grid/gravity.md](../grid/gravity.md)'s statistical
-  (Jacobson) derivation. Mass as a persistent load on finite-bandwidth
-  nodes; congestion → local time dilation → gravity. **Status: gate
-  CLEARED — a lossless buffering rule yields a massless (1/r-family),
-  isotropic, unscreened congestion halo and a non-dispersive slowing
-  ([falloff sim](grid-gravity/work/falloff-sim-result.md),
-  [dispersion sim](grid-gravity/work/dispersion-sim-result.md)); both legs
-  rest on losslessness. Next: the coefficient (→ G = 1/4ζ) and the chapter
-  arc.**
+- [grid-gravity/](grid-gravity/) — Mechanical, substrate-level models in
+  which mass (a compact standing wave) varies *local time* for nearby
+  waves — the microscopic counterpart to
+  [grid/gravity.md](../grid/gravity.md)'s statistical (Jacobson)
+  derivation. Several candidate mechanisms under one shared gate (vacuum
+  field, massless 1/r, non-dispersive, coefficient — all tracing to
+  losslessness). **Status: mechanism 1 (congestion) largely superseded —
+  its phenomenological consequences check out but the premise
+  (passive capacity-eating) fails the vacuum-field test; mechanism 2
+  (detour/refractive, a discrete optical-metric / polarizable-vacuum
+  picture) is the current focus — vacuum field, non-dispersivity, and
+  losslessness met from the rule, with the 1/r range (loop-coupling
+  scale-freeness) the make-or-break open question.**
