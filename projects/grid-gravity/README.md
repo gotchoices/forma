@@ -10,9 +10,10 @@ electromagnetic force is a named stretch slot.
 go/no-go gates.
 **Status:** Two candidate mechanisms under a common gate. Congestion
 (mechanism 1) is largely superseded; detour/refractive (mechanism 2) is the
-current focus. No mission chapter arc until a mechanism clears the full gate
-(falloff + dispersion + coefficient) from its rule, not by construction.
-Working notes in [work/](work/).
+current focus. No mission chapter arc until a mechanism clears the gate
+(vacuum field + falloff + dispersion + coupling structure) from its rule,
+not by construction. The *precise* coefficient G is a consistency bonus, not
+a gate (it is largely a unit). Working notes in [work/](work/).
 
 ---
 
@@ -64,6 +65,20 @@ substrate of which the metric is an emergent collective mode.)
 
 Mechanisms differ only in *how* the compact standing wave slows local time.
 
+**Relation to full MaSt (the simplification).** This project works in a
+*simplified* setting — a 1D compact loop, a 2D spatial lattice — which is the
+**mass-only** regime: charge needs circulation *synchronized between the two
+dimensions of a sheet*, impossible in 1D, so 1D yields mass without charge,
+exactly what gravity couples to. Because gravity is universal (it couples to
+energy, not to which sheet or winding), the mechanism is expected to be
+dimension-robust — the compact structure sets particle *identity*, not the
+gravity *mechanism*. One check must be **re-derived** in the full 10/11D,
+2D-sheet setting rather than assumed: **non-dispersivity** (a sheet has a
+mode spectrum, not one resonance). The precise **coefficient** (ζ = 1/4 from
+the sheet geometry) is an optional consistency bonus, not a validity
+requirement — G's value is largely a unit. See
+[work/simplified-model-and-mast.md](work/simplified-model-and-mast.md).
+
 ## The shared evaluation framework — the gate
 
 Every candidate must produce a local-time field q(x) that clears the same
@@ -78,7 +93,17 @@ four conditions. This is the spine; each mechanism is run through it.
 - **(2) Non-dispersive.** the slowing uniform across frequency (a delay, not
   a low-pass filter) — else it is an optical medium, not time dilation
   ([work/local-time.md](work/local-time.md) Commitment 3).
-- **(3) Coefficient.** magnitude reproducing **G = 1/(4ζ)**.
+- **(3) Coupling structure.** the coupling is a **fixed constant ∝
+  mass-energy** — the same for every mass and location, giving a
+  mass-independent Newtonian form — and *consistent in direction and order
+  of magnitude* with G = 1/(4ζ). The **precise value of G is not a gate**: it
+  is largely a *unit* (like c, ℏ — the SI value depends on the grain size in
+  metres, itself defined through G), and the framework's own gravity
+  derivation ([grid/gravity.md](../../grid/gravity.md)) does not predict it
+  either (ζ = 1/4 is *calibrated*, not derived). Reproducing the exact
+  1/(4ζ) factor is an **optional consistency bonus**, not a validity
+  requirement — the principle (1/r, universal, coupling ∝ 1/ζ) is the
+  dimensionless content; the scale is a unit.
 
 **The linchpin.** Conditions 1 and 2 both trace to one property —
 **losslessness**: *loss ⟺ shunt ⟺ Yukawa* (kills 1) **and** *loss ⟺
@@ -138,13 +163,25 @@ Why it is a better fit to the gate than mechanism 1:
   exact quantum is needed to *initiate* a standing wave, but once one exists
   it enables *sub-quantum* linear coupling of any passing wave.
 
-Open (the gate conditions, for this mechanism):
-- **Non-dispersive?** Is the detour delay *fixed* (≈ one compact-dimension
-  cycle → non-dispersive) or *resonant* (frequency-dependent → dispersive)?
-- **Range?** Does the refractive well *extend* (n(r) → 1/r potential) via the
-  loop-coupling carrying the standing wave's constraint outward?
+Vetted against the gate from the rule
+([work/detour-refractive.md](work/detour-refractive.md),
+[work/loops-and-range.md](work/loops-and-range.md)):
+- **Vacuum field** — met (a refractive index is a medium property).
+- **Non-dispersive** — *derived* for ω ≪ ω_Compton: the off-resonant detour
+  delay is a fixed ≈ one-compact-cycle, frequency-independent.
+- **Lossless** — met by construction (detour, not absorption).
+- **Range** — *resolved for a scalar source*: a localized loop-constraint
+  spreads as a scale-free, isotropic 1/r via the lattice's own **massless**
+  Green's function; the compact loop and spatial hexagon loops are
+  equivalent as sources (loop-size-independent to 0.06%, R²=1.00000).
 
-Foundation + derivation attempt: [work/detour-refractive.md](work/detour-refractive.md).
+Remaining opens: **source character** — does the detour present the mass's
+*energy* as a *scalar* source (gravity), rather than a *winding* (charge) or
+a mass-generating nonlinearity (Yukawa)? (largely resolved by MaSt's
+mass/charge structure — [work/simplified-model-and-mast.md](work/simplified-model-and-mast.md)
+§3) — and **non-dispersivity with the sheet mode spectrum** (§ Relation to
+full MaSt). The coupling's order-of-magnitude consistency with 1/(4ζ) is a
+bonus, not a gate.
 
 ### (open to further mechanisms)
 
@@ -153,7 +190,10 @@ New mechanisms are welcome provided they are run through the same gate.
 ## What would kill it (any mechanism)
 
 - The field is Yukawa or anisotropic (fails 1); or dispersive (fails 2); or
-  has no vacuum field (fails 0); or the coefficient is not ~1/(4ζ) (fails 3).
+  has no vacuum field (fails 0); or the coupling is not a fixed constant ∝
+  mass-energy, or is off from 1/(4ζ) by orders of magnitude (fails 3). (A
+  *precise* mismatch in the O(1) factor does **not** kill it — that value is
+  a unit / calibration, not a gate.)
 - **The magnitude graveyard** — earlier "variable-c near mass" ideas in the
   repo (e.g. [dialogs/grid-2.md](../../dialogs/grid-2.md)) foundered on the
   scaling and coefficient, not the picture. Measure the power law and
@@ -207,6 +247,11 @@ A clean *negative* is itself a result: it rules out a hypothesis cheaply.
    departs from GRID's global clock; showing it does not break the confirmed
    Maxwell results is part of the work.
 6. **Reader-neutral narrative.**
+7. **Keep the simplification in context.** The model is 1D-compact
+   (mass-only); real MaSt has 2D sheets (mass + charge). Results are the
+   mechanism's *skeleton*; non-dispersivity needs full-D re-derivation (the
+   precise coefficient is an optional bonus, not a gate)
+   ([work/simplified-model-and-mast.md](work/simplified-model-and-mast.md)).
 
 ## Background reading
 
@@ -223,9 +268,21 @@ A clean *negative* is itself a result: it rules out a hypothesis cheaply.
 
 ## Next step
 
-Vet mechanism 2 (detour/refractive) against the gate from its rule:
-[work/detour-refractive.md](work/detour-refractive.md) — foundation and
-micro→macro derivation attempt, settling first whether the detour delay is
-non-dispersive (fixed ≈ one compact cycle) or dispersive (resonant), then
-whether the refractive well has 1/r range. If it fails early, the fail-fast
-options and further mechanisms remain.
+Mechanism 2's *shape* clears the gate on all fronts
+([work/detour-refractive.md](work/detour-refractive.md),
+[work/loops-and-range.md](work/loops-and-range.md)): vacuum field met,
+non-dispersivity derived, losslessness structural, and the range resolved
+for a scalar source (scale-free isotropic 1/r from the actual operator,
+loop-size-independent). **Source character** is largely resolved by MaSt's
+mass/charge structure (energy is the scalar → gravity;
+[work/simplified-model-and-mast.md](work/simplified-model-and-mast.md) §3).
+What genuinely remains before a chapter arc is one physics check, now in the
+2D-sheet setting:
+
+- **Non-dispersivity with the sheet mode spectrum** — re-derive the detour
+  delay when the compact object is a 2D sheet (many modes) rather than one
+  resonance, and confirm the coupling is a fixed constant ∝ mass-energy.
+
+The *precise* coefficient (G = 1/(4ζ) / the PV form) is an **optional
+consistency bonus**, not a gate — G's value is largely a unit. If the
+remaining check fails, the fail-fast options and further mechanisms remain.

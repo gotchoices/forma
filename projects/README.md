@@ -84,5 +84,7 @@ Each project's README should:
   (passive capacity-eating) fails the vacuum-field test; mechanism 2
   (detour/refractive, a discrete optical-metric / polarizable-vacuum
   picture) is the current focus — vacuum field, non-dispersivity, and
-  losslessness met from the rule, with the 1/r range (loop-coupling
-  scale-freeness) the make-or-break open question.**
+  losslessness met from the rule, and the 1/r range now also resolved for a
+  scalar source (scale-free, isotropic, loop-size-independent from the
+  actual lattice operator). Remaining: source character (scalar-energy vs
+  winding vs Yukawa) and the coefficient.**
