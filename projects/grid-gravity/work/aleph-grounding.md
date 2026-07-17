@@ -10,6 +10,14 @@ shares its root with forma's statistical gravity.
 Grades: **[substrate]** (from the real structure/axioms), **[derived]**,
 **[assumed]**, **[open]**.
 
+**Working premise (stated, not derived here):** *the ℵ-line value is bounded
+by a **symmetric, smooth, lossless (reactive)** saturation.* This differs
+from forma's default A3 **wrap** (which is lossy); it is the generic form of
+any bounded Hamiltonian nonlinearity, and may emerge from the hard 1-bit
+bound via sigma-delta coarse-graining (§6). Its *origin* — the node/edge
+mechanics — is deferred to grid-primitive / a substrate project; this note
+derives gravity **given** it.
+
 ---
 
 ## 1. The real substrate structure

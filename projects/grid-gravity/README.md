@@ -153,6 +153,17 @@ discrete-lattice mechanism for **optical-metric / polarizable-vacuum
 gravity** (n(r) ≈ 1 + 2GM/rc²), a known framework that reproduces the
 weak-field GR tests, *including* the light-bending factor of 2.
 
+> **Working premise (stated, not derived here).** The ℵ-line value is bounded
+> by a **symmetric, smooth, lossless (reactive)** saturation. This is the
+> generic form of any bounded Hamiltonian nonlinearity and is the flavor the
+> derivation needs (even ⇒ universal attraction; smooth ⇒ weak-field;
+> lossless ⇒ no Yukawa/dispersion). It **differs from forma's default A3
+> wrap** (which is lossy) — so this project derives gravity *given* a reactive
+> bound, and hands the bound's *origin* (node/edge mechanics) to
+> grid-primitive / a substrate project. It may emerge from the hard 1-bit
+> bound via grid-quantization's sigma-delta coarse-graining. See
+> [work/aleph-grounding.md](work/aleph-grounding.md).
+
 Why it is a better fit to the gate than mechanism 1:
 - **Lossless by construction** (detour, not absorption) → condition (0)/(1)/(2)
   linchpin met naturally.
@@ -255,6 +266,11 @@ A clean *negative* is itself a result: it rules out a hypothesis cheaply.
    mechanism's *skeleton*; non-dispersivity needs full-D re-derivation (the
    precise coefficient is an optional bonus, not a gate)
    ([work/simplified-model-and-mast.md](work/simplified-model-and-mast.md)).
+8. **Upstream substrate properties are stated premises, not smuggled.** The
+   *reactive-bound premise* (a symmetric, smooth, lossless ℵ-line saturation)
+   is stated explicitly and flagged as differing from forma's default wrap;
+   its origin (node/edge mechanics) is another project's job. Derive gravity
+   *given* it; do not pretend it is established.
 
 ## Background reading
 
