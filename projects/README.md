@@ -84,7 +84,10 @@ Each project's README should:
   (passive capacity-eating) fails the vacuum-field test; mechanism 2
   (detour/refractive, a discrete optical-metric / polarizable-vacuum
   picture) is the current focus — vacuum field, non-dispersivity, and
-  losslessness met from the rule, and the 1/r range now also resolved for a
-  scalar source (scale-free, isotropic, loop-size-independent from the
-  actual lattice operator). Remaining: source character (scalar-energy vs
-  winding vs Yukawa) and the coefficient.**
+  losslessness met from the rule, the 1/r range resolved (scale-free,
+  isotropic, loop-size-independent from the actual lattice operator), and the
+  coupling shown to be ∝ energy (the detour is a Lorentz-oscillator
+  dielectric with the mass as the resonant oscillator → non-dispersive and
+  universal). All four gate conditions now met in structure; remaining is
+  non-gating (cross-species mass-scaling / the optional coefficient). A
+  scaffolding chapter is defensible.**

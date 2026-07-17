@@ -163,25 +163,28 @@ Why it is a better fit to the gate than mechanism 1:
   exact quantum is needed to *initiate* a standing wave, but once one exists
   it enables *sub-quantum* linear coupling of any passing wave.
 
-Vetted against the gate from the rule
-([work/detour-refractive.md](work/detour-refractive.md),
-[work/loops-and-range.md](work/loops-and-range.md)):
-- **Vacuum field** — met (a refractive index is a medium property).
-- **Non-dispersive** — *derived* for ω ≪ ω_Compton: the off-resonant detour
-  delay is a fixed ≈ one-compact-cycle, frequency-independent.
-- **Lossless** — met by construction (detour, not absorption).
-- **Range** — *resolved for a scalar source*: a localized loop-constraint
-  spreads as a scale-free, isotropic 1/r via the lattice's own **massless**
-  Green's function; the compact loop and spatial hexagon loops are
-  equivalent as sources (loop-size-independent to 0.06%, R²=1.00000).
+Vetted against the gate from the rule ([work/detour-refractive.md](work/detour-refractive.md),
+[work/loops-and-range.md](work/loops-and-range.md),
+[work/energy-coupling.md](work/energy-coupling.md)). **All four conditions are
+met in structure** in the simplified model:
+- **(0) Vacuum field** — met (a refractive index is a medium property).
+- **(1) Range / 1-over-r** — a localized loop-constraint spreads as a
+  scale-free, isotropic 1/r via the lattice's own **massless** Green's
+  function; compact and spatial loops are equivalent as sources
+  (loop-size-independent to 0.06%, R²=1.00000).
+- **(2) Non-dispersive** — the detour coupling is a **Lorentz-oscillator
+  dielectric** (mass = resonant oscillator); n(ω) is flat for ω below the
+  lowest mode, and generalizes to the sheet spectrum as a sum of Lorentz
+  terms.
+- **(3) Coupling ∝ energy** — the round-trip detour is *second order* in the
+  parametric coupling (G ∝ A), so δn ∝ A² = **energy density** → universal
+  gravity (couples to energy, not species), in the equivalence-principle
+  direction.
 
-Remaining opens: **source character** — does the detour present the mass's
-*energy* as a *scalar* source (gravity), rather than a *winding* (charge) or
-a mass-generating nonlinearity (Yukawa)? (largely resolved by MaSt's
-mass/charge structure — [work/simplified-model-and-mast.md](work/simplified-model-and-mast.md)
-§3) — and **non-dispersivity with the sheet mode spectrum** (§ Relation to
-full MaSt). The coupling's order-of-magnitude consistency with 1/(4ζ) is a
-bonus, not a gate.
+Remaining (non-gating): the **cross-species mass-scaling** of δn (entangled
+with the sheet geometry — part of the optional coefficient), and full-sheet
+rigor. So mechanism 2's *shape* clears the gate; a scaffolding chapter is now
+defensible.
 
 ### (open to further mechanisms)
 
@@ -268,21 +271,22 @@ A clean *negative* is itself a result: it rules out a hypothesis cheaply.
 
 ## Next step
 
-Mechanism 2's *shape* clears the gate on all fronts
-([work/detour-refractive.md](work/detour-refractive.md),
-[work/loops-and-range.md](work/loops-and-range.md)): vacuum field met,
-non-dispersivity derived, losslessness structural, and the range resolved
-for a scalar source (scale-free isotropic 1/r from the actual operator,
-loop-size-independent). **Source character** is largely resolved by MaSt's
-mass/charge structure (energy is the scalar → gravity;
-[work/simplified-model-and-mast.md](work/simplified-model-and-mast.md) §3).
-What genuinely remains before a chapter arc is one physics check, now in the
-2D-sheet setting:
+Mechanism 2's *shape* now clears the gate on **all four conditions** in the
+simplified model ([work/detour-refractive.md](work/detour-refractive.md),
+[work/loops-and-range.md](work/loops-and-range.md),
+[work/energy-coupling.md](work/energy-coupling.md)): vacuum field met,
+scale-free isotropic 1/r range, non-dispersive (a Lorentz dielectric, flat
+below the lowest mode), and coupling ∝ energy (the round-trip detour is
+second-order in the parametric coupling, so δn ∝ A² = energy → universal
+gravity). The mechanism turns out to *be* the Lorentz-oscillator dielectric
+underlying optical-metric gravity, with the mass as the resonant oscillator.
 
-- **Non-dispersivity with the sheet mode spectrum** — re-derive the detour
-  delay when the compact object is a 2D sheet (many modes) rather than one
-  resonance, and confirm the coupling is a fixed constant ∝ mass-energy.
+What remains is **non-gating**: the cross-species mass-scaling of δn
+(entangled with the sheet geometry — part of the optional coefficient) and
+full-sheet rigor. The *precise* coefficient (G = 1/(4ζ) / the PV form) is an
+optional consistency bonus — G's value is largely a unit.
 
-The *precise* coefficient (G = 1/(4ζ) / the PV form) is an **optional
-consistency bonus**, not a gate — G's value is largely a unit. If the
-remaining check fails, the fail-fast options and further mechanisms remain.
+So the natural next step is a **scaffolding chapter** on the mechanism (the
+simplified-model skeleton, explicitly labelled), or the optional full-sheet
+mass-scaling / coefficient work. If a later check fails, the fail-fast
+options and further mechanisms remain.
