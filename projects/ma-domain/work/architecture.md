@@ -44,6 +44,11 @@ A mode is labelled by an 11-tuple of integer windings in the order above:
 
 Brackets `{ ... }` distinguish the new convention from earlier work's `(n, m)` 2-tuples and the studies' 6-tuple `(e_r, e_t, v_r, v_t, p_r, p_t)` notation (which was sheet-grouped and not size-ordered).
 
+> **⚠ Recognized weakness — the tuple assumes a periodic S (flagged 2026-08-19).**
+> Calling this an 11-tuple of *integer* windings quietly commits the framework to Sx, Sy, Sz being compact: only a periodic dimension admits an integer winding number. Whether S is periodic is an open question the project has not settled. The "usually zero" dodge below does not cover it — a particle **in motion** is precisely a mode carrying both Ma winding and S momentum, and that is the generic case, not the exception. Two readings are available and neither has been chosen: either S is a very large box (defensible, and it would sit oddly well beside the macroscopic L of the neutrino curve in [config-neutrino.md §NC.4](config-neutrino.md)), or the tuple is heterogeneous — integer windings in the Material block, continuous momenta in the Space block. The notation should declare which.
+>
+> Related scoping gap: the plane-over-diagonal rule (§3.3) forbids three-dim mixing, and is stated over the Ma pool. It needs explicit scoping to the **Material** dims so that it does not inadvertently forbid Ma ⊗ S mixing — which is just motion.
+
 For everyday compact-domain analysis, the spatial and time entries are usually zero and the aleph entry is conventionally fixed (mediator structure, not particle winding). So the typical particle label collapses to the 6-tuple of Ma windings:
 
     { n_1, n_2, n_3, n_4, n_5, n_6 }   (with n_aleph = 0 and Sx,Sy,Sz,t entries dropped)

@@ -50,7 +50,7 @@ So the two laws this document treats as hard constraints — energy and charge �
 
 **Baryon-number-like conservation — assumed, not derived.** Proton stability needs more than energy and charge. Energy and charge alone would *allow* p → e⁺ + (neutral products): the positron is far lighter than the proton and carries the proton's +1 charge. That decay is not observed. Forbidding it requires a further conserved quantity — a baryon-number analog. The framework does not currently derive such a quantity from fundamentals. **This document flags it as an open assumption, not a law** (§10), and notes the asymmetry it creates: the electron's stability rests entirely on fundamentals (energy + topological charge), whereas the proton's rests partly on a conservation law the framework has not yet delivered. A candidate topological account — baryon number as a cut-space invariant of the K4 dim-graph — is developed in [baryon-number.md](baryon-number.md).
 
-**Generation / lepton-flavor labels — not conserved here.** There is no "muon number." μ → e is simply leakage from one electron-delta sheet to a lower one (§2). The Standard Model's approximate lepton-flavor conservation is, in this picture, not a law at all but the smallness of certain overlap matrix elements and the absence of certain shared-dim paths (this is why μ → e + γ is suppressed — see §8 Phase 5). Nothing is plugged in; the apparent conservation is an *output* of the topology.
+**Generation / lepton-flavor labels — not conserved here.** There is no "muon number." μ → e is simply leakage from one electron-delta sheet to a lower one (§2). The Standard Model's approximate lepton-flavor conservation is, in this picture, not a law at all but the smallness of certain overlap matrix elements and the absence of certain shared-dim paths (this is why μ → e + γ is suppressed — see §8 Phase 5). Nothing is plugged in; the apparent conservation is an *output* of the topology. **⚠ This is a live commitment, not a free win (flagged 2026-08-19).** Declaring lepton flavor a non-law means the framework predicts a *non-zero* μ → e + γ rate and must produce a number below the MEG II bound, BR(μ → eγ) < 3.1 × 10⁻¹³ (90% CL). That is a genuine falsifiable prediction and should be promoted from an aside to a named target with a computed value; until it is computed, the "output of the topology" reading is an IOU rather than a result.
 
 In short: **energy and charge are natural laws here — one Noether, one topological; everything else is either an honest open question (baryon number) or an emergent consequence of geometry (flavor).** The rate machinery of §4 onward uses only energy and charge as hard gates.
 
@@ -93,6 +93,13 @@ Section 4's rate carries a density of final states ρ_B(E_A). This section is ab
 **The reservoir must be charge-neutral.** A charged heavy mode decays to a lighter charged mode — which balances the charge ledger (§3) — plus the energy remainder. The remainder-carrier must itself carry Q = 0; otherwise it would unbalance the charge the light product already accounts for. So the reservoir is specifically a **Q = 0 continuum**.
 
 **The neutrino line is exactly such a reservoir.** Per [config-neutrino.md §NC](config-neutrino.md), the neutrino substrate is a macroscopic 1D line, L ≳ cm. Its mode spacing ~ ℏc/L is of order µeV — against MeV-scale decays, a continuum for every practical purpose. And it is Q = 0 *structurally* (config-neutrino §NC.3 — a 1D dim count leaves no slot for a charge label). A macroscopic, charge-neutral quasi-continuum is precisely the sink a decay needs.
+
+> **⚠ Recognized weakness — the reservoir argument is not yet sound (flagged 2026-08-19).**
+> The paragraph above, and the "decay needs a continuum" premise it rests on, over-read the discreteness of the compact spectra. Decay products are *free to recoil in the embedding space S*, and their kinetic energy is continuous. **S is itself a continuum, and it is available to every decay** — so the premise that "a decay between compact sheets generically cannot conserve energy" only holds if the products are pinned at rest, which they are not. This also sits in tension with [conservation-as-momentum.md §2](conservation-as-momentum.md), which correctly reads ρ as ∫∏d³pᵢ over final-state momenta — a momentum-space volume in S, not a sheet-mode density.
+>
+> The empirical check rules out the strong form: π⁰ → γγ, Δ⁺ → p π⁰ and ρ → ππ all conserve energy without emitting any neutrino. The hedge below ("the neutrino line is not the only reservoir") saves the section from being flatly wrong but guts the claim it advertises. The actual reason weak decays emit neutrinos is a *number* law — lepton number — not an energy-continuum requirement: n → p + e⁻ conserves energy, momentum and charge perfectly and is forbidden only by lepton number.
+>
+> What survives: the neutrino line remains a legitimate Q = 0 quasi-continuum and a plausible weak-channel sink. What does not survive, pending repair: the claim that neutrino emission is *structurally forced* by energy conservation. Addressing this needs the S-side of the energy ledger written down — see the open item in §10.
 
 **This reframes a Standard-Model fact.** Weak decays emit neutrinos — in the Standard Model, because "the weak interaction couples to them." Here: a decay *must* shed its energy-conservation remainder into a Q = 0 continuum, and the neutrino line is the framework's Q = 0 quasi-continuum. Neutrino emission is not a choice the interaction makes; it is the only way a discrete heavy mode can satisfy conservation of energy while handing its charge cleanly to a discrete light product.
 
@@ -169,6 +176,22 @@ Tests: (1) the **s/c/b/t lifetime hierarchy** — Γ scales steeply with mode en
 n → p + e⁻ + ν̄_e is the canonical multi-sheet leakage: the neutron's downward transition on the quark sheet emits an electron (path through the electron sheets) and an antineutrino (into the neutrino-line reservoir, §5) — a three-sheet path, two shared-dim hops.
 
 Tests: (1) **lifetime** — does the full three-sheet Γ give τ_n ≈ 880 s? (2) **Q-value** — 0.78 MeV n-p difference; already reproduced by the mass fit, and the leakage picture constrains only the rate. (3) **why n is so long-lived** — longest of all unstable particles by 8+ orders; in the leakage reading because n → p needs a *three-sheet* transition, each hop a small matrix-element factor. The lifetime hierarchy should track the number of sheet-hops.
+
+> **⚠ Recognized weakness — test (3)'s explanation is falsified by the numbers (flagged 2026-08-19).**
+> The hop-count reading does not survive an arithmetic check. Muon decay also emits two leptons into the electron and neutrino sectors, so the hop-count difference between n → p e ν̄ and μ → e ν̄ ν is at most one — far too little for eight orders of magnitude. Working the standard three-body widths:
+>
+> | contribution | factor |
+> |---|---:|
+> | phase space alone, (m_μ/m_e)⁵ | 3.78 × 10¹¹ |
+> | coupling + combinatorial factors (divides) | 9.0 × 10² |
+> | predicted τ_n/τ_μ | 4.20 × 10⁸ |
+> | observed τ_n/τ_μ | 4.00 × 10⁸ |
+>
+> — agreement to 5%, with **nothing left over for a hop-count suppression**. Once phase space is removed the neutron is roughly 900× *faster* than the muon, not slower. The lifetime hierarchy tracks Q⁵, not the number of sheet-hops.
+>
+> This is an internal critique, not an appeal to the Standard Model: §8 Phase 1 already commits the framework to reproducing the m⁵ Sargent factor, and once it does, the neutron lifetime is accounted for and admits no second mechanism.
+>
+> **The productive reframe.** The neutron's lifetime is downstream of its mass gap — Sargent turns 1.293 MeV into ~15 minutes automatically. The question worth chasing is instead **why m_n − m_p is only 0.14% of m_n**. That is a sharp target, because the gap is a near-cancellation of two opposing effects: the d−u mass difference pushes the neutron up by roughly +2.5 MeV while electromagnetic self-energy pushes the proton up by roughly −1 MeV. Reproducing a difference of two large opposing terms is a far stronger test than reproducing a single scale, and the framework has the knob for it — n is p with one u promoted from T(1, 2) to T(1, 1), and the mass formula's δ = m_r − σ_eff·m_t gives δ = 0 and δ = −1 for those two modes at σ_eff ≈ 2.
 
 ### Phase 5 — Predictions
 
