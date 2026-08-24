@@ -10,13 +10,16 @@ rule**. Tested on a minimal **1D-space + 1D-compact (x, c) cylinder**.
 **Status:** Sim built ([scripts/cylinder.py](scripts/cylinder.py)). **M1
 verified** — photons propagate in x, pass through each other, the compact
 sector is decoupled (E(n≥1)=0), and the winding mode is massive/gapped, all as
-KK predicts (first dynamical test of this in forma). **M2 preliminary** — two
-real findings: a c-uniform collision makes *no* compact structure (symmetry
-forbids it — trapping needs a symmetry-breaking seed), and with a seed,
-**spillover traps energy into the compact mode (+0.7%) while lossy clip does
-not** — the predicted mechanism distinction, right sign. Caveats and next
-steps in [work/results-m1-m2.md](work/results-m1-m2.md). Computational-first:
-build the minimal sim and observe, then return to math.
+KK predicts (first dynamical test of this in forma). **M2 negative-so-far, not
+refuted** — an earlier "spillover traps +0.7%" reading was an *artifact* (a
+c-seed on the beam is gapped and never reaches the collision). With a physical
+**vacuum seed** at the collision, saturation (clip *or* spillover) pumps **no**
+persistent compact mode above the linear control, at any tested frequency: the
+n≥1 sector *exists and is stable* (a particle could live there), but clip/
+spillover give **no coherent pump** — the linear scatter re-mixes their
+redirection away each tick. The thesis stays open; the missing piece (a pump)
+is named. Full account in [work/results-m1-m2.md](work/results-m1-m2.md).
+Computational-first: build the minimal sim and observe, then return to math.
 
 ---
 
@@ -194,13 +197,42 @@ grid-quantization at once.**
   compact standing wave; charge = winding; matter/antimatter = winding sign —
   the objects M2 creates.
 
+## Roadmap — what to prove next, ordered by decisiveness
+
+The milestones above (M1–M4) are the *phenomena*; this is the **order to attack
+them in**, by how sharply each can confirm or kill the thesis. It reflects what
+experiment A taught: the compact sector is a *stable place a particle could
+live*, but no *pump* into it has been found yet.
+
+**Tier 1 — make-or-break (do next).**
+- **A. The trap, then the pump.** *(trap)* Directly excite an n≥1 mode at high
+  amplitude and ask whether saturation keeps it **stable and localized** (a
+  particle) — the simpler precursor. *(pump)* Then build a saturation response
+  that couples n=0 → n≥1 **coherently** (storage/temporal release phase-locked
+  to the compact eigenmode, or an explicit node-state mode-coupling term), and
+  re-run the control-differenced head-on collision. Clip/spillover already shown
+  *not* to pump. This is the fork the whole project turns on.
+- **B. Does the bound actually *quantize*?** Inject sub-quantum energy (stays
+  diffuse, no click?) vs a full quantum (snaps coherently?). The foundational
+  "is this substrate even quantum" check; validates the premise behind M2–M4.
+
+**Tier 2 — the prizes (downstream of Tier 1).**
+- **C. Single-quantum instantiation / collapse (M3)** — does energy
+  conservation + the bound enforce one detection at a time?
+- **D. The Born rule (M4)** — is instantiation ∝ |field|²? The standout result;
+  needs C working.
+
+**Tier 3 — enabling / calibration.**
+- **E. Is the S→c transfer fraction robust or geometric?** (The honest version
+  of "0.7% ≈ α?" — sweep the knobs; a fitting artifact wanders, a real coupling
+  converges or is geometric, cf. grid-quantization's (2/3)¹² ≈ 1/130.)
+- **F. Widen the resonance search** — sweep nc and amplitude jointly, and try
+  `--quantize` as the trap, not just ω.
+
 ## Next step
 
-M1 (baseline) is done and verified. The live work is **M2** — see
-[work/results-m1-m2.md](work/results-m1-m2.md) §Next steps: (1) tune amplitudes
-so *only the collision* saturates; (2) use ZPE/quantization for the
-symmetry-breaking instead of a hand-set seed; (3) **measure persistence** —
-does the trapped c-structure survive as a standing wave (a particle) or leak
-back to x, and is there a threshold/resonance in collision energy; (4) build a
-properly **energy-conserving** spillover/storage node so a real S→c *transfer*
-(not clip-loss) can be measured. Then M3/M4 (instantiation, Born rule).
+**A (the trap):** run the `winding` scenario at high amplitude under saturation
+and measure whether the compact mode stays stable and localized — testing the
+*trap* before investing in a *pump*. If the mode is stable, build the coherent
+pump (storage/mode-coupling) and re-run the control-differenced collision. See
+[work/results-m1-m2.md](work/results-m1-m2.md) §Next steps for the detail.

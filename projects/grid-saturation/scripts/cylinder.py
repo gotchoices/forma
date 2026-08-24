@@ -83,12 +83,14 @@ def saturate(out, mode, bound, levels):
 
 def mode_energy(inn):
     """Split node-field energy into n=0 (c-uniform, 'photon') and n>=1
-    (c-varying, 'mass'). U = sum_d in[d]."""
+    (c-varying, 'mass'). U = sum_d in[d]. Also return ac_x, the x-profile of
+    the n>=1 (compact-structure) energy, so it can be localized in x."""
     U = np.sum(inn, axis=0)                     # [Nx,Nc]
     dc = U.mean(axis=1, keepdims=True)          # c-average per x
     e_n0 = float(np.sum(dc ** 2) * U.shape[1])  # DC energy
-    e_ge1 = float(np.sum((U - dc) ** 2))        # AC energy
-    return e_n0, e_ge1, U
+    ac_x = np.sum((U - dc) ** 2, axis=1)        # [Nx] compact-structure energy vs x
+    e_ge1 = float(np.sum(ac_x))                 # AC energy
+    return e_n0, e_ge1, U, ac_x
 
 
 def source(t, t0, w, omega, amp):
@@ -102,7 +104,23 @@ def run(args):
     xL, xR = args.sponge + 30, nx - args.sponge - 30
     w, om, amp = args.width, args.omega, args.amp
 
-    E_edge, E_n0, E_ge1, Ex, Ec, streak, lost = [], [], [], [], [], [], 0.0
+    # Vacuum (ZPE) seed: tiny random field on every edge, everywhere -- this is
+    # the PHYSICAL symmetry-breaking, present at the collision region itself.
+    # (A c-seed injected onto the beam does NOT work: n>=1 modes are gapped and
+    # do not co-propagate with the n=0 photon, so a source seed never arrives.)
+    if args.zpe > 0:
+        rng = np.random.default_rng(args.seed)
+        inn += args.zpe * rng.standard_normal(inn.shape)
+
+    # interior mask: exclude sponge + a 50-node margin at each x-end, so a
+    # TRAPPED (non-propagating) compact mode is counted but propagating photons
+    # (which exit through the sponges) are not once they have left the middle.
+    marg = args.sponge + 50
+    interior = np.zeros(nx, dtype=bool)
+    interior[marg:nx - marg] = True
+
+    E_edge, E_n0, E_ge1, E_ge1_int, Ex, Ec, streak, lost = [], [], [], [], [], [], [], 0.0
+    ac_x_last = np.zeros(nx)
     for t in range(args.steps):
         T = inn.sum(axis=0)
         out = (2.0 / N) * T[None, :, :] - inn         # scatter, all dirs
@@ -122,16 +140,19 @@ def run(args):
             inn[0, xL, :] += s * prof
         inn *= spg                                     # absorb at x-ends
 
-        e0, e1, U = mode_energy(inn)
+        e0, e1, U, ac_x = mode_energy(inn)
         E_edge.append(float(np.sum(inn ** 2)))         # CONSERVED edge energy
         E_n0.append(e0); E_ge1.append(e1)
+        E_ge1_int.append(float(ac_x[interior].sum()))  # TRAPPED compact structure
         Ex.append(float(np.sum(inn[0] ** 2 + inn[1] ** 2)))   # x-directed (photon)
         Ec.append(float(np.sum(inn[2] ** 2 + inn[3] ** 2)))   # c-directed (compact circulation)
         streak.append(U.mean(axis=1).copy())           # c-averaged field vs x
+        ac_x_last = ac_x
 
     return dict(E_edge=np.array(E_edge), E_n0=np.array(E_n0),
-                E_ge1=np.array(E_ge1), Ex=np.array(Ex), Ec=np.array(Ec),
-                streak=np.array(streak), lost=lost)
+                E_ge1=np.array(E_ge1), E_ge1_int=np.array(E_ge1_int),
+                Ex=np.array(Ex), Ec=np.array(Ec), streak=np.array(streak),
+                ac_x_last=ac_x_last, interior=interior, lost=lost)
 
 
 def prop_speed(streak, t_lo, t_hi):
@@ -160,7 +181,11 @@ def main():
     p.add_argument("--t0", type=float, default=70.0)
     p.add_argument("--sponge", type=int, default=40)
     p.add_argument("--cseed", type=float, default=0.0,
-                   help="c-symmetry-breaking seed on the injected photons (0 = perfectly c-uniform)")
+                   help="c-symmetry-breaking seed on the injected photons (0 = perfectly c-uniform). "
+                        "NOTE: ineffective -- n>=1 seed is gapped and stays at the source; use --zpe.")
+    p.add_argument("--zpe", type=float, default=0.0,
+                   help="vacuum-noise amplitude seeded on every edge at t=0 (physical symmetry-breaking, present at the collision)")
+    p.add_argument("--seed", type=int, default=0, help="RNG seed for --zpe (reproducibility)")
     p.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "..", "outputs"))
     p.add_argument("--tag", default="")
     args = p.parse_args()
@@ -191,6 +216,32 @@ def main():
                if grew < 0.005 else
                f"c-STRUCTURE GREW by {grew*100:.3f}% -> energy trapped into a compact mode")
     print(f"  -> {verdict}")
+
+    # --- PERSISTENCE (experiment A) -------------------------------------
+    # Interior compact-structure energy vs time. Propagating photons carry
+    # their cseed structure OUT through the sponges, so whatever interior
+    # E(n>=1) REMAINS after they have left is a TRAPPED (non-propagating)
+    # mode = a candidate particle. A linear (--sat none) control should decay
+    # to ~0; a real trapping run should hold a residual.
+    e1i = r["E_ge1_int"]
+    n = len(e1i)
+    base_i = e1i[:int(0.15 * n)].mean()               # seed riding the photons
+    peak_i = e1i.max()
+    final_i = e1i[int(0.90 * n):].mean()              # after photons exit
+    retain = final_i / (peak_i + 1e-30)
+    print(f"  [persistence] interior E(n>=1): base {base_i:.4g}  peak {peak_i:.4g}  "
+          f"final {final_i:.4g}  (retained {retain*100:.1f}% of peak)")
+    ac = r["ac_x_last"]
+    if ac.sum() > 1e-12:
+        xc = float((np.arange(len(ac)) * ac).sum() / ac.sum())
+        xpk = int(np.argmax(ac))
+        print(f"  [persistence] residual compact structure localized at "
+              f"x~{xpk} (COM {xc:.0f}; domain center {args.nx//2}) "
+              f"-> {'trapped near collision point' if abs(xpk-args.nx//2) < args.nx*0.12 else 'off-center/propagating'}")
+    pverdict = ("TRANSIENT — compact structure decays back to the field (no particle)"
+                if retain < 0.05 else
+                f"PERSISTENT — {retain*100:.0f}% of peak compact structure survives after the photons leave")
+    print(f"  => persistence: {pverdict}")
     Et = Ee
 
     try:
@@ -207,6 +258,7 @@ def main():
         ax[0].set_title("c-averaged field (photon) — streak = propagation")
         ax[1].plot(e0 / peak, label="E(n=0) photon")
         ax[1].plot(e1 / peak, label="E(n>=1) compact")
+        ax[1].plot(r["E_ge1_int"] / peak, label="E(n>=1) interior (trapped)", lw=1.4)
         ax[1].plot(Et / peak, label="E total", lw=0.8, color="k")
         ax[1].set_xlabel("t"); ax[1].set_ylabel("energy / peak")
         ax[1].set_title("photon vs compact-mode energy"); ax[1].legend()
