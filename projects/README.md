@@ -92,3 +92,14 @@ Each project's README should:
   (metric as equation-of-state, needing no such carrier) is the fallback.
   Revival needs a substrate-level result making the ℵ-line size a massless
   field.**
+- [grid-saturation/](grid-saturation/) — Whether the **bounded/saturating**
+  GRID substrate (the same discrete-max bound posed for light-quantization)
+  reproduces, as *dynamics*, the quantum phenomena the linear grid can't:
+  the quantization threshold, **pair production** (energy S ↔ compact),
+  single-quantum **instantiation/collapse**, and the **Born rule** (∝ |field|²
+  from energy density). Tested on a minimal 1D-space + 1D-compact **(x,c)
+  cylinder**. Key insight: the "missing nonlinearity" *is* the saturation.
+  **Status: new; substrate dynamics posed but unsimulated. First step is the
+  linear cylinder baseline (KK decoupling / pass-through, never tested
+  dynamically in forma), then a *conserving* saturation (excess spills S→c)
+  to test pair production and the Born rule.**
