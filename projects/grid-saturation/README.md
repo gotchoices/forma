@@ -7,10 +7,16 @@ discrete-max bound already posed for light-quantization — reproduces, as
 the quantization threshold, **pair production** (energy moving S ↔ compact),
 **single-quantum instantiation** (collapse/measurement), and the **Born
 rule**. Tested on a minimal **1D-space + 1D-compact (x, c) cylinder**.
-**Status:** New. Captures a long design discussion; the substrate dynamics
-are *posed but unsimulated*. First concrete step is the linear cylinder
-baseline. Computational-first: we lack a clean derivation, so we build the
-minimal sim and observe, then return to math ([../CLAUDE.md](../CLAUDE.md)).
+**Status:** Sim built ([scripts/cylinder.py](scripts/cylinder.py)). **M1
+verified** — photons propagate in x, pass through each other, the compact
+sector is decoupled (E(n≥1)=0), and the winding mode is massive/gapped, all as
+KK predicts (first dynamical test of this in forma). **M2 preliminary** — two
+real findings: a c-uniform collision makes *no* compact structure (symmetry
+forbids it — trapping needs a symmetry-breaking seed), and with a seed,
+**spillover traps energy into the compact mode (+0.7%) while lossy clip does
+not** — the predicted mechanism distinction, right sign. Caveats and next
+steps in [work/results-m1-m2.md](work/results-m1-m2.md). Computational-first:
+build the minimal sim and observe, then return to math.
 
 ---
 
@@ -190,7 +196,11 @@ grid-quantization at once.**
 
 ## Next step
 
-Build **M1**: the linear (x, c) cylinder wave sim — a photon propagating in x
-with the compact ring present, and two photons passing through. Confirm clean
-propagation and KK decoupling (never done dynamically in forma), establishing
-the baseline before any saturation is added.
+M1 (baseline) is done and verified. The live work is **M2** — see
+[work/results-m1-m2.md](work/results-m1-m2.md) §Next steps: (1) tune amplitudes
+so *only the collision* saturates; (2) use ZPE/quantization for the
+symmetry-breaking instead of a hand-set seed; (3) **measure persistence** —
+does the trapped c-structure survive as a standing wave (a particle) or leak
+back to x, and is there a threshold/resonance in collision energy; (4) build a
+properly **energy-conserving** spillover/storage node so a real S→c *transfer*
+(not clip-loss) can be measured. Then M3/M4 (instantiation, Born rule).
