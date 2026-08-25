@@ -123,7 +123,16 @@ def run(args):
     ac_x_last = np.zeros(nx)
     for t in range(args.steps):
         T = inn.sum(axis=0)
-        out = (2.0 / N) * T[None, :, :] - inn         # scatter, all dirs
+        if args.focus > 0.0:
+            # FOCUSING nonlinearity (opposite sign to clip): high-intensity nodes
+            # transmit LESS (reflect more), so energy piles up locally -- Kerr-like
+            # self-trapping. beta < 2/N is not exactly orthogonal, so energy is not
+            # perfectly conserved; the conservation-drift diagnostic tracks it.
+            rho = np.sum(inn ** 2, axis=0)            # [Nx,Nc] node intensity
+            beta = (2.0 / N) * np.clip(1.0 - args.focus * rho, 0.0, 1.0)
+            out = beta[None, :, :] * T[None, :, :] - inn
+        else:
+            out = (2.0 / N) * T[None, :, :] - inn     # scatter, all dirs
         out, dl = saturate(out, args.sat, args.bound, args.quantize)
         lost += dl
         inn = propagate(out)
@@ -135,9 +144,11 @@ def run(args):
             inn[0, xL, :] += s * cprof                 # +x photon from left
         if args.scn == "headon":
             inn[1, xR, :] += s * cprof                 # -x photon from right
-        if args.scn == "winding":                      # n=1 test excitation
+        if args.scn == "winding":                      # n=1 compact mode AT REST
+            xcen = nx // 2                             # in the interior
             prof = np.cos(2 * np.pi * np.arange(nc) / nc)
-            inn[0, xL, :] += s * prof
+            inn[0, xcen, :] += s * prof                # equal +x and -x
+            inn[1, xcen, :] += s * prof                # => zero net x-momentum
         inn *= spg                                     # absorb at x-ends
 
         e0, e1, U, ac_x = mode_energy(inn)
@@ -183,6 +194,8 @@ def main():
     p.add_argument("--cseed", type=float, default=0.0,
                    help="c-symmetry-breaking seed on the injected photons (0 = perfectly c-uniform). "
                         "NOTE: ineffective -- n>=1 seed is gapped and stays at the source; use --zpe.")
+    p.add_argument("--focus", type=float, default=0.0,
+                   help="focusing nonlinearity strength: high-intensity nodes reflect more (Kerr self-trapping). Diagnostic: does the RIGHT-sign nonlinearity trap?")
     p.add_argument("--zpe", type=float, default=0.0,
                    help="vacuum-noise amplitude seeded on every edge at t=0 (physical symmetry-breaking, present at the collision)")
     p.add_argument("--seed", type=int, default=0, help="RNG seed for --zpe (reproducibility)")

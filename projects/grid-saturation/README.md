@@ -11,15 +11,24 @@ rule**. Tested on a minimal **1D-space + 1D-compact (x, c) cylinder**.
 verified** — photons propagate in x, pass through each other, the compact
 sector is decoupled (E(n≥1)=0), and the winding mode is massive/gapped, all as
 KK predicts (first dynamical test of this in forma). **M2 negative-so-far, not
-refuted** — an earlier "spillover traps +0.7%" reading was an *artifact* (a
-c-seed on the beam is gapped and never reaches the collision). With a physical
-**vacuum seed** at the collision, saturation (clip *or* spillover) pumps **no**
-persistent compact mode above the linear control, at any tested frequency: the
-n≥1 sector *exists and is stable* (a particle could live there), but clip/
-spillover give **no coherent pump** — the linear scatter re-mixes their
-redirection away each tick. The thesis stays open; the missing piece (a pump)
-is named. Full account in [work/results-m1-m2.md](work/results-m1-m2.md).
-Computational-first: build the minimal sim and observe, then return to math.
+refuted, and it redirected the project.** Two results: (1) with a physical
+**vacuum seed**, saturation (clip *or* spillover) pumps **no** persistent
+compact mode above the linear control at any frequency (an earlier "+0.7%
+signal" was a source-seed artifact — the seed is gapped and never reaches the
+collision); (2) the **trap test** (excite a compact mode directly, at rest)
+shows a saturating value-bound is a **defocusing** nonlinearity — it flattens
+peaks, so retention *falls* with saturation depth, the opposite of a soliton.
+**So the value-bound cannot bind a particle by self-focusing.** Two candidate
+binding mechanisms remain, both untested: **(i) discreteness** — an indivisible
+'1' can't leak fractionally, so a quantum is trapped until it escapes whole
+(Peierls–Nabarro pinning; most GRID-native, needs no new field); and **(ii)
+topology** — a particle as a **phase winding** of the ℵ-line (*charge =
+winding*). A crude `--quantize` probe of (i) was inconclusive (it freezes the
+whole lattice — a photon stops propagating too), showing the real construction
+needed: an **integer, energy-conserving scatter** where photons still propagate
+but fractional leakage is forbidden. Full account in
+[work/results-m1-m2.md](work/results-m1-m2.md). Computational-first: build the
+minimal sim and observe, then return to math.
 
 ---
 
@@ -204,17 +213,22 @@ them in**, by how sharply each can confirm or kill the thesis. It reflects what
 experiment A taught: the compact sector is a *stable place a particle could
 live*, but no *pump* into it has been found yet.
 
-**Tier 1 — make-or-break (do next).**
-- **A. The trap, then the pump.** *(trap)* Directly excite an n≥1 mode at high
-  amplitude and ask whether saturation keeps it **stable and localized** (a
-  particle) — the simpler precursor. *(pump)* Then build a saturation response
-  that couples n=0 → n≥1 **coherently** (storage/temporal release phase-locked
-  to the compact eigenmode, or an explicit node-state mode-coupling term), and
-  re-run the control-differenced head-on collision. Clip/spillover already shown
-  *not* to pump. This is the fork the whole project turns on.
+**Tier 1 — make-or-break (do next).** *(Trap test done: a value-bound is
+defocusing, so it cannot self-focus a soliton — [work/results-m1-m2.md](work/results-m1-m2.md)
+§M2·A. Two binding candidates remain; test the GRID-native one first.)*
+- **A. Discreteness as containment (the integer-conserving scatter).** Build a
+  **whole-unit, energy-conserving** discrete scatter (lattice-gas-style, *not*
+  `(2/N)J−I` + rounding) and run the **selective-containment control**: does a
+  **photon still propagate** while a **compact mode stays trapped**? If yes,
+  discreteness binds the particle *and* unifies with grid-quantization. (Crude
+  `--quantize` was inconclusive — it freezes everything; see §M2·B.) **Fallback
+  if it fails:** give the compact dimension a **phase** (U(1) ℵ-line) and test a
+  **topologically stable unit winding** (§M2·A route).
 - **B. Does the bound actually *quantize*?** Inject sub-quantum energy (stays
   diffuse, no click?) vs a full quantum (snaps coherently?). The foundational
   "is this substrate even quantum" check; validates the premise behind M2–M4.
+  Best done *with* the conserving discrete scatter from A (the crude round is
+  non-conserving).
 
 **Tier 2 — the prizes (downstream of Tier 1).**
 - **C. Single-quantum instantiation / collapse (M3)** — does energy
@@ -231,8 +245,20 @@ live*, but no *pump* into it has been found yet.
 
 ## Next step
 
-**A (the trap):** run the `winding` scenario at high amplitude under saturation
-and measure whether the compact mode stays stable and localized — testing the
-*trap* before investing in a *pump*. If the mode is stable, build the coherent
-pump (storage/mode-coupling) and re-run the control-differenced collision. See
-[work/results-m1-m2.md](work/results-m1-m2.md) §Next steps for the detail.
+Rather than guess among the three binding candidates (instantiation split,
+lattice-gas, topological winding), a **gate** was set — criteria any mechanism
+must satisfy — and the candidates scored against it:
+[work/binding-evaluation.md](work/binding-evaluation.md). The gate's verdict:
+the options are **complementary, not rivals** — **topological winding (III)
+binds** the persistent, interfering, charged, massive particle, and the
+**instantiation split (I) supplies whole-quantum detection** on top; together
+they cover the whole gate. The **lattice-gas (II) is dominated** (it fails
+Maxwell + single-particle interference) and is set aside as a fallback.
+
+The whole I+III path rests on **one unverified, GRID-specific assumption**: that
+a **topological winding is stable on the impedance-scatter lattice**. So the next
+step is the *minimum* that tests it — a **minimal 2-component (phase) field** on
+the current cylinder, then the **winding-stability test** (a unit phase-winding:
+does it persist and stay localized, while the n=0 photon still propagates and
+interferes?). If stable → build the instantiation overlay next; if it disperses →
+II returns as fallback. The gate, not a guess, decides.
