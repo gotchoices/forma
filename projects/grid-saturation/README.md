@@ -27,8 +27,21 @@ winding*). A crude `--quantize` probe of (i) was inconclusive (it freezes the
 whole lattice — a photon stops propagating too), showing the real construction
 needed: an **integer, energy-conserving scatter** where photons still propagate
 but fractional leakage is forbidden. Full account in
-[work/results-m1-m2.md](work/results-m1-m2.md). Computational-first: build the
-minimal sim and observe, then return to math.
+[work/results-m1-m2.md](work/results-m1-m2.md).
+
+**LATEST — containment achieved (the key result).** After seven mechanisms failed
+to bind a particle on the (x,c) cylinder, and a repo-wide survey confirmed *no*
+forma study had ever demonstrated dynamical containment (1D, 2D torus, 2D sheet
+all disperse), the common obstruction was identified: a **missing focusing
+(attractive) nonlinearity**. Supplying the standard recipe — **focusing +
+saturating** — in a clean complex Klein–Gordon sim
+([scripts/soliton_test.py](scripts/soliton_test.py)) produces a **stable, mobile,
+charge-conserving Q-ball**: the first dynamical demonstration that a particle can
+be a **contained wave** (realist, not Copenhagen; Born-derivable). See
+[work/soliton-result.md](work/soliton-result.md). **The whole binding question now
+sharpens to one crux: can the GRID substrate produce a *focusing* self-interaction?
+Everything it has been shown to give so far is defocusing/repulsive.**
+Computational-first: build the minimal sim and observe, then return to math.
 
 ---
 
