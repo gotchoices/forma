@@ -255,10 +255,15 @@ binds** the persistent, interfering, charged, massive particle, and the
 they cover the whole gate. The **lattice-gas (II) is dominated** (it fails
 Maxwell + single-particle interference) and is set aside as a fallback.
 
-The whole I+III path rests on **one unverified, GRID-specific assumption**: that
-a **topological winding is stable on the impedance-scatter lattice**. So the next
-step is the *minimum* that tests it — a **minimal 2-component (phase) field** on
-the current cylinder, then the **winding-stability test** (a unit phase-winding:
-does it persist and stay localized, while the n=0 photon still propagates and
-interferes?). If stable → build the instantiation overlay next; if it disperses →
-II returns as fallback. The gate, not a guess, decides.
+The I+III path rested on **one unverified, GRID-specific assumption** — that a
+**topological winding is stable on the impedance-scatter lattice** — so a minimal
+**2-component (phase) field** ([scripts/phase_cylinder.py](scripts/phase_cylinder.py))
+was built and the winding tested
+([work/phase-winding-results.md](work/phase-winding-results.md)). Outcome: the
+winding **is** topologically protected and localized, **but immobile** — a
+flat-band state (speed 0 at every momentum kick), so **not yet a genuine
+particle**. Likely cause: the **1D-ring compact dimension is too simple** (a flat
+massive band = infinite mass). **Next step: a 2D-toroidal Ma-sheet compact
+dimension** — does a winding there acquire a finite mass and *move* (a real
+particle) while photons still propagate and the winding stays protected? If not,
+the lattice-gas (II) returns as fallback. The gate, not a guess, decides.

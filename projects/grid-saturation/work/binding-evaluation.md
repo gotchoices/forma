@@ -88,5 +88,9 @@ fallback for G3. Either way the gate, not a guess, decides.
 ## Status
 
 Gate defined; first-pass scoring done (analysis). **II set aside (dominated).**
-Next: the minimal phase-field **winding-stability** test — the cheap,
-GRID-specific make-or-break for the I+III path.
+Phase-field winding test **run** ([phase-winding-results.md](phase-winding-results.md)):
+III's winding is **topologically protected and localized** but **immobile** (a
+flat-band state — speed 0 at every momentum) on the **1D-ring** cylinder, so it
+is **not yet a genuine particle**. Diagnosis: the 1D ring is too simple (a flat
+massive band = infinite mass). **Next: the 2D-torus compact dimension** — does a
+winding there acquire finite mass and *move*? If not, II returns as fallback.
