@@ -77,26 +77,52 @@ disperses.
     neutral contained-wave particle with rest energy = mass.
   One compact-phase potential ⇒ charge (kink) *and* mass (breather), both mobile.
 
+## Discrete-lattice + dimensionality test ([`../scripts/discrete_sg2d.py`](../scripts/discrete_sg2d.py))
+
+Ran the breather on a genuine **discrete (x,c) lattice** — coupling = the discrete
+Laplacian the impedance scatter gives, on-site term = the compact-phase cosine:
+
+| run | result |
+|---|---|
+| c-uniform breather, compact c, at rest | **STABLE** (x-width fixed ~6, energy drift 0.1%) — survives discretization |
+| c-uniform breather, boosted (kx=0.2) | **STABLE & MOBILE** (speed 0.10) — survives the **Peierls–Nabarro** barrier |
+| c-**localized** lump (c treated as 2nd *extended* dim, nc=32) | **DISPERSES** (width ×3.2, spreads in c) — the **Derrick** instability |
+
+So on the lattice: **(x, compact-c) hosts a stable, mobile breather; a genuinely
+2-extended-dimensional lump disperses.** The dimensionality advisory holds — the
+compact phase, not extra extended dimensions, is what's needed; the ℵ-winding
+(Q-ball charge) is the route to stability in higher *extended* dimensions.
+
 ## What is proven vs. still open
 
 - **Proven (sign question):** a compact-phase field is focusing+saturating and
-  supports stable, mobile solitons — so GRID *can* be focusing. The seven prior
-  negatives were the wrong interpretation of the bound (amplitude-wall), not a
-  property of GRID.
-- **Still open (full GRID reduction):** show that the *actual impedance-scatter*
-  with compact-phase edges reduces, in the continuum limit, to the **discrete
-  sine-Gordon** with the right coefficients — i.e. that the scatter's coupling
-  plays φ_xx and the ℵ-line plays the cosine, quantitatively. That is the next
-  derivation. Discreteness will add a Peierls–Nabarro barrier (a mild pinning);
-  whether that helps (extra stability) or hurts (impedes mobility) is to be
-  measured on the discrete lattice.
+  supports stable, mobile solitons **on the discrete lattice** — so GRID *can* be
+  focusing. The seven prior negatives were the wrong interpretation of the bound
+  (amplitude-wall), not a property of GRID.
+- **Proven (dimensionality):** (x, compact-c, c-uniform) is the right minimal
+  setting; 2 extended dimensions break the real-scalar breather (Derrick),
+  requiring the winding-charge Q-ball instead.
+- **Still open — the honest gap in the reduction:** the test used a **node-field
+  discrete sine-Gordon** (φ at nodes, Laplacian coupling + a *hand-added* cosine).
+  The Laplacian coupling *is* what the impedance scatter reduces to, so that half
+  is GRID-faithful. But the **on-site cosine was posited** as the natural
+  compact-phase potential — its origin from the *literal directed-edge impedance
+  scatter* (what pins a preferred phase / supplies the gap) is **not yet derived**.
+  A pure XY/rotor coupling gives a *massless* phase (no cosine, no breather); the
+  cosine needs a preferred-phase / mass term whose GRID source (the compact
+  c-dimension? the vacuum?) is the remaining derivation.
 
 ## Next
 
-1. **Discrete-lattice sine-Gordon** on a genuine GRID phase-scatter: does the
-   breather survive discreteness (Peierls–Nabarro) and stay mobile?
+1. **Close the reduction gap:** derive the on-site cosine from the *literal
+   directed-edge impedance scatter* with compact-phase edges — what supplies the
+   preferred phase / mass (candidates: the compact c-dimension via KK; a vacuum
+   phase). This is the remaining step to make "GRID is focusing" a full
+   first-principles result rather than coupling(derived)+potential(posited).
 2. **Kink = winding = charge:** connect the sine-Gordon kink to mechanism III's
    ℵ-line winding and metric-charge; a kink–antikink pair = the breather = a
    neutral particle; pair creation = kink/antikink nucleation.
-3. **Born from the breather:** detection ∝ energy density on a genuinely
+3. **Q-ball for higher-D:** the winding-charge-stabilized version for 2–3 extended
+   dimensions (evading Derrick), toward real 3D-space particles.
+4. **Born from the breather:** detection ∝ energy density on a genuinely
    localized, mobile, realist object.
