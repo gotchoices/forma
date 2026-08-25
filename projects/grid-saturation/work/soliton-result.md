@@ -1,5 +1,14 @@
 # Containment achieved — a stable, mobile Q-ball from focusing+saturating
 
+> **Provenance / honest status.** The Q-ball is **Coleman's** (1985) — textbook
+> non-topological soliton physics; **no new physics was derived here**, and this
+> sim is a **continuum PDE with a *posited* cubic-quintic potential — it bypasses
+> GRID's scatter/lattice entirely.** Its value was diagnostic: it isolated that
+> forma's universal gap is a *focusing* nonlinearity. The GRID-native follow-up —
+> deriving that GRID's compact phase (ℵ-line) is *intrinsically* focusing — is in
+> [focusing-from-phase.md](focusing-from-phase.md), which supersedes this as the
+> load-bearing result.
+
 **The first dynamical demonstration of particle containment in forma.** Sim:
 [`../scripts/soliton_test.py`](../scripts/soliton_test.py). Figure:
 [`../outputs/soliton_qball_rest.png`](../outputs/).

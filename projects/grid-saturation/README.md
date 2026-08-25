@@ -38,9 +38,22 @@ saturating** — in a clean complex Klein–Gordon sim
 ([scripts/soliton_test.py](scripts/soliton_test.py)) produces a **stable, mobile,
 charge-conserving Q-ball**: the first dynamical demonstration that a particle can
 be a **contained wave** (realist, not Copenhagen; Born-derivable). See
-[work/soliton-result.md](work/soliton-result.md). **The whole binding question now
-sharpens to one crux: can the GRID substrate produce a *focusing* self-interaction?
-Everything it has been shown to give so far is defocusing/repulsive.**
+[work/soliton-result.md](work/soliton-result.md). That posed one crux — *can GRID
+produce a focusing self-interaction?*
+
+**CRUX ANSWERED — yes, and it is GRID-native.** The bound had been modeled as a
+clip on a linear amplitude (a wall ⇒ defocusing). But GRID's bound is the
+**ℵ-line, a compact *phase***, whose natural potential is periodic:
+U = m²(1−cos φ) = m²(φ²/2 − φ⁴/24 + φ⁶/720 − …). The quartic is **negative
+(focusing)**, the sextic **positive (saturating)** — the soliton recipe, from
+**periodicity alone**. This is **sine-Gordon**, and its **breather** (localized,
+oscillating, boostable) is a contained-wave particle. Confirmed numerically
+([scripts/sine_gordon.py](scripts/sine_gordon.py)): a **stable, mobile,
+exactly-energy-conserving breather** (linear control disperses). Its **kink** =
+a phase **winding** = charge (mechanism III), unifying charge (kink) and mass
+(breather) in one compact-phase potential. Derivation in
+[work/focusing-from-phase.md](work/focusing-from-phase.md). Open: reduce the
+actual impedance-scatter with phase edges to the discrete sine-Gordon.
 Computational-first: build the minimal sim and observe, then return to math.
 
 ---
