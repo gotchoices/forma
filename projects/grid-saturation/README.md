@@ -89,6 +89,11 @@ anticorrelation**. Detail: [thesis-wave-until-interaction](work/thesis-wave-unti
 - **Binding.** Sine-Gordon breather is stable, mobile, energy-conserving on the
   discrete (x,c) lattice; survives Peierls–Nabarro; a c-localized (2-extended-D)
   lump disperses (Derrick), so **(x, compact-c) is the right dimensionality**.
+- **Relativistic matter waves + de Broglie.** GRID's exact dispersion (eigenvalues
+  of the scatter+propagate operator) is **massless for the photon** and
+  **relativistic (Ω²=c²k²+ω₀²) for the massive KK modes**, same c≈0.70 across
+  sectors, to <2% for kx<0.4π; **de Broglie v_p·v_g=c²** holds (1–6%); and the
+  **KK mass tower** ω₀(n)=n·(2π/nc)·c falls out. [work/de-broglie-dispersion-result.md](work/de-broglie-dispersion-result.md).
 
 **Open (the frontier):**
 - **The reduction gap.** The scatter gives the *coupling* term; the on-site
@@ -102,10 +107,11 @@ anticorrelation**. Detail: [thesis-wave-until-interaction](work/thesis-wave-unti
 
 ## Concrete next work (ranked by substance-per-effort)
 
-1. **Matter-wave dispersion / de Broglie measurement** on the (x,c) lattice —
-   excite a compact mode, boost it, measure ω(k) and the open-dimension
-   wavelength; confirm λ=h/p and phase harmony, quantify lattice corrections.
-   *Most tractable, most foundational; revives [metric-mass](../metric-mass/).*
+1. ~~Matter-wave dispersion / de Broglie measurement~~ **DONE** — GRID gives
+   relativistic matter waves, de Broglie v_p·v_g=c², and the KK mass tower
+   ω₀(n)=n·(2π/nc)·c, to <2% for kx<0.4π.
+   [work/de-broglie-dispersion-result.md](work/de-broglie-dispersion-result.md).
+   *Follow-on: sweep nc to hand the mass tower to [metric-mass](../metric-mass/).*
 2. **Close the sine-Gordon reduction** — derive the on-site cosine from the
    directed-edge scatter (what pins the phase / opens the gap).
 3. **The Born / single-detection test** — two spread packets interact on the

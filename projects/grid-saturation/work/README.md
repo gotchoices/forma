@@ -47,8 +47,15 @@ hypotheses** (what a particle *is* / how measurement works). Read in arc order:
    shared foundation: the compact **Compton clock** (mass) phase-locked to the
    open **de Broglie wave** gives **λ = h/p**, GRID-native. Plus the spectrum
    duality (open→continuous→sinc photon; compact→discrete→periodic particle). Not
-   a rival hypothesis — an ingredient all of them need. **Its lattice test is the
-   top concrete next step.**
+   a rival hypothesis — an ingredient all of them need.
+
+8. **[de-broglie-dispersion-result.md](de-broglie-dispersion-result.md)** — the
+   foundation, *measured*. GRID's exact dispersion (eigenvalues of the
+   scatter+propagate operator, confirmed time-domain) is **massless photon** +
+   **relativistic KK modes** (Ω²=c²k²+ω₀², same c≈0.70), **de Broglie v_p·v_g=c²**,
+   and the **KK mass tower** ω₀(n)=n·(2π/nc)·c — to <2% for kx<0.4π
+   (Lorentz-breaking quantified beyond). Revives metric-mass with a measured
+   spectrum.
 
 ## The working hypotheses (what a particle is / how measurement works)
 
