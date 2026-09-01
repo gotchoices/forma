@@ -121,9 +121,12 @@ windings/cycles/resonances the manifold supports and where a mode lives on it.
 Two kinds, diagnosing different structure:
 - **Confined parts** (quarks, gluons): part-waves that resonate only in
   combination (color singlets) — probe the *binding* structure.
-- **Excited / heavier modes** (muon, tau, W/Z, resonances): *higher modes* of the
-  same manifold (a muon ≈ a higher harmonic, not a piece of an electron) — probe
-  the *mode spectrum / generations*.
+- **Excited / heavier modes** (muon, tau, W/Z, resonances): not *parts* of a
+  stable particle. Their manifold assignment is **open** — e.g. muon/tau as
+  *higher harmonics on the electron sheet* (model-F), or as *fundamental modes on
+  separate muon/tau sheets* (ma-domain), among other configurations (3 sheets;
+  6 sheets across 4 dimensions; …). Either way they probe the *mode spectrum /
+  generations* — which is exactly what fixes the configuration.
 
 **This strengthens the ladder rather than threatening it:** the zoo's quantum
 numbers *are* the ladder's observables — charge = winding (L3), mass = size (L2),
