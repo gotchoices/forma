@@ -1,5 +1,12 @@
 # grid-saturation / work — the reasoning, indexed
 
+> **Terminology (read first):** "compact dimension" is generic — a **Ma sheet**
+> for a massive particle (size sets the mass), the **ℵ-line** for the Planck/photon
+> level. Older docs say "ℵ-line" where they mean "the relevant compact dimension";
+> the mechanism is scale-blind. See **[promotion-hierarchy.md](promotion-hierarchy.md)**
+> for the convention and the mass→charge "promotion ladder" (which our results
+> support).
+
 This folder is the full record of the project's thinking. It falls into four
 strands: **empirical results** (what the sims showed), the **evaluation method**
 (how we chose among options), the **foundation** (de Broglie), and the **working

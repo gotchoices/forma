@@ -12,8 +12,14 @@ wall. A wall makes oscillation frequency *rise* with amplitude (particle-in-a-bo
 ⇒ **defocusing**. That is why clip, spillover, quantize all failed to bind, and it
 is a *correct* statement about that interpretation.
 
-But GRID's bounded quantity is the **ℵ-line: a compact PHASE**, not a clipped
-linear amplitude. And that flips the sign.
+But GRID's bounded quantity is a **compact PHASE**, not a clipped linear
+amplitude. And that flips the sign.
+
+*(Terminology: the mechanism below is scale-blind — it needs only "a compact
+phase." For a **massive particle** that phase is a **Ma sheet** (its size sets the
+mass, ω₀∝1/R); the **ℵ-line** is the Planck-scale compact phase, relevant to the
+photon's substrate/gauge, not to ordinary mass. "ℵ-line" below should be read as
+"the relevant compact dimension." See [promotion-hierarchy.md](promotion-hierarchy.md).)*
 
 ## Derivation
 

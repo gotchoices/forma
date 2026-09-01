@@ -28,13 +28,16 @@ one — but not through the saturation bound.** The arc:
 2. **The missing ingredient is a *focusing* nonlinearity.** Supplying the
    standard focusing+saturating recipe binds a stable, mobile particle (a
    Q-ball) — but that recipe was borrowed, non-GRID.
-3. **GRID supplies it natively — through the compact *phase*.** The ℵ-line is a
-   compact phase, and a phase's potential is periodic: **U = m²(1 − cos φ)**,
+3. **GRID supplies it natively — through the compact *phase*.** A compact
+   dimension is a phase, and a phase's potential is periodic: **U = m²(1 − cos φ)**,
    whose expansion is **focusing (−φ⁴) + saturating (+φ⁶) for free**. This is
    **sine-Gordon**; its **breather** is a stable, mobile, energy-conserving
    particle (confirmed on the discrete (x,c) lattice), and its **kink** is a
    phase **winding = charge**. One compact-phase potential gives **mass
-   (breather) and charge (kink)**.
+   (breather) and charge (kink)**. *(The mechanism is scale-blind: the relevant
+   compact dimension is a **Ma sheet** for a massive particle — its size sets the
+   mass, ω₀∝1/R; the **ℵ-line** is the Planck-scale one, relevant to the photon's
+   substrate/gauge, not to ordinary mass. See [work/promotion-hierarchy.md](work/promotion-hierarchy.md).)*
 4. **The de Broglie relation is GRID-native.** The compact **Compton clock**
    (mass) stays in **phase harmony** with the open-dimension wave, giving
    **λ = h/p** from the geometry.

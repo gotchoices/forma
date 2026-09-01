@@ -247,4 +247,6 @@ The wrap-promotion ladder presented here is the structural skeleton of the subst
 
 The L4 thread (§6) is left open. Resolving it requires data and identification work outside this chapter's scope.
 
+**Dynamical confirmation (cross-reference).** The L1→L2→L3 structure this chapter derives from band topology has since been checked *dynamically* on the Scattering substrate in [grid-saturation](../grid-saturation/): the exact dispersion (eigenvalues of the scatter+propagate operator) gives a **massless L1 photon** and **relativistic L2 massive modes** (ω² = c²k² + ω₀²) with the KK mass tower ω₀(n) ∝ 1/R and de Broglie phase harmony, and the **L2 mass (breather) / L3 charge (winding-kink)** both fall out of the compact-*phase* potential U = m²(1−cos φ). The stability side of the ladder (a conserved winding protects a mode; unprotected modes radiate = "ephemeral") is shown by the Q-ball-vs-oscillon contrast. See [grid-saturation/work/promotion-hierarchy.md](../grid-saturation/work/promotion-hierarchy.md).
+
 The chapter sequence is summarized in the project [README](README.md).
