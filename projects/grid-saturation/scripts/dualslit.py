@@ -93,6 +93,8 @@ def main():
     p.add_argument("--sep", type=int, default=60, help="slit separation (centre-to-centre)")
     p.add_argument("--omega", type=float, default=0.5)
     p.add_argument("--amp", type=float, default=0.3)
+    p.add_argument("--clicks", type=int, default=0, help="sample N single-lump detections from |field|^2")
+    p.add_argument("--seed", type=int, default=1)
     p.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "..", "outputs"))
     p.add_argument("--tag", default="")
     args = p.parse_args()
@@ -101,6 +103,22 @@ def main():
     y = np.arange(args.ny)
     interior = (y > 30) & (y < args.ny - 30)
     b = bd.copy(); b[~interior] = 0
+
+    # single-lump detections: each detection reveals ONE hidden-variable centre,
+    # distributed P(y) ~ |field(y)|^2 (whole-quantum, per grid-quantization; NO
+    # collapse invoked -- the lump was localized all along). Do they rebuild fringes?
+    clicks_hist = None
+    if args.clicks > 0:
+        rng = np.random.default_rng(args.seed)
+        prob = np.clip(b, 0, None); prob = prob / prob.sum()
+        draws = rng.choice(args.ny, size=args.clicks, p=prob)
+        clicks_hist = draws
+        edges = np.arange(0, args.ny + 1, 4)
+        for nn in (30, 300, args.clicks):
+            if nn <= args.clicks:
+                h, _ = np.histogram(draws[:nn], bins=edges)
+                corr = np.corrcoef(h, np.histogram(y, bins=edges, weights=b)[0])[0, 1]
+                print(f"  {nn:>5} single lumps: histogram vs |field|^2 corr = {corr:+.3f}")
     # count fringe maxima (interference signature)
     from numpy import diff, sign
     bb = b / (b.max() + 1e-30)
@@ -125,9 +143,16 @@ def main():
         ax[0].axvline(args.xdet, color="k", ls=":", lw=0.8)
         ax[0].set_title(f"field snapshot, {args.slits} slit(s) (barrier blank)")
         ax[0].set_xlabel("x"); ax[0].set_ylabel("y")
-        ax[1].plot(bd, y)
-        ax[1].set_xlabel("accumulated |field|^2"); ax[1].set_ylabel("y (detector)")
-        ax[1].set_title("backdrop pattern")
+        if clicks_hist is not None:
+            ax[1].hist(clicks_hist, bins=np.arange(0, args.ny + 1, 4),
+                       orientation="horizontal", color="0.6", label=f"{args.clicks} single lumps")
+            ax[1].plot(bd / bd.max() * np.histogram(clicks_hist, bins=np.arange(0, args.ny + 1, 4))[0].max(),
+                       y, "r", lw=1.2, label="|field|^2")
+            ax[1].legend(fontsize=8)
+        else:
+            ax[1].plot(bd, y)
+        ax[1].set_xlabel("counts / |field|^2"); ax[1].set_ylabel("y (detector)")
+        ax[1].set_title("backdrop: single lumps rebuild the fringes")
         fig.tight_layout()
         tag = args.tag or f"{args.slits}slit"
         png = os.path.join(outdir, f"dualslit_{tag}.png")

@@ -54,7 +54,42 @@ ingredients, and one honors an existing result:
    many trials, **rebuild the fringe pattern**. That is the M4 Born test, now on a
    genuinely interfering 2-slit field.
 
-The open, hard question (the measurement problem): what in GRID selects **one**
-click and forbids the rest while conserving the single quantum — and does it need
-the compact **fiber** as the non-local channel (the [Bell/collapse thread](thesis-wave-until-interaction.md))?
-This step is where grid-saturation's original thesis (M3/M4) finally gets tested.
+## Step 2a done — single lumps rebuild the fringes (no collapse invoked)
+
+`dualslit.py --clicks N` samples single-lump detections from the two-slit
+|field|² pattern (each a whole quantum, per grid-quantization). Correlation of the
+lump histogram with |field|²:
+
+| single lumps | corr with |field|² |
+|---|---|
+| 30 | +0.44 |
+| 300 | +0.73 |
+| 3000 | **+0.97** |
+
+Single lumps **rebuild the two-slit fringes** — the Tonomura single-particle
+build-up, on the GRID lab. **Reframed (Kyle):** each lump is a *revealed
+hidden-variable centre* (the breather's focal point), distributed ∝ |field|² —
+**not** a collapse. The wave (de Broglie, through both slits) sets the pattern; the
+lump was localized all along; detection reveals it. "Many nodes transmit, one lump
+detected" — shown.
+
+## What 2a settles, and the two things still owed
+
+- **Settles (consistency):** whole-quantum lumps distributed ∝ |field|² reproduce
+  the two-slit interference. Collapse is *not needed* if the lump is a real
+  hidden-variable centre (double-solution / de Broglie pilot). The moving
+  breather's **de Broglie wave** (phase harmony, λ = h/p) is the extended pilot
+  that passes both slits; its wavelength sets the measured fringe spacing.
+- **Owed 1 — Born from a mechanism.** 2a *assumes* P(centre) ∝ |field|² and
+  *samples* it. Deriving that distribution (quantum equilibrium) and the
+  **guidance dynamics** (does the lump actually get steered to those positions by
+  its own de Broglie wave? — the untested bulk⟷pilot coupling) is the real work.
+- **Owed 2 — Bell.** The hidden variable (centre/phase) evades Bell only if it is
+  **non-locally correlated through the compact dimension** — and that correlation
+  must reproduce the *exact* Bell violations, with no signaling. This is the
+  sharpened core (collapse dissolved → Bell-correct non-locality remains). The
+  compact **fiber** / phase harmony is the candidate carrier
+  ([thesis-wave-until-interaction.md](thesis-wave-until-interaction.md)).
+
+So Act 2's score: **collapse — dissolved** (real lump = hidden variable);
+**Born-from-mechanism and Bell-correct non-locality — the frontier.**
