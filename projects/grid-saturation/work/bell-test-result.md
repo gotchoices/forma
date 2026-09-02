@@ -41,9 +41,13 @@ constraint yields exactly cos(a−b), no more (signaling) and no less (classical
 ## Net
 
 - **Collapse:** dissolved (real lump = hidden variable).
+- **Single-particle Born:** done as consistency — energy density ∝ |ψ|² + whole-
+  quantum absorption + linear detection ([born-single-particle.md](born-single-particle.md)).
+  It needs *no* non-locality.
 - **Bell structure:** confirmed viable — a non-local, no-signaling fiber reaches
   QM exactly; a local one cannot. The model is in the right class.
-- **Owed:** the *dynamical* derivation of cos(a−b) from the fiber constraint (with
-  free settings, no superdeterminism). This is where forma's Bell claim will
-  ultimately be won or lost — a substantial construction (an entangled-pair fiber
-  model with an actual self-consistency equation), plausibly its own project.
+- **Owed (the one hard core):** the derivation of cos(a−b) from a concrete non-local
+  constraint (free settings, no superdeterminism). We need only **one feasible
+  placeholder** (e.g. closed/periodic S — global self-consistency via periodic BCs),
+  not a single asserted theory. Where forma's *entangled*-Bell claim is won or lost;
+  plausibly its own project.

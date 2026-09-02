@@ -9,10 +9,13 @@ Refined measurement model (Kyle), and the honest test it sets up. Builds on the
 1. **Which fringe** — the *distribution* P(y) ∝ |field|², set by interference /
    the de Broglie wave (one-vs-two slits). Wave-level. **Shown** ([dual-slit-result](dual-slit-result.md)).
 2. **Where in the Compton zone** — the *specific draw* from that distribution.
-   Born calls it irreducibly random. The model: it is **determined by the
-   breather's phase** (a hidden variable); its randomness is **epistemic**
-   (ignorance of the phase), its equilibrium distribution is |field|². This is the
-   Bohmian resolution — Born as ignorance, not ontic chance.
+   For a **single particle this needs no steering**: whole-quantum absorption
+   (grid-quantization) + energy density ∝ |field|² + linear detection ⇒
+   P(click) ∝ |field|² (the semiclassical "detection ∝ intensity") —
+   [born-single-particle.md](born-single-particle.md), **done as consistency**.
+   Optionally, one *may* read the specific draw as set by the breather's phase
+   (a hidden variable, epistemic randomness — the Bohmian deterministic layer),
+   but the Born *statistics* do not require it.
 
 ## Measurement = interference with the observer
 
@@ -37,11 +40,20 @@ predetermined value. Free-settings ⇒ Bohm-like non-locality (respectable);
 settings-in-the-fiber ⇒ superdeterminism (evades Bell by denying free choice —
 rejected).
 
-## The make-or-break test
+## The make-or-break test (entangled Born only)
 
-Does the fiber give the **exact QM correlation** (Tsirelson bound, CHSH = 2√2;
-E(a,b) = cos(a−b)), **and** stay no-signaling? Structure right; **numbers owed**.
-See [bell-test-result.md](bell-test-result.md) / [`../scripts/bell_test.py`](../scripts/bell_test.py).
-The honest question the toy answers: is a *shared local fiber phase* enough (no —
-Bell), and *is* a non-local fiber able to reach QM with no signaling (the
-structure test)?
+Single-particle Born is settled (above). The **one hard core** is the
+**entangled/multi-particle** correlation. Does a non-local hidden variable give the
+**exact QM correlation** (Tsirelson, CHSH = 2√2; E = cos(a−b)) with no signaling?
+The toy ([bell-test-result.md](bell-test-result.md)) confirms the *structure*: a
+local fiber phase caps at 2; a non-local one reaches QM, no signaling.
+
+**Feasibility, not a single asserted theory.** We do **not** have to commit to one
+mechanism for the non-locality. It suffices to exhibit **one feasible placeholder**
+that a GRID-compatible geometry allows — e.g. **S itself closed/periodic** (which
+*need not be 3D and could be smaller than it looks* — AdS/CFT is cited only to show
+such geometries are conceivable, not adopted). On a closed manifold every wave must
+satisfy periodic boundary conditions, i.e. be **globally self-consistent** — a
+genuine non-local constraint, and a concrete origin for the fiber + entanglement.
+Other placeholders may serve equally; the claim is *feasibility*. Deriving the
+*exact* cos(a−b) from a specific closed-geometry constraint is the open core.

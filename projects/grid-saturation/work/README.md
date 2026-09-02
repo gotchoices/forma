@@ -24,12 +24,17 @@ from the literal edge-scatter (the "reduction gap").*
 
 **Act 2 — measurement (frontier, entered).** Two-slit interference + single-lump
 build-up on a GRID lab; **collapse dissolved** (breather = hidden-variable lump);
-**Bell structure** confirmed (non-local fiber = QM, no signaling). *Two derivations
-owed: Born-from-guidance and Bell-from-a-fiber-equation.*
+**single-particle Born done** as consistency (energy density ∝ |ψ|² + whole-quantum
+absorption + linear detection ⇒ P ∝ |ψ|², no steering —
+[born-single-particle.md](born-single-particle.md), derivation-ready). **Bell
+structure** confirmed (non-local fiber = QM, no signaling). *One hard core owed:
+entangled/multi-particle Born — needs non-local hidden variables; a closed/periodic
+geometry is one feasible placeholder (not a single asserted theory).*
 
-**When to promote to a derivation:** Act 1's breather/de-Broglie/mass-tower results
-are the ripest — they are measured, not posited (only the reduction gap remains).
-Act 2 is not derivation-ready: its two cores are still owed.
+**When to promote to a derivation:** Act 1's breather/de-Broglie/mass-tower and
+Act 2's **single-particle Born** are the ripest — measured or consistency-derived,
+only the reduction gap posited. The **entangled Born / Bell** core is not yet
+derivation-ready.
 
 ## The arc, in order (detailed)
 
@@ -105,6 +110,13 @@ Act 2 is not derivation-ready: its two cores are still owed.
     signaling**. Structure confirmed viable; the cosine was *put in by hand* —
     deriving it from a real fiber equation is owed.
 
+13. **[born-single-particle.md](born-single-particle.md)** — *derivation-ready.*
+    Single-particle **Born from energy density**: P(click) ∝ |ψ|² from energy
+    density ∝ |ψ|² + whole-quantum absorption (grid-quantization) + linear
+    detection. **No steering, no collapse.** Entangled Born (the one hard core)
+    needs non-local hidden variables — one *feasible placeholder* (closed/periodic
+    S) shown, not a single asserted theory.
+
 ## The working hypotheses (what a particle is / how measurement works)
 
 Held **open**, in parallel — pursue whatever bears fruit:
@@ -126,9 +138,11 @@ Held **open**, in parallel — pursue whatever bears fruit:
   protected winding; all consistent with the promotion ladder. **Derivation-ready**
   except the one **posited** link — the on-site cosine from the literal
   edge-scatter (the reduction gap, strand 6).
-- **Act 2 / measurement (strands 10–12): frontier, not derivation-ready.** Collapse
-  is dissolved and the Bell *structure* is confirmed, but the two cores —
-  **Born-from-guidance** and **Bell-from-a-fiber-equation** — are **owed**.
+- **Act 2 / measurement (strands 10–13): mostly framed.** Collapse dissolved;
+  **single-particle Born done** (energy density, derivation-ready, strand 13); Bell
+  *structure* confirmed. The **one hard core owed** is **entangled Born** — needs
+  non-local hidden variables, with a closed/periodic geometry as a *feasible
+  placeholder* (not a single asserted theory).
 - **Interpretation** (the hypotheses) stays **open**: contained bulk (double
   solution) vs delocalized wave (wave-until-interaction); both use the de Broglie
   foundation, and Act 2's results fit the double-solution reading best.

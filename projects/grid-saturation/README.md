@@ -58,11 +58,18 @@ a **local** shared-fiber phase is capped at CHSH=2 (classical), while a
 signaling** — Bohm-like non-locality with the compact fiber as carrier.
 Details: [dual-slit-result](work/dual-slit-result.md) · [measurement-and-bell](work/measurement-and-bell.md) · [bell-test-result](work/bell-test-result.md).
 
-**Two derivations remain owed** (the real make-or-break, each plausibly its own
-construction): **(1) Born from a mechanism** — does the lump get *steered* to
-|ψ|² by its own de Broglie wave (the guidance dynamics)? and **(2) Bell from the
-fiber** — derive cos(a−b) from an actual self-consistency equation (settings
-free, no superdeterminism), not posited.
+**Single-particle Born is done** (as consistency): energy density ∝ |ψ|² (a wave
+fact) + whole-quantum absorption (grid-quantization) + linear detection ⇒
+P(click) ∝ |ψ|² — the semiclassical "detection ∝ intensity," **no steering, no
+collapse** ([work/born-single-particle.md](work/born-single-particle.md),
+derivation-ready). **One hard core remains: entangled/multi-particle Born** (the
+Bell correlations), which needs *non-local* hidden variables. We need only exhibit
+**one feasible placeholder** — e.g. **S itself closed/periodic** (need not be 3D,
+could be smaller than it looks; its periodic-BC global self-consistency is a
+genuine non-local constraint) — to show non-locality is *feasible* on a
+GRID-compatible geometry (the toy Bell test already shows such a structure reaches
+QM with no signaling). Deriving the *exact* cos(a−b) from a specific closed
+geometry is the open core.
 
 ---
 
@@ -127,28 +134,36 @@ anticorrelation**. Detail: [thesis-wave-until-interaction](work/thesis-wave-unti
   reaches CHSH=2√2 (=QM) with no signaling. The fiber-non-locality is in the right
   class. [work/bell-test-result.md](work/bell-test-result.md).
 
-**Open (the frontier — the two owed derivations):**
-- **Born from a mechanism (guidance).** Does the lump get *steered* to |ψ|² by its
-  own de Broglie wave? The single-lump build-up *assumes* the distribution; the
-  bulk⟷pilot coupling that would *derive* it is untested.
-- **Bell from the fiber.** Derive cos(a−b) from an actual fiber self-consistency
-  equation (free settings, no superdeterminism) — the toy *put it in by hand*.
+**Verified (Act 2):**
+- **Single-particle Born.** P(click) ∝ |ψ|² from energy density + whole-quantum
+  absorption + linear detection — no steering, no collapse (consistency-level,
+  derivation-ready). [work/born-single-particle.md](work/born-single-particle.md).
+
+**Open (the frontier — one hard core + a loose end):**
+- **Entangled / multi-particle Born (the Bell correlations).** Needs *non-local*
+  hidden variables. A closed/periodic geometry (global self-consistency) is a
+  *feasible* placeholder — structure confirmed (toy reaches QM, no signaling);
+  deriving the *exact* cos(a−b) from a specific constraint is the open core.
   Plausibly its own project.
-- **The reduction gap.** The scatter gives the *coupling* term; the on-site cosine
-  is still *posited* — deriving it from the literal directed-edge scatter makes
-  "GRID is focusing" first-principles.
+- **The reduction gap (loose end).** The scatter gives the *coupling* term; the
+  on-site cosine is still *posited* — deriving it from the literal directed-edge
+  scatter makes "GRID is focusing" first-principles.
 
 ## Concrete next work (ranked)
 
-1. **The guidance test** — launch a moving breather with its de Broglie wave at the
-   two slits many times (varying the hidden variable); does the landing
-   distribution come out ∝ |ψ|² *from the dynamics* (Born derived, not assumed)?
-   The one remaining tractable-ish piece of Act 2.
+1. **Formalize single-particle Born** — make premise 4 (linear whole-quantum
+   detection) a *lattice theorem* (detector = absorbing nodes; transfer rate linear
+   in incident edge energy), turning [born-single-particle.md](work/born-single-particle.md)
+   from consistency-level into a derivation. Ripest.
 2. **Close the sine-Gordon reduction** — the on-site cosine from the directed-edge
    scatter (Act 1 loose end).
-3. **Bell from a fiber self-consistency equation** — the hard core; likely a
-   separate project.
-4. **Follow-on:** sweep nc to hand the KK mass tower to [metric-mass](../metric-mass/).
+3. **Entangled Born from a closed-geometry constraint** — derive cos(a−b) from one
+   concrete non-local placeholder (periodic S / closed manifold). The hard core;
+   likely a separate project.
+4. *(Optional)* **guidance test** — does a breather get *steered* to |ψ|² by its de
+   Broglie wave? Not needed for Born (energy density suffices), but it would give
+   deterministic per-particle trajectories (the stronger Bohmian program).
+5. **Follow-on:** sweep nc to hand the KK mass tower to [metric-mass](../metric-mass/).
 
 ## Connective threads (why this is more than wishful)
 
