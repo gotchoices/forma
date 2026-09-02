@@ -7,12 +7,31 @@
 > for the convention and the mass→charge "promotion ladder" (which our results
 > support).
 
-This folder is the full record of the project's thinking. It falls into four
-strands: **empirical results** (what the sims showed), the **evaluation method**
-(how we chose among options), the **foundation** (de Broglie), and the **working
-hypotheses** (what a particle *is* / how measurement works). Read in arc order:
+This folder is the full record of the project's thinking, in **work mode** — sims
+and reasoning, not yet the finished derivations. When any strand is ready to become
+a main derivation, this index is the map of *how we got there* and *what is
+proven vs. posited*.
 
-## The arc, in order
+## The working arc (the map — for building the derivations later)
+
+**Act 1 — the particle (largely done).** Can GRID bind a particle? Seven local
+mechanisms fail; the answer is the **compact phase** → sine-Gordon **breather
+(mass)** / **kink (charge)**. GRID is intrinsically focusing. Confirmed:
+relativistic **matter waves + de Broglie + KK mass tower** (measured); free-space
+stability needs a **conserved winding** (Q-ball). Ties to the **promotion ladder**
+(light→mass→charge). *Proven in sim; the one posited link is the on-site cosine
+from the literal edge-scatter (the "reduction gap").*
+
+**Act 2 — measurement (frontier, entered).** Two-slit interference + single-lump
+build-up on a GRID lab; **collapse dissolved** (breather = hidden-variable lump);
+**Bell structure** confirmed (non-local fiber = QM, no signaling). *Two derivations
+owed: Born-from-guidance and Bell-from-a-fiber-equation.*
+
+**When to promote to a derivation:** Act 1's breather/de-Broglie/mass-tower results
+are the ripest — they are measured, not posited (only the reduction gap remains).
+Act 2 is not derivation-ready: its two cores are still owed.
+
+## The arc, in order (detailed)
 
 1. **[results-m1-m2.md](results-m1-m2.md)** — the opening sim campaign on the
    (x,c) cylinder. **M1 (KK decoupling) verified.** M2 (pair production from
@@ -64,6 +83,28 @@ hypotheses** (what a particle *is* / how measurement works). Read in arc order:
    (Lorentz-breaking quantified beyond). Revives metric-mass with a measured
    spectrum.
 
+9. **[promotion-hierarchy.md](promotion-hierarchy.md)** — terminology (ℵ vs
+   compact dimension) and grid-saturation's *dynamical evidence* for grid-duality's
+   **wrap-promotion ladder** (light→mass→charge). **Stability = a protected
+   winding** (Q-ball stable vs oscillon radiating); the "ephemeral" particle zoo is
+   real data (its quantum numbers = the ladder's observables), not to be discounted.
+
+10. **[dual-slit-result.md](dual-slit-result.md)** — *Act 2 opens.* On a 2D GRID
+    lab (barrier = mass-blocked nodes; slit = open GRID), a wave through **both**
+    slits **interferes** (fringe spacing = de Broglie λ), and **single whole-quantum
+    lumps rebuild the fringes** (corr→0.97) — no collapse invoked.
+
+11. **[measurement-and-bell.md](measurement-and-bell.md)** — the refined
+    measurement model: two unknowns (interference vs the specific draw = a hidden
+    phase); measurement = interference with the observer; **collapse dissolved**;
+    **Bell via the fiber as a globally self-consistent condition** (settings kept
+    *free* — not superdeterminism).
+
+12. **[bell-test-result.md](bell-test-result.md)** — toy CHSH test: a **local**
+    fiber phase is capped at 2; a **non-local** fiber reaches **2√2 = QM, no
+    signaling**. Structure confirmed viable; the cosine was *put in by hand* —
+    deriving it from a real fiber equation is owed.
+
 ## The working hypotheses (what a particle is / how measurement works)
 
 Held **open**, in parallel — pursue whatever bears fruit:
@@ -77,13 +118,21 @@ Held **open**, in parallel — pursue whatever bears fruit:
   **pilot** wave. Dissolves single-particle collapse/FTL; rehabilitates the
   containment work; entanglement still needs the fiber.
 
-## How the pieces relate
+## How the pieces relate (and what's ready to derive)
 
-- **Binding** (strand 1–6) is largely **solved**: the sine-Gordon breather, from
-  the compact phase, is the particle; the kink is its charge.
-- **Interpretation** (the hypotheses) is **open**: given a particle, *what is it
-  and how is it measured* — contained bulk, or delocalized wave that localizes on
-  interaction? Both use the **de Broglie foundation**.
-- **The frontier** is **measurement** (single |ψ|² click + where Bell nonlocality
-  lives) and **closing the reduction** (cosine from the scatter), plus the
-  **de Broglie lattice measurement** that turns the foundation into a number.
+- **Act 1 / binding (strands 1–9): largely solved & measured.** The sine-Gordon
+  breather (from the compact phase) is the particle; the kink is its charge;
+  matter waves, de Broglie, and the KK mass tower are measured; stability = a
+  protected winding; all consistent with the promotion ladder. **Derivation-ready**
+  except the one **posited** link — the on-site cosine from the literal
+  edge-scatter (the reduction gap, strand 6).
+- **Act 2 / measurement (strands 10–12): frontier, not derivation-ready.** Collapse
+  is dissolved and the Bell *structure* is confirmed, but the two cores —
+  **Born-from-guidance** and **Bell-from-a-fiber-equation** — are **owed**.
+- **Interpretation** (the hypotheses) stays **open**: contained bulk (double
+  solution) vs delocalized wave (wave-until-interaction); both use the de Broglie
+  foundation, and Act 2's results fit the double-solution reading best.
+
+**If promoting to a main derivation next:** Act 1's breather → mass/charge and the
+de Broglie / mass-tower results are ripest (measured, only the reduction gap
+posited). The measurement/Bell derivations need the two owed constructions first.

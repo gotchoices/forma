@@ -42,8 +42,27 @@ one — but not through the saturation bound.** The arc:
    (mass) stays in **phase harmony** with the open-dimension wave, giving
    **λ = h/p** from the geometry.
 
-What remains genuinely open is **measurement**: how a delocalized wave yields a
-single, |ψ|²-distributed click — and where the required Bell nonlocality lives.
+This is **Act 1 (the particle) — done.** It also confirmed the **promotion
+ladder** (light→mass→charge; [grid-duality ch.7](../grid-duality/07-wrap-promotion-modeling.md))
+dynamically, with **stability = a protected winding** (Q-ball stable vs oscillon
+radiating). See [work/promotion-hierarchy.md](work/promotion-hierarchy.md).
+
+**Act 2 (measurement) — the frontier, entered.** On a 2D GRID lab (barrier =
+mass-blocked nodes, slit = open GRID), a wave passes **both** slits and
+**interferes** (fringe spacing = the de Broglie λ), and **single whole-quantum
+lumps rebuild the fringes** (corr→0.97). Under the *breather-as-a-real-lump*
+reading, **collapse is dissolved** — a detection *reveals* a hidden-variable
+center, it doesn't collapse. A toy **Bell test** confirms the model's *structure*:
+a **local** shared-fiber phase is capped at CHSH=2 (classical), while a
+**non-local fiber** (global self-consistency) reaches **CHSH=2√2 = QM with no
+signaling** — Bohm-like non-locality with the compact fiber as carrier.
+Details: [dual-slit-result](work/dual-slit-result.md) · [measurement-and-bell](work/measurement-and-bell.md) · [bell-test-result](work/bell-test-result.md).
+
+**Two derivations remain owed** (the real make-or-break, each plausibly its own
+construction): **(1) Born from a mechanism** — does the lump get *steered* to
+|ψ|² by its own de Broglie wave (the guidance dynamics)? and **(2) Bell from the
+fiber** — derive cos(a−b) from an actual self-consistency equation (settings
+free, no superdeterminism), not posited.
 
 ---
 
@@ -97,29 +116,39 @@ anticorrelation**. Detail: [thesis-wave-until-interaction](work/thesis-wave-unti
   **relativistic (Ω²=c²k²+ω₀²) for the massive KK modes**, same c≈0.70 across
   sectors, to <2% for kx<0.4π; **de Broglie v_p·v_g=c²** holds (1–6%); and the
   **KK mass tower** ω₀(n)=n·(2π/nc)·c falls out. [work/de-broglie-dispersion-result.md](work/de-broglie-dispersion-result.md).
+- **Free-space stability needs a winding.** 2D test: a real-scalar lump disperses
+  (linear) or collapses (focusing); an **oscillon** (unprotected) quasi-stably
+  radiates; a **Q-ball** (conserved winding) is stable. So *stability = a protected
+  winding* ([work/soliton-result.md](work/soliton-result.md), 2D).
+- **Two-slit interference + single-lump build-up.** On the GRID lab, a wave through
+  both slits interferes (fringe spacing = de Broglie λ); single whole-quantum lumps
+  rebuild the fringes (corr→0.97) — no collapse invoked. [work/dual-slit-result.md](work/dual-slit-result.md).
+- **Bell *structure*.** A local shared-fiber phase gives CHSH=2; a non-local fiber
+  reaches CHSH=2√2 (=QM) with no signaling. The fiber-non-locality is in the right
+  class. [work/bell-test-result.md](work/bell-test-result.md).
 
-**Open (the frontier):**
-- **The reduction gap.** The scatter gives the *coupling* term; the on-site
-  cosine is still *posited* as the phase potential — deriving it from the literal
-  directed-edge scatter is the step that makes "GRID is focusing" first-principles.
-- **Measurement (M3/M4).** Does the bound turn a wave–wave interaction into a
-  **single |ψ|²-distributed click**? Where does Bell nonlocality live (the fiber)?
-- **de Broglie in the lattice.** Is GRID's massive dispersion relativistic
-  (ω²=c²k²+ω₀²) and does phase harmony survive a boost? (Lattices break Lorentz —
-  this is a real test, not automatic.)
+**Open (the frontier — the two owed derivations):**
+- **Born from a mechanism (guidance).** Does the lump get *steered* to |ψ|² by its
+  own de Broglie wave? The single-lump build-up *assumes* the distribution; the
+  bulk⟷pilot coupling that would *derive* it is untested.
+- **Bell from the fiber.** Derive cos(a−b) from an actual fiber self-consistency
+  equation (free settings, no superdeterminism) — the toy *put it in by hand*.
+  Plausibly its own project.
+- **The reduction gap.** The scatter gives the *coupling* term; the on-site cosine
+  is still *posited* — deriving it from the literal directed-edge scatter makes
+  "GRID is focusing" first-principles.
 
-## Concrete next work (ranked by substance-per-effort)
+## Concrete next work (ranked)
 
-1. ~~Matter-wave dispersion / de Broglie measurement~~ **DONE** — GRID gives
-   relativistic matter waves, de Broglie v_p·v_g=c², and the KK mass tower
-   ω₀(n)=n·(2π/nc)·c, to <2% for kx<0.4π.
-   [work/de-broglie-dispersion-result.md](work/de-broglie-dispersion-result.md).
-   *Follow-on: sweep nc to hand the mass tower to [metric-mass](../metric-mass/).*
-2. **Close the sine-Gordon reduction** — derive the on-site cosine from the
-   directed-edge scatter (what pins the phase / opens the gap).
-3. **The Born / single-detection test** — two spread packets interact on the
-   bounded lattice; do single quantized events appear ∝ |ψ|²? *(The prize; higher
-   risk; do after 1.)*
+1. **The guidance test** — launch a moving breather with its de Broglie wave at the
+   two slits many times (varying the hidden variable); does the landing
+   distribution come out ∝ |ψ|² *from the dynamics* (Born derived, not assumed)?
+   The one remaining tractable-ish piece of Act 2.
+2. **Close the sine-Gordon reduction** — the on-site cosine from the directed-edge
+   scatter (Act 1 loose end).
+3. **Bell from a fiber self-consistency equation** — the hard core; likely a
+   separate project.
+4. **Follow-on:** sweep nc to hand the KK mass tower to [metric-mass](../metric-mass/).
 
 ## Connective threads (why this is more than wishful)
 
