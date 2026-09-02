@@ -76,15 +76,35 @@ in advance) · **[C]** computationally demonstrated (continuum-analytic where no
 
 ---
 
-## Derivation readiness (answering "narrative or derivable?")
+## Derivation readiness (audited — pre-derivation work files done)
 
-**Not just narrative.** Ripe for formal derivation now: **Ch 2** (compact-phase
-focusing — pure Taylor), **Ch 3** (dispersion, mass tower, de Broglie — eigenvalue
-analytics), **Ch 7** (single-particle Born — energy density). The work/ folder is
-the proof-of-concept for these. Two things block a *complete* derivation:
-**Ch 2's reduction gap [P]** (cosine from the scatter) and **Ch 9's entangled Born
-[O]**. Ch 1/4/6 mix analytic results (Derrick, defocusing sign) with computational
-demonstration.
+**Substantially derivable now, not narrative.** Three focused work files pinned
+down exactly what proves out:
+
+- **Ch 3 — fully derivation-ready, the firmest chapter.** The dispersion is
+  **closed-form**: cos ω = −(cos kx + cos kc)/2 ⇒ light-speed **c = 1/√2**, KK mass
+  tower **ω₀(n) = n·(2π/nc)/√2**, relativistic **Ω²=c²k²+ω₀²**, de Broglie
+  **v_p·v_g=c²** — all exact, verified to 6 digits, **no phase posit** (needs only
+  the scatter + a compact *coordinate*). [work/dispersion-analytic.md](work/dispersion-analytic.md).
+- **Ch 2 — a clean *conditional* derivation.** The scatter gives only the kinetic
+  term; but **given one foundational premise — the compact field value is a *phase*
+  (circle: the ℵ-line / a sheet U(1)), not a bounded *amplitude* (interval)** — the
+  cosine is **forced** (periodicity + KK mass ⇒ the unique minimal periodic
+  potential m²(1−cos φ)), and focusing+saturating + breather=mass + kink=charge
+  follow. The premise is foundational, not ad hoc; S does not fix interval-vs-circle
+  (which also explains *why saturation failed*: a clipped amplitude is a wall,
+  defocusing; a phase is periodic, focusing). [work/reduction-cosine-from-scatter.md](work/reduction-cosine-from-scatter.md).
+- **Ch 7 — derivation-ready (Born distribution).** P(x) ∝ |ψ|² from: ρ = |ψ|² (an
+  *identity* — the conserved energy density), linear capture (automatic for an
+  absorbing node), and whole-quantum single click (grid-quantization). The one
+  input — probabilistic capture ∝ local energy — is the *universal* photodetection
+  premise, not GRID-specific. [work/born-detection-theorem.md](work/born-detection-theorem.md).
+
+**Cited/standard (no new proof):** Ch 6 (linear-wave interference), Ch 4 (Derrick,
+Q-ball), Ch 5 (grid-duality ch.7). **Open [O]:** Ch 9 (entangled Born) — a separate
+project. So a *complete* matter-half derivation is in reach today, resting on one
+named foundational premise (Ch 2's phase-topology); the QM half is derivation-ready
+through Ch 7, with Ch 9 the single genuinely-open core.
 
 ## Status, work record, relations
 
