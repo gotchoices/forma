@@ -48,16 +48,23 @@ compact/internal direction, which adds a conserved quantum number:
   and the **breather** = a bound oscillation = light going nowhere = rest mass
   ([focusing-from-phase.md](focusing-from-phase.md)). "Captured light" is *literal*.
 
-**Level 2→3: supported, via the Q-ball.**
-- Charge = the **winding number** of the compact excitation. A **breather** has net
-  winding 0 → **neutral** mass; a **Q-ball / kink** has winding ≠ 0 → **charged**.
-- In the **Q-ball** the charge Q is the **internal phase rotation** — literally the
-  mass "circulating" in the internal/compact phase = *captured mass*
-  ([soliton-result.md](soliton-result.md), the 2D test).
-- Bonus: that internal circulation is exactly what **stabilizes the particle in
-  free space** (2D) — so promotion 2→3 also *lifts* the particle from
-  unstable-in-free-space to stable. Promotion = a new quantum number **and**
-  stability.
+**Level 2→3: supported — but as a *topological winding*, not the Q-ball's Noether
+charge (a correction).**
+- Charge = a **topological winding number** of the compact-phase excitation: the
+  sine-Gordon **kink** number (winding across the cosine's vacua), or a winding
+  around a **sheet cycle** ([metric-charge](../../metric-charge/)'s (m,n) knot). A
+  **breather** = net winding 0 → **neutral** mass; a **kink** = winding ≠ 0 →
+  **charged**. Mass and charge are then **two windings** on a 2D sheet (tube+ring).
+- **Not the Q-ball Noether charge.** The 2D **Q-ball** ([soliton-result.md](soliton-result.md))
+  was a *borrowed existence-proof* that focusing+saturating gives a 3D-stable lump —
+  its Noether U(1) charge is a *different object* from the topological winding, and
+  a genuine unbroken U(1) would give a massless phase with no cosine (no breather).
+  So we take the charge as **topological** (consistent with the cosine), and treat
+  the Q-ball only as evidence that a wound object *can* be 3D-stable.
+- So promotion 2→3 adds a **conserved topological winding**, which both labels the
+  charge *and* (via topology, like a skyrmion/Hopfion) protects the particle in
+  higher-D. *Owed:* the localized-3D neutral-massive case (a single winding is a
+  line, not a particle) — deferred to metric-charge / composite structure.
 
 **Level 3→4 and the spectrum: not tested here** — that is
 [metric-charge](../../metric-charge/) / [sheet-proton](../../sheet-proton/)

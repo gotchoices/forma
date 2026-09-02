@@ -5,9 +5,9 @@ that makes a compact-phase field focusing+saturating (sine-Gordon) — *derivabl
 from the GRID impedance scatter, or must it be *posited*?
 
 **Verdict (honest): Ch 2 is a *conditional* derivation.** The scatter gives the
-kinetic term; the cosine is **forced** once you grant *one* premise — that the
-field value is a **compact phase (a circle), not a bounded amplitude (an
-interval)**. That premise is a forma **foundational posit** (the ℵ-line for GRID
+kinetic term; the cosine is the **minimal periodic completion** (focusing if the
+lowest harmonic dominates) once you grant *one* premise — that the field value is a
+**compact phase (a circle), not a bounded amplitude (an interval)**. That premise is a forma **foundational posit** (the ℵ-line for GRID
 itself; a U(1) sheet-field for a particle), **not** a consequence of the bare
 scatter. Given it, everything downstream follows rigorously.
 
@@ -49,7 +49,7 @@ Interval vs. circle is a **topological choice of what the field value is**, and 
 posit. *This single distinction resolves the whole "is saturation focusing?"
 confusion: a clipped **amplitude** is defocusing; a compact **phase** is focusing.*
 
-## Step 3 — given the circle, the cosine is *forced* (not an extra posit)
+## Step 3 — given the circle, the cosine is the *minimal* completion (not an extra posit)
 
 Grant that the field value is a phase φ ∈ [0, 2π), with φ ≡ φ+2π. Then **any**
 potential must satisfy U(φ) = U(φ+2π) — periodic. If a compact *coordinate* also
