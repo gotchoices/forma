@@ -42,7 +42,7 @@ localize — a separate question).
   *every* interaction, so localization is ubiquitous, not deferred to an
   "observer." Realist and causal throughout.
 
-The bound (grid-saturation's core) returns in its **correct** role: **quantizing
+The bound (grid-matter's core) returns in its **correct** role: **quantizing
 interactions, not containing particles.**
 
 ## The forced fork (the hard, unavoidable part)
@@ -93,7 +93,7 @@ the enforcement without signaling?
 
 ## Relation to existing threads
 
-- grid-saturation README connective threads: "Bell + collapse are the same fiber"
+- grid-matter README connective threads: "Bell + collapse are the same fiber"
   and the conserved-snap-vs-Reiter-loading distinction.
 - [primers/threshold-theory.md](../../../primers/threshold-theory.md) — needs the
   anticorrelation counter-evidence to Reiter added.

@@ -6,7 +6,7 @@
 > between levels"), with the continuum derivations in **[metric-mass](../../metric-mass/)**
 > (L2) and **[metric-charge](../../metric-charge/)** (L3; L4 in
 > [metric-charge/work/higher-order-charges.md](../../metric-charge/work/higher-order-charges.md)).
-> *This doc is grid-saturation's job: the **dynamical evidence** for the ladder
+> *This doc is grid-matter's job: the **dynamical evidence** for the ladder
 > (measured dispersion/mass, breather, Q-ball) and the **stability/ephemeral**
 > reading below.*
 
@@ -138,7 +138,7 @@ resonant-mode dynamics ([metric-binding](../../metric-binding/),
 [sheet-proton](../../sheet-proton/), [ma-domain](../../ma-domain/)) — but the zoo
 is the **test bench**, not a distraction.
 
-**Research priority:** grid-saturation supplies the *mechanism* (particle = mode;
+**Research priority:** grid-matter supplies the *mechanism* (particle = mode;
 stability = protected winding); the downstream projects fit the *full* spectrum
 (stable **and** ephemeral) against it — every ephemeral particle's traits are data
 about which rung and which cycle it occupies.

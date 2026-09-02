@@ -1,7 +1,7 @@
 """
 Clean focusing+saturating soliton test -- "particle as a contained wave" (Q-ball).
 
-WHY: every dynamical containment test in forma (grid-saturation 1D cylinder,
+WHY: every dynamical containment test in forma (grid-matter 1D cylinder,
 R24 2D torus, sheet-proton 2D clover) disperses. The obstruction named repeatedly
 is a MISSING FOCUSING (attractive) nonlinearity. Stable localized waves in real
 physics need the standard recipe: FOCUSING at low amplitude (pull together) +

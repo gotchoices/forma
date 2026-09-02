@@ -92,14 +92,15 @@ Each project's README should:
   (metric as equation-of-state, needing no such carrier) is the fallback.
   Revival needs a substrate-level result making the ℵ-line size a massless
   field.**
-- [grid-saturation/](grid-saturation/) — Whether the **bounded/saturating**
-  GRID substrate (the same discrete-max bound posed for light-quantization)
-  reproduces, as *dynamics*, the quantum phenomena the linear grid can't:
-  the quantization threshold, **pair production** (energy S ↔ compact),
-  single-quantum **instantiation/collapse**, and the **Born rule** (∝ |field|²
-  from energy density). Tested on a minimal 1D-space + 1D-compact **(x,c)
-  cylinder**. Key insight: the "missing nonlinearity" *is* the saturation.
-  **Status: new; substrate dynamics posed but unsimulated. First step is the
-  linear cylinder baseline (KK decoupling / pass-through, never tested
-  dynamically in forma), then a *conserving* saturation (excess spills S→c)
-  to test pair production and the Born rule.**
+- [grid-matter/](grid-matter/) — Whether GRID produces **matter and quantum
+  mechanics**, beyond EM and gravity. (Formerly `grid-saturation`: the entry
+  hypothesis — that the *saturation bound* makes particles — was **refuted**
+  (the bound is defocusing); the real answer is the **compact phase**.)
+  **Act 1 (matter) — largely done:** particles are compact-phase solitons
+  (**breather = mass, kink = charge**); relativistic matter waves + de Broglie +
+  the **KK mass tower** are measured; stability = a protected winding; the
+  light→mass→charge **promotion ladder** ([grid-duality](grid-duality/) ch.7) is
+  confirmed dynamically. **Act 2 (quantum mechanics) — frontier:** two-slit
+  interference and **single-particle Born** (energy density + whole-quantum) on a
+  GRID lab, **collapse dissolved**; the one open core is **entangled Born / Bell**.
+  **Status: active; work-file-driven; a chapter arc is drafted in its README.**

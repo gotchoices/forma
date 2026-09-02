@@ -1,4 +1,4 @@
-# grid-saturation / work — the reasoning, indexed
+# grid-matter / work — the reasoning, indexed
 
 > **Terminology (read first):** "compact dimension" is generic — a **Ma sheet**
 > for a massive particle (size sets the mass), the **ℵ-line** for the Planck/photon
@@ -89,7 +89,7 @@ derivation-ready.
    spectrum.
 
 9. **[promotion-hierarchy.md](promotion-hierarchy.md)** — terminology (ℵ vs
-   compact dimension) and grid-saturation's *dynamical evidence* for grid-duality's
+   compact dimension) and grid-matter's *dynamical evidence* for grid-duality's
    **wrap-promotion ladder** (light→mass→charge). **Stability = a protected
    winding** (Q-ball stable vs oscillon radiating); the "ephemeral" particle zoo is
    real data (its quantum numbers = the ladder's observables), not to be discounted.

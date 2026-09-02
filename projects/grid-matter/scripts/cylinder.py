@@ -1,5 +1,5 @@
 """
-(x, c) cylinder saturation sim for projects/grid-saturation.
+(x, c) cylinder saturation sim for projects/grid-matter.
 
 A minimal GRID testbed: 1D space x (the axis) x 1D compact c (the
 circumference, periodic), on a square lattice with the equal-impedance

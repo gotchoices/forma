@@ -1,5 +1,5 @@
 """
-Phase (U(1)) cylinder: the topological-winding test for grid-saturation.
+Phase (U(1)) cylinder: the topological-winding test for grid-matter.
 
 Same (x, c) cylinder and equal-impedance scatter S = (2/N)J - I, N = 4, but each
 directed edge now carries a COMPLEX amplitude, so the field has a genuine PHASE

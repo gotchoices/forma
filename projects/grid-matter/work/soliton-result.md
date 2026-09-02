@@ -16,7 +16,7 @@
 ## Context
 
 Every prior dynamical containment test in the repo dispersed or froze — the
-grid-saturation 1D cylinder (7 mechanisms), R24's 2D-torus wave sim, sheet-proton's
+grid-matter 1D cylinder (7 mechanisms), R24's 2D-torus wave sim, sheet-proton's
 2D clover. The obstruction named everywhere was a **missing focusing (attractive)
 nonlinearity**. forma had tried the *saturating* half alone (defocusing: clip,
 value-bound) and pure nonlinearities that disperse (R24) or repel (R15 Coulomb),
