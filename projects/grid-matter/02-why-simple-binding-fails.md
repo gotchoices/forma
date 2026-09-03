@@ -1,28 +1,70 @@
-# Chapter 2 — Why simple binding fails (the negatives) *(outline for review)*
+# Chapter 2 — Why simple binding fails
 
-Role: a forma-specific contribution — a careful negative-result map that is the
-*argument* for Ch 3's phase mechanism. Brief; the value is the map, not long math.
+This chapter is a negative result, and it earns its place: mapping what does *not*
+bind a particle is the argument for the mechanism that does (Chapter 3). It is
+deliberately brief.
 
-## §1 What "binding a particle" requires
-- A localized mode that is **stable**, **mobile**, and persists (doesn't disperse). **[forma]**
-- Baseline: on the linear substrate, a localized massive mode **disperses** (KK dispersion). **[D — cite Ch 4 / standard]**
+## §1 What binding requires
 
-## §2 The value-bound is defocusing (the sign argument, short)
-- A clip/bound on a *linear amplitude* = an interval [−b, b] = a **wall** → oscillation frequency *rises* with amplitude (hardening) → **defocusing**. **[forma; brief]**
-- ⇒ the saturation entry-hypothesis (`grid-saturation`) cannot bind. State it, don't belabor.
+A particle is a mode that is **localized**, **mobile**, and **stable** — it stays
+together, it can move, and it does not disperse. On the bare linear substrate a
+localized massive mode fails the last test at once: it is a superposition of
+wavevectors with different velocities, so it spreads (the Kaluza–Klein dispersion
+of Chapter 4). Binding therefore requires a nonlinearity that holds the mode
+together against dispersion.
 
-## §3 The seven failed mechanisms (table, terse)
-- clip · spillover · crude-quantize · Kerr-index (knob A) · strain/metric (knob B) · phase-winding (flat-band/immobile). **[forma]**
-- One line (or paragraph) each: what it was, why it failed. **[point to work/results-m1-m2, phase-winding-results, responsive-medium]**
-- Keep it a table, not narrative.
-<!--EC We should keep an open mind about these failures.  Either: they failed because they were flawed, or we tested them incorrectly.  A failure does not definitively prove that the ideas have no merit. -->
+## §2 The value-bound is defocusing
 
-## §4 No prior forma containment (survey)
-- A repo-wide survey found no earlier forma demonstration of dynamical containment (1D, 2D torus, 2D sheet all disperse). **[cite the survey; attribution]**
+The obvious candidate — and the project's original entry hypothesis — is the
+discrete-maximum **bound** on an edge amplitude: cap |φ| at some value. But a cap
+on a *linear amplitude* confines the field to an interval [−b, b], which acts as a
+**wall**. A wall makes an oscillator *harden*: its frequency *rises* with
+amplitude (a particle in a box hits the walls sooner when it carries more energy).
+A hardening nonlinearity is **defocusing** — the wrong sign to bind. So the
+saturation hypothesis cannot, by itself, make a particle. This is stated, not
+belaboured; the sign is made precise in Chapter 3, where the *opposite*
+topology — a circle rather than an interval — flips it.
 
-## §5 The lesson → the fork
-- These negatives **motivate** (not deductively prove) a **focusing** nonlinearity; independently, focusing+saturating is the standard soliton recipe. **[forma; soften ⇒]**
-- The live fork for Ch 3: **interval (amplitude, defocusing) vs circle (phase, focusing)**.
+## §3 The mechanisms that did not bind
 
-## Attribution / dependencies
-- The negatives are grid-matter's own (work files); framed as the setup for Ch 3.
+Across the work files a series of local field responses were tried on the (x,c)
+substrate; none produced a stable, mobile, localized mode. Grouped by distinct
+mechanism type:
+
+| Mechanism | Idea | Why it did not bind |
+|---|---|---|
+| clip (value-bound) | hard amplitude cap | defocusing wall (§2) |
+| spillover | route excess to other edges | no persistent transfer; no pump |
+| crude discreteness | round edges to ±1 | non-conserving; froze the whole lattice |
+| Kerr index (knob A) | load-dependent phase delay | slowed the wave but did not confine |
+| strain / metric (knob B) | load-dependent contraction | captured but did not confine (a real gravity-carrier candidate, kept separate) |
+| topological winding | a U(1) phase winding | protected and localized but **immobile** (flat band) |
+
+Detail is in [work/results-m1-m2.md](work/results-m1-m2.md),
+[work/phase-winding-results.md](work/phase-winding-results.md), and
+[work/responsive-medium.md](work/responsive-medium.md).
+
+A caution on reading this table. A mechanism failing *these* tests does not prove
+it has no merit — it may have been the wrong mechanism, or the right one tested in
+the wrong regime. Each entry is a **"not yet" with a named obstruction**, not a
+closed verdict; several (knob B's strain field especially) remain live for other
+purposes. What the table establishes is narrower and sound: *no local
+amplitude-response tried here binds a particle*, which is enough to motivate
+looking elsewhere.
+
+## §4 No prior containment in forma
+
+A survey of the wider framework found the same: no earlier forma study had
+demonstrated dynamical containment. Localized modes disperse on the 1D cylinder,
+on a 2D torus, and on a 2D sheet alike; where particles appear in metric-mass and
+metric-charge they are *asserted* analytically, with localization deferred. So the
+gap is not peculiar to this project.
+
+## §5 The lesson, and the fork
+
+These negatives **motivate** — they do not deductively prove — that the missing
+ingredient is a **focusing** nonlinearity; independently, focusing paired with
+saturation is the standard recipe for a soliton. The live question for Chapter 3
+is then sharp and topological: is the bounded field an **interval** (a clipped
+amplitude, defocusing) or a **circle** (a compact phase, focusing)? The substrate
+does not decide it; that choice is the hinge of the matter half.

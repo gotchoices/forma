@@ -1,28 +1,72 @@
-# Chapter 4 — Matter waves, mass, de Broglie *(outline for review)*
+# Chapter 4 — Matter waves, mass, and de Broglie
 
-Role: the firmest, exact chapter — but it *corroborates* metric-mass / standard KK.
-Keep it short: show the one clean closed form, then cite. No phase posit needed.
+This is the firmest chapter — its results are exact and need no premise beyond the
+scatter and a compact coordinate. It is also the most *corroborative*: it is
+standard Kaluza–Klein physics on a lattice, confirming
+[metric-mass](../metric-mass/) dynamically. So it is kept short: one derivation,
+then citations.
 
-## §1 The exact dispersion (the one derivation worth showing)
-- Diagonalize one tick M = P·S for a plane wave ⇒ **cos ω = −(cos kx + cos kc)/2**. **[D; brief derivation — a few lines, the algebra is short]**
-- Method is Bloch band structure. **[cite grid-duality ch.7 / primers/bloch-band-structure — do not re-develop]**
+## §1 The exact dispersion
 
-## §2 The photon (n=0)
-- Massless: Ω = c·kx small-k, **lattice light-speed c = 1/√2**. **[D]**
+For a plane wave e^{i(kx·x + kc·c − ωt)}, one tick acts by the linear operator
+M = P·S, where S = ½J − I (N=4) and P = diag(e^{i kx}, e^{−i kx}, e^{i kc},
+e^{−i kc}). The eigenvalue condition (worked in
+[work/dispersion-analytic.md](work/dispersion-analytic.md), and by the standard
+Bloch method of [grid-duality ch.7](../grid-duality/07-wrap-promotion-modeling.md))
+collapses to a single closed form:
 
-## §3 Massive modes & the KK mass tower
-- kc = 2πn/nc ⇒ **relativistic** Ω² = c²kx² + ω₀², **mass tower ω₀(n) = n·(2π/nc)/√2 ∝ 1/R**. **[D]**
-- This *corroborates* the compact-standing-wave mass of **metric-mass**, now dynamical/exact. **[cite metric-mass — attribution, one line]**
+<!-- cos ω = − (cos kx + cos kc) / 2 -->
+$$
+\cos\omega \;=\; -\,\frac{\cos k_x + \cos k_c}{2}.
+$$
+
+The propagating modes sit at the band edge (ω≈π); writing the physical frequency
+as Ω = π − ω gives cos Ω = (cos kx + cos kc)/2, from which everything below reads
+off. **[D]**
+
+## §2 The photon
+
+For the c-uniform mode (kc = 0) at small kx, the relation gives Ω = kx/√2 — a
+**massless**, linear dispersion with **lattice light-speed c = 1/√2 ≈ 0.707**. **[D]**
+
+## §3 Massive modes and the KK tower
+
+For a compact-momentum mode (kc = 2πn/nc), small-kx expansion gives the
+**relativistic** form and the **Kaluza–Klein mass tower**:
+
+<!-- Ω² = c² kx² + ω₀²,  ω₀(n) = c · kc = n·(2π/nc)/√2 -->
+$$
+\Omega^2 \;=\; c^2 k_x^2 + \omega_0^2, \qquad \omega_0(n) = c\,k_c = \frac{n}{\sqrt2}\cdot\frac{2\pi}{n_c} \;\propto\; \frac{1}{R}.
+$$
+
+Same c as the photon (a cross-sector Lorentz check), and a mass set by the compact
+size R. This is the compact-standing-wave mass of [metric-mass](../metric-mass/),
+now obtained dynamically and in closed form. **[D — corroborates metric-mass]**
 
 ## §4 de Broglie
-- From the relativistic form: **v_phase · v_group = c²** ⇒ the **λ = h/p** *shape* (ℏ enters as a units conversion p=ℏk, not derived). **[D; cite de Broglie; principle-vs-scale note]**
 
-## §5 Scope / honesty
-- Needs only the **scatter + a compact coordinate** — **no phase posit** (contrast Ch 3). Firmest chapter. **[forma]**
-- Lorentz invariance / "same c across sectors" is a **small-k emergent** property (holds to <2% for k<0.4π); the full lattice dispersion is not boost-invariant. **[C — quantified, honest]**
+From Ω² = c²k² + ω₀², the phase and group velocities satisfy
+
+<!-- v_phase · v_group = c² -->
+$$
+v_\text{phase}\cdot v_\text{group} \;=\; \frac{\Omega}{k}\cdot\frac{c^2 k}{\Omega} \;=\; c^2,
+$$
+
+which is de Broglie's phase harmony, giving the **λ = h/p** *shape*. (ℏ enters only
+as the units conversion p = ℏk, E = ℏΩ — a scale choice, not a derived constant;
+per the project's principle-vs-scale rule.) **[D — cite de Broglie]**
+
+## §5 Scope
+
+This chapter rests on **only the scatter plus a compact coordinate** — no
+field-value phase posit (contrast Chapter 3), which is why it is the firmest.
+The exactness is small-k, however: the full lattice relation
+cos ω = −(cos kx + cos kc)/2 is not boost-invariant, so Lorentz symmetry and the
+shared c are **emergent at small k** — holding to within ~2% for kx < 0.4π and
+degrading toward the zone boundary. **[C — quantified, honest]**
 
 ## §6 Confirmation
-- Closed form matches the exact eigenvalues to machine precision, the time-domain sim to ~4 sig figs. **[C — one line + reference work/dispersion-analytic.md]**
 
-## Attribution / dependencies
-- Standard KK / Bloch (method). metric-mass (the mass result this confirms). de Broglie (the relation).
+The closed form matches the exact scatter eigenvalues to machine precision, and
+its small-k predictions (light-speed 1/√2, mass tower) match the time-domain
+simulation to ~4 significant figures ([work/dispersion-analytic.md](work/dispersion-analytic.md)).
