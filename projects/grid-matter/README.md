@@ -15,6 +15,17 @@ graded honestly, then pushed toward derivation.
 
 ---
 
+## Writing approach
+
+**Brief, and attribution-forward.** Where a chapter *corroborates* standard physics
+(KK/Bloch bands, sine-Gordon solitons, semiclassical photodetection) or another
+forma project (metric-mass, metric-charge, grid-duality, grid-quantization), it
+**cites and states the result in a few lines — it does not re-derive it**. Prose and
+proof are spent only on the **forma-specific content**: the binding-mechanism
+diagnosis (Ch 2), the exact GRID dispersion (Ch 3), the negatives (Ch 1), and the
+honest scoping of what's derived vs posited vs open. Chapter files are drafted first
+as **bullet outlines** for review, then in-filled.
+
 ## The arc (chapter outline)
 
 Status flags — **[D]** derivable now (clean analytics; the sims are proof-of-concept
