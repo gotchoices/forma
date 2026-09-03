@@ -57,7 +57,8 @@ coordinate.
 ## §5 Method and honesty conventions
 
 The project is computational-first: build the minimal simulation, observe, then
-return to derivation. Claims carry status flags — **[D]** derived, **[P]** posited
-(a stated premise), **[O]** open — and where a chapter corroborates standard
+return to derivation. Claims carry status flags — **[D]** derived, **[C]** computationally
+demonstrated, **[P]** posited (a stated premise), **[O]** open — and where a
+chapter corroborates standard
 physics or another forma project it cites the result in a few lines rather than
 re-deriving it. The supporting record is indexed in [work/README.md](work/README.md).

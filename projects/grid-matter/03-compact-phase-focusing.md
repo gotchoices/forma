@@ -41,23 +41,37 @@ The resulting equation of motion is the **sine-Gordon** equation, whose soliton
 content is textbook and taken as given: a **breather** — a localized, oscillating,
 Lorentz-boostable lump of net winding zero — and a **kink** — a 2π twist of the
 phase carrying a conserved topological (ℤ) winding number. We read them as the two
-kinds of particle:
+kinds of particle (these are the 1D solitons; whether either localizes as a 3D
+*particle* is a separate question, deferred to Chapter 5 and left **[O]**):
 
 - **breather = neutral mass** (a winding-0 internal oscillation),
 - **kink = charge** (a topological winding).
 
 The forma-specific contribution is the confirmation that this survives
-discreteness: on the actual (x,c) lattice the breather is stable, mobile, and
+discreteness: on the actual (x,c) lattice the breather is long-lived, mobile, and
 energy-conserving, and it crosses the Peierls–Nabarro barrier rather than pinning
-([work/focusing-from-phase.md](work/focusing-from-phase.md)). **[C]**
+([work/focusing-from-phase.md](work/focusing-from-phase.md)). **[C]** Note the
+breather is winding-0, so — by the project's own criterion that stability is
+protection by a conserved winding (Chapter 6) — it is *not* topologically
+protected: continuum sine-Gordon makes it exactly stable (integrability), but on
+the lattice its persistence is **dynamical** and it radiates slowly. This is not a
+contradiction but the ladder's own prediction: pure neutral mass is the
+unprotected rung (L2), and protection arrives only when a winding is added
+(charge, L3).
 
 ## §4 Derived versus posited
 
 Cleanly separated: the scatter supplies the kinetic (coupling) term; a compact
 *coordinate* supplies the mass m² (Chapter 4); the compact *field-value phase*
 supplies the periodic *form* — and hence the focusing+saturating signs — and the
-sine-Gordon solitons follow. The single irreducible input is §1's premise, the
-circle-over-interval topology, which the substrate does not fix.
+sine-Gordon solitons follow. This composition is itself a posit worth stating
+plainly: it requires the *same* field to carry **both** compact structures that
+Chapter 1 §4 was at pains to keep distinct — a mode on a compact *coordinate* (so
+it is KK-massive, fixing the coefficient m²) whose *value* also lives on a compact
+*phase* (so the m²φ²/2 completes to m²(1−cos φ)). The single irreducible input is
+§1's premise, the circle-over-interval topology of the field value, which the
+substrate does not fix; the coordinate compactness is the milder, derivation-ready
+ingredient of Chapter 4.
 
 ## §5 Scale, and the two kinds of excitation
 

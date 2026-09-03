@@ -41,7 +41,14 @@ $$
 
 Same c as the photon (a cross-sector Lorentz check), and a mass set by the compact
 size R. This is the compact-standing-wave mass of [metric-mass](../metric-mass/),
-now obtained dynamically and in closed form. **[D — corroborates metric-mass]**
+now obtained dynamically and in closed form. **[D small-kc — corroborates metric-mass]**
+
+Both the relativistic form and the linear-in-n tower are small-kc results: ω₀ = c·kc
+is the leading term of the *exact* rest frequency Ω₀ = arccos((1+cos kc)/2), so the
+tower is linear only for the low rungs and bends **sub-linear** higher up (≈5% low
+by kc≈1.5). This does not bite the physics — real particles sit on large sheets
+(nc huge, kc = 2π/nc tiny), where the linearization is excellent — but the exactness
+is of the *closed form*, not of the n-linear tower.
 
 ## §4 de Broglie
 
