@@ -70,7 +70,7 @@ in advance) · **[C]** computationally demonstrated (continuum-analytic where no
 **Ch 6 — The promotion ladder (light → mass → charge)**
 - Each level = the previous **captured** (a winding in a new compact cycle); ties to [grid-duality ch.7](../grid-duality/07-wrap-promotion-modeling.md). **[D-narrative]**
 - Stability = a protected winding; the **ephemeral particle zoo is data** (its quantum numbers = the ladder's observables).
-- Prediction: **charged ⟹ massive** (electric only) — *caveat: rests on an untested reframe of gluons (massless, color) as binding-resonance, not ladder particles*.
+- Consistency check (structural, not an independent prediction — charge *is* captured mass): **charged ⟹ massive** (electric only) — *caveat: rests on an untested reframe of gluons (massless, color) as binding-resonance, not ladder particles*.
 
 ### Act 2 — GRID makes quantum mechanics *(frontier)*
 
@@ -82,7 +82,7 @@ physics progress.*
 
 **Ch 7 — The two-slit lab (interference)**
 - GRID slit-ontology: **barrier = mass-blocked nodes; slit = open GRID.**
-- Wave through **both** slits interferes; fringe spacing = de Broglie λ (matches λL/d). *This is **classical** wave interference — staging, not yet distinctively quantum.* **[C]**
+- Both a **photon** (massless) and a **matter wave** (compact n=1, massive) interfere on the same lattice; the matter mode has a **longer de Broglie λ** (11.18 vs 8.07 nodes, exact from the dispersion) and coarser fringes. *This is **classical** linear-wave interference (matter follows from photon by linearity) — staging, not yet distinctively quantum; the absolute spacing is non-paraxial, so λL/d is not fit.* **[C]**
 
 **Ch 8 — Single-particle Born**
 - Energy density = ρ = |ψ|² (identity, scatter unitarity) + **whole-quantum single click** (grid-quantization — the genuine quantum piece) + **detection probability ∝ local energy**. ⇒ **P(click) ∝ |ψ|²**. **[D distribution — but the ∝-probability step is Born's content, the *universal* photodetection premise, *assumed*]**
@@ -142,7 +142,7 @@ Full reasoning, results, and the working arc are indexed in
 [work/README.md](work/README.md). Key results: [focusing-from-phase](work/focusing-from-phase.md)
 · [de-broglie-dispersion-result](work/de-broglie-dispersion-result.md)
 · [born-single-particle](work/born-single-particle.md) · [bell-test-result](work/bell-test-result.md)
-· [promotion-hierarchy](work/promotion-hierarchy.md).
+· [dualslit-matter-result](work/dualslit-matter-result.md) · [promotion-hierarchy](work/promotion-hierarchy.md).
 
 - [grid-quantization](../grid-quantization/) — the whole-quantum bound Ch 8 uses.
 - [grid-duality](../grid-duality/) — the canonical promotion ladder (Ch 6).

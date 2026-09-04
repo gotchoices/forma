@@ -8,7 +8,7 @@ delivered**. Brief, and explicit about that.
 - Interference (Ch 7) is classical; the single click (Ch 8) is quantum but local. **Bell/CHSH is what separates a quantum substrate from any local-classical one** — so it is the decisive test for "GRID makes QM." **[cite Bell/CHSH]**
 
 ## §2 The toy, and its limit
-- A local shared-phase model gives **CHSH = 2** (classical bound); a non-local shared phase gives **2√2** (Tsirelson/QM), with **no signaling**. But the toy **puts cos(a−b) in by hand** — it is an **arithmetic consistency check** that the geometry *could* host QM correlations, **not** a derivation of them. **[C toy — honest]**
+- A local shared-phase model gives **CHSH = 2** (classical bound); a non-local shared phase gives **2√2** (Tsirelson/QM). **No-signaling is *verified in the toy*** (both models keep 50/50 marginals — see [work/bell-test-result.md](work/bell-test-result.md)), not merely asserted. But the toy **puts cos(a−b) in by hand** — so reaching 2√2 is arithmetic tautology: it is a **consistency check that the geometry is *arithmetically consistent with hosting* QM correlations**, **not** a derivation of them. **[C toy — honest]**
 
 ## §3 The candidate carrier (feasibility placeholder)
 - Where could genuine non-locality live? The **fiber / closed-geometry global self-consistency** — periodic boundary conditions enforcing one consistent value across separated points. Offered as **one feasibility placeholder**, not an asserted theory. **[forma posit; O]**

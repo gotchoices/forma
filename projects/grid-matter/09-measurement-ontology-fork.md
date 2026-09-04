@@ -5,7 +5,8 @@ but not the *ontology*; two readings survive, and the chapter presents the fork
 rather than picking a winner. Brief.
 
 ## §1 Two kinds of unknown
-- The **envelope** (which fringe — set by interference, Ch 7) vs the **specific draw** (where within a Compton-sized zone a given click lands). Born fixes the first; the second is the open one. **[forma]**
+- The **envelope** (which fringe — set by the de Broglie λ, Ch 7) vs the **specific draw** (where within a small zone a given click lands). Born fixes the first; the second is the open one. **[forma]**
+- *No unsupported scale (Q4):* leave the click-localization length open — it is plausibly set by the lump's own internal size (∼Compton) but the click resolves to a **detector-set** scale; don't assert a specific length here. **[O — scale open]**
 
 ## §2 The two readings (both consistent with Born)
 - **(i) wave-until-interaction** — the excitation is genuinely delocalized and localizes only at detection (no lump in flight).

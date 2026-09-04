@@ -14,10 +14,11 @@ corroboration chapter, attribution-heavy. Brief.
 
 ## §3 Stability = a protected winding; the ephemeral zoo as data
 - What survives is what is **topologically protected**; the observed unstable-particle spectrum is **real data**, its quantum numbers = the ladder's observables (windings/harmonics), to be modeled — not discounted. **[forma]**
+- **The single position on neutral mass (unifies Ch 3/5/6):** topological protection gives *absolute* stability (a winding = charge, L3); a **winding-0 mass (the breather, L2) is only *dynamically* long-lived, not protected**. So pure neutral mass is the unprotected rung — consistent with reality (few stable neutral *fundamental* particles), with the **neutrino lifetime an explicitly open case**, not claimed resolved. **[forma; O for the neutral sector]**
 
-## §4 A prediction, with its caveat
-- **charged ⟹ massive** (a charge rung sits above a mass rung — electric case). **[forma]**
-- **Caveat:** rests on an *untested reframe* of gluons (massless, color) as a **binding-resonance among partial chunks**, not ladder particles. Flagged, not claimed. **[O]**
+## §4 A consistency check, with its caveat
+- **charged ⟹ massive** is *structural* to the ladder — charge is defined as captured mass (L3 above L2), so "no massless charged particle" is built in, not an independent prediction. It is a genuine **consistency check the ladder passes** for electric charge. **[forma]**
+- **Caveat (the tension it must later answer):** rests on an *untested reframe* of gluons (massless, color) as a **binding-resonance among partial chunks**, not ladder particles. Flagged, not claimed. **[O]**
 
 ## §5 Scope
 - L4 (higher charges, generations, color) is [grid-duality](../grid-duality/) / [metric-charge](../metric-charge/) / ma-domain territory; muon/tau generation-vs-harmonic stays **open**. **[O]**
