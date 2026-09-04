@@ -23,7 +23,9 @@ stability needs a **conserved winding** (Q-ball). Ties to the **promotion ladder
 from the literal edge-scatter (the "reduction gap").*
 
 **Act 2 — measurement (frontier, entered).** Two-slit interference + single-lump
-build-up on a GRID lab; **collapse dissolved** (breather = hidden-variable lump);
+build-up on a GRID lab; **collapse dissolved *under the double-solution reading***
+(breather = hidden-variable lump) — the single-outcome question stays open under a
+wave-only reading;
 **single-particle Born done** as consistency (energy density ∝ |ψ|² + whole-quantum
 absorption + linear detection ⇒ P ∝ |ψ|², no steering —
 [born-single-particle.md](born-single-particle.md), derivation-ready). **Bell
@@ -105,9 +107,10 @@ derivation-ready.
 
 11. **[measurement-and-bell.md](measurement-and-bell.md)** — the refined
     measurement model: two unknowns (interference vs the specific draw = a hidden
-    phase); measurement = interference with the observer; **collapse dissolved**;
-    **Bell via the fiber as a globally self-consistent condition** (settings kept
-    *free* — not superdeterminism).
+    phase); measurement = interference with the observer; **collapse dissolved *if*
+    a real lump is present (the double-solution reading)**; **Bell via the fiber as a
+    globally self-consistent condition** (settings kept *free* — not
+    superdeterminism).
 
 12. **[bell-test-result.md](bell-test-result.md)** — toy CHSH test: a **local**
     fiber phase is capped at 2; a **non-local** fiber reaches **2√2 = QM, no
@@ -117,7 +120,9 @@ derivation-ready.
 13. **[born-single-particle.md](born-single-particle.md)** — *derivation-ready.*
     Single-particle **Born from energy density**: P(click) ∝ |ψ|² from energy
     density ∝ |ψ|² + whole-quantum absorption (grid-quantization) + linear
-    detection. **No steering, no collapse.** Entangled Born (the one hard core)
+    detection. **No steering; the *distribution* is collapse-free** (the
+    single-outcome *enforcement* is collapse-free only under the double-solution
+    reading). Entangled Born (the one hard core)
     needs non-local hidden variables — one *feasible placeholder* (closed/periodic
     S) shown, not a single asserted theory.
 

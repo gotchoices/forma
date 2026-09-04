@@ -32,19 +32,19 @@ Status flags — **[D]** derivable now (clean analytics; the sims are proof-of-c
 in advance) · **[C]** computationally demonstrated (continuum-analytic where noted)
 · **[P]** posited link (a gap) · **[O]** open.
 
-**Ch 1 — Question & testbed**
+**[Ch 1](01-foundation.md) — Question & testbed**
 - GRID = the causal impedance-scatter lattice; can it give matter + QM, not just Maxwell?
 - The (x, compact-c) cylinder; photon = n=0, particle = compact sector.
 - Method: model computationally, then derive; every claim sim-graded.
 
 ### Act 1 — GRID makes matter *(largely done)*
 
-**Ch 2 — Why the obvious mechanism fails (the instructive negatives)**
+**[Ch 2](02-why-simple-binding-fails.md) — Why the obvious mechanism fails (the instructive negatives)**
 - A clip/wall on a *linear amplitude* is **defocusing** (frequency rises with amplitude) → cannot bind. **[D]**
 - **Several** local mechanisms fail: clip, spillover, crude-quantize, Kerr-index (knob A), strain (knob B), phase-winding (flat-band/immobile). **[C]**
 - Repo-wide survey: *no* prior forma study showed dynamical containment — which *motivates* (not deductively implies) the missing ingredient being a **focusing** nonlinearity (independently: focusing+saturating is the standard soliton recipe). (These negatives are load-bearing — they are the argument for Ch 3.)
 
-**Ch 3 — The compact-phase *field value* is intrinsically focusing (the key result)**
+**[Ch 3](03-compact-phase-focusing.md) — The compact-phase *field value* is intrinsically focusing (the key result)**
 - If the field *value* (not the coordinate — that's Ch 4) is a compact phase — a
   circle: the **ℵ-line**, or a sheet's **U(1)** — its potential is periodic; the
   **minimal** periodic completion of a mass m² is **U = m²(1 − cos φ)**. *(A
@@ -55,19 +55,19 @@ in advance) · **[C]** computationally demonstrated (continuum-analytic where no
 - **Mass and charge are *different* excitations, not the same object twice:** mass = the **breather** (a winding-0 *oscillation*, the 1D minimal projection) / a compact-mode standing wave; charge = a **topological winding** (kink). On a 2D sheet both live together (the tube/ring cycles; [metric-charge](../metric-charge/)'s (m,n)), but as an oscillation-plus-winding — the sheet lift is a *different construction* from the 1D breather, deferred to metric-charge.
 - Gap: derive the on-site cosine from the *literal directed-edge scatter*. **[P]**
 
-**Ch 4 — Matter waves, mass, de Broglie**
+**[Ch 4](04-matter-waves-and-de-broglie.md) — Matter waves, mass, de Broglie**
 - GRID's exact dispersion = **eigenvalues of M = P·S** (the dynamics diagonalized). **[D]**
 - Photon **massless** (Ω=ck); massive KK modes **relativistic** (Ω²=c²k²+ω₀²), same c across sectors (Lorentz-consistent), to <2% for k<0.4π. **[D small-k + C]**
 - **KK mass tower** ω₀(n) = n·(2π/nc)·c ∝ 1/R. **[D]**
 - **de Broglie:** phase harmony v_p·v_g = c² ⇒ the **λ = h/p** *shape* (ℏ enters as a units conversion p=ℏk, not derived — per the project's principle-vs-scale rule). **[D]**
 
-**Ch 5 — Stability & dimensionality**
+**[Ch 5](05-stability-and-dimensionality.md) — Stability & dimensionality**
 - Free 2D space: a real-scalar lump **disperses** (linear) or **collapses** (Derrick). **[D]**
 - 1D solitons exist (breather, kink) and a **2D Q-ball** is stable — but the Q-ball's stabilizer is its **Noether** charge, which C1 disavowed as the GRID mechanism. So the Q-ball is only evidence that *some* wound object can be 3D-stable, **not** a proof for the adopted **topological** charge. **[C, borrowed]**
 - **Localized-3D particles are owed — for charged *and* neutral.** A single U(1) winding is a **vortex line** (codim-2); a kink is a **domain wall** (codim-1); neither is a localized (codim-3) particle, and skyrmion/Hopfion protection needs **π₃** target topology a single compact phase does not supply. A GRID **sheet** (fixed-size compact structure + windings) plausibly localizes+stabilizes, but that construction is **[metric-charge](../metric-charge/)'s, not demonstrated here**. **[O]**
 - **Open trade-off:** a Q-ball-style **Noether** charge *would* supply the 3D existence-proof — but readmitting it **reopens C1** (Noether ≠ topological winding). Topological-charge (resolves C1) vs Noether-charge (gives 3D stability) is an unresolved fork.
 
-**Ch 6 — The promotion ladder (light → mass → charge)**
+**[Ch 6](06-promotion-ladder.md) — The promotion ladder (light → mass → charge)**
 - Each level = the previous **captured** (a winding in a new compact cycle); ties to [grid-duality ch.7](../grid-duality/07-wrap-promotion-modeling.md). **[D-narrative]**
 - Stability = a protected winding; the **ephemeral particle zoo is data** (its quantum numbers = the ladder's observables).
 - Consistency check (structural, not an independent prediction — charge *is* captured mass): **charged ⟹ massive** (electric only) — *caveat: rests on an untested reframe of gluons (massless, color) as binding-resonance, not ladder particles*.
@@ -80,19 +80,19 @@ whole-quantum click is genuinely quantum but its |ψ|² distribution is assumed.
 Act 2 is a **question**, and Ch 10's toy is an arithmetic consistency check, not
 physics progress.*
 
-**Ch 7 — The two-slit lab (interference)**
+**[Ch 7](07-two-slit-lab.md) — The two-slit lab (interference)**
 - GRID slit-ontology: **barrier = mass-blocked nodes; slit = open GRID.**
 - Both a **photon** (massless) and a **matter wave** (compact n=1, massive) interfere on the same lattice; the matter mode has a **longer de Broglie λ** (11.18 vs 8.07 nodes, exact from the dispersion) and coarser fringes. *This is **classical** linear-wave interference (matter follows from photon by linearity) — staging, not yet distinctively quantum; the absolute spacing is non-paraxial, so λL/d is not fit.* **[C]**
 
-**Ch 8 — Single-particle Born**
+**[Ch 8](08-single-particle-born.md) — Single-particle Born**
 - Energy density = ρ = |ψ|² (identity, scatter unitarity) + **whole-quantum single click** (grid-quantization — the genuine quantum piece) + **detection probability ∝ local energy**. ⇒ **P(click) ∝ |ψ|²**. **[D distribution — but the ∝-probability step is Born's content, the *universal* photodetection premise, *assumed*]**
 - Single lumps rebuild the fringes (sim). **[C]**
 
-**Ch 9 — Measurement: an open ontology fork (not "no collapse, settled")**
+**[Ch 9](09-measurement-ontology-fork.md) — Measurement: an open ontology fork (not "no collapse, settled")**
 - Two readings, both consistent with the Born distribution: **(i) wave-until-interaction** (delocalized, localizes at detection) vs **(ii) double-solution** (a real **lump** + a delocalized **de Broglie pilot** through both slits). **[fork, open]**
 - "No collapse" holds only in (ii), and **only if the bulk⟷pilot guidance dynamics work — which is owed/untested**. The paper must present the fork, not assert one.
 
-**Ch 10 — Entanglement & Bell (the one open core)**
+**[Ch 10](10-entanglement-and-bell.md) — Entanglement & Bell (the one open core)**
 - Local shared-phase → classical (CHSH=2); non-local → **QM (2√2), no signaling**. **[C toy]**
 - Non-locality carrier: the **fiber / closed-geometry global self-consistency** (periodic BCs) — *feasibility, one placeholder*, not an asserted theory.
 - **Open:** derive exact **cos(a−b)** from a concrete closed-geometry constraint — an *atemporal global-constraint* computation, likely its own project. **[O]**
