@@ -77,9 +77,15 @@ So the situation is open, not stuck: the branch that would deliver everything,
 ## §5 Where 3D localization would come from
 
 The natural home for a localized 3D particle in the framework is a GRID **sheet** —
-a fixed-size compact structure carrying windings — which plausibly localizes and
-stabilizes the object where a bare phase cannot. That is
-[metric-charge](../metric-charge/)'s construction, and its 3D localization is
+a fixed-size compact structure carrying windings. This is a *different* localization
+mechanism from §4's branch (iii), and the distinction matters: the sheet's two
+cycles form a torus (metric-charge's (m,n) windings), which §4 just noted is
+aspherical and so supplies none of the π₂/π₃ protection a spherical target would.
+The sheet would instead localize by being a **fixed-size** compact object embedded
+in space — a geometric stabilization, closer in spirit to the fixed-size Q-ball than
+to a spherical-target soliton — with its windings supplying the charge quantum
+numbers rather than the 3D binding itself. Whether such a fixed-size structure is
+stable is [metric-charge](../metric-charge/)'s construction and its open question,
 deferred there rather than claimed here. **[cite metric-charge; O]**
 
 ## Attribution / dependencies

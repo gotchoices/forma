@@ -32,9 +32,13 @@ wave and not only for light. Two runs on the *same* GRID lattice
 
 The pattern is **mass-dependent, in the direction de Broglie requires**. The
 massive mode has a longer in-plane (de Broglie) wavelength than the photon —
-**11.18 versus 8.07 lattice nodes**, a value read off exactly from the dispersion's
-compact term cos k_c (Chapter 4) — and its fringes are correspondingly **coarser**.
-Mass lengthens the wavelength, and the pattern widens to match. **[C, and D for λ]**
+**11.18 versus 8.07 lattice nodes**, a value read off exactly from the lab's
+dispersion — and its fringes are correspondingly **coarser**. (The lab needs two
+extended dimensions plus the compact c, so it runs on the three-axis, N=6
+generalization of Chapter 4's two-axis cylinder: the lattice light-speed is
+c = 1/√3 here rather than 1/√2, but the mass mechanism is identical — the compact
+term cos k_c lowers the in-plane wavenumber, lengthening λ.) Mass lengthens the
+wavelength, and the pattern widens to match. **[C, and D for λ]**
 
 ## §3 Honest scope
 

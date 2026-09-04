@@ -37,6 +37,12 @@ mode, so it carries to a compact-sector (n≥1) matter mode by the same reasonin
 The matter case therefore rides on the mechanism being generic; it does not rest on
 a separate proof supplied there. **[cite grid-quantization; mechanism-generic]**
 
+One distinction matters for what follows. This counting argument fixes the *number*
+of quanta — an integer total — not the further fact that a quantum spread across the
+screen registers as a single *localized* click. That single-outcome content is the
+measurement question of §5 and Chapters 9–10; it is not part of, nor delivered by,
+the counting.
+
 ## §3 Born's distribution, and its assumed step
 
 Put the pieces together. The field-energy density is |field|² (§1); each detection
@@ -63,10 +69,16 @@ in the laboratory. **[C]**
 
 ## §5 Scope
 
-This is a single-particle result. It invokes no state-steering and no collapse —
-the energy-density argument is entirely local, and needs neither. What it does *not*
-settle is where the per-click randomness comes from: the draw is described, not
-explained. That is the measurement question, taken up in Chapters 9–10. **[honest]**
+This is a single-particle result, and its locality must be stated with care. The
+**distribution** is local: P(click) ∝ local energy density invokes no state-steering
+and needs no collapse. But selecting *exactly one* click from a wave spread across
+the whole screen is a **single-outcome** constraint, and that piece is not local in
+general. It is local only under Chapter 9's reading (ii), where a real localized
+lump was present all along — one lump, one click; under reading (i) the exactly-one
+selection *is* the non-local collapse. So Chapter 8 delivers the Born *distribution*
+while leaving the single-outcome *enforcement* — the collapse question — open to
+Chapters 9–10, which is also where the per-click randomness is left described rather
+than explained. **[honest]**
 
 ## Attribution / dependencies
 

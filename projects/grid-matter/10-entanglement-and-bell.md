@@ -7,9 +7,11 @@ delivered**. The chapter is brief and explicit about that.
 
 ## §1 Why Bell is the real test
 
-Interference (Chapter 7) is classical, and the single click (Chapter 8) is quantum
-but strictly local. Neither separates a quantum world from a suitably clever
-classical one. The test that does is **Bell's** — operationally, the **CHSH**
+Interference (Chapter 7) is classical wave physics, and the single click
+(Chapter 8) delivers a local *distribution* — though, as Chapters 8–9 note, its
+single-outcome enforcement already raises the collapse/non-locality question. What
+neither provides is a *two-particle* correlation test, and that is what decides the
+matter. The test that does is **Bell's** — operationally, the **CHSH**
 inequality, a combination of correlation measurements on two separated particles at
 independently chosen settings. Any theory in which each outcome depends only on
 local information and a shared past (a *local hidden-variable* theory) obeys
