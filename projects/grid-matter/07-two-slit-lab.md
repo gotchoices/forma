@@ -1,20 +1,58 @@
-# Chapter 7 — The two-slit lab *(outline for review)*
+# Chapter 7 — The two-slit lab
 
-Role: build the apparatus and show interference — staging for Chs 8–10. Honest up
-front that this chapter alone is **classical** wave physics. Brief.
+Act 2 asks whether GRID produces quantum mechanics, and the two-slit experiment is
+where that question is traditionally staged. This chapter builds the apparatus in
+substrate terms and shows interference — including, importantly, interference of a
+genuine *matter* wave, not only light. It is deliberately honest that the
+interference itself is still classical wave physics; the quantum content arrives in
+Chapters 8–10.
 
-## §1 The GRID slit-ontology
-- Translate the apparatus into substrate terms: **barrier = mass-blocked nodes** (encumbered, non-transmitting); **slit = open GRID** (unencumbered compact dimensions, transmitting). The lab sits *inside* one continuous network. **[forma framing]**
+## §1 The GRID reading of the apparatus
 
-## §2 Interference — photon *and* matter (Q1 fix)
-- Two runs on the *same* GRID lattice ([work/dualslit-matter-result.md](work/dualslit-matter-result.md)):
-  - **photon** (massless, c-uniform mode) — the Maxwell sector GRID already had; fringes appear. **[C]**
-  - **matter wave** (compact n=1, massive, ω₀=0.30) — fringes appear too: a genuine *matter*-wave two-slit, not merely the photon. **[C]**
-- The pattern is **mass-dependent, in the de Broglie direction:** the massive mode has a longer in-plane (de Broglie) wavelength — **11.18 vs 8.07 nodes**, exact from the dispersion's cos kc term (Ch 4) — and correspondingly **coarser** fringes. **[C + D for λ]**
+In substrate terms the apparatus is a single continuous network with obstacles. A
+**barrier** is a region of nodes blocked by mass — encumbered, non-transmitting; a
+**slit** is **open GRID** — an unencumbered channel that transmits freely. A
+two-slit screen is therefore continuous GRID everywhere except two open channels,
+and the whole lab sits *inside* one connected medium rather than being a source, a
+mask, and a detector in otherwise empty space. **[forma framing]**
+
+## §2 Interference — photon and matter
+
+Running a broad coherent wavefront at the screen, the two transmitted beams overlap
+and interfere at the backdrop: information from *both* slits reaches each detector
+point. The important step, relative to earlier passes, is to do this for a matter
+wave and not only for light. Two runs on the *same* GRID lattice
+([work/dualslit-matter-result.md](work/dualslit-matter-result.md)) settle it:
+
+- a **photon** — the massless, c-uniform mode, i.e. the Maxwell sector GRID already
+  possessed — produces fringes; and **[C]**
+- a **matter wave** — the compact n=1 mode, genuinely massive with rest frequency
+  ω₀ = 0.30 — produces fringes too. The two-slit is thus a real matter-wave
+  demonstration, not merely a restatement of classical optics. **[C]**
+
+The pattern is **mass-dependent, in the direction de Broglie requires**. The
+massive mode has a longer in-plane (de Broglie) wavelength than the photon —
+**11.18 versus 8.07 lattice nodes**, a value read off exactly from the dispersion's
+compact term cos k_c (Chapter 4) — and its fringes are correspondingly **coarser**.
+Mass lengthens the wavelength, and the pattern widens to match. **[C, and D for λ]**
 
 ## §3 Honest scope
-- The interference itself is **classical linear-wave** behavior — both modes are linear Bloch waves (Ch 4), so the matter case follows from the photon case *by linearity*; it is necessary staging, **not yet distinctively quantum**. The quantum content is the *single whole-quantum click* (Ch 8) and what the click implies about measurement (Chs 9–10). **[honest]**
-- We do **not** fit the paraxial Δ = λL/d (wide slits + lattice near band edge are non-paraxial); the claim is the directional/analytic one above, not the absolute fringe spacing. **[honest]**
+
+Two honest limits keep this chapter from claiming too much. First, the interference
+is **classical linear-wave behavior**: both the photon and the matter mode are
+linear Bloch waves (Chapter 4), so the matter case follows from the photon case *by
+linearity* rather than by anything new — it is necessary staging, not yet
+distinctively quantum. The distinctively quantum content is the single
+whole-quantum click (Chapter 8) and what that click implies about measurement
+(Chapters 9–10). **[honest]**
+
+Second, the sim does **not** fit the paraxial two-slit law Δ = λL/d. With wide
+slits and a lattice operated near its band edge the geometry is not paraxial, so
+the *absolute* fringe spacing does not follow that textbook formula; the supported
+claims are the directional one (matter interferes, coarser than the photon) and the
+analytic de Broglie wavelength, not the absolute spacing. **[honest]**
 
 ## Attribution / dependencies
-- Ch 4 (de Broglie λ). Standard wave optics (fringe spacing). Feeds Chs 8–10.
+
+The de Broglie wavelength is Chapter 4's; the fringe geometry is standard wave
+optics. The result feeds Chapters 8–10.

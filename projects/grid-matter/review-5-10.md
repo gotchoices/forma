@@ -192,3 +192,94 @@ in-filling:
 3. **Q3** — pick one position on neutral-mass stability and make Ch 3 / Ch 5 / Ch 6
    agree.
 4. Q4–Q8 are local clarity/labeling fixes.
+
+---
+
+# Post-prose review (Chapters 5–10 finished)
+
+The outlines above were in-filled into finished prose, and Chapter 3 was updated in
+the same pass (commit `03108b6`). This section audits the finished prose against the
+Q1–Q8 items and records the new issues the prose surfaced.
+
+## Q1–Q8: all adequately addressed
+
+Verified against the finished chapters and the new sim
+([work/dualslit-matter-result.md](work/dualslit-matter-result.md), numbers
+independently re-checked: ω₀ = arccos((2+cos(π/6))/3) = 0.2996 ✓; photon λ = 8.07,
+matter λ = 11.16 ✓ from the 3-axis dispersion).
+
+| # | Resolution in the prose |
+|---|---|
+| Q1 | **Resolved, better than proposed.** Ch 7 adds a compact c-axis, excites the n=1 massive mode, computes the de Broglie λ analytically, and *drops* the old λL/d claim as non-paraxial (§3). It is now a genuine matter-wave demonstration. |
+| Q2 | **Resolved, extra-honest.** Ch 5 §4 is now a trichotomy; §4(iii) correctly notes a torus of phases is aspherical (no π₂/π₃), so the sphere-target route is harder, not free. |
+| Q3 | **Resolved.** Ch 6 §3 states one position (neutral mass = unprotected L2 rung, long-lived not protected); Ch 3 §3 and Ch 5 §2 now carry and cross-reference the same qualifier. |
+| Q4 | **Resolved.** Ch 9 §1 softens the "Compton-sized zone" to plausible-but-detector-set, flagged **[O]**. |
+| Q5 | **Resolved.** Ch 8 §1 quarantines the two \|·\|²; **[D]** attaches only to field-energy. |
+| Q6 | **Addressed.** Ch 8 §2 adds a substrate-generic (U(1)↔ℤ) justification for carrying whole-quanta from light to matter (see N4). |
+| Q7 | **Resolved.** Ch 6 §4 recast as structural consequence / consistency check, not a prediction. |
+| Q8 | **Resolved.** Ch 10 §2 *verifies* no-signaling (marginals 50/50) and calls the toy "arithmetically consistent with hosting," not a derivation. |
+
+## New issues surfaced by the prose
+
+### N1 — "entirely local" single click pre-commits to the open ontology fork
+**medium · not fatal · fixable**
+
+Ch 8 §5 calls the single whole-quantum click account "**entirely local** … needs
+[no] collapse," and Ch 10 §1 inherits this ("the single click is quantum but
+**strictly local**"). But selecting *exactly one* click from a *delocalized* wave is
+the non-local single-outcome constraint — anticorrelation — which the project's own
+[work/thesis-wave-until-interaction.md](work/thesis-wave-until-interaction.md) says
+"requires nonlocality … Bell forbids any local realist single-outcome theory." The
+*distribution* ∝|ψ|² is local; the *exactly-one selection* is not. It is local only
+under Ch 9's reading (ii) (a real localized lump was always there — one lump, one
+click); under reading (i) the single click *is* the non-local collapse. So Ch 8 §5's
+unconditional "entirely local" silently adopts (ii) — which frictions with Ch 9's
+"assert neither branch" and with Ch 10's thesis that the non-locality is unsolved.
+
+**Fix:** Ch 8 §5 should distinguish "local *distribution*" from "single-outcome
+*enforcement* (non-local, deferred to Ch 9–10)"; Ch 10 §1 should not call Ch 8's
+click "strictly local" — the exactly-one outcome is where Bell non-locality first
+enters.
+
+### N2 — Ch 5 §4(iii) ↔ §5 seam: the sheet is the torus §4 just excluded
+**light–medium · not fatal · fixable**
+
+§4(iii) correctly argues a torus (product of compact phases) is aspherical and so
+does *not* supply the π₂/π₃ a localized 3D soliton needs. But §5 then says a GRID
+**sheet** "plausibly localizes," and metric-charge's sheet is a two-cycle (m,n)
+*torus* — exactly the aspherical case §4 excluded. Both defer to metric-charge
+**[O]**, so it is acknowledged-open, but the seam needs one reconciling clause:
+either the sheet supplies extra spherical/non-abelian structure, or it localizes by
+a *non-topological* (fixed-size, Q-ball-like) mechanism that should be named. As
+written §5 implies a torus-sheet resolves what §4 says a torus cannot.
+
+### N3 — Ch 7 quietly changes the lattice from Ch 4's, then cites Ch 4
+**light · not fatal · fixable**
+
+The two-slit lab needs two extended dimensions (x,y) plus compact-c, so it runs on a
+**3-axis, N=6** lattice: dispersion (cos kx+cos ky+cos kc)/3, lightspeed **c=1/√3**.
+Chapter 4 derived the 2-axis cylinder (N=4, /2, **c=1/√2**). Ch 7 §2 reads the de
+Broglie λ "exactly from … cos k_c (**Chapter 4**)," but that exact formula is not
+Ch 4's, and a reader holding c=1/√2 will be wrong-footed. **Fix:** one clause noting
+the lab adds a second extended dimension, so the dispersion is the 3-axis
+generalization of Ch 4's (c=1/√3 here).
+
+### N4 — Ch 8 §2's substrate-generic argument conflates two quantizations
+**light · verify-only · fixable**
+
+§2 carries whole-quantum detection from light to matter via "loop single-valuedness
+→ integer winding (U(1)↔ℤ)." That yields quantized winding/number, but the
+Born-relevant content is that a spread-out quantum yields *one indivisible click*
+(anticorrelation), which integer-*total* alone does not force. Plausible and
+backstopped by §3's honest **[assumed premise]** flag — worth one line confirming
+grid-quantization's countability really is the loop/number-quantization mechanism,
+or distinguishing "integer total" from "single localized click."
+
+## Post-prose bottom line
+
+Every original 5–10 concern is closed cleanly; the revisions are honest and, in
+Q1/Q2, sharper than requested. The one new item worth acting on before calling this
+done is **N1** — a genuine internal inconsistency (Ch 8 asserts local single-clicks;
+Ch 9 keeps the fork open; Ch 10 says the non-locality is unsolved), where a careful
+reader will notice "strictly local single click" has already picked a side. N2–N4
+are one-clause clarity fixes. **No fatal flaw.**

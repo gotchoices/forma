@@ -14,7 +14,7 @@ proven vs. posited*.
 
 ## The working arc (the map — for building the derivations later)
 
-**Act 1 — the particle (largely done).** Can GRID bind a particle? Seven local
+**Act 1 — the particle (largely done).** Can GRID bind a particle? Several local
 mechanisms fail; the answer is the **compact phase** → sine-Gordon **breather
 (mass)** / **kink (charge)**. GRID is intrinsically focusing. Confirmed:
 relativistic **matter waves + de Broglie + KK mass tower** (measured); free-space
@@ -60,7 +60,7 @@ derivation-ready.
    containment), but **knob B's strain field is a real gravity-carrier
    candidate** — a possible grid-gravity revival, kept separate from binding.
 
-5. **[soliton-result.md](soliton-result.md)** — after seven binding failures, the
+5. **[soliton-result.md](soliton-result.md)** — after several binding failures, the
    common gap is named: a **missing focusing nonlinearity**. A clean (borrowed,
    non-GRID) **Q-ball** with focusing+saturating binds a stable, mobile,
    charge-conserving particle — proving the *option* exists, and posing the crux:
@@ -96,8 +96,12 @@ derivation-ready.
 
 10. **[dual-slit-result.md](dual-slit-result.md)** — *Act 2 opens.* On a 2D GRID
     lab (barrier = mass-blocked nodes; slit = open GRID), a wave through **both**
-    slits **interferes** (fringe spacing = de Broglie λ), and **single whole-quantum
-    lumps rebuild the fringes** (corr→0.97) — no collapse invoked.
+    slits **interferes**, and **single whole-quantum lumps rebuild the fringes**
+    (corr→0.97) — no collapse invoked. *(This first pass used the **massless/photon**
+    field.)* **[dualslit-matter-result.md](dualslit-matter-result.md)** then extends
+    it to a genuine **massive matter wave** (compact n=1): it interferes too, with a
+    longer de Broglie λ (11.18 vs 8.07 nodes, exact from the dispersion) and coarser
+    fringes — so the two-slit is a real *matter*-wave demo, not only the photon.
 
 11. **[measurement-and-bell.md](measurement-and-bell.md)** — the refined
     measurement model: two unknowns (interference vs the specific draw = a hidden

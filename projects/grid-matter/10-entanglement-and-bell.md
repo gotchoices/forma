@@ -1,24 +1,69 @@
-# Chapter 10 — Entanglement & Bell *(outline for review)*
+# Chapter 10 — Entanglement and Bell
 
-Role: the one genuinely-open core, and the honest close of Act 2. The
+This is the one genuinely open core of the project, and the honest close of Act 2.
+Everything before it is either classical wave physics or a single local click; the
 distinctively-quantum, non-classical content lives here — and it is **not
-delivered**. Brief, and explicit about that.
+delivered**. The chapter is brief and explicit about that.
 
 ## §1 Why Bell is the real test
-- Interference (Ch 7) is classical; the single click (Ch 8) is quantum but local. **Bell/CHSH is what separates a quantum substrate from any local-classical one** — so it is the decisive test for "GRID makes QM." **[cite Bell/CHSH]**
+
+Interference (Chapter 7) is classical, and the single click (Chapter 8) is quantum
+but strictly local. Neither separates a quantum world from a suitably clever
+classical one. The test that does is **Bell's** — operationally, the **CHSH**
+inequality, a combination of correlation measurements on two separated particles at
+independently chosen settings. Any theory in which each outcome depends only on
+local information and a shared past (a *local hidden-variable* theory) obeys
+CHSH ≤ 2; quantum mechanics reaches up to 2√2 ≈ 2.83, the **Tsirelson bound**. So
+Bell is precisely the decisive test for the claim "GRID makes quantum mechanics."
+**[cite Bell/CHSH]**
 
 ## §2 The toy, and its limit
-- A local shared-phase model gives **CHSH = 2** (classical bound); a non-local shared phase gives **2√2** (Tsirelson/QM). **No-signaling is *verified in the toy*** (both models keep 50/50 marginals — see [work/bell-test-result.md](work/bell-test-result.md)), not merely asserted. But the toy **puts cos(a−b) in by hand** — so reaching 2√2 is arithmetic tautology: it is a **consistency check that the geometry is *arithmetically consistent with hosting* QM correlations**, **not** a derivation of them. **[C toy — honest]**
 
-## §3 The candidate carrier (feasibility placeholder)
-- Where could genuine non-locality live? The **fiber / closed-geometry global self-consistency** — periodic boundary conditions enforcing one consistent value across separated points. Offered as **one feasibility placeholder**, not an asserted theory. **[forma posit; O]**
-- The settings-freedom / superdeterminism line is noted and *not* leaned on. **[forma]**
+A toy model of the "fiber" picture (a shared internal phase carried by both
+particles) makes the stakes concrete. When the shared phase acts **locally** — each
+outcome computed from the local setting and the common phase — the model is capped
+at **CHSH = 2**, the classical bound. When the fiber instead acts as a **non-local**
+condition whose outcome correlation depends on *both* settings, the model reaches
+**2√2**, quantum mechanics exactly. **No-signaling is verified in the toy**, not
+merely asserted: both variants keep each side's marginal outcomes at 50/50, so
+neither permits faster-than-light messaging (see
+[work/bell-test-result.md](work/bell-test-result.md)).
+
+The honest limit is severe, though. The non-local variant reaches 2√2 only because
+the correlation cos(a−b) was **put in by hand**; once inserted, hitting Tsirelson's
+bound is arithmetic tautology. The toy is therefore a **consistency check that the
+geometry is arithmetically consistent with hosting** quantum correlations — it is
+**not** a derivation of them. **[C toy — honest]**
+
+## §3 The candidate carrier
+
+Where could genuine non-locality actually live, without signaling and without giving
+up free settings? The candidate on offer is the **fiber, or closed-geometry, global
+self-consistency**: periodic boundary conditions that force one consistent field
+value across separated points, so that a correlation is a property of the whole
+configuration rather than a message sent between parts. This is put forward as **one
+feasibility placeholder**, not an asserted theory. The settings-freedom
+(superdeterminism) escape is noted and deliberately *not* leaned on. **[forma
+posit; O]**
 
 ## §4 The open problem, stated precisely
-- Derive the exact **cos(a−b)** correlation from a **concrete** closed-geometry constraint — an **atemporal global-constraint** computation (solve-the-whole-history, not step-in-time). Likely its **own project**. **[O]**
+
+The make-or-break computation is sharp: **derive the exact cos(a−b) correlation from
+a concrete closed-geometry constraint** — not insert it. Structurally this is an
+**atemporal, global-constraint** calculation (solve the whole history for
+self-consistency, rather than stepping forward in time), and it is substantial
+enough to be **its own project**. **[O]**
 
 ## §5 Honest close
-- This is where grid-matter's boldest ambition — a **realist substrate under Bell** — lives, and it is **unsolved**. Act 2 ends as an **open, well-posed question**, which is the honest and the useful outcome. **[honest]**
+
+This is where grid-matter's boldest ambition lives — a **realist substrate beneath
+Bell correlations** — and it is unsolved. Act 2 therefore ends not with a claim but
+with an **open, well-posed question**, which is the honest and the useful outcome:
+the structure is shown viable and no-signaling, the one hard derivation is named,
+and nothing is overclaimed. **[honest]**
 
 ## Attribution / dependencies
-- Bell/CHSH, Tsirelson (standard). [work/bell-test-result.md](work/bell-test-result.md) (the toy). Chs 8–9 (the single-particle base it extends).
+
+Bell/CHSH and the Tsirelson bound are standard. The toy is
+[work/bell-test-result.md](work/bell-test-result.md)'s; the measurement base it
+extends is Chapters 8–9's.
