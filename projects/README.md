@@ -91,7 +91,11 @@ Each project's README should:
   (mass → local-time gradient → gravity) stays open; forma's Jacobson route
   (metric as equation-of-state, needing no such carrier) is the fallback.
   Revival needs a substrate-level result making the ℵ-line size a massless
-  field.**
+  field.** *Update:* the scope now permits substrate extensions (itemized per
+  mechanism). **Mechanism 3 — synchronized clocks with a lattice carrier — is
+  proposed, not yet evaluated**
+  ([note](grid-gravity/work/sync-carrier-mechanism.md)); the statistical side is
+  kept in [entropic-route](grid-gravity/work/entropic-route.md).
 - [grid-matter/](grid-matter/) — Whether GRID produces **matter and quantum
   mechanics**, beyond EM and gravity. (Formerly `grid-saturation`: the entry
   hypothesis — that the *saturation bound* makes particles — was **refuted**

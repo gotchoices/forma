@@ -4,11 +4,24 @@
 **Scope:** Mechanical, substrate-level models in which mass — a standing
 wave in a compact dimension — varies **local time** for resident and
 passing waves, and that time-variation *is* gravity. Several candidate
-mechanisms, **one shared evaluation framework**. Gravity only; the
-electromagnetic force is a named stretch slot.
+mechanisms, **one shared evaluation framework**. The project is hypothetical
+by design: a mechanism **may extend the substrate** (add degrees of freedom
+GRID does not currently specify), provided it itemizes what it adds (ground
+rule 9). The statistical / entropic side of the same question is kept
+alongside the mechanical one ([work/entropic-route.md](work/entropic-route.md)).
+Gravity first; the electromagnetic force is a stretch slot, with one candidate
+reading recorded
+([work/sync-carrier-mechanism.md](work/sync-carrier-mechanism.md) §12).
 **Method:** Derivation and rule-design first; computation only at the
 go/no-go gates.
-**Status: parked — blocked on one crux, not refuted.** Two theses for a
+**Status: mechanisms 1–2 parked (blocked on one crux, not refuted);
+mechanism 3 proposed, not yet evaluated.** Mechanisms 1 and 2 used only GRID's
+specified spectrum and stalled for want of a carrier.
+[Mechanism 3](work/sync-carrier-mechanism.md) (synchronized clocks with a
+lattice carrier) responds to exactly that finding by positing the carrier. The record
+for mechanisms 1–2:
+
+Two theses for a
 ground-up GRID mechanism of gravity were explored; neither has *yet* produced
 one, and each is blocked at a specific, identified point:
 - **Mechanism 1 (congestion):** the passive "node eats waves" reading
@@ -36,9 +49,11 @@ gravity) stands open. But the mechanical route is **blocked at the range** on
 structure GRID does not currently specify — and this is *why* forma's
 **Jacobson route** is the natural home: the metric emerges as an *equation of
 state*, never needing a massless neutral carrier in the spectrum. Jacobson is
-the **fallback**. **Revival** would require a foundations-level result (in
-grid-primitive / a substrate project, not here) making the ℵ-line size a
-dynamical, massless, energy-sourced field. Working notes in [work/](work/).
+the **fallback**. **Revival of mechanism 2 as it stands** would require a
+foundations-level result (in grid-primitive / a substrate project) making the
+ℵ-line size a dynamical, massless, energy-sourced field. The other way forward
+— taken by mechanism 3 — is to *posit* such a carrier here, openly, and see
+what follows. Working notes in [work/](work/).
 
 ---
 
@@ -244,9 +259,62 @@ to be modeled **from GRID's own dynamics** (the update rule / lattice
 propagation), *not* by adopting scalar-tensor formalism. Open — a live crux,
 not a refutation.
 
+### Mechanism 3 — Synchronized clocks with a lattice carrier  *(proposed; substrate-extending)*
+
+Metronomes on a pliable table. Lattice clocks have **no master**: neighbours
+trigger each other and fall into step. Lattice members also **store a
+quantity of their own** — the *carrier*, whose value at a place is the gate's
+local-time field q. A node loaded by a standing wave has its rate biased; the
+carrier takes that disturbance outward as a wave and holds a static 1/r
+pattern around the mass. ("Carrier" names the role; elastic edge stress, a
+local stretch of R_ℵ, and others are candidate fillers.) Full note:
+[work/sync-carrier-mechanism.md](work/sync-carrier-mechanism.md).
+
+- **What it adds to GRID** (the ledger): neighbour-triggered clocks; a carrier
+  variable q stored on lattice members; load biases the local rate ∝ energy; a
+  dead band instead of a preferred rate; local rate set by q itself (the
+  potential), not by its gradient.
+- **How it answers mechanisms 1–2.** Mechanism 1 established *loss ⟺ Yukawa*;
+  mechanism 2 established that the coupling is an *index* and that range needs
+  a **massless, neutral, propagating carrier**. The posited carrier fills
+  that role; the dead band and "relaxation by radiation, not by leak" are the
+  masslessness and losslessness conditions.
+- **Division of labour.** Synchronization supplies the *common coordinate
+  tick* (Commitment 4 of [work/local-time.md](work/local-time.md), now from the
+  substrate, and an answer to that note's "what triggers a node?"). It cannot
+  supply the dilation — locked clocks run at equal rates. The dilation comes
+  from the carrier's value q, which falls as 1/r.
+- **Anticipated against the gate:** (0) passes; (1) passes *by construction*
+  (so it is not evidence); (2) passes, possibly exactly, since every wave's
+  advance is rescaled alike; (3) posited, or derived if the carrier is a local
+  stretch of R_ℵ driven by the standing wave's radiation pressure.
+- **Where the evidence would be:** the wave speed coming out equal to c; the
+  light-bending factor of 2 (rate part plus an equal spatial part); deriving
+  the load-slows-rate rule; and being the microscopic form of the Jacobson
+  result rather than a second force.
+- **Also recorded there:** a horizon as a region that has slipped out of lock
+  (with a scaling test, radius ∝ M); and a reading of charge as a signed,
+  winding-selective *additive* frequency offset beside gravity's universal
+  *fractional* one — which explains why electromagnetism can be shielded and
+  gravity cannot.
+- **First test:** the rule in one extended dimension — does a loaded node
+  lock, slip, or hold persistently graded rates?
+
 ### (open to further mechanisms)
 
-New mechanisms are welcome provided they are run through the same gate.
+New mechanisms are welcome provided they are run through the same gate and
+itemize any substrate extension (ground rule 9).
+
+## The statistical side: the entropic route
+
+[work/entropic-route.md](work/entropic-route.md) keeps the statistical half of
+the question in view: what "entropic" means (energy vs entropy vs free
+energy), how Jacobson's and Verlinde's arguments work, and that GRID's gravity
+([grid/gravity.md](../../grid/gravity.md)) rests on *horizon-area* entropy. It
+also records two parked hypotheses — that two masses attract because being
+together is entropically favoured, and the corresponding idea for charge —
+each with its current obstruction and what would reopen it. The link back to
+the mechanical side is fail-fast option 1 below.
 
 ## What would kill it (any mechanism)
 
@@ -293,8 +361,11 @@ A clean *negative* is itself a result: it rules out a hypothesis cheaply.
 
 - Not re-deriving the Einstein equations or G — [grid/gravity.md](../../grid/gravity.md)
   does that thermodynamically; this supplies a microscopic mechanism.
-- Not deriving α; not delivering the EM force (a stretch slot); not replacing
-  general relativity (it sits beneath GR as a substrate origin for curvature).
+- Not deriving α; not committed to delivering the EM force (a stretch slot —
+  one candidate reading is recorded in
+  [work/sync-carrier-mechanism.md](work/sync-carrier-mechanism.md) §12); not
+  replacing general relativity (it sits beneath GR as a substrate origin for
+  curvature).
 
 ## Ground rules
 
@@ -318,6 +389,13 @@ A clean *negative* is itself a result: it rules out a hypothesis cheaply.
    is stated explicitly and flagged as differing from forma's default wrap;
    its origin (node/edge mechanics) is another project's job. Derive gravity
    *given* it; do not pretend it is established.
+9. **Substrate extensions are allowed, and itemized.** A mechanism may add
+   degrees of freedom or rules that GRID does not currently specify. It must
+   list them in a ledger (what is added, what each buys), so mechanisms can be
+   compared on what they explain per thing they add. A gate condition that an
+   added ingredient satisfies *by construction* is recorded as such — it is a
+   property of the posit, not evidence for the mechanism; the evidence lies in
+   what the posit was not built to deliver.
 
 ## Background reading
 
@@ -395,6 +473,17 @@ pedagogical presentation, not new content.
 
 ## Next step
 
+**Current:** mechanism 3 is proposed and unevaluated. Its first test is the
+one-extended-dimension rule of
+[work/sync-carrier-mechanism.md](work/sync-carrier-mechanism.md) §13 — specify
+the trigger, the carrier update, and how q alters the scatter;
+load one node; see whether it locks, slips, or holds persistently graded rates.
+On the statistical side, the open computation is the free energy of two pinned
+inclusions versus separation in 3D
+([work/entropic-route.md](work/entropic-route.md) §4).
+
+**Record for mechanism 2** (how the project reached the carrier requirement):
+
 The compact→spatial-transfer derivation (forced by the incorporated review)
 was carried out in two passes. The first
 ([work/mode-coupling-derivation.md](work/mode-coupling-derivation.md))
@@ -435,6 +524,9 @@ the block precisely: a foundations gap. Standing options:
    angle appears. A block on a *foundations gap* is a legitimate, useful outcome
    — and honestly, this is the recommended state: the mechanical route can't
    proceed without foundations GRID doesn't yet have.
+4. **Posit the carrier here** *(added later; the route mechanism 3 takes)*.
+   Since the project is hypothetical by design, extend the substrate openly —
+   with a ledger of what is added (ground rule 9) — and see what follows.
 
 Coherence points that survive: the *odd* substrate deviation → charge
 (grid-primitive/09). The **even → gravity** half is not refuted, but it is

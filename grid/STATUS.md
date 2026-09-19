@@ -183,8 +183,8 @@ extensions — none are critical to the framework.
 |-------|-----------|
 | [lattice-geometry.md](lattice-geometry.md) | ζ = 1/4 from 3D tetrahedral packing (Model B) |
 | [compact-dimensions.md](compact-dimensions.md) | α is a designer's choice within dense discrete steps |
-| [sim-gravity/](sim-gravity/) | Elastic lattice gives 1/r² (elastic, not gravitational) — confirms Jacobson route is necessary |
-| [sim-gravity-2/](sim-gravity-2/) | Scalar + string-register: both give 1/r force (p ≈ 1.01) — entropic gravity confirmed |
+| [sim-gravity/](sim-gravity/) | Elastic lattice gives 1/r² in 2D (elastic, not gravitational) — a direct energy-minimizing vector field gives the wrong law, which motivates the Jacobson (statistical) route |
+| [sim-gravity-2/](sim-gravity-2/) | Scalar + string-register: both give the 2D 1/r force law (p ≈ 1.01, R² ≈ 0.999) from the lattice's massless (Laplacian) field, and entropy scales with mode count — the ingredients Jacobson's argument needs. A *directly measured* entropic force is still open: the static entropy-profile gradient gave no power law (p = 0.17), as expected, since Jacobson's force comes from the change in total entropy, not a local gradient (free-energy-vs-position and 3D tests pending) |
 | [sim-maxwell/](sim-maxwell/) | Directional propagation from geometry alone (speed ≈ 0.70, no Maxwell input) |
 | sim-maxwell (hexagonal) | Single-edge forward propagation (hex dir=0.53 vs tri=0.24) |
 | sim-maxwell (superposition) | Perfect superposition on both lattices (residual ~10⁻¹⁵) |
@@ -197,7 +197,7 @@ extensions — none are critical to the framework.
 - **Einstein's equations + G** from lattice thermodynamics (A1, A2, A5)
 - **Directional wave propagation** from geometry alone (no Maxwell input)
 - **Linear superposition** exact on both triangular and hexagonal lattices
-- **1/r entropic gravity** on the lattice (2D confirmed)
+- **The 1/r force law on the lattice** (2D, confirmed to p ≈ 1.01) from a massless lattice field, consistent with the Jacobson route; a direct measurement of the entropic force itself remains open
 - **Event horizon** = coordinate singularity (lattice accommodates it)
 - **Physical singularity** = lattice failure (curvature exceeds pentagon capacity)
 - **Minimum BH mass** ≈ 0.56 Planck masses (geometric prediction)
