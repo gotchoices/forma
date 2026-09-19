@@ -20,8 +20,8 @@ it is not evidence (README ground rule 9).
 | # | Step | Kind | Pass looks like | Ends / redirects if | State |
 |---|---|---|---|---|---|
 | 1 | **Uniform-q theorem.** A concrete local lossless rule; exact spectrum with the carrier uniform; carrier speed. | derivation + exact numerics | light speed, rest frequency and inertia rescale by one factor; carrier speed = c untuned | no rule rescales them together (→ an optical medium, not time dilation) | **passed** — [uniform-q-theorem.md](uniform-q-theorem.md) |
-| 2 | **Drop test.** Impose a static gradient of the storage weight on an (x, c) lattice; release packets of different k and compact mode n. | simulation (cross-check of step 1) | one acceleration for all, equal to −c²·∇(ln of the rate); small reflection | acceleration depends on k or n (equivalence fails); strong reflection at gentle gradients | next |
-| 3 | **Lattice action and the light-bending parameter γ.** One Lagrangian: wave field + carrier + coupling to energy density. Read off source ∝ energy, action–reaction, and γ. | derivation | source ∝ energy with one sign; a stated, natural spatial partner that gives γ = 1 | γ = 1 requires an unnatural or tuned partner | queued |
+| 2 | **Drop test.** Impose a static gradient of the storage weight on an (x, c) lattice; release packets of different k and compact mode n. | simulation (cross-check of step 1) | one acceleration for all, equal to −c²·∇(ln of the rate); small reflection | acceleration depends on k or n (equivalence fails); strong reflection at gentle gradients | **passed** — [drop-test-result.md](drop-test-result.md) |
+| 3 | **Lattice action and the light-bending parameter γ.** One Lagrangian: wave field + carrier + coupling to energy density. Read off source ∝ energy, action–reaction, and γ. | derivation | source ∝ energy with one sign; a stated, natural spatial partner that gives γ = 1 | γ = 1 requires an unnatural or tuned partner | next |
 | 4 | **Switch-on in 3D.** Constant source on the canonical scatter; watch the static pattern build. | simulation | static 1/r inside a front moving at c | the dynamics do not relax to the static field | queued |
 | 5 | **Strong field.** Dead-band edge, slip, horizon radius versus M. | simulation (nonlinear) | horizon radius ∝ M; exterior field intact | radius ∝ √M, or exterior field screened | queued (only if 1–4 survive) |
 
@@ -53,7 +53,16 @@ versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
   identified: inverted return → photon mass; direction-labeled registers →
   anisotropic. Side finding: the direction-labeled scatter is anisotropic in
   three axes even unloaded (affects grid-matter's 3-axis two-slit numbers, not
-  its 2-axis results).
+  its 2-axis results; written up in
+  [grid-matter/review.md](../../grid-matter/review.md)).
+- **Step 2 — passed.** In a uniform gradient of Y, packets of three different
+  masses fall together at a = g/(4+Y)² (sim/exact 0.996–0.999; the mass
+  dependence is the predicted 1/cos²(ω₀/2), i.e. order (rest frequency ×
+  tick)²). Moving massive packet and photon follow the ray equations to 0.02%;
+  the photon is delayed. Reflection: 1% at an abrupt 18% speed step, < 10⁻⁴
+  once the ramp exceeds ~1.5 wavelengths. Expectations met as pre-registered;
+  the one addition is the speed-dependence a ∝ (1 − 2v²/c²), which is the γ = 0
+  signature in one dimension.
 
 ---
 
@@ -64,6 +73,7 @@ versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
   of posits, roles of synchronization and carrier, conditions for range,
   horizon and charge readings, hurdles.
 - [uniform-q-theorem.md](uniform-q-theorem.md) — step 1 result.
+- [drop-test-result.md](drop-test-result.md) — step 2 result.
 
 **Statistical side**
 - [entropic-route.md](entropic-route.md) — what "entropic" means; parked
@@ -96,5 +106,7 @@ versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
 **Scripts** ([../scripts/](../scripts/))
 - `carrier_dispersion.py` — exact Bloch spectrum with a node storage register
   (step 1).
+- `drop_test.py` — packets in a gradient of the storage weight; reflection
+  from a ramp (step 2).
 - `gate_falloff.py`, `gate_dispersion.py`, `hex_greens.py` — mechanism 1–2 gate
   sims.

@@ -1,7 +1,7 @@
 # Mechanism 3 — synchronized clocks with a lattice carrier (proposal)
 
 **Status:** Proposal / working hypothesis, **under validation** — plan and
-state in [STATUS.md](STATUS.md); step 1 passed.
+state in [STATUS.md](STATUS.md); steps 1–2 passed.
 Unlike mechanisms 1 and 2, this one **extends the substrate** — it adds
 degrees of freedom GRID does not currently specify. That is deliberate (the
 project is hypothetical by design, and the block on mechanism 2 was a
@@ -324,6 +324,12 @@ slow together, with 1 − q = 1/√(1 + Y/N). The same calculation shows that
 returning the share *inverted* gives the photon a mass, and that a carrier
 riding the same scatter travels at exactly light's speed. It also fixes the
 target for step 3: this rule alone gives half the observed light bending.
+
+**Step 2 is done** ([drop-test-result.md](drop-test-result.md)). With a static
+gradient of Y imposed, packets of different mass fall together toward the
+slower region at a = −c·dc/dx, light is delayed rather than reflected, and
+moving packets follow the ray equations of the local spectrum to 0.02%. The
+profile was imposed by hand; that a mass *produces* it is step 3.
 
 ## Grades summary
 

@@ -15,7 +15,7 @@ reading recorded
 **Method:** Derivation and rule-design first; computation only at the
 go/no-go gates.
 **Status: mechanisms 1–2 parked (blocked on one crux, not refuted);
-mechanism 3 under validation — step 1 of 5 passed
+mechanism 3 under validation — steps 1–2 of 5 passed
 ([work/STATUS.md](work/STATUS.md)).** Mechanisms 1 and 2 used only GRID's
 specified spectrum and stalled for want of a carrier.
 [Mechanism 3](work/sync-carrier-mechanism.md) (synchronized clocks with a
@@ -480,7 +480,14 @@ are in [work/STATUS.md](work/STATUS.md). **Step 1 (the uniform-q theorem) has
 passed** ([work/uniform-q-theorem.md](work/uniform-q-theorem.md)): a storage
 register at each node, returning its share a tick later, slows every mode
 through one universal, lossless map — light speed, rest frequency and inertia
-together. Next is the drop test (step 2). On the statistical side, the open computation is the free energy of two pinned
+together. **Step 2 (the drop test) has passed**
+([work/drop-test-result.md](work/drop-test-result.md)): in a gradient of that
+storage weight, packets of different mass fall together toward the slower
+region, moving packets and light follow the ray equations to 0.02%, and
+reflection is negligible for gradients longer than a wavelength. Next is step 3
+— a lattice action, the sourcing by energy, and the light-bending parameter
+(the node-level rule alone gives half the observed bending). On the statistical
+side, the open computation is the free energy of two pinned
 inclusions versus separation in 3D
 ([work/entropic-route.md](work/entropic-route.md) §4).
 
