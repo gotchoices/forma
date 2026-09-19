@@ -38,7 +38,8 @@ diffraction ripple — information from *both* slits reaches each detector point
 The pattern is **mass-dependent, in the direction de Broglie requires**. The
 massive mode has a longer in-plane (de Broglie) wavelength than the photon —
 **11.18 versus 8.07 lattice nodes** — and its fringes are correspondingly
-**coarser** (≈32.8 versus ≈26.2 nodes). Those wavelengths are obtained two ways
+**coarser** (fringe period 32.4 ± 4.6 versus 25.9 ± 2.9 nodes, by FFT of the
+backdrop). Those wavelengths are obtained two ways
 that agree: solved from the lab's dispersion relation, and **measured** by FFT of
 the field, 11.35 ± 0.48 and 8.13 ± 0.25 nodes. **[C, and D for λ]**
 
@@ -62,13 +63,17 @@ distinctively quantum. The distinctively quantum content is the single
 whole-quantum click (Chapter 8) and what that click implies about measurement
 (Chapters 9–10). **[honest]**
 
-Second, the paraxial two-slit law Δ = λL/d is approached but not met. With the lab
-isotropic it predicts 23.5 nodes for the photon and 32.6 for the matter wave,
-against **26.2 and 32.8** observed — +11% and +0.6%. The slits are wide (10 nodes)
-and the geometry only marginally paraxial, so the *absolute* spacing remains an
-approximate observable, not a precision one. The firmly supported claims are the
-directional one (matter interferes, coarser than the photon) and the de Broglie
-wavelength, which is now both derived and measured. **[honest]**
+Second, the paraxial two-slit law Δ = λL/d is now *consistent with* the lab but
+not sharply tested by it. With the lab isotropic it predicts 23.6 nodes for the
+photon and 32.6 for the matter wave, against measured fringe periods of
+**25.9 ± 2.9 and 32.4 ± 4.6** — agreement within the measurement's resolution,
+where the earlier anisotropic run missed by a factor ~3, far outside it. But the
+resolution is only about one FFT bin (~10–15% at these periods), and the geometry
+sits in the near-field (Fresnel number d²/λL ≈ 2), where λL/d is not strictly the
+governing formula anyway. So this is a consistency check passed, not a precision
+confirmation. The firmly supported claims remain the directional one (matter
+interferes, coarser than the photon) and the de Broglie wavelength, which is now
+both derived and measured. **[honest]**
 
 ## Attribution / dependencies
 

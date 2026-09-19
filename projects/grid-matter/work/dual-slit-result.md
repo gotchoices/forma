@@ -1,38 +1,22 @@
 # Two-slit interference on a 2D GRID lab (Act 2, step 1: the wave half)
 
 Sim: [`../scripts/dualslit.py`](../scripts/dualslit.py). Figures in
-[`../outputs/`](../outputs/) (`dualslit_2slit.png`, `dualslit_1slit.png`).
+[`../outputs/`](../outputs/) (`dualslit_2slit.png`, `dualslit_1slit.png`,
+`dualslit_2slit_clicks.png`).
 
-**Invocation (convention-pinned 2026-09-18):**
-`dualslit.py --nc 0 --omega 0.5 --slits {1,2} --scatter legacy`. The script's
-default scatter is now `canonical`; this 2D run predates that and is pinned to
-`legacy` so the results below reproduce exactly. In **two** axes the two
-conventions have the same dispersion, but they place the propagating band
-differently (Ω = ω vs Ω = π − ω), so the same `--omega` means a different
-physical frequency in each — hence the pin.
+**Invocation:** `dualslit.py --nc 0 --omega 0.5 --slits {1,2} [--clicks 3000]`,
+on the default **canonical** scatter.
 
-> **⚠ Open item, logged 2026-09-18 — the λ ≈ 9 used in the λL/d check below is
-> not this wave's wavelength.** Under the pinned (legacy) convention at ω = 0.5,
-> the two-axis band condition cos ω = −(cos k_x + cos k_y)/2 has **no on-axis
-> solution**: cos k_x would have to be −2.76. Propagation happens only through
-> large-k **zone-corner** modes — the k_y = π branch gives λ_x = 2.59 nodes, and
-> an FFT of the field measures **2.60 ± 0.03**, matching it to 0.4%. The "λ ≈ 9
-> (from ω = 0.5, c ≈ 0.7)" figure in §Result is a *continuum* estimate 2πc/ω,
-> and it does not apply to a mode sitting near the Brillouin zone corner.
->
-> What this does and does not touch. The **interference claim stands**: the
-> one-slit vs two-slit spacing discriminator (85.7 vs 28.7) is empirical and
-> needs no wavelength. The **λL/d agreement does not stand** — with λ = 2.6 the
-> textbook formula gives ≈7.6 nodes, not the ≈26 quoted, so the reported match
-> to 28.7 is a coincidence. Ch 8's Born/click results rest on the |field|²
-> pattern, not on λ, and are unaffected.
->
-> This is a *different* defect from [../review.md](../review.md)'s (which
-> concerned the three-axis dispersion relation) and was found while fixing it.
-> A re-run at a drive that is genuinely in-band on-axis — e.g. the canonical
-> convention at ω = 0.5, where λ = 8.79 analytic and 8.90 ± 0.29 measured, close
-> to the ≈9 this file assumed — would settle it, at the cost of new fringe
-> numbers for this chapter. Not yet done; deferred as its own decision.
+**Revised 2026-09-18.** This run previously used the direction-of-travel
+(`legacy`) register labeling, under which a drive of ω = 0.5 is **off-band on
+axis**: the two-axis condition cos ω = −(cos k_x + cos k_y)/2 would need
+cos k_x = −2.76. Propagation happened only through large-k **zone-corner** modes
+(the k_y = π branch, λ_x = 2.59 nodes; an FFT of the field measured 2.60 ± 0.03),
+so the "λ ≈ 9" used in the λL/d check below was a *continuum* estimate 2πc/ω that
+did not describe the wave actually propagating. On the canonical scatter the band
+sits at Ω ≈ 0, the same ω = 0.5 is squarely in-band on axis, and λ = 8.79 analytic
+/ **8.90 ± 0.29 measured** — so the wavelength this file always assumed is now
+the real one. Details in §Revision record.
 
 ## The GRID reading of the apparatus (Kyle's framing, realized)
 
@@ -47,19 +31,29 @@ physical frequency in each — hence the pin.
 
 | config | detector pattern |
 |---|---|
-| **2 slits** | **fine fringes**, spacing **~28.7 nodes**, ~10 maxima |
-| 1 slit | broad single-slit diffraction lobe (spacing ~85.7, no fine fringes) |
+| **2 slits** | **fringes**, period **28.8 ± 3.6 nodes** (FFT of the backdrop), 6 maxima |
+| 1 slit | **single lobe**, no fringes (1 maximum) |
 
-The double-slit fringe spacing matches the **textbook** formula: Δ ≈ λL/d with
-L = 285−110 = 175 (barrier→detector), d = 60 (slit separation), λ ≈ 9 (from ω=0.5,
-c≈0.7) → **≈ 26 nodes**, vs. measured **28.7**. So this is real interference, not an
-artifact: the wave passes through **both** open-grid slits and the two transmitted
-waves interfere — **information from both slits reaches every detector point.** The
-GRID slit-model works.
+The **one-slit control is a clean single lobe**, so the structure in the two-slit
+case is interference and not single-slit diffraction ripple: the wave passes
+through **both** open-grid slits and the two transmitted waves interfere —
+**information from both slits reaches every detector point.** The GRID slit-model
+works.
 
-*(The script's peak-counter over-labels the single-slit case as "fringes"; the true
-discriminator is the **spacing** — 28.7 (two paths interfering) vs 85.7 (one broad
-diffraction lobe). Fringe count alone is not the signal.)*
+The fringe period is also **consistent with the textbook paraxial formula**
+Δ ≈ λL/d: with L = 285−110 = 175 (barrier→detector), d = 60 (slit separation) and
+the measured λ = 8.90 ± 0.29, it predicts 26.0 nodes against 28.8 ± 3.6 observed.
+Consistent — but see the limit below before reading that as precision.
+
+*(Two measurement cautions, both learned the hard way. **Fringe period**: this is
+now taken from an FFT of the backdrop, not from the mean gap between maxima
+clearing a threshold. That older statistic measures span ÷ peak count, so it
+tracks the envelope as much as the fringes, and it misread this very run's
+28.8-node period as 34.6 in one configuration. **Regime**: with d = 60, L = 175,
+λ ≈ 8.9 the Fresnel number d²/λL ≈ 2.3 — the near field — and Δ = λL/d is a
+far-field formula. It is being checked against here, not tested. The FFT period
+is itself bin-limited to about ±3.6 nodes. So "consistent" is the right word and
+"matches" is not.)*
 
 ## What this is and isn't
 
@@ -93,9 +87,9 @@ lump histogram with |field|²:
 
 | single lumps | corr with |field|² |
 |---|---|
-| 30 | +0.44 |
-| 300 | +0.73 |
-| 3000 | **+0.97** |
+| 30 | +0.40 |
+| 300 | +0.87 |
+| 3000 | **+0.99** |
 
 Single lumps **rebuild the two-slit fringes** — the Tonomura single-particle
 build-up, on the GRID lab. **Reframed (Kyle):** each lump is a *revealed
@@ -124,3 +118,29 @@ detected" — shown.
 
 So Act 2's score: **collapse — dissolved** (real lump = hidden variable);
 **Born-from-mechanism and Bell-correct non-locality — the frontier.**
+
+## Revision record (2026-09-18)
+
+- **Scatter convention.** Moved from `legacy` (direction-of-travel registers) to
+  the default `canonical` (edge end-registers). In two axes the two have the same
+  *dispersion*, but they place the propagating band differently — legacy at
+  ω ≈ π, canonical at ω ≈ 0 — so the same `--omega` selects a different physical
+  Ω under each. At ω = 0.5 that is the difference between an off-axis zone-corner
+  mode (λ = 2.6) and a clean on-axis band mode (λ = 8.9). See
+  [dispersion-analytic.md](dispersion-analytic.md) §Two register conventions.
+- **λ is now real, and measured.** 8.79 analytic, 8.90 ± 0.29 by FFT — vindicating
+  the ≈9 this file had assumed on continuum grounds, which under the old
+  convention was not the propagating wavelength.
+- **Fringe period essentially unchanged**: 28.7 (old peak-count) → 28.8 ± 3.6
+  (FFT). The observable that carried the interference claim did not move.
+- **One-slit control improved**: 4 maxima (over-labelled as "fringes" by the old
+  peak counter) → a clean single lobe, 1 maximum. The discriminator no longer
+  needs the spacing caveat the previous draft carried.
+- **Clicks**: correlations 30 / 300 / 3000 lumps move from +0.44 / +0.73 / +0.97
+  to +0.40 / +0.87 / +0.99. The Born/click result rests on the |field|² backdrop,
+  which is why it is insensitive to all of the above.
+- **Ch 8 is unaffected in substance** — it uses these fringes qualitatively and
+  makes no numerical use of λ or the fringe period.
+
+Found while fixing [../review.md](../review.md)'s three-axis finding; logged as an
+open item there, and now closed.

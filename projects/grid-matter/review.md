@@ -14,9 +14,9 @@
 > isotropic in three axes; the mean-of-cosines relation is therefore *correct*
 > there, and the originally published λ = 8.07 / 11.18 and ω₀ = 0.300 stand —
 > now confirmed by measurement to 0.7% / 1.5%. The fringe spacings changed with
-> the medium (photon 5.9 → 26.2, matter 13.8 → 32.8), and λL/d, previously off
-> by a factor ~3, now holds to +11% / +0.6%. Two further defects found during
-> the fix are recorded in §8.
+> the medium (photon 5.9 → 25.9, matter 13.8 → 32.4), and λL/d, previously off
+> by a factor ~3, is now consistent within the fringe measurement's resolution.
+> Three further defects found during the fix are recorded in §8.
 >
 > Current state: [work/dualslit-matter-result.md](work/dualslit-matter-result.md)
 > §Revision record.
@@ -170,8 +170,38 @@ Both were in [scripts/dualslit.py](scripts/dualslit.py), both now fixed.
    check that would have caught it. The FFT measurement is now implemented, as a
    barrier-free CW calibration pass, and is reported alongside the analytic value.
 
-A third, smaller point: the peak counter labelled any ≥3 maxima "INTERFERENCE
+3. **The fringe-spacing statistic was unreliable.** The script reported the mean
+   gap between maxima clearing 0.15 of peak. That measures span ÷ number of peaks
+   above the threshold, so it tracks the *envelope* as much as the fringes: in the
+   2D lab it read 34.6 nodes against a true period of 28.8. The fringe period is
+   now obtained by FFT of the backdrop and reported with its (coarse, ~1-bin)
+   resolution. This matters for reading any λL/d comparison in this project,
+   old or new.
+
+A fourth, smaller point: the peak counter labelled any ≥3 maxima "INTERFERENCE
 FRINGES", which cannot separate two-slit interference from single-slit
 diffraction ripple — under the legacy rule the one-slit matter run was labelled
 as fringes. The label is gone and the one-slit control is now run and reported;
 under the canonical scatter both one-slit controls come out as clean single lobes.
+
+4. **A fourth defect, in the *two*-axis lab this review had declared unaffected.**
+   The 2D two-slit of [work/dual-slit-result.md](work/dual-slit-result.md) drives
+   at ω = 0.5 under the legacy labeling, where the two-axis band condition has **no
+   on-axis solution** (cos k_x would need to be −2.76). It propagated through
+   large-k zone-corner modes at λ = 2.59 (FFT measured 2.60 ± 0.03), so its
+   λ ≈ 9 — a continuum estimate 2πc/ω — described nothing in the run, and the
+   λL/d "textbook match" it reported was a coincidence. **The review's
+   blast-radius claim was right about the dispersion *relation* but not about the
+   band *placement*:** the two conventions put the propagating band at ω ≈ π and
+   ω ≈ 0, so the same `--omega` means a different physical Ω in each, even at two
+   axes. Fixed by moving that lab to canonical too, where ω = 0.5 is in-band and
+   λ = 8.79 analytic / 8.90 ± 0.29 measured — vindicating the ≈9 it had assumed.
+   The fringe period was unchanged (28.7 → 28.8), the one-slit control improved
+   from a mislabelled 4-maxima pattern to a clean single lobe, and the Ch 8 click
+   correlation went from +0.97 to +0.99.
+
+**Regime note.** With d = 60, L = 175 and λ ≈ 8–11 the Fresnel number d²/λL is
+≈ 1.8–2.6, so this geometry is **near-field**; Δ = λL/d is a far-field formula and
+is being checked against, not tested, here. Driving the 2D lab to λ ≈ 22 (Fresnel
+number ≈ 0.9) does reach the far field, where the measured period 64.8 is
+consistent with λL/d = 64.7 — bin-limited too, so not a sharp test either.

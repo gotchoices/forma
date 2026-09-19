@@ -40,7 +40,7 @@ at a detector element x is
 
 The single quantum (premise 3) is absorbed at *one* x, drawn with weight |ψ(x)|².
 Over many identically-prepared quanta the clicks accumulate into |ψ(x)|² — the
-Tonomura build-up, which we reproduced (single lumps → fringes, corr→0.97,
+Tonomura build-up, which we reproduced (single lumps → fringes, corr→0.99,
 [dual-slit-result.md](dual-slit-result.md)). **No steering, no collapse: the click
 is one whole quantum absorbed where the energy density is, and that density is
 |ψ|².**

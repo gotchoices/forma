@@ -85,11 +85,14 @@ has a convention-sensitive *relation*, and it now runs on the canonical rule.
 band sits at ω ≈ π and the canonical band at ω ≈ 0, so the same numerical drive
 frequency selects a *different physical Ω* under each rule — and a drive that is
 comfortably in-band for one can be off-band, or reachable only through large-k
-zone-corner modes, for the other. Any run must therefore state which convention
-it used, even in two axes. A live instance is logged in
-[dual-slit-result.md](dual-slit-result.md): its 2D lab at ω = 0.5 has **no
-on-axis propagating mode** under the legacy rule, and the wavelength assumed
-there does not describe the wave that actually propagates.
+zone-corner modes, for the other. **Any run must state which convention it used,
+even in two axes.** This bit once: the 2D lab of
+[dual-slit-result.md](dual-slit-result.md) at ω = 0.5 has **no on-axis
+propagating mode** under the legacy rule, and propagated instead through
+zone-corner modes at λ = 2.6, so the λ ≈ 9 it assumed described nothing in the
+run. Moving it to the canonical rule put the same ω = 0.5 squarely in-band and
+made λ = 8.79 real (8.90 ± 0.29 measured). Both the three-axis and two-axis labs
+now run canonical.
 
 ## Status
 

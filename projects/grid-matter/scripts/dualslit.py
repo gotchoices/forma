@@ -276,6 +276,30 @@ def fft_wavelength(fld, x0, x1, ycen, yhalf):
     return lam, lam * lam / (2.0 * n)          # half-bin resolution in lambda
 
 
+def fringe_period(bd, ny):
+    """Fringe PERIOD of the backdrop, by FFT after removing the broad envelope.
+    More reliable than counting maxima above a threshold, which measures
+    (span / number of peaks clearing the threshold) and so tracks the envelope
+    as much as the fringes. Returns (period, +-resolution) or None."""
+    y = np.arange(ny)
+    b = bd[(y > 30) & (y < ny - 30)].astype(float)
+    n = len(b)
+    if n < 64 or not np.isfinite(b).all() or b.max() <= 0:
+        return None
+    w = min(61, (n // 4) * 2 + 1)
+    env = np.convolve(b, np.ones(w) / w, mode="same")
+    r = (b - env) * np.hanning(n)
+    F = np.abs(np.fft.rfft(r))
+    F[:3] = 0.0                                   # kill residual envelope
+    i = int(np.argmax(F))
+    if i < 1:
+        return None
+    per = n / i
+    # one-bin resolution: the periods of the neighbouring bins
+    lo, hi = n / (i + 1), n / (i - 1) if i > 1 else float("inf")
+    return per, max(per - lo, hi - per)
+
+
 def measure_debroglie(args):
     """Barrier-free CW calibration pass -> measured in-plane lambda."""
     ny = max(64, 4 * args.slit)
@@ -357,6 +381,8 @@ def main():
                 corr = np.corrcoef(h, np.histogram(y, bins=edges, weights=b)[0])[0, 1]
                 print(f"  {nn:>5} single lumps: histogram vs |field|^2 corr = {corr:+.3f}")
 
+    dbl_pre = debroglie_lambda(args, N)
+
     # fringe maxima and spacing. NOTE: >=3 maxima is NOT by itself proof of
     # two-slit interference -- single-slit diffraction also ripples. The
     # discriminator is the 1-slit vs 2-slit comparison, not this count.
@@ -364,13 +390,20 @@ def main():
     peaks = np.where((bb[1:-1] > bb[:-2]) & (bb[1:-1] > bb[2:]) & (bb[1:-1] > 0.15))[0]
     print(f"  detector pattern: {len(peaks)} maxima above 0.15 "
           f"-> {'structured (compare 1-slit control)' if len(peaks) >= 3 else 'single lobe'}")
-    if len(peaks) >= 2:
-        print(f"  fringe spacing  ~ {float(np.mean(np.diff(peaks))):.1f} nodes")
+    fp = fringe_period(bd, args.ny) if len(peaks) >= 3 else None
+    if fp is not None:
+        per, res = fp
+        print(f"  fringe period   = {per:.1f} +- {res:.1f} nodes (FFT of the backdrop)")
+        if dbl_pre is not None:
+            paraxial = dbl_pre[0] * (args.xdet - args.xbar) / args.sep
+            within = abs(per - paraxial) <= res
+            print(f"    paraxial lambda*L/d = {paraxial:.1f} nodes "
+                  f"-> {'consistent within resolution' if within else 'OUTSIDE resolution'}")
 
     # in-plane (de Broglie) wavelength: analytic from the exact dispersion, and
     # measured by FFT. We do NOT fit lambda*L/d: wide slits on a lattice are not
     # paraxial, so absolute fringe spacing is reported as the empirical observable.
-    dbl = debroglie_lambda(args, N)
+    dbl = dbl_pre
     if dbl is not None:
         lam, kx = dbl
         print(f"  de Broglie lambda = {lam:.2f} nodes  (in-plane k_x={kx:.4f}; analytic, "

@@ -99,15 +99,17 @@ derivation-ready.
 10. **[dual-slit-result.md](dual-slit-result.md)** — *Act 2 opens.* On a 2D GRID
     lab (barrier = mass-blocked nodes; slit = open GRID), a wave through **both**
     slits **interferes**, and **single whole-quantum lumps rebuild the fringes**
-    (corr→0.97) — no collapse invoked. *(This first pass used the **massless/photon**
+    (corr→0.99) — no collapse invoked. *(This first pass used the **massless/photon**
     field.)* **[dualslit-matter-result.md](dualslit-matter-result.md)** then extends
     it to a genuine **massive matter wave** (compact n=1): it interferes too, with a
     longer de Broglie λ (11.18 vs 8.07 nodes — solved from the dispersion *and*
     measured by FFT) and coarser fringes, with a one-slit control giving a single
     lobe in both cases — so the two-slit is a real *matter*-wave demo, not only the
-    photon. *(Revised 2026-09-18: the three-axis lab moved to the canonical scatter
-    after [../review.md](../review.md); the λ values are unchanged and now
-    empirically confirmed, the fringe spacings changed with the medium.)*
+    photon. *(Revised 2026-09-18 after [../review.md](../review.md): **both** labs
+    moved to the canonical scatter — the three-axis one because its assumed
+    dispersion was wrong there, the 2D one because its drive was off-band on axis
+    under the old labeling. Wavelengths are now measured as well as derived; the
+    2D fringe period is unchanged at ~28.8 nodes.)*
 
 11. **[measurement-and-bell.md](measurement-and-bell.md)** — the refined
     measurement model: two unknowns (interference vs the specific draw = a hidden
