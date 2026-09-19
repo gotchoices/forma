@@ -15,7 +15,7 @@ reading recorded
 **Method:** Derivation and rule-design first; computation only at the
 go/no-go gates.
 **Status: mechanisms 1–2 parked (blocked on one crux, not refuted);
-mechanism 3 under validation — steps 1–2 of 5 passed
+mechanism 3 under validation — steps 1–3 of 5 passed
 ([work/STATUS.md](work/STATUS.md)).** Mechanisms 1 and 2 used only GRID's
 specified spectrum and stalled for want of a carrier.
 [Mechanism 3](work/sync-carrier-mechanism.md) (synchronized clocks with a
@@ -272,9 +272,11 @@ local stretch of R_ℵ, and others are candidate fillers.) Full note:
 [work/sync-carrier-mechanism.md](work/sync-carrier-mechanism.md).
 
 - **What it adds to GRID** (the ledger): neighbour-triggered clocks; a carrier
-  variable q stored on lattice members; load biases the local rate ∝ energy; a
-  dead band instead of a preferred rate; local rate set by q itself (the
-  potential), not by its gradient.
+  variable q stored on lattice members; a dead band instead of a preferred
+  rate; local rate set by q itself (the potential), not by its gradient;
+  storage on nodes *and* extended edges, loaded equally; the compact loop
+  loaded once. (That load slows the rate ∝ energy was a posit; it is now
+  derived from the action.)
 - **How it answers mechanisms 1–2.** Mechanism 1 established *loss ⟺ Yukawa*;
   mechanism 2 established that the coupling is an *index* and that range needs
   a **massless, neutral, propagating carrier**. The posited carrier fills
@@ -288,8 +290,8 @@ local stretch of R_ℵ, and others are candidate fillers.) Full note:
 - **Anticipated against the gate:** (0) passes; (1) passes *by construction*
   (so it is not evidence); (2) **shown** — a node storage register slows every
   mode through one universal lossless map
-  ([work/uniform-q-theorem.md](work/uniform-q-theorem.md)); (3) posited, or derived if the carrier is a local
-  stretch of R_ℵ driven by the standing wave's radiation pressure.
+  ([work/uniform-q-theorem.md](work/uniform-q-theorem.md)); (3) **derived** from the action
+  ([work/action-and-gamma.md](work/action-and-gamma.md)).
 - **Where the evidence would be:** the wave speed coming out equal to c; the
   light-bending factor of 2 (rate part plus an equal spatial part); deriving
   the load-slows-rate rule; and being the microscopic form of the Jacobson
@@ -484,10 +486,16 @@ together. **Step 2 (the drop test) has passed**
 ([work/drop-test-result.md](work/drop-test-result.md)): in a gradient of that
 storage weight, packets of different mass fall together toward the slower
 region, moving packets and light follow the ray equations to 0.02%, and
-reflection is negligible for gradients longer than a wavelength. Next is step 3
-— a lattice action, the sourcing by energy, and the light-bending parameter
-(the node-level rule alone gives half the observed bending). On the statistical
-side, the open computation is the free energy of two pinned
+reflection is negligible for gradients longer than a wavelength. **Step 3 (the
+action and light bending) has passed at first order**
+([work/action-and-gamma.md](work/action-and-gamma.md)): the carrier's source
+follows from the action — proportional to energy, one sign, always attractive,
+light counting double — and the full light bending (γ = 1) results when nodes
+and extended edges are loaded *equally*, which is the impedance-matched,
+reflectionless loading. It costs one new posit (the compact loop is loaded
+once) and raises two flags (a purely standing wave is a breathing source; the
+second-order parameter β awaits the nonlinear completion). Next is step 4 —
+switching on a source in 3D. On the statistical side, the open computation is the free energy of two pinned
 inclusions versus separation in 3D
 ([work/entropic-route.md](work/entropic-route.md) §4).
 

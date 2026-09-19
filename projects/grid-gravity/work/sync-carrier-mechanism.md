@@ -1,7 +1,7 @@
 # Mechanism 3 — synchronized clocks with a lattice carrier (proposal)
 
 **Status:** Proposal / working hypothesis, **under validation** — plan and
-state in [STATUS.md](STATUS.md); steps 1–2 passed.
+state in [STATUS.md](STATUS.md); steps 1–3 passed.
 Unlike mechanisms 1 and 2, this one **extends the substrate** — it adds
 degrees of freedom GRID does not currently specify. That is deliberate (the
 project is hypothetical by design, and the block on mechanism 2 was a
@@ -61,9 +61,11 @@ time — the same mass-only frame the rest of the project uses
 |---|---|---|
 | P1 | **Neighbour-triggered clocks.** A node fires on its neighbours' activity; no master clock. | A shared tick without a scheduler. Answers "what triggers a node to act?" ([local-time.md](local-time.md)). |
 | P2 | **A carrier.** Each lattice member stores a variable q, exchanged with neighbours, never lost locally. | A second stored quantity — what turns a spreading disturbance into a propagating wave (§3). The carrier the project lacked. |
-| P3 | **Load biases the local rate**, in proportion to the energy of the resident standing wave, always with the same sign. | The source term. (§8 offers a candidate mechanism so this need not stay a bare posit.) |
+| P3 | ~~**Load biases the local rate**, in proportion to the energy of the resident standing wave, always with the same sign.~~ | *Retired as a posit:* derived from the action — if the rate depends on the carrier, the wave must source the carrier, ∝ energy, with one sign ([action-and-gamma.md](action-and-gamma.md) §4). |
 | P4 | **A dead band, not a set-point.** Within a range, a node has no preferred rate of its own; only differences from neighbours matter. | Masslessness → unlimited range (§6). |
 | P5 | **The local rate follows q, not the gradient of q** (the potential, not the pull). | The right power law: a 1/r potential rather than 1/r² (§5). |
+| P6 | **Every member stores.** Nodes carry a storage register (returning its share with the same sign); extended edges carry one too (returning it inverted); the carrier loads both equally. | The full light bending, γ = 1. The equality is the impedance-matched, reflectionless loading — not a tuned number ([action-and-gamma.md](action-and-gamma.md) §2). |
+| P7 | **The compact loop is loaded once.** A clock's compact circulation closes through a node and is not loaded by the storage on space edges. | Makes clocks slow half as much (in the logarithm) as light — the other half of γ = 1. |
 
 **Candidate realizations of the carrier (P2).** The mechanism needs the role
 filled, not any particular filler:
@@ -213,6 +215,11 @@ circumference:
 Not covered by this candidate: light's own index (R_ℵ does not obviously slow a
 photon), and hence the light-bending factor (§11).
 
+*After step 3:* this candidate is disfavoured as the carrier's whole effect. A
+stretch of R_ℵ alone slows clocks but not light — no light bending at all — and
+the sourcing it was meant to explain now follows from the action without it
+([action-and-gamma.md](action-and-gamma.md) §5).
+
 ## 9. Against the gate (anticipated, not yet tested)
 
 | Condition | Anticipated outcome | Note |
@@ -258,10 +265,11 @@ loses lock with the surrounding lattice.
    contraction of edges under load — a genuine lattice *strain*, the "pinch",
    knob B of
    [grid-matter/work/responsive-medium.md](../../grid-matter/work/responsive-medium.md).
-   The two parts must come out equal, not be set equal.
-3. **Why load slows the rate, ∝ energy.** P3 as it stands is the
-   finite-bandwidth premise of [local-time.md](local-time.md) Commitment 2;
-   §8 is one candidate for deriving it.
+   The two parts must come out equal, not be set equal. *Resolved at first
+   order:* the spatial half is storage on extended edges, and "equal" is the
+   impedance-matching condition ([action-and-gamma.md](action-and-gamma.md)).
+3. **Why load slows the rate, ∝ energy.** *Resolved:* it follows from the
+   action ([action-and-gamma.md](action-and-gamma.md) §4).
 4. **One gravity, not two.** GRID already obtains the Einstein equations by
    Jacobson's argument ([grid/gravity.md](../../../grid/gravity.md)). This
    mechanism must be the microscopic realization of that result — ideally
@@ -330,6 +338,14 @@ gradient of Y imposed, packets of different mass fall together toward the
 slower region at a = −c·dc/dx, light is delayed rather than reflected, and
 moving packets follow the ray equations of the local spectrum to 0.02%. The
 profile was imposed by hand; that a mass *produces* it is step 3.
+
+**Step 3 is done, at first order** ([action-and-gamma.md](action-and-gamma.md)).
+One action for wave and carrier gives the source — ∝ energy, one sign, always
+attractive, light counting double — with no separate posit. Loading nodes and
+extended edges *equally* gives the full light bending, γ = 1, and that equality
+is exactly the condition that the lattice's impedance match is undisturbed (a
+matched step barely reflects). Cost: posits P6 and P7 above. Flags: a purely
+standing wave is a breathing source; β awaits the nonlinear completion.
 
 ## Grades summary
 
