@@ -82,7 +82,8 @@ physics progress.*
 
 **[Ch 7](07-two-slit-lab.md) — The two-slit lab (interference)**
 - GRID slit-ontology: **barrier = mass-blocked nodes; slit = open GRID.**
-- Both a **photon** (massless) and a **matter wave** (compact n=1, massive) interfere on the same lattice; the matter mode has a **longer de Broglie λ** (11.18 vs 8.07 nodes, exact from the dispersion) and coarser fringes. *This is **classical** linear-wave interference (matter follows from photon by linearity) — staging, not yet distinctively quantum; the absolute spacing is non-paraxial, so λL/d is not fit.* **[C]**
+- Both a **photon** (massless) and a **matter wave** (compact n=1, massive) interfere on the same lattice; the matter mode has a **longer de Broglie λ** (11.18 vs 8.07 nodes — solved from the dispersion *and* measured by FFT, 11.35 ± 0.48 vs 8.13 ± 0.25) and coarser fringes (≈32.8 vs ≈26.2 nodes), with a one-slit control giving a single lobe in both cases. *This is **classical** linear-wave interference (matter follows from photon by linearity) — staging, not yet distinctively quantum; λL/d is approached to +11% (photon) / +0.6% (matter), not met.* **[C]**
+- Three axes make the **scatter convention** load-bearing for the first time: the repo's two register labelings agree at two axes and diverge beyond, only one being isotropic. The lab runs on that one. **[D]**
 
 **[Ch 8](08-single-particle-born.md) — Single-particle Born**
 - Energy density = ρ = |ψ|² (identity, scatter unitarity) + **whole-quantum single click** (grid-quantization — the genuine quantum piece) + **detection probability ∝ local energy**. ⇒ **P(click) ∝ |ψ|²**. **[D distribution — but the ∝-probability step is Born's content, the *universal* photodetection premise, *assumed*]**

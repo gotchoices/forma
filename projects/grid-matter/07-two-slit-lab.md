@@ -30,15 +30,27 @@ wave and not only for light. Two runs on the *same* GRID lattice
   ω₀ = 0.30 — produces fringes too. The two-slit is thus a real matter-wave
   demonstration, not merely a restatement of classical optics. **[C]**
 
+In both cases a **one-slit control** gives a single lobe with no fringes, so the
+structure at the backdrop is two-slit interference and not single-slit
+diffraction ripple — information from *both* slits reaches each detector point.
+**[C]**
+
 The pattern is **mass-dependent, in the direction de Broglie requires**. The
 massive mode has a longer in-plane (de Broglie) wavelength than the photon —
-**11.18 versus 8.07 lattice nodes**, a value read off exactly from the lab's
-dispersion — and its fringes are correspondingly **coarser**. (The lab needs two
-extended dimensions plus the compact c, so it runs on the three-axis, N=6
-generalization of Chapter 4's two-axis cylinder: the lattice light-speed is
-c = 1/√3 here rather than 1/√2, but the mass mechanism is identical — the compact
-term cos k_c lowers the in-plane wavenumber, lengthening λ.) Mass lengthens the
-wavelength, and the pattern widens to match. **[C, and D for λ]**
+**11.18 versus 8.07 lattice nodes** — and its fringes are correspondingly
+**coarser** (≈32.8 versus ≈26.2 nodes). Those wavelengths are obtained two ways
+that agree: solved from the lab's dispersion relation, and **measured** by FFT of
+the field, 11.35 ± 0.48 and 8.13 ± 0.25 nodes. **[C, and D for λ]**
+
+(The lab needs two extended dimensions plus the compact c, so it runs on the
+three-axis, N=6 generalization of Chapter 4's two-axis cylinder, with lattice
+light-speed c = 1/√3 rather than 1/√2. The mass mechanism is identical — the
+compact term cos k_c lowers the in-plane wavenumber, lengthening λ. Three axes
+also make the *scatter convention* matter for the first time: the two register
+labelings the repo carries agree at two axes but not beyond, and only one of them
+is isotropic. The lab uses that one. See
+[work/dispersion-analytic.md](work/dispersion-analytic.md) §d-axis generalization
+and [review.md](review.md).)
 
 ## §3 Honest scope
 
@@ -50,11 +62,13 @@ distinctively quantum. The distinctively quantum content is the single
 whole-quantum click (Chapter 8) and what that click implies about measurement
 (Chapters 9–10). **[honest]**
 
-Second, the sim does **not** fit the paraxial two-slit law Δ = λL/d. With wide
-slits and a lattice operated near its band edge the geometry is not paraxial, so
-the *absolute* fringe spacing does not follow that textbook formula; the supported
-claims are the directional one (matter interferes, coarser than the photon) and the
-analytic de Broglie wavelength, not the absolute spacing. **[honest]**
+Second, the paraxial two-slit law Δ = λL/d is approached but not met. With the lab
+isotropic it predicts 23.5 nodes for the photon and 32.6 for the matter wave,
+against **26.2 and 32.8** observed — +11% and +0.6%. The slits are wide (10 nodes)
+and the geometry only marginally paraxial, so the *absolute* spacing remains an
+approximate observable, not a precision one. The firmly supported claims are the
+directional one (matter interferes, coarser than the photon) and the de Broglie
+wavelength, which is now both derived and measured. **[honest]**
 
 ## Attribution / dependencies
 

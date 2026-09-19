@@ -3,6 +3,37 @@
 Sim: [`../scripts/dualslit.py`](../scripts/dualslit.py). Figures in
 [`../outputs/`](../outputs/) (`dualslit_2slit.png`, `dualslit_1slit.png`).
 
+**Invocation (convention-pinned 2026-09-18):**
+`dualslit.py --nc 0 --omega 0.5 --slits {1,2} --scatter legacy`. The script's
+default scatter is now `canonical`; this 2D run predates that and is pinned to
+`legacy` so the results below reproduce exactly. In **two** axes the two
+conventions have the same dispersion, but they place the propagating band
+differently (Ω = ω vs Ω = π − ω), so the same `--omega` means a different
+physical frequency in each — hence the pin.
+
+> **⚠ Open item, logged 2026-09-18 — the λ ≈ 9 used in the λL/d check below is
+> not this wave's wavelength.** Under the pinned (legacy) convention at ω = 0.5,
+> the two-axis band condition cos ω = −(cos k_x + cos k_y)/2 has **no on-axis
+> solution**: cos k_x would have to be −2.76. Propagation happens only through
+> large-k **zone-corner** modes — the k_y = π branch gives λ_x = 2.59 nodes, and
+> an FFT of the field measures **2.60 ± 0.03**, matching it to 0.4%. The "λ ≈ 9
+> (from ω = 0.5, c ≈ 0.7)" figure in §Result is a *continuum* estimate 2πc/ω,
+> and it does not apply to a mode sitting near the Brillouin zone corner.
+>
+> What this does and does not touch. The **interference claim stands**: the
+> one-slit vs two-slit spacing discriminator (85.7 vs 28.7) is empirical and
+> needs no wavelength. The **λL/d agreement does not stand** — with λ = 2.6 the
+> textbook formula gives ≈7.6 nodes, not the ≈26 quoted, so the reported match
+> to 28.7 is a coincidence. Ch 8's Born/click results rest on the |field|²
+> pattern, not on λ, and are unaffected.
+>
+> This is a *different* defect from [../review.md](../review.md)'s (which
+> concerned the three-axis dispersion relation) and was found while fixing it.
+> A re-run at a drive that is genuinely in-band on-axis — e.g. the canonical
+> convention at ω = 0.5, where λ = 8.79 analytic and 8.90 ± 0.29 measured, close
+> to the ≈9 this file assumed — would settle it, at the cost of new fringe
+> numbers for this chapter. Not yet done; deferred as its own decision.
+
 ## The GRID reading of the apparatus (Kyle's framing, realized)
 
 - The lab is **continuous GRID** — a 2D (x,y) S-space with the impedance scatter.

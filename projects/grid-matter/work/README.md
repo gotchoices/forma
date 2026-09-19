@@ -102,8 +102,12 @@ derivation-ready.
     (corr→0.97) — no collapse invoked. *(This first pass used the **massless/photon**
     field.)* **[dualslit-matter-result.md](dualslit-matter-result.md)** then extends
     it to a genuine **massive matter wave** (compact n=1): it interferes too, with a
-    longer de Broglie λ (11.18 vs 8.07 nodes, exact from the dispersion) and coarser
-    fringes — so the two-slit is a real *matter*-wave demo, not only the photon.
+    longer de Broglie λ (11.18 vs 8.07 nodes — solved from the dispersion *and*
+    measured by FFT) and coarser fringes, with a one-slit control giving a single
+    lobe in both cases — so the two-slit is a real *matter*-wave demo, not only the
+    photon. *(Revised 2026-09-18: the three-axis lab moved to the canonical scatter
+    after [../review.md](../review.md); the λ values are unchanged and now
+    empirically confirmed, the fringe spacings changed with the medium.)*
 
 11. **[measurement-and-bell.md](measurement-and-bell.md)** — the refined
     measurement model: two unknowns (interference vs the specific draw = a hidden
