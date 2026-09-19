@@ -1,7 +1,7 @@
 # Mechanism 3 — synchronized clocks with a lattice carrier (proposal)
 
 **Status:** Proposal / working hypothesis, **under validation** — plan and
-state in [STATUS.md](STATUS.md); steps 1–3 passed.
+state in [STATUS.md](STATUS.md); steps 1–4 passed.
 Unlike mechanisms 1 and 2, this one **extends the substrate** — it adds
 degrees of freedom GRID does not currently specify. That is deliberate (the
 project is hypothetical by design, and the block on mechanism 2 was a
@@ -60,7 +60,7 @@ time — the same mass-only frame the rest of the project uses
 | # | Addition | What it buys |
 |---|---|---|
 | P1 | **Neighbour-triggered clocks.** A node fires on its neighbours' activity; no master clock. | A shared tick without a scheduler. Answers "what triggers a node to act?" ([local-time.md](local-time.md)). |
-| P2 | **A carrier.** Each lattice member stores a variable q, exchanged with neighbours, never lost locally. | A second stored quantity — what turns a spreading disturbance into a propagating wave (§3). The carrier the project lacked. |
+| P2 | **A carrier.** Each lattice member stores a variable q, exchanged with neighbours, never lost locally. *Refined by step 4:* the scatter's registers carry the carrier's rate of change and its gradient; the potential q itself is the **running sum of the node value**, held at each node. | A second stored quantity — what turns a spreading disturbance into a propagating wave (§3). The carrier the project lacked. |
 | P3 | ~~**Load biases the local rate**, in proportion to the energy of the resident standing wave, always with the same sign.~~ | *Retired as a posit:* derived from the action — if the rate depends on the carrier, the wave must source the carrier, ∝ energy, with one sign ([action-and-gamma.md](action-and-gamma.md) §4). |
 | P4 | **A dead band, not a set-point.** Within a range, a node has no preferred rate of its own; only differences from neighbours matter. | Masslessness → unlimited range (§6). |
 | P5 | **The local rate follows q, not the gradient of q** (the potential, not the pull). | The right power law: a 1/r potential rather than 1/r² (§5). |
@@ -309,7 +309,9 @@ already noted in [aleph-grounding.md](aleph-grounding.md) and
 [metric-charge](../../metric-charge/)'s untouched time–compact shears (σ_tu,
 σ_tw) as the continuum counterpart. Whether the lattice has a signed,
 winding-selective carrier alongside its universal one is **open** — this is
-the project's EM stretch slot.
+the project's EM stretch slot, developed further in [em-slot.md](em-slot.md)
+(charge as a time *shear*; why a signed *rate* would make likes attract; a test
+ladder).
 
 ## 13. Validation plan
 
@@ -346,6 +348,12 @@ extended edges *equally* gives the full light bending, γ = 1, and that equality
 is exactly the condition that the lattice's impedance match is undisturbed (a
 matched step barely reflects). Cost: posits P6 and P7 above. Flags: a purely
 standing wave is a breathing source; β awaits the nonlinear completion.
+
+**Step 4 is done** ([switch-on-result.md](switch-on-result.md)). Run forward from
+nothing, a steady source on the 3D scatter builds q = 6s/(4πr) behind a front
+moving at exactly the lattice light speed — predicted amplitude to four figures,
+isotropic, no drift — and the potential leaves as a wave when the source is
+removed. Steps 1–4 tested the pieces with the loop open; closing it is step 5.
 
 ## Grades summary
 

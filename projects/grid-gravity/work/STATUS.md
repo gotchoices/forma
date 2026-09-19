@@ -22,8 +22,8 @@ it is not evidence (README ground rule 9).
 | 1 | **Uniform-q theorem.** A concrete local lossless rule; exact spectrum with the carrier uniform; carrier speed. | derivation + exact numerics | light speed, rest frequency and inertia rescale by one factor; carrier speed = c untuned | no rule rescales them together (→ an optical medium, not time dilation) | **passed** — [uniform-q-theorem.md](uniform-q-theorem.md) |
 | 2 | **Drop test.** Impose a static gradient of the storage weight on an (x, c) lattice; release packets of different k and compact mode n. | simulation (cross-check of step 1) | one acceleration for all, equal to −c²·∇(ln of the rate); small reflection | acceleration depends on k or n (equivalence fails); strong reflection at gentle gradients | **passed** — [drop-test-result.md](drop-test-result.md) |
 | 3 | **Lattice action and the light-bending parameter γ.** One Lagrangian: wave field + carrier + coupling to energy density. Read off source ∝ energy, action–reaction, and γ. | derivation | source ∝ energy with one sign; a stated, natural spatial partner that gives γ = 1 | γ = 1 requires an unnatural or tuned partner | **passed at first order** (one new posit, two flags) — [action-and-gamma.md](action-and-gamma.md) |
-| 4 | **Switch-on in 3D.** Constant source on the canonical scatter; watch the static pattern build. | simulation | static 1/r inside a front moving at c | the dynamics do not relax to the static field | next |
-| 5 | **Strong field.** Dead-band edge, slip, horizon radius versus M. | simulation (nonlinear) | horizon radius ∝ M; exterior field intact | radius ∝ √M, or exterior field screened | queued (only if 1–4 survive) |
+| 4 | **Switch-on in 3D.** Constant source on the canonical scatter; watch the static pattern build. | simulation | static 1/r inside a front moving at c | the dynamics do not relax to the static field | **passed** — [switch-on-result.md](switch-on-result.md) |
+| 5 | **Strong field.** Dead-band edge, slip, horizon radius versus M. | simulation (nonlinear) | horizon radius ∝ M; exterior field intact | radius ∝ √M, or exterior field screened | next — see scope note below |
 
 **Pre-registered expectations** (written before the step is run):
 - Step 2: acceleration −c²∇ln(1 − q), independent of k and n; reflection
@@ -36,13 +36,27 @@ it is not evidence (README ground rule 9).
 - Step 4: unknown. grid-duality recorded that the scatter's dynamics did not
   relax to the static field under *pinning* in 2D; sourcing in 3D is untested.
 
+**Scope note for step 5 (written after step 4).** Steps 1–4 tested the pieces
+with the loop open: an imposed storage profile (1–3) and an imposed source (4).
+Step 5 closes it — a standing wave sources q through the action; q sets the
+storage weights; those slow the wave and everything near it — and then pushes it
+to strong field. It carries three questions forward: (a) the breathing source of
+a pure standing wave; (b) which nonlinear completion the lattice realizes, hence
+β; (c) the dead-band edge, slip and the horizon radius. It is the first step
+that is genuinely nonlinear, and the first where a design choice (how q sets Y
+and Z, and how q's own propagation is loaded) has to be made rather than
+derived.
+
 **Conceptual items (no computation yet):**
 - One gravity, not two: is the mechanism the microscopic form of the Jacobson
   result ([grid/gravity.md](../../../grid/gravity.md)) — ideally supplying its
   entropy law — rather than a second force?
 - Does one carrier rescale the clocks of every sheet alike?
-- A signed, winding-selective carrier for charge
-  ([sync-carrier-mechanism.md](sync-carrier-mechanism.md) §12).
+- **EM slot (held open):** charge as a time *shear* — a signed clock offset per
+  compact lap, seen only by circulating modes — beside gravity's time *stretch*.
+  Reasoning, circuit picture and a three-rung test ladder (E1–E3) in
+  [em-slot.md](em-slot.md). Nothing computed yet; to be taken up after the
+  gravity plan.
 
 **Statistical side — open computation:** free energy of two pinned inclusions
 versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
@@ -84,6 +98,16 @@ versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
   of three candidates only the polarizable-vacuum form gives β = 1. (e) The
   R_ℵ-stretch candidate cannot be the carrier's whole effect (it bends no
   light).
+- **Step 4 — passed.** A steady source switched on in a 241³ canonical-scatter
+  lattice builds q = 6s/(4πr) behind a front at the lattice light speed:
+  q·r = 0.4775 against 0.4775 predicted (ratio 1.0000), anisotropy < 0.2% beyond
+  r ≈ 16, front speed 0.575–0.581 (1/√3 = 0.577) in three directions, no drift;
+  V → 0 behind the front; link flux ∝ 1/r². Switched off, the potential leaves
+  as a wave (residue ≤ 0.3%). **Structural result:** the carrier's potential q is
+  the *running sum* of the node value — a stored accumulator — while the
+  registers carry its rate and gradient (refines P2). grid-duality's earlier 2D
+  negative is likely a property of two dimensions (the potential of a
+  switched-on source grows logarithmically there), not of the scatter.
 
 ---
 
@@ -97,6 +121,12 @@ versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
 - [drop-test-result.md](drop-test-result.md) — step 2 result.
 - [action-and-gamma.md](action-and-gamma.md) — step 3 result: the action, the
   derived source, γ and impedance matching, the two flags.
+- [switch-on-result.md](switch-on-result.md) — step 4 result: dynamic
+  relaxation to 1/r at light speed; the potential as an accumulator.
+
+**EM slot (open)**
+- [em-slot.md](em-slot.md) — where an electromagnetic effect fits; why the
+  gravity carrier cannot supply it; how it would be tested.
 
 **Statistical side**
 - [entropic-route.md](entropic-route.md) — what "entropic" means; parked
@@ -133,5 +163,6 @@ versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
   from a ramp (step 2).
 - `gamma_test.py` — node + edge storage: anisotropic spectrum, γ, reflection
   at a matched step, matched-gradient drop (step 3).
+- `switch_on.py` — steady source switched on (and off) in 3D (step 4).
 - `gate_falloff.py`, `gate_dispersion.py`, `hex_greens.py` — mechanism 1–2 gate
   sims.

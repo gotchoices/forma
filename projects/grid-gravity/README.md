@@ -9,13 +9,12 @@ by design: a mechanism **may extend the substrate** (add degrees of freedom
 GRID does not currently specify), provided it itemizes what it adds (ground
 rule 9). The statistical / entropic side of the same question is kept
 alongside the mechanical one ([work/entropic-route.md](work/entropic-route.md)).
-Gravity first; the electromagnetic force is a stretch slot, with one candidate
-reading recorded
-([work/sync-carrier-mechanism.md](work/sync-carrier-mechanism.md) §12).
+Gravity first; the electromagnetic force is a slot held open, with one candidate
+reading recorded ([work/em-slot.md](work/em-slot.md)).
 **Method:** Derivation and rule-design first; computation only at the
 go/no-go gates.
 **Status: mechanisms 1–2 parked (blocked on one crux, not refuted);
-mechanism 3 under validation — steps 1–3 of 5 passed
+mechanism 3 under validation — steps 1–4 of 5 passed
 ([work/STATUS.md](work/STATUS.md)).** Mechanisms 1 and 2 used only GRID's
 specified spectrum and stalled for want of a carrier.
 [Mechanism 3](work/sync-carrier-mechanism.md) (synchronized clocks with a
@@ -288,7 +287,8 @@ local stretch of R_ℵ, and others are candidate fillers.) Full note:
   supply the dilation — locked clocks run at equal rates. The dilation comes
   from the carrier's value q, which falls as 1/r.
 - **Anticipated against the gate:** (0) passes; (1) passes *by construction*
-  (so it is not evidence); (2) **shown** — a node storage register slows every
+  (so it is not evidence) — but reached *dynamically*, at light speed
+  ([work/switch-on-result.md](work/switch-on-result.md)); (2) **shown** — a node storage register slows every
   mode through one universal lossless map
   ([work/uniform-q-theorem.md](work/uniform-q-theorem.md)); (3) **derived** from the action
   ([work/action-and-gamma.md](work/action-and-gamma.md)).
@@ -365,9 +365,9 @@ A clean *negative* is itself a result: it rules out a hypothesis cheaply.
 
 - Not re-deriving the Einstein equations or G — [grid/gravity.md](../../grid/gravity.md)
   does that thermodynamically; this supplies a microscopic mechanism.
-- Not deriving α; not committed to delivering the EM force (a stretch slot —
-  one candidate reading is recorded in
-  [work/sync-carrier-mechanism.md](work/sync-carrier-mechanism.md) §12); not
+- Not deriving α; not committed to delivering the EM force (a slot held open —
+  one candidate reading, with a test ladder, is in
+  [work/em-slot.md](work/em-slot.md)); not
   replacing general relativity (it sits beneath GR as a substrate origin for
   curvature).
 
@@ -494,8 +494,14 @@ light counting double — and the full light bending (γ = 1) results when nodes
 and extended edges are loaded *equally*, which is the impedance-matched,
 reflectionless loading. It costs one new posit (the compact loop is loaded
 once) and raises two flags (a purely standing wave is a breathing source; the
-second-order parameter β awaits the nonlinear completion). Next is step 4 —
-switching on a source in 3D. On the statistical side, the open computation is the free energy of two pinned
+second-order parameter β awaits the nonlinear completion). **Step 4 (switch-on
+in 3D) has passed** ([work/switch-on-result.md](work/switch-on-result.md)): a
+steady source builds the static 1/r potential behind a front moving at exactly
+the lattice light speed — amplitude as predicted to four figures, isotropic, no
+drift — and when the source is removed the potential leaves as a wave. The
+potential is identified as a stored quantity: the running sum of the node
+value. Next is step 5 — closing the loop (the mass sources the potential, the
+potential loads the lattice) and the strong field. On the statistical side, the open computation is the free energy of two pinned
 inclusions versus separation in 3D
 ([work/entropic-route.md](work/entropic-route.md) §4).
 
