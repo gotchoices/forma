@@ -1,6 +1,7 @@
 # Mechanism 3 — synchronized clocks with a lattice carrier (proposal)
 
-**Status:** Proposal / working hypothesis. **Not yet run through the gate.**
+**Status:** Proposal / working hypothesis, **under validation** — plan and
+state in [STATUS.md](STATUS.md); step 1 passed.
 Unlike mechanisms 1 and 2, this one **extends the substrate** — it adds
 degrees of freedom GRID does not currently specify. That is deliberate (the
 project is hypothetical by design, and the block on mechanism 2 was a
@@ -218,7 +219,7 @@ photon), and hence the light-bending factor (§11).
 |---|---|---|
 | (0) Vacuum field | passes | The carrier itself holds the field; nothing else need be present. |
 | (1) Massless 1/r, isotropic | passes **by construction** | P2 + P4 put a Laplacian in by hand, so the 1/r is a property of the posit, not evidence for it. Isotropy of a massless field on the hexagonal lattice was already shown ([falloff-sim-result.md](falloff-sim-result.md), [loops-and-range.md](loops-and-range.md)). |
-| (2) Non-dispersive | passes, possibly exactly | If what is rescaled is the rate at which *every* wave advances, all frequencies slow identically. Mechanism 2 managed this only for ω ≪ ω₀, with clocks at the Compton frequency sitting on its resonance. |
+| (2) Non-dispersive | **shown** ([uniform-q-theorem.md](uniform-q-theorem.md)) | If what is rescaled is the rate at which *every* wave advances, all frequencies slow identically. Mechanism 2 managed this only for ω ≪ ω₀, with clocks at the Compton frequency sitting on its resonance. |
 | (3) Coupling ∝ mass-energy | posited (P3) | Becomes a derived property if §8 holds. |
 
 Because condition (1) is built in, the informative tests are elsewhere: §11.
@@ -249,7 +250,9 @@ loses lock with the surrounding lattice.
 1. **The wave speed must equal c exactly.** Gravitational and light signals
    from the same event arrive together to about one part in 10¹⁵. Here c_s is
    set by stiffness over inertia (§3); it has to come out of the same scatter
-   that carries light, not be tuned to match.
+   that carries light, not be tuned to match. *Resolved in principle:* a
+   carrier that is an amplitude moved by the same scatter has the identical
+   spectrum, loaded or not ([uniform-q-theorem.md](uniform-q-theorem.md) §5).
 2. **The factor of 2 in light bending.** A rate-only effect bends light half as
    much as observed (the 1911 value). The other half is spatial: a physical
    contraction of edges under load — a genuine lattice *strain*, the "pinch",
@@ -300,14 +303,27 @@ already noted in [aleph-grounding.md](aleph-grounding.md) and
 winding-selective carrier alongside its universal one is **open** — this is
 the project's EM stretch slot.
 
-## 13. First test
+## 13. Validation plan
 
-Write the rule in one extended dimension: the trigger (P1), the carrier update
-(P2), and how q alters the scatter (P5). Load one node and observe which regime
-of §4 results — locked, slipped, or persistently graded rates. That single
-outcome shows which picture the rule actually implements. (In 1D the static
-Green's function is linear in |x| rather than 1/r; the test is of the regime,
-not the power law.)
+The ordered plan, with pass / fail criteria and the state of each step, is kept
+in [STATUS.md](STATUS.md). In outline: (1) a concrete rule and the uniform-q
+theorem; (2) a drop test as its cross-check; (3) a lattice action and the
+light-bending parameter; (4) switch-on of a source in 3D; (5) the strong field.
+What is *not* on the list is anything the posits deliver by construction — the
+static 1/r, its isotropy, the Yukawa failure modes — and the question of
+whether clocks that trigger each other can hold graded rates: a network in
+which each firing waits on its neighbours has a single cycle time (a standard
+result for timed event networks), so they cannot (§4).
+
+**Step 1 is done** ([uniform-q-theorem.md](uniform-q-theorem.md)). The rule:
+each node gets one *storage register* of weight Y whose share returns to the
+same node a tick later — a lossless "detour". With the carrier setting Y, a
+uniform Y maps every mode's frequency through one universal relation,
+sin(ω_Y/2) = sin(ω_0/2)/√(1 + Y/N): light speed, rest frequency and inertia
+slow together, with 1 − q = 1/√(1 + Y/N). The same calculation shows that
+returning the share *inverted* gives the photon a mass, and that a carrier
+riding the same scatter travels at exactly light's speed. It also fixes the
+target for step 3: this rule alone gives half the observed light bending.
 
 ## Grades summary
 

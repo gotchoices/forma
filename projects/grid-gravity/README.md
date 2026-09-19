@@ -15,7 +15,8 @@ reading recorded
 **Method:** Derivation and rule-design first; computation only at the
 go/no-go gates.
 **Status: mechanisms 1–2 parked (blocked on one crux, not refuted);
-mechanism 3 proposed, not yet evaluated.** Mechanisms 1 and 2 used only GRID's
+mechanism 3 under validation — step 1 of 5 passed
+([work/STATUS.md](work/STATUS.md)).** Mechanisms 1 and 2 used only GRID's
 specified spectrum and stalled for want of a carrier.
 [Mechanism 3](work/sync-carrier-mechanism.md) (synchronized clocks with a
 lattice carrier) responds to exactly that finding by positing the carrier. The record
@@ -259,7 +260,7 @@ to be modeled **from GRID's own dynamics** (the update rule / lattice
 propagation), *not* by adopting scalar-tensor formalism. Open — a live crux,
 not a refutation.
 
-### Mechanism 3 — Synchronized clocks with a lattice carrier  *(proposed; substrate-extending)*
+### Mechanism 3 — Synchronized clocks with a lattice carrier  *(under validation; substrate-extending)*
 
 Metronomes on a pliable table. Lattice clocks have **no master**: neighbours
 trigger each other and fall into step. Lattice members also **store a
@@ -285,8 +286,9 @@ local stretch of R_ℵ, and others are candidate fillers.) Full note:
   supply the dilation — locked clocks run at equal rates. The dilation comes
   from the carrier's value q, which falls as 1/r.
 - **Anticipated against the gate:** (0) passes; (1) passes *by construction*
-  (so it is not evidence); (2) passes, possibly exactly, since every wave's
-  advance is rescaled alike; (3) posited, or derived if the carrier is a local
+  (so it is not evidence); (2) **shown** — a node storage register slows every
+  mode through one universal lossless map
+  ([work/uniform-q-theorem.md](work/uniform-q-theorem.md)); (3) posited, or derived if the carrier is a local
   stretch of R_ℵ driven by the standing wave's radiation pressure.
 - **Where the evidence would be:** the wave speed coming out equal to c; the
   light-bending factor of 2 (rate part plus an equal spatial part); deriving
@@ -473,12 +475,12 @@ pedagogical presentation, not new content.
 
 ## Next step
 
-**Current:** mechanism 3 is proposed and unevaluated. Its first test is the
-one-extended-dimension rule of
-[work/sync-carrier-mechanism.md](work/sync-carrier-mechanism.md) §13 — specify
-the trigger, the carrier update, and how q alters the scatter;
-load one node; see whether it locks, slips, or holds persistently graded rates.
-On the statistical side, the open computation is the free energy of two pinned
+**Current:** mechanism 3 is under validation; the ordered plan and its state
+are in [work/STATUS.md](work/STATUS.md). **Step 1 (the uniform-q theorem) has
+passed** ([work/uniform-q-theorem.md](work/uniform-q-theorem.md)): a storage
+register at each node, returning its share a tick later, slows every mode
+through one universal, lossless map — light speed, rest frequency and inertia
+together. Next is the drop test (step 2). On the statistical side, the open computation is the free energy of two pinned
 inclusions versus separation in 3D
 ([work/entropic-route.md](work/entropic-route.md) §4).
 
