@@ -101,7 +101,8 @@ lap takes longer — by the same factor for every clock.
 | R7 | Each node keeps a **memory**: the running sum of its deflection rate (the deflection q). Links carry only differences of q, so a node cannot learn q from its links | step 4 |
 | R8 | The stores' weights are set by the local q (potential, not tension) | P5; step 2 |
 | R9 | Each member's delay is **linear** in q (§7) | this note |
-| R10 | A single particle's source must not oscillate (§8) | step 3 |
+| R10 | ~~A single particle's source must not oscillate~~ — *softened:* a pulsing source radiates only through its Fourier component at half a Compton wavelength, negligible for any body wider than its Compton length ([same-channel-result.md](same-channel-result.md) §4) | step 3; step 5 |
+| R11 | When a store's weight changes, the **momentum** (inertia × rate) and the link **extension** are what carry through — not the stored energies. The back-reaction on the deflection then follows without being added | step 5c′ |
 
 R7 with R8 is the one genuinely new kind of element: a store whose weight
 depends on the *history* of what has passed through it. Lossless elements of
@@ -230,9 +231,12 @@ a limit exists is a property of the substrate, not derivable here.
 
 Places where the mechanism says something that is not simply built in:
 
-- A purely **standing** neutral wave is a breathing source and would radiate
-  (step 3). Hence R10: real particles must be of the travelling kind, or
-  protected by whole-quantum energetics.
+- A purely **standing** neutral wave is a breathing source (step 3) — but it
+  radiates appreciably only if localized within its own Compton wavelength
+  (step 5); a circulating mode's source is exactly steady.
+- In the same-channel branch, **resonant second-harmonic generation**: the
+  compact tower is harmonic, so two n = 1 quanta can merge into one n = 2 at
+  gravitational strength ([same-channel-result.md](same-channel-result.md) §3).
 - Departures from universality of free fall of order (rest frequency × tick)²
   (step 2).
 - No horizon without a largest delay (§7).
@@ -244,13 +248,16 @@ Places where the mechanism says something that is not simply built in:
 1. **Close the loop in simulation** with R9's rule: a wave sources q; q sets the
    stores. *Branch A done* ([closed-loop-result.md](closed-loop-result.md)): two
    lumps fall toward each other on the ray law, with the third law and momentum
-   conservation emerging. *Branch B next* — but first its exact conservative
-   lattice rule must be derived from the action (what is held fixed when a
-   store's weight changes), since an ad hoc rule would not conserve energy.
-2. **Branch B's hazards** (§6): size of the second-harmonic and light-on-light
-   effects.
-3. **R10**: confirm that a wave travelling around the compact loop has a steady
-   source, and a standing one radiates at the predicted rate.
+   conservation emerging. *Branch B done*
+   ([same-channel-result.md](same-channel-result.md)): the conservative rule is
+   derived (R11), and with it one field with no coupling constant rectifies its
+   own deflection and the lumps fall into it on the ray law.
+2. **Branch B's hazards** (§6): the second harmonic is found and is *resonant*
+   (its rate in real matter is not yet estimated); light-on-light is not yet
+   examined.
+3. **R10**: a circulating mode's source is steady (confirmed); the standing
+   case is settled by a form-factor argument — a direct numerical check was
+   inconclusive.
 4. **The strong field**, with and without a largest delay.
 
 ## Grades summary

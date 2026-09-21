@@ -520,7 +520,12 @@ rest fall toward each other on the ray law, with accelerations in inverse ratio
 to their masses and momentum conserved; and in three dimensions a body released
 in the 1/r deflection of a point source falls as r^−1.96, isotropically,
 matching the ray equations to 0.2–0.4%
-([work/drop-3d-result.md](work/drop-3d-result.md)). On the statistical side, the open computation is the free energy of two pinned
+([work/drop-3d-result.md](work/drop-3d-result.md)). The cheapest branch also
+works ([work/same-channel-result.md](work/same-channel-result.md)): with the
+conservative rule derived from the action, *one* field with *no* coupling
+constant rectifies its own steady part in proportion to its energy, and lumps of
+it fall toward each other on the ray law — gravity as the zero-frequency part of
+the same field that carries light and matter. On the statistical side, the open computation is the free energy of two pinned
 inclusions versus separation in 3D
 ([work/entropic-route.md](work/entropic-route.md) §4).
 

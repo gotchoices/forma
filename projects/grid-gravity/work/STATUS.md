@@ -58,9 +58,9 @@ freedom, and scans the remaining choices against observation
 | 5a | Requirements list (R1–R10), degrees-of-freedom ledger, lattice-level vocabulary | done |
 | 5b | β: which loading gives β = 1 when the carrier propagates like light | **done** — each member's delay linear in the deflection; identical to the polarizable-vacuum form; resolves step 3's β flag at requirement level |
 | 5c | Closed-loop simulation with that rule — separate-channel branch | **passed** — [closed-loop-result.md](closed-loop-result.md) |
-| 5c′ | Same-channel branch: derive the exact conservative lattice rule from the action (what is held fixed when a store's weight changes), *then* simulate | next |
-| 5d | Same-channel branch hazards: second harmonic, light-on-light | queued |
-| 5e | Breathing source: travelling wave steady, standing wave radiates at the predicted rate | queued |
+| 5c′ | Same-channel branch: derive the exact conservative lattice rule from the action, *then* simulate | **passed** — [same-channel-result.md](same-channel-result.md) |
+| 5d | Same-channel branch hazards: second harmonic, light-on-light | **partly done** — second harmonic found to be *resonant* (rate in matter not estimated); light-on-light not examined |
+| 5e | Breathing source | **settled by argument, flag corrected** — a pulsing source radiates only through its form factor at half a Compton wavelength (step 3's lifetime assumed a point source); circulating source steady to machine precision; direct numerical check **inconclusive** |
 | 5f | Strong field, with and without a largest delay (horizon only with one; radius ∝ M) | queued |
 | 5g | **Direct 3D inverse-square check:** a massive body released in the 1/r deflection of a point source, at several distances | **passed** — [drop-3d-result.md](drop-3d-result.md) |
 
@@ -161,6 +161,20 @@ versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
   extended dimension gives a node one edge in and one out, so nothing is shared;
   in 3D the scatter divides a steady tension among a node's edges, flux through a
   shell is conserved, and each edge carries 1/r².
+- **Steps 5c′, 5d, 5e.** *Rule derived:* in Hamiltonian form the state is node
+  momentum P and link extension e; when a store's weight changes, P and e carry
+  through (not the stored energies), and the back-reaction ½M′v² + ¼ΣC′T² on the
+  deflection appears unasked — always positive, ∝ energy. *Same channel works:*
+  one real field, no coupling constant; two circulating lumps (energies 1 : 3)
+  rectify a steady deflection 30× their own amplitude and fall into it — ray law
+  0.998 / 0.999, acceleration ratio 3.13, momenta balanced to 0.2%, energy drift
+  7×10⁻⁴ halving with the time-step (integrator). *Hazard found:* the compact
+  tower is harmonic, so second-harmonic generation (two n = 1 quanta → one
+  n = 2) is resonant; 4% amplitude in the run; rate in real matter not
+  estimated. *Flag corrected:* step 3's "2 million years" for a standing proton
+  assumed a point source; with the wave packet's form factor the radiation is
+  suppressed by ~10⁻²⁰ or more. *Inconclusive:* a direct numerical check of that
+  suppression (narrow lumps spread too fast; test mode removed).
 
 ---
 
@@ -176,6 +190,9 @@ versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
   derived source, γ and impedance matching, the two flags.
 - [switch-on-result.md](switch-on-result.md) — step 4 result: dynamic
   relaxation to 1/r at light speed; the potential as an accumulator.
+- [same-channel-result.md](same-channel-result.md) — steps 5c′/5d/5e: the
+  conservative rule derived; one field with no coupling constant rectifies its
+  own gravity; the resonant second harmonic; the breathing flag corrected.
 - [drop-3d-result.md](drop-3d-result.md) — step 5g result: a body falls toward a
   point source as 1/r², in three dimensions, isotropically.
 - [closed-loop-result.md](closed-loop-result.md) — step 5c result: two lumps
@@ -226,6 +243,8 @@ versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
   at a matched step, matched-gradient drop (step 3).
 - `switch_on.py` — steady source switched on (and off) in 3D (step 4).
 - `drop_3d.py` — a massive packet released in a 1/r deflection in 3D (step 5g).
+- `same_channel.py` — one real field with the derived conservative rule; lumps
+  rectify their own deflection and fall into it (steps 5c′, 5d).
 - `closed_loop.py` — two lumps source the deflection, the deflection loads the
   lattice, the lumps respond (step 5c).
 - `gate_falloff.py`, `gate_dispersion.py`, `hex_greens.py` — mechanism 1–2 gate

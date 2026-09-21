@@ -194,6 +194,15 @@ the action without it.
 
 ## 6. Flag: a purely standing wave is a breathing source [open]
 
+> **Corrected in step 5** ([same-channel-result.md](same-channel-result.md) §4).
+> The lifetime below assumes a *point* source. The source is the energy density
+> of the particle's wave packet, and an extended source radiates only through
+> its Fourier component at the radiated wavenumber (half a Compton wavelength):
+> a factor exp[−(kσ)²/4] in amplitude. For a proton confined to a nucleus that
+> is ~10⁻²⁰ in power, and more for anything less confined. The flag bites only
+> for a body localized within its own Compton wavelength. The text below is kept
+> as the record of how the question arose.
+
 For a mode at rest the source is (K′/2)ψ̇² — the *kinetic* half of the energy.
 In a standing wave, energy passes back and forth between kinetic and gradient
 form twice per cycle, so the source oscillates between zero and twice its mean
