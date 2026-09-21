@@ -236,7 +236,13 @@ and light signals are delayed alike by a mass). Only the first survives, and it
 is a known model: it is the polarizable-vacuum Lagrangian the README already
 names as mechanism 2's target, with the exponential metric (β = γ = 1). So a
 viable completion exists; what is open is whether a lattice rule *produces* it.
-That belongs with the nonlinear work of step 5.
+
+*Resolved at requirement level in step 5*
+([requirements-and-dof.md](requirements-and-dof.md) §7): in the lattice's own
+variable the surviving completion is simply **each member's delay linear in the
+deflection**, with the carrier propagating on the loaded lattice exactly as
+light does. The table above fixed K = e^χ and varied the dynamics; fixing the
+dynamics and varying K gives the same model.
 
 ## 8. Verdict against the plan
 

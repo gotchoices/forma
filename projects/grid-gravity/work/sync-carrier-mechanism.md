@@ -12,7 +12,10 @@ Grades: **[posit]** (added to the substrate), **[argument]** (follows from the
 posits by standard reasoning), **[expectation]** (anticipated, not computed),
 **[speculative]**, **[open]**.
 
-**Vocabulary.** Three words are used in fixed senses throughout:
+**Vocabulary.** (Step 5 fixes a fuller lattice-level vocabulary — deflection,
+deflection rate, tension, node inertia, link compliance — in
+[requirements-and-dof.md](requirements-and-dof.md) §1; the terms below remain
+valid.) Three words are used in fixed senses throughout:
 
 - **Carrier** — the *role*: a lattice degree of freedom that is stored, shared
   between neighbours, never lost locally, and sourced by energy. This is the
@@ -354,6 +357,14 @@ nothing, a steady source on the 3D scatter builds q = 6s/(4πr) behind a front
 moving at exactly the lattice light speed — predicted amplitude to four figures,
 isotropic, no drift — and the potential leaves as a wave when the source is
 removed. Steps 1–4 tested the pieces with the loop open; closing it is step 5.
+
+**Step 5 is under way, run backwards** ([requirements-and-dof.md](requirements-and-dof.md)):
+not choosing how a node would do these things, but listing what any
+implementation must do. So far: the scatter's negation is reflection at a
+junction (the node computes nothing; equal transit times replace the clock of
+P1); ten requirements and a degrees-of-freedom ledger; and β = 1 exactly when
+each member's delay is linear in the deflection — which resolves step 3's β
+flag and shows that a horizon needs a largest delay, with radius ∝ M.
 
 ## Grades summary
 

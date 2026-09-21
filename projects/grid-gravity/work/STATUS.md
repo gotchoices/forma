@@ -23,7 +23,7 @@ it is not evidence (README ground rule 9).
 | 2 | **Drop test.** Impose a static gradient of the storage weight on an (x, c) lattice; release packets of different k and compact mode n. | simulation (cross-check of step 1) | one acceleration for all, equal to −c²·∇(ln of the rate); small reflection | acceleration depends on k or n (equivalence fails); strong reflection at gentle gradients | **passed** — [drop-test-result.md](drop-test-result.md) |
 | 3 | **Lattice action and the light-bending parameter γ.** One Lagrangian: wave field + carrier + coupling to energy density. Read off source ∝ energy, action–reaction, and γ. | derivation | source ∝ energy with one sign; a stated, natural spatial partner that gives γ = 1 | γ = 1 requires an unnatural or tuned partner | **passed at first order** (one new posit, two flags) — [action-and-gamma.md](action-and-gamma.md) |
 | 4 | **Switch-on in 3D.** Constant source on the canonical scatter; watch the static pattern build. | simulation | static 1/r inside a front moving at c | the dynamics do not relax to the static field | **passed** — [switch-on-result.md](switch-on-result.md) |
-| 5 | **Strong field.** Dead-band edge, slip, horizon radius versus M. | simulation (nonlinear) | horizon radius ∝ M; exterior field intact | radius ∝ √M, or exterior field screened | next — see scope note below |
+| 5 | **Strong field.** Dead-band edge, slip, horizon radius versus M. | simulation (nonlinear) | horizon radius ∝ M; exterior field intact | radius ∝ √M, or exterior field screened | **in progress** — run as a requirements search: [requirements-and-dof.md](requirements-and-dof.md) |
 
 **Pre-registered expectations** (written before the step is run):
 - Step 2: acceleration −c²∇ln(1 − q), independent of k and n; reflection
@@ -46,6 +46,21 @@ a pure standing wave; (b) which nonlinear completion the lattice realizes, hence
 that is genuinely nonlinear, and the first where a design choice (how q sets Y
 and Z, and how q's own propagation is loaded) has to be made rather than
 derived.
+
+**Step 5 is run backwards.** There is no mechanism to appeal to for *how* a node
+or edge would carry the added degrees of freedom, so step 5 does not pick a
+design. It collects what any implementation must satisfy, counts the degrees of
+freedom, and scans the remaining choices against observation
+([requirements-and-dof.md](requirements-and-dof.md)). Sub-items:
+
+| # | Item | State |
+|---|---|---|
+| 5a | Requirements list (R1–R10), degrees-of-freedom ledger, lattice-level vocabulary | done |
+| 5b | β: which loading gives β = 1 when the carrier propagates like light | **done** — each member's delay linear in the deflection; identical to the polarizable-vacuum form; resolves step 3's β flag at requirement level |
+| 5c | Closed-loop simulation with that rule (a lump makes its own 1/r; a second lump falls) — separate-channel branch, then same-channel branch | next |
+| 5d | Same-channel branch hazards: second harmonic, light-on-light | queued |
+| 5e | Breathing source: travelling wave steady, standing wave radiates at the predicted rate | queued |
+| 5f | Strong field, with and without a largest delay (horizon only with one; radius ∝ M) | queued |
 
 **Conceptual items (no computation yet):**
 - One gravity, not two: is the mechanism the microscopic form of the Jacobson
@@ -108,6 +123,17 @@ versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
   registers carry its rate and gradient (refines P2). grid-duality's earlier 2D
   negative is likely a property of two dimensions (the potential of a
   switched-on source grows logarithmically there), not of the scatter.
+- **Step 5a–b — done.** The scatter's "sum minus own value" is reflection at a
+  junction of N equal lines (coefficient 2/N − 1): the edge negates, the node
+  only joins; equal transit times replace a clock; storage is the only way to
+  slow without breaking timing. Requirements R1–R10 and a degrees-of-freedom
+  ledger recorded. Vocabulary fixed at lattice level (deflection, deflection
+  rate, tension, node inertia, link compliance). Fork opened: carrier as a
+  second channel, or as the rectified zero-frequency part of the one channel
+  (no free stiffness). **β = 1 ⇔ each member's delay is linear in the
+  deflection** (static solution 1 + q/2 = e^(GM/r), verified symbolically);
+  this is the polarizable-vacuum form in another variable. It has no horizon
+  unless the lattice has a largest delay, in which case the radius ∝ M.
 
 ---
 
@@ -123,6 +149,10 @@ versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
   derived source, γ and impedance matching, the two flags.
 - [switch-on-result.md](switch-on-result.md) — step 4 result: dynamic
   relaxation to 1/r at light speed; the potential as an accumulator.
+- [requirements-and-dof.md](requirements-and-dof.md) — step 5 opening: the
+  lattice-level vocabulary, what a junction already does, requirements R1–R10,
+  the degrees-of-freedom ledger, the stretch/twist reading, the channel fork,
+  and the β result.
 
 **EM slot (open)**
 - [em-slot.md](em-slot.md) — where an electromagnetic effect fits; why the

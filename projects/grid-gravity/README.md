@@ -13,6 +13,13 @@ Gravity first; the electromagnetic force is a slot held open, with one candidate
 reading recorded ([work/em-slot.md](work/em-slot.md)).
 **Method:** Derivation and rule-design first; computation only at the
 go/no-go gates.
+**What kind of claim this is:** statements about *rules* — what happens on the
+lattice — not about what nodes and edges are made of. The same rules could run
+on many substrates, and the lattice hides well (every departure from continuum
+physics found so far is of order (frequency × tick)²). The posits are judged by
+whether they reproduce known physics economically and by any distinctive
+consequence they force
+([work/requirements-and-dof.md](work/requirements-and-dof.md) §0, §8).
 **Status: mechanisms 1–2 parked (blocked on one crux, not refuted);
 mechanism 3 under validation — steps 1–4 of 5 passed
 ([work/STATUS.md](work/STATUS.md)).** Mechanisms 1 and 2 used only GRID's
@@ -500,8 +507,14 @@ steady source builds the static 1/r potential behind a front moving at exactly
 the lattice light speed — amplitude as predicted to four figures, isotropic, no
 drift — and when the source is removed the potential leaves as a wave. The
 potential is identified as a stored quantity: the running sum of the node
-value. Next is step 5 — closing the loop (the mass sources the potential, the
-potential loads the lattice) and the strong field. On the statistical side, the open computation is the free energy of two pinned
+value. **Step 5 is under way, run backwards**
+([work/requirements-and-dof.md](work/requirements-and-dof.md)): with no mechanism
+to appeal to for how a node or edge would carry the added degrees of freedom, it
+lists what any implementation must do (ten requirements, a degrees-of-freedom
+ledger, a lattice-level vocabulary) and scans the remaining choices against
+observation. First result: the second-order parameter β = 1 exactly when each
+member's delay is linear in the stored deflection — the polarizable-vacuum form
+in the lattice's own variable. On the statistical side, the open computation is the free energy of two pinned
 inclusions versus separation in 3D
 ([work/entropic-route.md](work/entropic-route.md) §4).
 
