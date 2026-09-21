@@ -62,6 +62,7 @@ freedom, and scans the remaining choices against observation
 | 5d | Same-channel branch hazards: second harmonic, light-on-light | queued |
 | 5e | Breathing source: travelling wave steady, standing wave radiates at the predicted rate | queued |
 | 5f | Strong field, with and without a largest delay (horizon only with one; radius ∝ M) | queued |
+| 5g | **Direct 3D inverse-square check:** a massive body released in the 1/r deflection of a point source, at several distances | **passed** — [drop-3d-result.md](drop-3d-result.md) |
 
 **Conceptual items (no computation yet):**
 - One gravity, not two: is the mechanism the microscopic form of the Jacobson
@@ -152,6 +153,14 @@ versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
   equal masses symmetric; norm conserved to 10⁻¹³. One extended dimension (a
   constant pull, not 1/r²). Trap recorded: a light narrow packet spreads across
   the midpoint and corrupts the centroids.
+- **Step 5g — passed.** Asked directly: does a body fall as 1/r² in three
+  dimensions? Yes — a ∝ r^−1.96 over r = 24–64 (r^−1.98 beyond 32); a/a_ray =
+  0.996–0.999 for r ≥ 32; identical on a body diagonal and an axis; a·r² → 0.0379
+  against 0.0383 predicted. Departures at small r are extended-body effects (the
+  packet is half as wide as its distance at r = 24). Why 5c showed no falloff: one
+  extended dimension gives a node one edge in and one out, so nothing is shared;
+  in 3D the scatter divides a steady tension among a node's edges, flux through a
+  shell is conserved, and each edge carries 1/r².
 
 ---
 
@@ -167,6 +176,8 @@ versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
   derived source, γ and impedance matching, the two flags.
 - [switch-on-result.md](switch-on-result.md) — step 4 result: dynamic
   relaxation to 1/r at light speed; the potential as an accumulator.
+- [drop-3d-result.md](drop-3d-result.md) — step 5g result: a body falls toward a
+  point source as 1/r², in three dimensions, isotropically.
 - [closed-loop-result.md](closed-loop-result.md) — step 5c result: two lumps
   make a field and fall into it; third law and momentum conservation emerge.
 - [requirements-and-dof.md](requirements-and-dof.md) — step 5 opening: the
@@ -214,6 +225,7 @@ versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
 - `gamma_test.py` — node + edge storage: anisotropic spectrum, γ, reflection
   at a matched step, matched-gradient drop (step 3).
 - `switch_on.py` — steady source switched on (and off) in 3D (step 4).
+- `drop_3d.py` — a massive packet released in a 1/r deflection in 3D (step 5g).
 - `closed_loop.py` — two lumps source the deflection, the deflection loads the
   lattice, the lumps respond (step 5c).
 - `gate_falloff.py`, `gate_dispersion.py`, `hex_greens.py` — mechanism 1–2 gate

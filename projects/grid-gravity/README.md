@@ -517,7 +517,10 @@ member's delay is linear in the stored deflection — the polarizable-vacuum for
 in the lattice's own variable. And with the loop closed in simulation
 ([work/closed-loop-result.md](work/closed-loop-result.md)) two lumps released at
 rest fall toward each other on the ray law, with accelerations in inverse ratio
-to their masses and momentum conserved. On the statistical side, the open computation is the free energy of two pinned
+to their masses and momentum conserved; and in three dimensions a body released
+in the 1/r deflection of a point source falls as r^−1.96, isotropically,
+matching the ray equations to 0.2–0.4%
+([work/drop-3d-result.md](work/drop-3d-result.md)). On the statistical side, the open computation is the free energy of two pinned
 inclusions versus separation in 3D
 ([work/entropic-route.md](work/entropic-route.md) §4).
 

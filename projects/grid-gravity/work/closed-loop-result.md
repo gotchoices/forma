@@ -83,7 +83,9 @@ runaway, no instability, exact conservation of the waves' norm under
 time-varying stores.
 
 **Not established.**
-- **Three dimensions.** A 1/r² pull between two *localized* lumps needs lumps
+- **Three dimensions.** (The inverse-square fall of a body toward a fixed source
+  is shown directly in [drop-3d-result.md](drop-3d-result.md).) A 1/r² pull
+  between two *self-sourcing, localized* lumps needs lumps
   that stay localized in 3D, which the wave theory here does not supply (it is
   grid-matter's open problem). Steps 2–4 cover the 3D content separately: the
   response to a gradient, and the 1/r field of a source.
