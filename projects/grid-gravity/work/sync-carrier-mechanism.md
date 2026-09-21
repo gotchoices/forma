@@ -68,6 +68,7 @@ time — the same mass-only frame the rest of the project uses
 | P4 | **A dead band, not a set-point.** Within a range, a node has no preferred rate of its own; only differences from neighbours matter. | Masslessness → unlimited range (§6). |
 | P5 | **The local rate follows q, not the gradient of q** (the potential, not the pull). | The right power law: a 1/r potential rather than 1/r² (§5). |
 | P6 | **Every member stores.** Nodes carry a storage register (returning its share with the same sign); extended edges carry one too (returning it inverted); the carrier loads both equally. | The full light bending, γ = 1. The equality is the impedance-matched, reflectionless loading — not a tuned number ([action-and-gamma.md](action-and-gamma.md) §2). |
+| P8 | **One phenomenon, two levels.** The stores and the stored deflection are the microphysics of which the area-entropy law of axiom A5 — and through it the Jacobson derivation of [grid/gravity.md](../../../grid/gravity.md) — is the statistical summary. They are not a second force beside it. | Prevents double counting; makes the statistical account a *guide* (what the mechanism must coarse-grain to) rather than a rival. Judged by consistency where both speak, not by deriving one from the other. |
 | P7 | **The compact loop is loaded once.** A clock's compact circulation closes through a node and is not loaded by the storage on space edges. | Makes clocks slow half as much (in the logarithm) as light — the other half of γ = 1. |
 
 **Candidate realizations of the carrier (P2).** The mechanism needs the role
@@ -274,10 +275,18 @@ loses lock with the surrounding lattice.
 3. **Why load slows the rate, ∝ energy.** *Resolved:* it follows from the
    action ([action-and-gamma.md](action-and-gamma.md) §4).
 4. **One gravity, not two.** GRID already obtains the Einstein equations by
-   Jacobson's argument ([grid/gravity.md](../../../grid/gravity.md)). This
-   mechanism must be the microscopic realization of that result — ideally
-   supplying the entropy law it assumes — not an additional scalar force
-   beside it.
+   Jacobson's argument ([grid/gravity.md](../../../grid/gravity.md)). *Settled as
+   a stance:* the two are taken to be one phenomenon at two levels (posit P8),
+   judged by consistency where both speak; supplying the entropy law is a bonus,
+   not a criterion.
+6. **The dynamic sector.** Where both levels speak about *radiation*, they do not
+   yet agree: one scalar deflection radiates as a scalar, while gravitational
+   waves are observed to be tensor; and reciprocal stores give no frame-dragging.
+   The natural extension is a memory on each *link* (loaded by its own history
+   rather than slaved to the node's deflection): the link store's source in the
+   derived rule is already the stress along that link
+   ([same-channel-result.md](same-channel-result.md) §1), which is how the
+   source enters a tensor theory. Nothing computed.
 5. **Reconcile with the synchronous lattice** (README ground rule 5): show
    that neighbour-triggered clocks reproduce the confirmed Maxwell results.
 

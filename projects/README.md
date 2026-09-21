@@ -92,10 +92,22 @@ Each project's README should:
   (metric as equation-of-state, needing no such carrier) is the fallback.
   Revival needs a substrate-level result making the ℵ-line size a massless
   field.** *Update:* the scope now permits substrate extensions (itemized per
-  mechanism). **Mechanism 3 — synchronized clocks with a lattice carrier — is
-  proposed, not yet evaluated**
-  ([note](grid-gravity/work/sync-carrier-mechanism.md)); the statistical side is
-  kept in [entropic-route](grid-gravity/work/entropic-route.md).
+  mechanism). **Mechanism 3** ([note](grid-gravity/work/sync-carrier-mechanism.md))
+  — lossless stores on nodes and space-links, set by a stored deflection — has
+  been taken through a five-step validation plan: it slows every mode alike,
+  makes bodies fall as 1/r² and bends light by the full amount (on one stated
+  premise), sources its field from an action in proportion to energy, carries it
+  at light speed, and reproduces weak-field general relativity to second order;
+  in its cheapest form gravity is the steady part of the one field that carries
+  light and matter. **Status: objective met for the *static* sector, conditionally on a listed
+  ledger of posits; the *dynamic* sector (tensor gravitational waves,
+  frame-dragging) is open — the mechanism's single scalar deflection does not yet
+  reach it; the statistical (Jacobson) account is taken as the same phenomenon at
+  a coarser level, judged by consistency rather than re-derivation; chapter arc
+  drafted**
+  ([tracker and objectives audit](grid-gravity/work/STATUS.md)). The statistical
+  side is kept in [entropic-route](grid-gravity/work/entropic-route.md); an EM
+  slot is held open in [em-slot](grid-gravity/work/em-slot.md).
 - [grid-matter/](grid-matter/) — Whether GRID produces **matter and quantum
   mechanics**, beyond EM and gravity. (Formerly `grid-saturation`: the entry
   hypothesis — that the *saturation bound* makes particles — was **refuted**

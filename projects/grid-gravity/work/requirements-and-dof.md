@@ -122,6 +122,7 @@ deflected.
 | carrier channel | either a second wave channel on the links (two more amplitudes per link) — or none (§6) | **open** |
 | each link | the link phase and its conjugate | GRID has it (axiom A4) |
 | compact loop | a non-reciprocal element (the [EM slot](em-slot.md)) | open |
+| each space link | its **own** memory, in place of being slaved to the node's deflection — the candidate for tensor waves and the rest of the dynamic sector (§9) | open |
 
 Per node in a 3D lattice the gravity additions come to one store amplitude, one
 memory, and one store amplitude on each of its three links — plus, in the
@@ -259,6 +260,16 @@ Places where the mechanism says something that is not simply built in:
    case is settled by a form-factor argument — a direct numerical check was
    inconclusive.
 4. **The strong field**, with and without a largest delay.
+5. **The dynamic sector — now the first priority.** Everything above concerns a
+   single scalar deflection, which reproduces the *static* weak field but
+   radiates as a scalar and drags no frames; observation requires tensor waves
+   and frame-dragging. The candidate: give each space link its own memory. In the
+   derived rule the link store is already sourced by the stress along its own
+   direction, so the set of link loadings, with the node's, forms the lattice
+   counterpart of a metric perturbation sourced by stress. Whether its shear
+   combinations propagate as transverse waves at light speed, and what replaces
+   requirement R5 (equal loading) when links are independent, is to be worked
+   out.
 
 ## Grades summary
 

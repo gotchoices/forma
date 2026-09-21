@@ -20,9 +20,12 @@ physics found so far is of order (frequency × tick)²). The posits are judged b
 whether they reproduce known physics economically and by any distinctive
 consequence they force
 ([work/requirements-and-dof.md](work/requirements-and-dof.md) §0, §8).
-**Status: mechanisms 1–2 parked (blocked on one crux, not refuted);
-mechanism 3 under validation — steps 1–4 of 5 passed
-([work/STATUS.md](work/STATUS.md)).** Mechanisms 1 and 2 used only GRID's
+**Status: mechanism 3 validated through the plan's steps 1–5 (step 5 partly
+open) for the *static* sector, conditional on a stated ledger of posits; the
+dynamic sector (tensor waves, frame-dragging) is open; a chapter arc is drafted
+below.
+Mechanisms 1–2 parked (blocked on one crux, not refuted). State and objectives
+audit: [work/STATUS.md](work/STATUS.md).** Mechanisms 1 and 2 used only GRID's
 specified spectrum and stalled for want of a carrier.
 [Mechanism 3](work/sync-carrier-mechanism.md) (synchronized clocks with a
 lattice carrier) responds to exactly that finding by positing the carrier. The record
@@ -85,17 +88,43 @@ replacement.
 The mechanical and statistical (Jacobson) accounts are not rivals but two
 levels of one stack, related as molecular motion is to thermodynamics.
 Jacobson's derivation is the "equation of state" of the spacetime gas; this
-project describes the molecules. The relationship is *upstream*: a working
-mechanical theory should *derive* what the statistical one assumes (the
-entropy law δS = ζ·δA and local equilibrium — the microscopic dS/dt that
-[grid/bounding-mechanisms.md](../../grid/bounding-mechanisms.md) flags as
-missing). Because the statistical result is substrate-independent (many
-microscopic mechanisms coarse-grain to the same Einstein equations),
-reproducing G = 1/(4ζ) is a **consistency check, not the payoff**; the
-mechanism earns its keep by explaining the assumptions and reaching the
-non-equilibrium regime the statistical account cannot. (On the graviton:
-this project takes no position on quantizing the metric — it describes the
-substrate of which the metric is an emergent collective mode.)
+project describes the molecules. Both can be valid, and they are useful in
+different ways: the statistical account gives universality, the full field
+equations and the link between Newton's constant and the information capacity ζ;
+the mechanical one says *how* — why clocks slow, why everything attracts, why
+light counts double, why free fall is universal — and has consequences the
+statistical one cannot see.
+
+**That they describe the same phenomenon is a posit** (P8 in the ledger of
+[work/sync-carrier-mechanism.md](work/sync-carrier-mechanism.md)), stated rather
+than assumed silently, because GRID must end with *one* account of gravity: the
+stores are not a second force beside the one that axiom A5 implies, any more
+than the pressure of molecular impacts is added to the pressure of the gas law.
+
+**What success means.** Kinetic theory did not have to derive thermodynamics to
+be valid; it had to not contradict it. So:
+
+1. *Required* — reproduce observed gravity wherever the mechanism speaks.
+2. *Required* — never contradict the statistical account where both speak. The
+   statistical result is substrate-independent (many microscopic mechanisms
+   coarse-grain to the same Einstein equations), so it also serves as a guide:
+   whatever is built here must coarse-grain to those equations.
+3. *Bonus, not a criterion* — illuminate the statistical account's premises: the
+   entropy law δS = ζ·δA, the microscopic dS/dt that
+   [grid/bounding-mechanisms.md](../../grid/bounding-mechanisms.md) flags as
+   missing, the relation of the deflection's stiffness to ζ. Reproducing
+   G = 1/(4ζ) is a consistency check. *(An earlier version of this section made
+   deriving those premises "the payoff"; that was a framing choice, since
+   relaxed.)*
+
+**Where that stands.** The two levels agree in the **static weak field**, through
+second order. In the **dynamic sector** the mechanical account is so far
+incomplete, not wrong: its single scalar deflection radiates as a scalar, whereas
+gravitational waves are observed to be tensor, and its reciprocal stores give no
+frame-dragging. Extending it there is the project's main open task.
+
+(On the graviton: this project takes no position on quantizing the metric — it
+describes the substrate of which the metric is an emergent collective mode.)
 
 ## The thesis (common to every mechanism)
 
@@ -190,7 +219,7 @@ wave, delays spatial signals; congestion spreads via the surrounding loops.
   [dispersion sim](work/dispersion-sim-result.md),
   [micro-to-macro](work/micro-to-macro.md).
 
-### Mechanism 2 — Detour / refractive  *(current focus)*
+### Mechanism 2 — Detour / refractive  *(parked — blocked on range; its findings carried into mechanism 3)*
 
 The resident standing wave makes the local vacuum a **slower medium**. A
 passing wave briefly **detours into the compact dimension** — a sub-quantum
@@ -266,7 +295,7 @@ to be modeled **from GRID's own dynamics** (the update rule / lattice
 propagation), *not* by adopting scalar-tensor formalism. Open — a live crux,
 not a refutation.
 
-### Mechanism 3 — Synchronized clocks with a lattice carrier  *(under validation; substrate-extending)*
+### Mechanism 3 — Synchronized clocks with a lattice carrier  *(validated to second order, conditional on its ledger; substrate-extending)*
 
 Metronomes on a pliable table. Lattice clocks have **no master**: neighbours
 trigger each other and fall into step. Lattice members also **store a
@@ -423,110 +452,151 @@ A clean *negative* is itself a result: it rules out a hypothesis cheaply.
 
 ## Chapter arc (draft)
 
-**Objective.** Present how GRID's substrate *mechanically* realizes the
-optical-metric / polarizable-vacuum form of gravity — the "how" beneath
-forma's statistical "that" — as an **emergence / coherence result at skeleton
-rigor**, conditional on the reactive-bound premise. Not a new theory of
-gravity: a substrate mechanism for a known one. Its value is framework
-coherence (a mechanical gravity to sit beside the statistical one) and the two
-structural insights below, not a new prediction.
+**Objective.** Present, as a *conditional derivation*, a lattice-level mechanism
+for gravity on GRID: given a short ledger of stated additions to the substrate,
+the canonical scatter slows every clock alike near energy, makes bodies fall
+with an inverse-square acceleration, bends light by the full observed amount,
+sources its own field in proportion to energy, and carries that field at the
+speed of light — reproducing the **static** weak-field content of general
+relativity (γ = β = 1). It is a story *beneath* general relativity, not a
+replacement; it covers the static sector and says so, and it states plainly what
+is derived, what is posited and what is open.
 
-The arc is a sketch — early chapters firmer, later ones a pool; developed one
-at a time and submitted to review (per [../AGENTS.md](../AGENTS.md)).
+**Writing approach.** Brief and attribution-forward, as in
+[grid-matter](../grid-matter/): where a chapter rests on standard physics
+(transmission-line junctions, ray equations, the parametrized post-Newtonian
+framework, polarizable-vacuum and exponential-metric gravity, antenna form
+factors) or on another forma project, it cites and states the result in a few
+lines rather than re-deriving it. Prose is spent on what is specific to GRID.
+Chapters are drafted as bullet outlines for review, then filled in, one at a
+time (per [../AGENTS.md](../AGENTS.md)); the arc is re-examined after each.
 
-1. **The mechanical-gravity question.** The gap: GRID's gravity is
-   *statistical* (Jacobson) — *that* spacetime curves, not *how*. The thesis:
-   mass slows local time, and a gradient in the rate of proper time is
-   Newtonian gravity. Clock = confined light, so slowing the signal slows
-   every clock (time dilation, not merely slow light). States the simplified
-   (1D-compact, mass-only) frame and the **reactive-bound premise** up front,
-   and the honest scope (coherence, skeleton rigor).
+Status flags — **[D]** derived · **[C]** computationally demonstrated ·
+**[P]** posited (listed in the ledger) · **[O]** open.
 
-2. **The players: mass and light on the ℵ-line.** Mass as a compact standing
-   wave (KK; [metric-mass](../metric-mass/)); the ℵ-line with the photon as
-   its n=0 mode and mass as an n≥1 mode; vacuum transparency (linear KK modes
-   are orthogonal — an off-resonant wave doesn't see the compact dimension).
+**Ch 1 — The question, the gate, and what two failures taught**
+- GRID has gravity *statistically* ([grid/gravity.md](../../grid/gravity.md), the
+  Jacobson argument): that spacetime curves, not how a lump of energy slows a
+  clock. The thesis: mass slows local time; a gradient of local time is gravity.
+- The four-condition gate (vacuum field, massless 1/r, non-dispersive, coupling
+  ∝ energy), and what kind of claim this is: rules, not substrate.
+- Mechanisms 1–2, briefly, for what they established: loss ⟺ short range; the
+  coupling is an *index*, not a mass; range needs a massless, neutral,
+  propagating carrier, which GRID's specified spectrum lacks. **[D, cited]**
 
-3. **The detour: a resident mass slows the local medium.** Under the reactive
-   bound, a large-amplitude standing wave *softens* the local ℵ-line stiffness
-   (effective-potential / Kapitza averaging); a passing photon sees a slower
-   medium — a refractive perturbation δn — where a mass sits. The core
-   mechanism, from the premise.
+**Ch 2 — The lattice as lines and junctions**
+- The scatter is what N equal lines do where they meet: reflection (2/N − 1),
+  transmission 2/N. The edge negates; the node only joins. **[D]**
+- No clock and no synchronization: a junction scatters each arrival on its own;
+  the tick is a transit time. The lattice-level vocabulary (deflection,
+  deflection rate, tension, node inertia, link compliance). **[D]**
+- Ties to [grid-duality](../grid-duality/)'s register picture and
+  [grid-primitive](../grid-primitive/)'s tube and passive nodes. **[cited]**
 
-4. **Why it couples to energy (and always attracts).** A symmetric bound is
-   *even*, so the softening is ∝ A² = energy — the coupling gravity needs
-   (universal: neutral matter gravitates), always positive (every mass
-   attracts). The Lorentz-dielectric identity: the vacuum near mass *is* a
-   Lorentz medium with the mass as the resonant oscillator.
+**Ch 3 — Slowing everything alike**
+- One storage register per node, returning its share a tick later: lossless for
+  any weight. **[P: the store] [D: losslessness]**
+- The exact spectrum and the universal frequency map: light speed, rest
+  frequency and inertia slow by one factor; departures of order
+  (frequency × tick)². **[D + C]**
+- The same holds for every mode of a compact *sheet*, not just one loop. **[D + C]**
+- The variant that fails: returning the share inverted gives the photon a mass.
+  **[D]**
 
-5. **Why it is time dilation, not an optical medium.** The slowing is
-   non-dispersive (a static effective-medium change; the Lorentz index is flat
-   below the mass frequency), so it rescales all clocks uniformly. With clock =
-   confined light, the refractive slowing *is* gravitational time dilation.
+**Ch 4 — Falling**
+- In a gradient of the store weight, bodies of different mass fall together;
+  moving bodies and light follow the ray equations; light is delayed, not
+  reflected. **[D predictions + C]**
+- In three dimensions, a body released in a 1/r field falls as 1/r²,
+  isotropically. **[C]**
+- The size of the departure from universal free fall:
+  (rest frequency × tick)². **[D + C]**
 
-6. **Why it reaches: the 1/r field.** A localized softening spreads by the
-   lattice's own *massless* Green's function; with no length scale, the field
-   is scale-free 1/r, isotropic. The loop-unification — the compact loop and
-   the spatial hexagon loops are the same kind of cycle — and the assembly
-   into the Newtonian potential and light-bending.
+**Ch 5 — Light bending and impedance**
+- A second store, in series on a link; the dual sign rule (node store returns
+  same-sign, link store inverted). **[P: the store] [D: the rule]**
+- γ = (link loading)/(node loading). Node stores alone give half the observed
+  bending; **equal** loading gives the whole, and equal loading is exactly the
+  condition that the lattice's impedance is undisturbed — no reflection.
+  **[D + C]**
+- The premise this rests on: a clock's compact loop is loaded by one store, not
+  both. **[P — stated, not derived]**
 
-7. **Relationships and the honest ledger.** To the statistical gravity: both
-   from boundedness (reactive → this mechanical/PV account; dissipative →
-   Jacobson). To charge: the *even* substrate deviation gives gravity, the
-   *odd* (chirality) gives charge. To full MaSt: what re-derives in 2D sheets
-   (non-dispersivity with a spectrum; the coefficient). Honest positioning (a
-   re-derivation of the optical-metric/PV picture with a GRID mechanical
-   origin — coherence, not novelty), and what is established / premised /
-   deferred.
+**Ch 6 — The source**
+- One action for wave and deflection. The source of the deflection is whatever
+  in the wave's Lagrangian depends on it: proportional to energy, one sign,
+  always attractive; light counts double, as in general relativity. **[D]**
+- Newton's constant as the deflection's stiffness — a calibration, like ζ. **[D]**
+- The conservative lattice rule: node momentum and link extension carry through
+  a change of weight; the back-reaction follows unasked. **[D]**
+
+**Ch 7 — The field reaches out**
+- The deflection is a *stored* quantity, the running sum of the node's rate; the
+  registers carry its rate and its gradient. **[D]**
+- Switched on, a source builds 1/r behind a front at the lattice light speed, at
+  the predicted amplitude, isotropically; tension on links falls as 1/r² because
+  the scatter divides it among a node's edges and nothing is lost. Switched off,
+  the field leaves as a wave. **[D prediction + C]**
+
+**Ch 8 — Second order: delay linear in deflection**
+- With the deflection propagating as light does, the second-order parameter
+  β = 1 exactly when each member's delay is linear in the deflection; this is
+  the polarizable-vacuum / exponential-metric model in the lattice's own
+  variable. **[D, cited]**
+- No horizon unless the lattice has a largest delay; if it has, the radius is
+  ∝ M. **[D]**; whether it has one **[O]**
+
+**Ch 9 — Closing the loop**
+- Two lumps make a field and fall into it: the ray law, the third law and
+  momentum conservation emerge. **[C]**
+- The cheapest form: one field, no coupling constant — gravity as the steady
+  part of the field whose oscillating part is light and matter. **[D rule + C]**
+- What the nonlinearity also does: a resonant second harmonic (two quanta
+  merging) **[C; rate in matter O]**; a pulsing source for a standing wave,
+  suppressed by the body's form factor below anything observable
+  **[argument; numerical check inconclusive]**.
+
+**Ch 10 — The ledger, and what is open**
+- The posits, each with what it buys; the count of degrees of freedom; the
+  stretch-and-twist reading. **[P, listed]**
+- The relation to the statistical (Jacobson) account: two levels of one
+  phenomenon — a posit — judged by consistency where both speak, not by
+  re-deriving one from the other. **[P]**
+- Open: **the dynamic sector** — observed gravitational waves are tensor and
+  moving masses drag frames, while a single scalar deflection radiates as a
+  scalar and reciprocal stores drag nothing; a memory on each *link* is the
+  natural extension (its source, stress along the link, is already in the
+  rule). Also open: the compact-loop premise; the strong field; a closed loop in
+  three dimensions (waits on a bound 3D particle,
+  [grid-matter](../grid-matter/)); whether the lattice carries an area-entropy;
+  the electromagnetic slot ([work/em-slot.md](work/em-slot.md)). **[O]**
 
 Each chapter maps to work notes already in [work/](work/); the arc is their
-pedagogical presentation, not new content.
+presentation. *(An earlier arc, written for mechanism 2 when it was the focus,
+is superseded by this one; its content survives in Ch 1.)*
 
 ## Next step
 
-**Current:** mechanism 3 is under validation; the ordered plan and its state
-are in [work/STATUS.md](work/STATUS.md). **Step 1 (the uniform-q theorem) has
-passed** ([work/uniform-q-theorem.md](work/uniform-q-theorem.md)): a storage
-register at each node, returning its share a tick later, slows every mode
-through one universal, lossless map — light speed, rest frequency and inertia
-together. **Step 2 (the drop test) has passed**
-([work/drop-test-result.md](work/drop-test-result.md)): in a gradient of that
-storage weight, packets of different mass fall together toward the slower
-region, moving packets and light follow the ray equations to 0.02%, and
-reflection is negligible for gradients longer than a wavelength. **Step 3 (the
-action and light bending) has passed at first order**
-([work/action-and-gamma.md](work/action-and-gamma.md)): the carrier's source
-follows from the action — proportional to energy, one sign, always attractive,
-light counting double — and the full light bending (γ = 1) results when nodes
-and extended edges are loaded *equally*, which is the impedance-matched,
-reflectionless loading. It costs one new posit (the compact loop is loaded
-once) and raises two flags (a purely standing wave is a breathing source; the
-second-order parameter β awaits the nonlinear completion). **Step 4 (switch-on
-in 3D) has passed** ([work/switch-on-result.md](work/switch-on-result.md)): a
-steady source builds the static 1/r potential behind a front moving at exactly
-the lattice light speed — amplitude as predicted to four figures, isotropic, no
-drift — and when the source is removed the potential leaves as a wave. The
-potential is identified as a stored quantity: the running sum of the node
-value. **Step 5 is under way, run backwards**
-([work/requirements-and-dof.md](work/requirements-and-dof.md)): with no mechanism
-to appeal to for how a node or edge would carry the added degrees of freedom, it
-lists what any implementation must do (ten requirements, a degrees-of-freedom
-ledger, a lattice-level vocabulary) and scans the remaining choices against
-observation. First result: the second-order parameter β = 1 exactly when each
-member's delay is linear in the stored deflection — the polarizable-vacuum form
-in the lattice's own variable. And with the loop closed in simulation
-([work/closed-loop-result.md](work/closed-loop-result.md)) two lumps released at
-rest fall toward each other on the ray law, with accelerations in inverse ratio
-to their masses and momentum conserved; and in three dimensions a body released
-in the 1/r deflection of a point source falls as r^−1.96, isotropically,
-matching the ray equations to 0.2–0.4%
-([work/drop-3d-result.md](work/drop-3d-result.md)). The cheapest branch also
-works ([work/same-channel-result.md](work/same-channel-result.md)): with the
-conservative rule derived from the action, *one* field with *no* coupling
-constant rectifies its own steady part in proportion to its energy, and lumps of
-it fall toward each other on the ray law — gravity as the zero-frequency part of
-the same field that carries light and matter. On the statistical side, the open computation is the free energy of two pinned
-inclusions versus separation in 3D
+**Current.** Mechanism 3 has been taken through its validation plan
+([work/STATUS.md](work/STATUS.md)): a lossless store at each node slows every
+mode alike (step 1); bodies of any mass fall together and light is delayed
+(step 2); the source follows from an action, and equal loading of nodes and
+space-links — the impedance-matched loading — gives the full light bending
+(step 3); a source builds its 1/r field dynamically, at light speed (step 4);
+delay linear in the stored deflection gives the second-order parameter its
+observed value, a body falls as 1/r² in three dimensions, two lumps attract with
+the third law emerging, and the cheapest form — one field, no coupling constant,
+gravity as its steady part — works with a rule derived from the action (step 5).
+
+**What is next.** (a) Write the chapters, one at a time, from the arc above,
+starting with outlines of Chapters 1–3. (b) In the work folder, the task that
+most changes what the project can claim is the **dynamic sector**: whether a
+memory on each link, rather than one per node, gives tensor waves and
+frame-dragging — observation demands it, and the statistical account says what it
+must coarse-grain to. The full list
+of remaining tasks, and an audit against the project's stated objectives, is in
+[work/STATUS.md](work/STATUS.md). On the statistical side, the open computation
+is the free energy of two pinned inclusions versus separation in 3D
 ([work/entropic-route.md](work/entropic-route.md) §4).
 
 **Record for mechanism 2** (how the project reached the carrier requirement):

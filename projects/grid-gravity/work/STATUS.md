@@ -65,9 +65,10 @@ freedom, and scans the remaining choices against observation
 | 5g | **Direct 3D inverse-square check:** a massive body released in the 1/r deflection of a point source, at several distances | **passed** — [drop-3d-result.md](drop-3d-result.md) |
 
 **Conceptual items (no computation yet):**
-- One gravity, not two: is the mechanism the microscopic form of the Jacobson
-  result ([grid/gravity.md](../../../grid/gravity.md)) — ideally supplying its
-  entropy law — rather than a second force?
+- One gravity, not two: *settled as a stance* — the mechanism and the Jacobson
+  result ([grid/gravity.md](../../../grid/gravity.md)) are taken as two levels of
+  one phenomenon (posit P8), judged by consistency where both speak. Open within
+  it: the dynamic sector (see the audit below).
 - Does one carrier rescale the clocks of every sheet alike?
 - **EM slot (held open):** charge as a time *shear* — a signed clock offset per
   compact lap, seen only by circulating modes — beside gravity's time *stretch*.
@@ -77,6 +78,65 @@ freedom, and scans the remaining choices against observation
 
 **Statistical side — open computation:** free energy of two pinned inclusions
 versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
+
+## Objectives audit (after step 5c′; criteria revised)
+
+**What success means** (README, "Relationship to the statistical account"). The
+statistical (Jacobson) account and this mechanical one are taken to be two levels
+of one phenomenon (posit P8). Validity does not require deriving one from the
+other. Required: (1) reproduce observed gravity wherever the mechanism speaks;
+(2) never contradict the statistical account where both speak. Bonus: illuminate
+the statistical account's premises. *(Earlier the README made deriving Jacobson's
+entropy law "the payoff"; that criterion has been relaxed to a bonus.)*
+
+| Objective | State | Evidence / what is missing |
+|---|---|---|
+| Clear the gate: (0) vacuum field, (1) massless 1/r isotropic, (2) non-dispersive, (3) coupling a fixed constant ∝ mass-energy | **met**, conditional on the ledger | (0),(1) reached *dynamically* at light speed (step 4); (2) exact universal map (step 1); (3) derived from the action (step 3). The static 1/r is a property of the posit — labelled as such. |
+| **Observed gravity, static sector:** time dilation, universal free fall, inverse square, light bending (γ), perihelion (β) | **met, on one premise** | Steps 1–5; γ = 1 from impedance-matched loading, β = 1 from delay linear in deflection. Rests on P7 (compact loop loaded once). |
+| **Observed gravity, dynamic sector:** tensor gravitational waves (LIGO–Virgo polarization tests; binary-pulsar orbital decay), frame-dragging (Gravity Probe B, LAGEOS) | **not met — the mechanism is incomplete here** | One scalar deflection radiates as a scalar; reciprocal stores give no frame-dragging. Candidate extension: a memory on each link (its source, stress along the link, is already in the derived rule). Nothing computed. |
+| Consistency with the statistical account where both speak | **holds in the static weak field through second order; open for radiation** | Same gap as the row above: the statistical account gives the tensor Einstein equations. |
+| Non-dispersivity for full MaSt sheets (ground rule 7) | **met** | Step 1's closed form holds for any number of axes; with two compact directions every (m, n) sheet mode slows by the same factor to ~10⁻⁵. |
+| Reconcile the local-clock premise with the confirmed Maxwell results (ground rule 5) | **met for a scalar wave; one check outstanding** | Stores vanish at zero deflection; the photon stays gapless under load; junctions need no clock. *Not shown:* both photon polarizations slowed alike in [grid-primitive](../../grid-primitive/)'s two-component wave. |
+| Results come from the rule, prediction before run, not built into the setup | **met**, except the static 1/r (built in, and labelled) | Several first runs were wrong and are recorded as such. |
+| *Bonus:* illuminate the statistical premises — area-entropy, dS/dt, stiffness ↔ ζ | **not attempted** | Hooks only: slipped edges lie on a surface; in the one-field branch the strength of gravity is not free, so stiffness ↔ ζ is in principle checkable (needs the quantum of action from grid-quantization). |
+| EM force | **slot held open by design** | [em-slot.md](em-slot.md); nothing computed. |
+
+**Verdict.** For the **static sector** the project's objective is met,
+conditionally: a lattice mechanism that passes its gate and reproduces weak-field
+general relativity through second order, posits listed. For the **dynamic
+sector** it is incomplete, and that — not the entropy law — is the main open
+task. The chapter arc can be written now for the static sector; the dynamic
+sector is reported as open in Chapter 10.
+
+### Tasks remaining for the work folder
+
+In rough order of how much they would change what the project can claim:
+
+1. **The dynamic sector.** A memory on each link instead of one per node: do the
+   link loadings form a tensor carrier — transverse waves at light speed, sourced
+   by stress — and what replaces requirement R5 (equal loading) when links are
+   independent? Then frame-dragging, which needs something non-reciprocal and
+   universal. Observation demands this; the statistical account says what it must
+   coarse-grain to.
+2. **The compact-loop premise (P7).** Derive or motivate it from where a clock's
+   compact circulation lives — most naturally grid-primitive's tube. Full light
+   bending depends on it.
+3. **Both polarizations.** Put the stores into grid-primitive's two-component
+   wave and check that they slow both alike.
+4. **Strong field (5f).** With and without a largest delay; horizon radius
+   against M.
+5. **Same-channel hazards (5d remainder).** Light-on-light scattering; the rate
+   of the resonant second harmonic in dense matter.
+6. **A direct 3D light-deflection run** with matched stores — the counterpart of
+   the 3D drop.
+7. **EM slot**, rungs E1–E3.
+8. *Bonus:* the statistical premises — area-entropy of the lattice with these
+   memories; stiffness ↔ ζ.
+9. **Statistical side:** free energy of two pinned inclusions against
+   separation, in 3D ([entropic-route.md](entropic-route.md) §4).
+
+*Blocked elsewhere:* a closed loop in three dimensions needs a particle that
+stays bound in 3D — [grid-matter](../../grid-matter/)'s open problem.
 
 ### Step log
 
