@@ -62,15 +62,31 @@ together.** This is how grid-primitive already describes it ("nodes are passive
 junctions … there is no node update rule"), and it is the register picture of
 [grid-duality](../../grid-duality/models/scattering.md) read physically.
 
-Two posits become consequences:
+Two consequences for clocking and for what "slowing" means:
 
-- **No clock is needed.** If every line has the same transit time, all pulses
-  reach every junction together; a tick *is* a transit time. What triggers a
-  node is arrival. (This is posit P1 without a scheduler.)
-- **Slowing must be done by storage.** Lengthening a line would destroy the
-  coincidence of arrivals. A stub that returns its share exactly one tick later
-  slows waves and keeps the timing. The storage-register form of step 1 is
-  close to forced.
+- **No clock is needed, and nothing needs to get synchronized.** A junction is
+  linear: it scatters each arriving pulse on its own and never waits for a
+  coincidence. Signals launched at different sub-tick offsets simply travel as
+  independent interleaved copies of the same lattice; for any wave much longer
+  than an edge they all carry nearly the same values — one smooth field. The
+  "tick" is just the unloaded transit time of an edge, a bookkeeping unit. (This
+  is posit P1 with neither scheduler nor synchronization step.)
+- **Two equivalent ways to slow a wave.** (a) *Storage:* a store returns its
+  share one tick later; transit times stay fixed. This is the only option if the
+  lattice is strictly tick-synchronous, and it is what the simulations use,
+  since a discrete-tick code cannot represent a fractional delay. (b) *Longer
+  transit:* the wave simply takes longer to cross a loaded edge. With passive
+  junctions this is allowed, and a line whose transit time lengthens at
+  **unchanged impedance** is *exactly* reflectionless — cleaner than storage,
+  which leaves a residue of order (spacing/wavelength)². The two agree at long
+  wavelength and carry the same requirement (R5, R6, R9): a hop through space is
+  delayed by (1 + q/2)², a clock's compact lap by (1 + q/2).
+
+**What time dilation means in either picture.** Coordinate time is what distant,
+unloaded clocks read. Proper time at a place is the phase accumulated there by
+circulating waves, which is what every clock is made of. Near energy that
+accumulation is slower — because more of each wave is parked, or because each
+lap takes longer — by the same factor for every clock.
 
 ## 3. The requirements so far [from the steps]
 
@@ -78,7 +94,7 @@ Two posits become consequences:
 |---|---|---|
 | R1 | Lossless throughout — no local leak of anything stored | mechanisms 1–2; step 1 |
 | R2 | Equal transit time on every line (every channel) | §2 |
-| R3 | Slowing by storage that returns one tick later, not by longer lines | §2, step 1 |
+| R3 | Slowing is lossless and does not change impedance: by storage returning one tick later, or by longer transit at fixed impedance (§2) | §2, step 1 |
 | R4 | A node store returns its share with the **same** sign; a link store returns it **inverted** (the opposite, in either place, gives the photon a mass) | steps 1, 3 |
 | R5 | Node stores and space-link stores are loaded **equally** (impedance unchanged → no reflection → full light bending) | step 3 |
 | R6 | A clock's compact circulation is loaded by **one** of the two stores, not both | step 3 (P7) |
@@ -161,6 +177,17 @@ Branch B is cheaper and has more ways to fail: the same nonlinearity produces
 light-on-light scattering and a second harmonic at twice a particle's rest
 frequency, both at gravitational strength. Those have to be shown harmless.
 
+**Branch B′ — the same two degrees of freedom for everything.** A refinement
+that costs nothing further: grid-primitive's tube already has exactly two
+internal degrees of freedom (a longitudinal strain and an azimuthal phase), and
+its photon is their coupled oscillation, with two polarizations. Let light and
+matter be the *oscillating* part of those two, gravity the *steady* part of the
+stretch-like one, and charge the steady part of the twist-like one. Then the
+ledger of §4 needs **no new wave degrees of freedom at all** — only the node
+memory of R7 (and the non-reciprocal compact element of the EM slot). This is
+the cheapest ledger found so far. Its open points are Branch B's, plus the
+twist's vector character (§5).
+
 ## 7. First scan result: β requires delay linear in deflection [rigorous]
 
 Step 3 left the second-order parameter β open
@@ -214,9 +241,12 @@ Places where the mechanism says something that is not simply built in:
 
 ## 9. What remains for step 5
 
-1. **Close the loop in simulation** with R9's rule: a wave sources q through the
-   stores; q sets the stores. Check that a lump produces its own 1/r deflection
-   and that a second lump falls toward it — first Branch A, then Branch B.
+1. **Close the loop in simulation** with R9's rule: a wave sources q; q sets the
+   stores. *Branch A done* ([closed-loop-result.md](closed-loop-result.md)): two
+   lumps fall toward each other on the ray law, with the third law and momentum
+   conservation emerging. *Branch B next* — but first its exact conservative
+   lattice rule must be derived from the action (what is held fixed when a
+   store's weight changes), since an ad hoc rule would not conserve energy.
 2. **Branch B's hazards** (§6): size of the second-harmonic and light-on-light
    effects.
 3. **R10**: confirm that a wave travelling around the compact loop has a steady

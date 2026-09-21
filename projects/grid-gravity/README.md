@@ -514,7 +514,10 @@ lists what any implementation must do (ten requirements, a degrees-of-freedom
 ledger, a lattice-level vocabulary) and scans the remaining choices against
 observation. First result: the second-order parameter β = 1 exactly when each
 member's delay is linear in the stored deflection — the polarizable-vacuum form
-in the lattice's own variable. On the statistical side, the open computation is the free energy of two pinned
+in the lattice's own variable. And with the loop closed in simulation
+([work/closed-loop-result.md](work/closed-loop-result.md)) two lumps released at
+rest fall toward each other on the ray law, with accelerations in inverse ratio
+to their masses and momentum conserved. On the statistical side, the open computation is the free energy of two pinned
 inclusions versus separation in 3D
 ([work/entropic-route.md](work/entropic-route.md) §4).
 

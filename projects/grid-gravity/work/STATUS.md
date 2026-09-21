@@ -57,7 +57,8 @@ freedom, and scans the remaining choices against observation
 |---|---|---|
 | 5a | Requirements list (R1–R10), degrees-of-freedom ledger, lattice-level vocabulary | done |
 | 5b | β: which loading gives β = 1 when the carrier propagates like light | **done** — each member's delay linear in the deflection; identical to the polarizable-vacuum form; resolves step 3's β flag at requirement level |
-| 5c | Closed-loop simulation with that rule (a lump makes its own 1/r; a second lump falls) — separate-channel branch, then same-channel branch | next |
+| 5c | Closed-loop simulation with that rule — separate-channel branch | **passed** — [closed-loop-result.md](closed-loop-result.md) |
+| 5c′ | Same-channel branch: derive the exact conservative lattice rule from the action (what is held fixed when a store's weight changes), *then* simulate | next |
 | 5d | Same-channel branch hazards: second harmonic, light-on-light | queued |
 | 5e | Breathing source: travelling wave steady, standing wave radiates at the predicted rate | queued |
 | 5f | Strong field, with and without a largest delay (horizon only with one; radius ∝ M) | queued |
@@ -134,6 +135,23 @@ versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
   deflection** (static solution 1 + q/2 = e^(GM/r), verified symbolically);
   this is the polarizable-vacuum form in another variable. It has no horizon
   unless the lattice has a largest delay, in which case the radius ∝ M.
+- **Step 5a addendum.** Clocking: a junction is linear and scatters each arrival
+  on its own, so no clock and no synchronization are needed; the tick is the
+  unloaded transit time. Slowing can be storage (needed if strictly
+  tick-synchronous; what the sims use) *or* longer transit at unchanged
+  impedance (exactly reflectionless) — equivalent at long wavelength; an earlier
+  "storage is forced" statement was corrected. Branch B′ recorded: light/matter
+  = the oscillating part of grid-primitive's two tube degrees of freedom,
+  gravity = the steady part of the stretch-like one, charge = the steady part of
+  the twist-like one — no new wave degrees of freedom, only the node memory.
+- **Step 5c — passed (separate-channel branch).** Loop closed: waves source q, q
+  sets the stores by the linear-delay rule, waves respond. Two lumps (masses 1
+  and 3) released at rest fall toward each other; each follows the ray law in
+  the jointly produced field (sim/ray 0.998, 1.011); acceleration ratio 3.22 →
+  3.06 and momentum imbalance 0.8% → 0.4% as the field weakens (mass ratio 3);
+  equal masses symmetric; norm conserved to 10⁻¹³. One extended dimension (a
+  constant pull, not 1/r²). Trap recorded: a light narrow packet spreads across
+  the midpoint and corrupts the centroids.
 
 ---
 
@@ -149,6 +167,8 @@ versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
   derived source, γ and impedance matching, the two flags.
 - [switch-on-result.md](switch-on-result.md) — step 4 result: dynamic
   relaxation to 1/r at light speed; the potential as an accumulator.
+- [closed-loop-result.md](closed-loop-result.md) — step 5c result: two lumps
+  make a field and fall into it; third law and momentum conservation emerge.
 - [requirements-and-dof.md](requirements-and-dof.md) — step 5 opening: the
   lattice-level vocabulary, what a junction already does, requirements R1–R10,
   the degrees-of-freedom ledger, the stretch/twist reading, the channel fork,
@@ -194,5 +214,7 @@ versus separation, in 3D ([entropic-route.md](entropic-route.md) §4).
 - `gamma_test.py` — node + edge storage: anisotropic spectrum, γ, reflection
   at a matched step, matched-gradient drop (step 3).
 - `switch_on.py` — steady source switched on (and off) in 3D (step 4).
+- `closed_loop.py` — two lumps source the deflection, the deflection loads the
+  lattice, the lumps respond (step 5c).
 - `gate_falloff.py`, `gate_dispersion.py`, `hex_greens.py` — mechanism 1–2 gate
   sims.
