@@ -112,12 +112,18 @@ sector is reported as open in Chapter 10.
 
 In rough order of how much they would change what the project can claim:
 
-1. **The dynamic sector.** A memory on each link instead of one per node: do the
-   link loadings form a tensor carrier — transverse waves at light speed, sourced
-   by stress — and what replaces requirement R5 (equal loading) when links are
-   independent? Then frame-dragging, which needs something non-reciprocal and
-   universal. Observation demands this; the statistical account says what it must
-   coarse-grain to.
+1. **The dynamic sector.** *First pass done*
+   ([tensor-extension.md](tensor-extension.md)): the loadings are the metric
+   perturbation (node ↔ time–time, link ↔ space–space along it); P6 + P7 are
+   general relativity's static solution transcribed; self-fed per-link memories
+   **fail** (γ = 0); the feeding rule that reproduces the linearized field
+   equations is found (each link: flow along it plus an equal share of the rest
+   energy). **What remains is not a degree of freedom but a symmetry:** for only
+   the two tensor polarizations to radiate, re-timing a node or re-labelling a
+   neighbourhood must change nothing physical — the gravitational counterpart of
+   what axiom A4 does for phases. Whether the lattice can carry that is the open
+   question. Also open: the universal non-reciprocal element for frame-dragging;
+   face-diagonal links for the second polarization.
 2. **The compact-loop premise (P7).** Derive or motivate it from where a clock's
    compact circulation lives — most naturally grid-primitive's tube. Full light
    bending depends on it.
@@ -235,6 +241,21 @@ stays bound in 3D — [grid-matter](../../grid-matter/)'s open problem.
   assumed a point source; with the wave packet's form factor the radiation is
   suppressed by ~10⁻²⁰ or more. *Inconclusive:* a direct numerical check of that
   suppression (narrow lumps spread too fast; test mode removed).
+- **Dynamic sector, first pass.** Dictionary (checked symbolically): with the
+  compact loop unloaded, node loading = h₀₀ and the loading of a link along a =
+  hₐₐ. GR in lattice words — rest mass: node 2U, every space link 2U, compact
+  untouched (= P6 + P7 exactly); light beam along x: node and x-links 4U,
+  transverse links 0; gravitational wave: links only, opposite signs on two
+  perpendicular directions. So one scalar matches GR for sources at rest, departs
+  in the space–space part for anisotropic sources, and cannot carry a tensor wave.
+  Self-fed independent link memories give γ = 0 (a rest mass has no tension along
+  space links). The rule that works feeds each link by the energy flowing along
+  it plus an equal share of the rest (compact-circulation) energy, and the node
+  by its rate energy less that share — reading: trapped radiation presses equally
+  on all the links that confine it. Remaining obstacle: with every memory an
+  independent positive-energy wave the node's loading would radiate too; only a
+  local re-timing / re-labelling symmetry removes that (and then the dynamics are
+  Einstein's, by the standard uniqueness result).
 
 ---
 
@@ -250,6 +271,9 @@ stays bound in 3D — [grid-matter](../../grid-matter/)'s open problem.
   derived source, γ and impedance matching, the two flags.
 - [switch-on-result.md](switch-on-result.md) — step 4 result: dynamic
   relaxation to 1/r at light speed; the potential as an accumulator.
+- [tensor-extension.md](tensor-extension.md) — the dynamic sector, first pass:
+  the loading ↔ metric dictionary; P6 + P7 as GR's static solution; the negative
+  for self-fed link memories; the feeding rule; the missing local symmetry.
 - [same-channel-result.md](same-channel-result.md) — steps 5c′/5d/5e: the
   conservative rule derived; one field with no coupling constant rectifies its
   own gravity; the resonant second harmonic; the breathing flag corrected.

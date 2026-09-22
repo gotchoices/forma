@@ -69,7 +69,7 @@ time — the same mass-only frame the rest of the project uses
 | P5 | **The local rate follows q, not the gradient of q** (the potential, not the pull). | The right power law: a 1/r potential rather than 1/r² (§5). |
 | P6 | **Every member stores.** Nodes carry a storage register (returning its share with the same sign); extended edges carry one too (returning it inverted); the carrier loads both equally. | The full light bending, γ = 1. The equality is the impedance-matched, reflectionless loading — not a tuned number ([action-and-gamma.md](action-and-gamma.md) §2). |
 | P8 | **One phenomenon, two levels.** The stores and the stored deflection are the microphysics of which the area-entropy law of axiom A5 — and through it the Jacobson derivation of [grid/gravity.md](../../../grid/gravity.md) — is the statistical summary. They are not a second force beside it. | Prevents double counting; makes the statistical account a *guide* (what the mechanism must coarse-grain to) rather than a rival. Judged by consistency where both speak, not by deriving one from the other. |
-| P7 | **The compact loop is loaded once.** A clock's compact circulation closes through a node and is not loaded by the storage on space edges. | Makes clocks slow half as much (in the logarithm) as light — the other half of γ = 1. |
+| P7 | **The compact loop is loaded once.** A clock's compact circulation closes through a node and is not loaded by the storage on space edges. | Makes clocks slow half as much (in the logarithm) as light — the other half of γ = 1. *Reading found later* ([tensor-extension.md](tensor-extension.md) §2): P6 and P7 together are exactly general relativity's static field of a rest mass, written in lattice terms; P7 is the statement that four-dimensional gravity does not act on the compact direction. |
 
 **Candidate realizations of the carrier (P2).** The mechanism needs the role
 filled, not any particular filler:
@@ -286,7 +286,14 @@ loses lock with the surrounding lattice.
    rather than slaved to the node's deflection): the link store's source in the
    derived rule is already the stress along that link
    ([same-channel-result.md](same-channel-result.md) §1), which is how the
-   source enters a tensor theory. Nothing computed.
+   source enters a tensor theory. *First pass done*
+   ([tensor-extension.md](tensor-extension.md)): the loadings are the metric
+   perturbation itself; P6 and P7 are general relativity's static field of a rest
+   mass, transcribed; **self-fed** link memories fail (γ = 0), but feeding each
+   link by the flow along it plus an equal share of the rest energy reproduces the
+   linearized field equations. What remains is a *local* re-timing / re-labelling
+   symmetry, without which the node's loading would radiate as well as the two
+   tensor polarizations.
 5. **Reconcile with the synchronous lattice** (README ground rule 5): show
    that neighbour-triggered clocks reproduce the confirmed Maxwell results.
 

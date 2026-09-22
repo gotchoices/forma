@@ -122,7 +122,8 @@ deflected.
 | carrier channel | either a second wave channel on the links (two more amplitudes per link) — or none (§6) | **open** |
 | each link | the link phase and its conjugate | GRID has it (axiom A4) |
 | compact loop | a non-reciprocal element (the [EM slot](em-slot.md)) | open |
-| each space link | its **own** memory, in place of being slaved to the node's deflection — the candidate for tensor waves and the rest of the dynamic sector (§9) | open |
+| each space link | its **own** memory — the slot a tensor wave needs. Self-fed it fails; fed by the flow along the link plus a share of the rest energy it reproduces the linearized field equations ([tensor-extension.md](tensor-extension.md)) | candidate |
+| (none) | a **local symmetry**: re-timing a node or re-labelling a neighbourhood changes nothing physical — needed so that only the two tensor polarizations radiate | open |
 
 Per node in a 3D lattice the gravity additions come to one store amplitude, one
 memory, and one store amplitude on each of its three links — plus, in the
@@ -266,10 +267,10 @@ Places where the mechanism says something that is not simply built in:
    and frame-dragging. The candidate: give each space link its own memory. In the
    derived rule the link store is already sourced by the stress along its own
    direction, so the set of link loadings, with the node's, forms the lattice
-   counterpart of a metric perturbation sourced by stress. Whether its shear
-   combinations propagate as transverse waves at light speed, and what replaces
-   requirement R5 (equal loading) when links are independent, is to be worked
-   out.
+   counterpart of a metric perturbation sourced by stress. *First pass:*
+   [tensor-extension.md](tensor-extension.md) — the dictionary is exact, self-fed
+   memories fail, a feeding rule that works is found, and what remains is a
+   local symmetry rather than a further degree of freedom.
 
 ## Grades summary
 

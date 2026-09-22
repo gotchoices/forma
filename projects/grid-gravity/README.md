@@ -564,9 +564,11 @@ Status flags — **[D]** derived · **[C]** computationally demonstrated ·
   re-deriving one from the other. **[P]**
 - Open: **the dynamic sector** — observed gravitational waves are tensor and
   moving masses drag frames, while a single scalar deflection radiates as a
-  scalar and reciprocal stores drag nothing; a memory on each *link* is the
-  natural extension (its source, stress along the link, is already in the
-  rule). Also open: the compact-loop premise; the strong field; a closed loop in
+  scalar and reciprocal stores drag nothing. A first pass
+  ([work/tensor-extension.md](work/tensor-extension.md)) finds that the lattice's
+  loadings *are* the metric perturbation, that the static posits are general
+  relativity's static solution transcribed, and that what the dynamic sector
+  lacks is a local re-timing / re-labelling symmetry rather than further stores. Also open: the compact-loop premise; the strong field; a closed loop in
   three dimensions (waits on a bound 3D particle,
   [grid-matter](../grid-matter/)); whether the lattice carries an area-entropy;
   the electromagnetic slot ([work/em-slot.md](work/em-slot.md)). **[O]**
@@ -590,10 +592,12 @@ gravity as its steady part — works with a rule derived from the action (step 5
 
 **What is next.** (a) Write the chapters, one at a time, from the arc above,
 starting with outlines of Chapters 1–3. (b) In the work folder, the task that
-most changes what the project can claim is the **dynamic sector**: whether a
-memory on each link, rather than one per node, gives tensor waves and
-frame-dragging — observation demands it, and the statistical account says what it
-must coarse-grain to. The full list
+most changes what the project can claim is the **dynamic sector**. A first pass
+([work/tensor-extension.md](work/tensor-extension.md)) shows the tensor slots are
+already there (per-direction link loading) and finds the feeding rule that
+reproduces the linearized field equations; what remains open is whether the
+lattice can carry the *local* re-timing / re-labelling symmetry that lets only the
+two tensor polarizations radiate. The full list
 of remaining tasks, and an audit against the project's stated objectives, is in
 [work/STATUS.md](work/STATUS.md). On the statistical side, the open computation
 is the free energy of two pinned inclusions versus separation in 3D
