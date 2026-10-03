@@ -3,10 +3,27 @@
 Living document. Tracks the active line of work (the mechanism 3 validation
 plan), then indexes the work files. Update as steps complete.
 
-**Project state:** Mechanisms 1–2 parked on the range crux (record in
-[../README.md](../README.md)). **Mechanism 3**
-([sync-carrier-mechanism.md](sync-carrier-mechanism.md)) is under validation.
-The statistical side is held in [entropic-route.md](entropic-route.md).
+**Project state (2026-10-02):** Mechanisms 1–2 parked on the range crux (record
+in [../README.md](../README.md)). **Mechanism 3**
+([sync-carrier-mechanism.md](sync-carrier-mechanism.md)) is validated for the
+**static sector** — reproducing weak-field general relativity through second
+order (γ = β = 1, 1/r² fall in 3D, mutual attraction, source ∝ energy) —
+conditional on a listed ledger of posits. The **dynamic sector** (tensor waves,
+frame-dragging) is open. The statistical (Jacobson) account is taken as the same
+phenomenon at a coarser level (posit P8). A ten-chapter arc for the static sector
+is drafted in the README. The statistical side is held in
+[entropic-route.md](entropic-route.md); an EM slot in [em-slot.md](em-slot.md).
+
+### At a glance — what is left
+
+| Area | Item | Detail |
+|---|---|---|
+| **Dynamic sector** (main gap) | a local re-timing / re-labelling symmetry so only the two tensor polarizations radiate; frame-dragging (a universal non-reciprocal element); face-diagonal links for the second polarization | task 1 below; [tensor-extension.md](tensor-extension.md) |
+| **Static sector** | **derived, conditional on the ledger** (P1–P9). Posits that would be strengthened by a derivation: P7 (rigid ring). The softening rule is now an explicit posit (P9); *why* a lattice softens is interpretive and optional | tasks 2, 2a; [mechanical-readings.md](mechanical-readings.md) §4 |
+| **Smaller checks** | both photon polarizations slowed alike; strong field / horizons (5f); light-on-light and second-harmonic rate (5d); a direct 3D light-deflection run | tasks 3–6 |
+| **Held open** | EM slot (E1–E3); area-entropy and stiffness ↔ ζ (bonus); free energy of two inclusions in 3D | tasks 7–9 |
+| **Writing** | outline Chapters 1–3 from the README arc, then fill in one at a time | — |
+| **Inputs to review** | new musings in [../../thoughts.md](../../thoughts.md) | — |
 
 ---
 
@@ -23,7 +40,7 @@ it is not evidence (README ground rule 9).
 | 2 | **Drop test.** Impose a static gradient of the storage weight on an (x, c) lattice; release packets of different k and compact mode n. | simulation (cross-check of step 1) | one acceleration for all, equal to −c²·∇(ln of the rate); small reflection | acceleration depends on k or n (equivalence fails); strong reflection at gentle gradients | **passed** — [drop-test-result.md](drop-test-result.md) |
 | 3 | **Lattice action and the light-bending parameter γ.** One Lagrangian: wave field + carrier + coupling to energy density. Read off source ∝ energy, action–reaction, and γ. | derivation | source ∝ energy with one sign; a stated, natural spatial partner that gives γ = 1 | γ = 1 requires an unnatural or tuned partner | **passed at first order** (one new posit, two flags) — [action-and-gamma.md](action-and-gamma.md) |
 | 4 | **Switch-on in 3D.** Constant source on the canonical scatter; watch the static pattern build. | simulation | static 1/r inside a front moving at c | the dynamics do not relax to the static field | **passed** — [switch-on-result.md](switch-on-result.md) |
-| 5 | **Strong field.** Dead-band edge, slip, horizon radius versus M. | simulation (nonlinear) | horizon radius ∝ M; exterior field intact | radius ∝ √M, or exterior field screened | **in progress** — run as a requirements search: [requirements-and-dof.md](requirements-and-dof.md) |
+| 5 | **Strong field.** Dead-band edge, slip, horizon radius versus M. | simulation (nonlinear) | horizon radius ∝ M; exterior field intact | radius ∝ √M, or exterior field screened | **mostly done** — run as a requirements search ([requirements-and-dof.md](requirements-and-dof.md)); sub-items below; open: 5d remainder, 5f |
 
 **Pre-registered expectations** (written before the step is run):
 - Step 2: acceleration −c²∇ln(1 − q), independent of k and n; reflection
@@ -129,7 +146,7 @@ In rough order of how much they would change what the project can claim:
    outward push goes into S ([mechanical-readings.md](mechanical-readings.md)
    §3). Still to be derived from where the circulation lives (grid-primitive's
    tube). Full light bending depends on it.
-2a. **The node half of the response.** Why a junction's effective inertia rises
+2a. *(Optional — interpretive, not blocking; the behaviour is posit P9.)* **The node half of the response.** Why a junction's effective inertia rises
    under load (clocks slow) — the link half has a string-tension reading, the
    node half none. The one causal gap left in the static sector.
 3. **Both polarizations.** Put the stores into grid-primitive's two-component

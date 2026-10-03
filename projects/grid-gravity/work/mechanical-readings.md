@@ -82,7 +82,17 @@ stress — which every real material shows.
 
 For the node half (clocks) — the junction's effective inertia rising under load —
 there is no mechanical story yet. **[open]** This is the one genuine gap in the
-static sector's causal chain.
+static sector's *causal* chain.
+
+**Status of this gap (decided 2026-10-02).** It is interpretive, not blocking.
+The behaviour is now an explicit posit — P9, "the field softens under load" — and
+every static result follows from it through the action. Note also that the
+*direction* is not separately at risk: in the action the response goes as K′², so
+any dependence of inertia on deflection gives attraction, whichever sign it has.
+The "compression usually stiffens" worry applies only to a particular mechanical
+story (back-pressure → stress → slowing), not to the posited rule. A mechanism
+would buy economy (e.g. a pre-tensioned net that particles relax locally, which
+might turn the node and link halves into one effect), not validity.
 
 ## 5. The causal chain, as it now stands
 
@@ -91,7 +101,7 @@ static sector's causal chain.
 | particle → static stress ∝ energy, one sign | mechanistic (back-pressure); derived from the action |
 | stress spreads at c; tension 1/r², deflection 1/r | mechanistic (junctions divide it, nothing lost); measured (step 4) |
 | stress slows everything alike | derived (step 1) |
-| stress slows waves at all, right sign | **posited** — softening under load; string-tension argument for links, none for nodes |
+| stress slows waves at all, right sign | **posited (P9)** — softening under load; sign follows from the action; string-tension reading for links, none for nodes (optional) |
 | nodes and links loaded equally (full light bending) | GR's static solution; "rigid ring, elastic space" |
 | only two polarizations radiate | **missing** — a local re-timing / re-labelling symmetry |
 
