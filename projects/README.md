@@ -120,3 +120,17 @@ Each project's README should:
   interference and **single-particle Born** (energy density + whole-quantum) on a
   GRID lab, **collapse dissolved**; the one open core is **entangled Born / Bell**.
   **Status: active; work-file-driven; a chapter arc is drafted in its README.**
+- [grid-scattering/](grid-scattering/) — Does a GRID node couple **every
+  dimension equally**, and if not, what rule governs when energy crosses from
+  one sheet to another? The canonical scatter `S = (2/N)·J − I` treats all
+  registers alike ([grid-duality](grid-duality/) ch.6), but that uniformity
+  predicts a tower of unobserved 1D-line modes, escaped today only by an
+  **underived charge-selection rule** ([ma-domain](ma-domain/)
+  `work/3-torus.md`, "Candidate III"). Proposes that a node's edges carry a
+  **sheet label**, that ordinary scattering is **sheet-closed by momentum**, and
+  that a named condition (working candidate: saturation) opens the cross-sheet
+  channel — which would supply the selection rule, the missing **leakage law**,
+  and a structural reason inter-sheet coupling is weak. *Not a revival of
+  `grid-saturation`: that concerned binding, this concerns transfer.*
+  **Status: framing only; two precursor experiments queued in grid-matter and
+  grid-quantization.**
