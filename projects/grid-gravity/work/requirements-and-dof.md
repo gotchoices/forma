@@ -90,6 +90,9 @@ lap takes longer — by the same factor for every clock.
 
 ## 3. The requirements so far [from the steps]
 
+> **Consolidated in [ledger.md](ledger.md)** (2026-10-03): R1–R11 map onto posits
+> L1–L5, items inherited from GRID, and derived results. Kept here as the record.
+
 | # | Requirement | From |
 |---|---|---|
 | R1 | Lossless throughout — no local leak of anything stored | mechanisms 1–2; step 1 |

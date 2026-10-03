@@ -60,6 +60,10 @@ time — the same mass-only frame the rest of the project uses
 
 ## 2. Substrate ledger — what this mechanism adds to GRID [posit]
 
+> **Superseded by [ledger.md](ledger.md)** (2026-10-03), which consolidates P1–P9
+> and the requirements R1–R11 into five posits (L1–L5) plus a branch choice. This
+> table is kept as the record of how each posit arose.
+
 | # | Addition | What it buys |
 |---|---|---|
 | P1 | **Neighbour-triggered clocks.** A node fires on its neighbours' activity; no master clock. | A shared tick without a scheduler. Answers "what triggers a node to act?" ([local-time.md](local-time.md)). |

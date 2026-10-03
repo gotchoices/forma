@@ -22,7 +22,9 @@ is drafted in the README. The statistical side is held in
 | **Static sector** | **derived, conditional on the ledger** (P1–P9). Posits that would be strengthened by a derivation: P7 (rigid ring). The softening rule is now an explicit posit (P9); *why* a lattice softens is interpretive and optional | tasks 2, 2a; [mechanical-readings.md](mechanical-readings.md) §4 |
 | **Smaller checks** | both photon polarizations slowed alike; strong field / horizons (5f); light-on-light and second-harmonic rate (5d); a direct 3D light-deflection run | tasks 3–6 |
 | **Held open** | EM slot (E1–E3); area-entropy and stiffness ↔ ζ (bonus); free energy of two inclusions in 3D | tasks 7–9 |
-| **Writing** | outline Chapters 1–3 from the README arc, then fill in one at a time | — |
+| **Ledger** | consolidated: five posits L1–L5 + branch choice | [ledger.md](ledger.md) |
+| **Decision** | finish with current scope, or strengthen first (S1–S10 in the README) | README §Deciding the scope |
+| **Writing** | outline Chapters 1–3 from arc draft 2 (Part I static, Part II dynamic), then fill in one at a time | — |
 | **Inputs to review** | new musings in [../../thoughts.md](../../thoughts.md) | — |
 
 ---
@@ -302,6 +304,8 @@ stays bound in 3D — [grid-matter](../../grid-matter/)'s open problem.
   derived source, γ and impedance matching, the two flags.
 - [switch-on-result.md](switch-on-result.md) — step 4 result: dynamic
   relaxation to 1/r at light speed; the potential as an accumulator.
+- [ledger.md](ledger.md) — **canonical**: five posits (L1–L5), the branch choice,
+  what is inherited from GRID, what was derived, old → new numbering.
 - [mechanical-readings.md](mechanical-readings.md) — the requirements re-read as a
   mechanical lattice: no memory (static deflection), unanchored nodes (massless),
   rigid ring in elastic space (P7), back-pressure of trapped light (the source),
