@@ -558,7 +558,11 @@ Status flags — **[D]** derived · **[C]** computationally demonstrated ·
 
 **Ch 10 — The ledger, and what is open**
 - The posits, each with what it buys; the count of degrees of freedom; the
-  stretch-and-twist reading. **[P, listed]**
+  mechanical readings — no memory, an unanchored lattice, a rigid ring in
+  elastic space, back-pressure of trapped light as the source, softening under
+  load as the one physical posit left ([work/mechanical-readings.md](work/mechanical-readings.md)). **[P, listed]**
+- A scalar gravitational-carrier candidate (massless, at c, energy-sourced);
+  spin-2 latent in the link tensor, not delivered. **[reading]**
 - The relation to the statistical (Jacobson) account: two levels of one
   phenomenon — a posit — judged by consistency where both speak, not by
   re-deriving one from the other. **[P]**

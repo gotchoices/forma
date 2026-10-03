@@ -98,17 +98,19 @@ lap takes longer — by the same factor for every clock.
 | R4 | A node store returns its share with the **same** sign; a link store returns it **inverted** (the opposite, in either place, gives the photon a mass) | steps 1, 3 |
 | R5 | Node stores and space-link stores are loaded **equally** (impedance unchanged → no reflection → full light bending) | step 3 |
 | R6 | A clock's compact circulation is loaded by **one** of the two stores, not both | step 3 (P7) |
-| R7 | Each node keeps a **memory**: the running sum of its deflection rate (the deflection q). Links carry only differences of q, so a node cannot learn q from its links | step 4 |
+| R7 | Each node has a **deflection q that persists** (in the register description: the running sum of its rate). Links carry only differences of q, so a node cannot learn q from its links — it must *be* somewhere. A mechanical lattice supplies this for free; "memory" was an artifact of describing statics with rates ([mechanical-readings.md](mechanical-readings.md) §1) | step 4 |
 | R8 | The stores' weights are set by the local q (potential, not tension) | P5; step 2 |
 | R9 | Each member's delay is **linear** in q (§7) | this note |
 | R10 | ~~A single particle's source must not oscillate~~ — *softened:* a pulsing source radiates only through its Fourier component at half a Compton wavelength, negligible for any body wider than its Compton length ([same-channel-result.md](same-channel-result.md) §4) | step 3; step 5 |
 | R11 | When a store's weight changes, the **momentum** (inertia × rate) and the link **extension** are what carry through — not the stored energies. The back-reaction on the deflection then follows without being added | step 5c′ |
 
-R7 with R8 is the one genuinely new kind of element: a store whose weight
-depends on the *history* of what has passed through it. Lossless elements of
-that kind are known in circuit theory (memory-capacitors and memory-inductors);
-in the rod reading it is an inertia that depends on how far the node has been
-deflected.
+R7 with R8 looked, in the register description, like a store whose weight
+depends on the *history* of what has passed through it (a memory-capacitor).
+Mechanically it is only an inertia that depends on how far the node is
+deflected — a medium that softens under load. That nonlinearity is the one
+physical posit of the static sector; its source side has a causal reading
+(back-pressure of trapped light), its response side a suggestive one for links
+and none yet for nodes ([mechanical-readings.md](mechanical-readings.md) §4).
 
 ## 4. Degrees of freedom
 
@@ -118,7 +120,7 @@ deflected.
 | each node | nothing of its own (a junction) | GRID has it |
 | each node | one store amplitude | new (step 1) |
 | each space link | one store amplitude | new (step 3) |
-| each node | one memory, the deflection q, which sets the two store weights around it | new (step 4) |
+| each node | a persistent deflection q, which sets the two store weights around it (a position-like degree of freedom; no memory element) | new (step 4); ordinary in a mechanical lattice |
 | carrier channel | either a second wave channel on the links (two more amplitudes per link) — or none (§6) | **open** |
 | each link | the link phase and its conjugate | GRID has it (axiom A4) |
 | compact loop | a non-reciprocal element (the [EM slot](em-slot.md)) | open |

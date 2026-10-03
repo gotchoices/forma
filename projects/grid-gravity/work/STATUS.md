@@ -124,9 +124,14 @@ In rough order of how much they would change what the project can claim:
    what axiom A4 does for phases. Whether the lattice can carry that is the open
    question. Also open: the universal non-reciprocal element for frame-dragging;
    face-diagonal links for the second polarization.
-2. **The compact-loop premise (P7).** Derive or motivate it from where a clock's
-   compact circulation lives — most naturally grid-primitive's tube. Full light
-   bending depends on it.
+2. **The compact-loop premise (P7).** Now read as "rigid ring, elastic space" —
+   the compact circumference is held by the embedding, so the trapped light's
+   outward push goes into S ([mechanical-readings.md](mechanical-readings.md)
+   §3). Still to be derived from where the circulation lives (grid-primitive's
+   tube). Full light bending depends on it.
+2a. **The node half of the response.** Why a junction's effective inertia rises
+   under load (clocks slow) — the link half has a string-tension reading, the
+   node half none. The one causal gap left in the static sector.
 3. **Both polarizations.** Put the stores into grid-primitive's two-component
    wave and check that they slow both alike.
 4. **Strong field (5f).** With and without a largest delay; horizon radius
@@ -256,6 +261,15 @@ stays bound in 3D — [grid-matter](../../grid-matter/)'s open problem.
   independent positive-energy wave the node's loading would radiate too; only a
   local re-timing / re-labelling symmetry removes that (and then the dynamics are
   Einstein's, by the standard uniqueness result).
+- **Mechanical readings recorded.** Memory dissolves into static deflection (the
+  register scatter tracks rates; a lattice node simply is where it is); the dead
+  band is an unanchored lattice; P7 is a rigid ring held by elastic space; the
+  source is the back-pressure of trapped light — found independently from GR's
+  feeding rule; the response (softening under load) is the one physical posit
+  left, with a string-tension sign argument for links and nothing yet for nodes.
+  Graviton: a scalar carrier candidate exists (massless, at c, energy-sourced);
+  spin-2 is latent in the link-loading tensor (elastic shear waves) but the
+  compressional mode would also radiate — the local-symmetry gap.
 
 ---
 
@@ -271,6 +285,10 @@ stays bound in 3D — [grid-matter](../../grid-matter/)'s open problem.
   derived source, γ and impedance matching, the two flags.
 - [switch-on-result.md](switch-on-result.md) — step 4 result: dynamic
   relaxation to 1/r at light speed; the potential as an accumulator.
+- [mechanical-readings.md](mechanical-readings.md) — the requirements re-read as a
+  mechanical lattice: no memory (static deflection), unanchored nodes (massless),
+  rigid ring in elastic space (P7), back-pressure of trapped light (the source),
+  softening under load (the one remaining physical posit).
 - [tensor-extension.md](tensor-extension.md) — the dynamic sector, first pass:
   the loading ↔ metric dictionary; P6 + P7 as GR's static solution; the negative
   for self-fed link memories; the feeding rule; the missing local symmetry.
