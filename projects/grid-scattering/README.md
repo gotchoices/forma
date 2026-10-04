@@ -59,7 +59,7 @@ Stated as premises so each can be tested or discarded on its own.
 
   **Coordination is left open.** Whether a sheet meets a node with 3 edges at 120° (simplicial / honeycomb), 4 (square), or 6 (triangular) is not settled in the repo — [grid/compact-dimensions.md](../../grid/compact-dimensions.md) carries both a 3-neighbour simplex count and a 6-neighbour triangular sheet, while the simulations use squares. The symmetry argument holds for all of them, so nothing downstream depends on the choice. One incidental fact worth recording, since it is easy to get backwards: the scatter always leaves a **reflection** of −(1 − 2/N) on the arrival edge — −1/3 at N = 3, −1/2 at N = 4, −2/3 at N = 6 — and momentum balances *because of* that term, not despite it.
 
-- **P3 — Saturation *amplifies* cross-sheet transfer; it does not open the channel.** The original premise was that saturation opens the channel. P2's theorem rules that out: a translation-invariant nonlinearity preserves winding exactly as a linear one does. What saturation demonstrably does, once a symmetry-breaking seed is present, is **amplify** the transfer — 24× over the linear rate in a first test. The mechanism is therefore two-stage, and the stages have different jobs: a seed supplies the symmetry breaking, saturation supplies the gain.
+- **P3 — Saturation *amplifies* cross-sheet transfer; it does not open the channel.** The original premise was that saturation opens the channel. P2's theorem rules that out: a translation-invariant nonlinearity preserves winding exactly as a linear one does. What a nonlinearity demonstrably does, once a symmetry-breaking seed is present, is **amplify** the transfer — about 2,500× over the linear control in a first test with an energy-conserving rule, saturating after ~50 ticks. The mechanism is therefore two-stage, and the stages have different jobs: a seed supplies the symmetry breaking, the nonlinearity supplies a **bounded** gain. The rule must be energy-conserving for the measurement to mean anything (§2.1a).
 
 - **P4 — Transfer is pairwise, and gated by fit *within a width*.** Because the spill is symmetric, energy enters a new sheet *in both directions at once* — a candidate account of why particles arrive in particle/antiparticle pairs. The arriving energy must also **fit** a mode the target sheet can host: an exact fit makes a particle; less than a whole quantum merges into that sheet's background; more than a whole quantum leaves the surplus as momentum in S.
 
@@ -90,7 +90,23 @@ So the project's real question moves, and sharpens:
 
 > **What breaks the symmetry, and can a seed-plus-amplification mechanism reach observed rates?**
 
-A first measurement says the two-stage picture is at least alive. Seeding the same lattice with a small symmetry-breaking background and running with node-level saturation puts **24× more** energy into non-zero compact windings than the linear run with the same seed (ratio 7.4 × 10⁻³ against 3.1 × 10⁻⁴). Saturation is therefore an **amplifier**, not a gate. Whether an amplifier with a vacuum-scale seed can reach weak-interaction rates is the quantitative question the project exists to answer.
+A first measurement says the two-stage picture is alive, with one methodological lesson attached.
+
+A **clipping** saturation rule appears to raise the winding *fraction* 24-fold — and that reading is an artifact. Clipping is lossy, and it destroys the zero-winding sector faster than the winding sector, so the ratio climbs while the **absolute** winding content *falls* (25.4 → 5.4 over the run). A lossy rule cannot distinguish transfer from selective dissipation, and no ratio taken across one is evidence of either.
+
+Repeating it with an **energy-conserving** nonlinearity settles it. Replacing the clip with a Givens rotation whose angle grows above threshold — manifestly orthogonal, so exactly lossless — gives, with total energy held to a drift of 1.4 × 10⁻¹⁴:
+
+| run | winding content, start → end |
+|---|---|
+| conserving rule, symmetric seed | **0 → 0**, exactly |
+| conserving rule, symmetry-broken seed | 61.8 → **6.2 × 10⁴** |
+| linear control, same broken seed | 23.9 → 25.4 (flat) |
+
+So the transfer is real — roughly **2,500×** the linear control at matched seed and normalisation — and it **plateaus by about 50 ticks** rather than running away. The gain is bounded, which is the number that decides whether vacuum-scale seeding can reach physical rates.
+
+**Two things this does not show, and they are the project's actual content.** The rotation was applied between a chosen pair of registers: *which* sheets couple, and by what angle law, was put in by hand rather than derived. And the plateau height depends on parameters that were picked arbitrarily. The demonstration is that a conserving, symmetry-respecting nonlinearity *can* transfer; everything about how much and between what remains open.
+
+**Methodological rule adopted from this.** No transfer claim in this project rests on a ratio unless it is measured against an energy-conserving control. The clipping artifact above is the second time in this line of work that a ratio moved for the wrong reason — the first being a fringe-spacing statistic in grid-matter that tracked an envelope rather than the quantity named.
 
 ### 2.2 What the proposal would buy
 
@@ -144,7 +160,7 @@ Two experiments should run **before** this project's own chapters, in the projec
 grid-matter owns the saturation history, the (x, compact-c) cylinder testbed, the vacuum-noise flag, and the same-seed differencing control that caught a false positive on an earlier pass. This is the next entry in its M2 line, not a new line.
 
 - **Setup.** Two waves launched from opposite ends of the extended axis, colliding at a point. Saturation condition stated on the node's summed input T. **A symmetry-breaking background must be switched on** — per P2 the run is predetermined to return exactly zero without one, so a null result from an unseeded run would mean nothing. Measure energy retained in the compact sector long after the drive is gone, differenced against a same-seed control so the static background floor cancels.
-- **Measure the gain, not just the presence.** The informative quantity is the **ratio** of compact-sector content with saturation to the same run without it, at the same seed. A first bench test on a bare periodic lattice gives ≈ 24×; whether that survives in the collision geometry, and how it scales with drive amplitude, is the result.
+- **Measure the gain, against a conserving control.** The informative quantity is the compact-sector content with the nonlinearity against the same run without it, at the same seed — and the nonlinearity must be energy-conserving, or the comparison measures dissipation rather than transfer (§2.1a). A bench test on a bare periodic lattice gives ≈ 2,500× with a plateau; whether that survives the collision geometry, and how the plateau scales with seed amplitude and nonlinear strength, is the result.
 - **Prediction, in the sharper form.** Not merely that energy persists, but that **the retained amount is quantized to the compact sector's mode ladder.** Only a portion matching a mode the sheet can host self-consistently should stay; the remainder should disperse back out or settle into the background. The discriminating signature is therefore a **staircase**: retained energy versus drive amplitude should show plateaus at the sheet's mode spacing, not a smooth rise. That also reframes an earlier result — grid-matter's amplitude sweep found retention *"peaks at ~2% then falls to 0%,"* read at the time as the opposite of a soliton; under this prediction the quantity to look for in such a sweep is plateaus, not monotonic growth.
 - **Why the sharper form is better.** "Does energy persist" can be satisfied by ordinary slow leakage and by a static background floor — the latter already produced one false positive on this testbed. Quantized retention cannot be faked by either.
 - **If it fails.** The transfer thesis joins grid-matter's instructive negatives, and this project continues on chapters 2–3, which do not depend on it.
@@ -211,8 +227,11 @@ Chapters 2 and 3 are independent of saturation. If the channel work fails, those
 
 ## 9. Next steps
 
-1. Run **§5.1** (pump test) in grid-matter and **§5.2** (background spectrum) in grid-quantization. They are independent and can go in either order or together.
-2. Write up the **equivariance result** of P2 properly — it is the project's first real finding, it arrived before any chapter was drafted, and it reframes grid-matter's negative result as a symmetry consequence rather than an implementation failure. It belongs in a work file with the numerics attached.
-3. Re-run the P4 pairing check on a **complex** field, since the real-field balance observed so far is Hermitian symmetry and carries no physics.
-4. Draft chapter 1's rule as a model note, and check it on grid-duality's test bench for stability and wave fidelity before asking it to do any physics.
-5. Revisit this arc once §5 returns. Chapters 4–6 are provisional and should be re-cut around what the precursors show.
+Ordered cheapest-and-most-decisive first. The precursor experiments of §5 are **not** the place to start: both are more expensive than the gating question, and §5.1 in particular is currently uninterpretable, since the saturation rules in its lineage (clip, spillover) are lossy and a lossy rule cannot separate transfer from selective dissipation.
+
+1. **The bounded-gain test** — the real first experiment, and a prototype already runs. On a bare periodic three-axis lattice with an energy-conserving nonlinearity and a symmetry-breaking seed, measure absolute winding content against time, and map the **plateau height** as a function of seed amplitude and nonlinear strength. *Pre-registered question:* does the plateau scale in a way that lets a vacuum-scale seed reach physical rates, or is it capped near the seed? A cap is a kill result and is worth having in an afternoon rather than after a collision rig is built.
+2. **Write up the equivariance result** — the project's first real finding, arrived at before any chapter was drafted. It reframes grid-matter's missing pump as a symmetry consequence rather than an implementation failure, and it belongs in a work file with the numerics attached.
+3. **Re-run the P4 pairing check on a complex field**, since the real-field balance observed so far is Hermitian symmetry and carries no physics.
+4. **Then** §5.1 (pump) and §5.2 (background spectrum), re-scoped around whatever step 1 returns — §5.1 with a conserving rule and an explicit seed.
+5. Draft chapter 1's rule as a model note, and check it on grid-duality's test bench for stability and wave fidelity before asking it to do any physics.
+6. Revisit this arc. Chapters 4–6 are provisional and should be re-cut around what steps 1–3 show.
