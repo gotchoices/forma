@@ -120,17 +120,15 @@ Each project's README should:
   interference and **single-particle Born** (energy density + whole-quantum) on a
   GRID lab, **collapse dissolved**; the one open core is **entangled Born / Bell**.
   **Status: active; work-file-driven; a chapter arc is drafted in its README.**
-- [grid-scattering/](grid-scattering/) — Does a GRID node couple **every
-  dimension equally**, and if not, what rule governs when energy crosses from
-  one sheet to another? The canonical scatter `S = (2/N)·J − I` treats all
-  registers alike ([grid-duality](grid-duality/) ch.6), but that uniformity
-  predicts a tower of unobserved 1D-line modes, escaped today only by an
-  **underived charge-selection rule** ([ma-domain](ma-domain/)
-  `work/3-torus.md`, "Candidate III"). Proposes that a node's edges carry a
-  **sheet label**, that ordinary scattering is **sheet-closed by momentum**, and
-  that a named condition (working candidate: saturation) opens the cross-sheet
-  channel — which would supply the selection rule, the missing **leakage law**,
-  and a structural reason inter-sheet coupling is weak. *Not a revival of
+- [grid-scattering/](grid-scattering/) — **What sets the rate at which energy
+  crosses between GRID's compact sectors, and into space?** The linear scatter
+  conserves the winding number around a compact dimension exactly — which *is*
+  charge conservation, and which means the linear substrate can never make a
+  particle. Whatever does must be nonlinear. Tests a saturating-node rule that
+  ejects overflow around the compact ring in both directions at once; in
+  standard terms a **parametric process** producing a ±n pair, whose **growth
+  rate** is the quantity to derive and to check against rates forma already
+  reproduces (Sargent's Q⁵, lepton universality, the neutron's 880 s). Fills the
+  gap [ma-domain](ma-domain/) names in `work/leakage-rate.md`. *Not a revival of
   `grid-saturation`: that concerned binding, this concerns transfer.*
-  **Status: framing only; two precursor experiments queued in grid-matter and
-  grid-quantization.**
+  **Status: framing; the first work item is a derivation.**
