@@ -20,8 +20,8 @@ The project began from a set of premises in a notes file. Stated here with their
 
 | | Premise | Standing |
 |---|---|---|
-| P1 | One grid; a node's edges are partitioned by sheet | **Dropped.** It does no work — winding conservation follows from the uniform rule with no partition, and sheets in ma-domain *share* dimensions, so edges cannot be cleanly partitioned anyway |
-| P2 | Sheets are closed | **Kept, narrowed.** True as a *selection rule* (winding is conserved), not as a barrier. Read as a barrier it would forbid radiation into space at rate ~α, which is the one cross-domain coupling forma is surest of |
+| P1 | One grid; a node's edges are partitioned by sheet | **The project's central claim** (README §2). An intermediate draft dropped it, on the grounds that winding conservation follows from the uniform rule anyway — but that argued past the proposal rather than against it: the uniform rule keeps *modes* apart statistically, while P1 keeps *energy* out of an orthogonal sheet entirely. They are different models with different predictions, and P1 is the one being tested |
+| P2 | Sheets are closed | **Kept as a consequence of P1**, in linear operation only. Above the saturation ceiling they are not closed, which is the entire mechanism. The open question it raises: radiation into space at rate ~α has to come out of the *saturating* regime, since the linear one forbids it outright |
 | P3 | Saturation opens the cross-sheet channel | **Reframed.** The nonlinearity is what makes transfer possible at all; the question is its *rate*, not whether it opens a gate |
 | P4 | Transfer is pairwise, gated by fit | **Split.** The ±n pairing survives as winding conservation. The particle/antiparticle reading does **not**: metric-mass reads ±n as two halves of *one* particle. "Fit within a width" is dropped — the width of a decaying state is an output (ℏ/τ), not a gate |
 | P5 | Background fluctuation is the trigger | **Kept, demoted from discovery.** Classically a seed is needed; it is the known semiclassical stand-in for quantum spontaneity, and its size is fixed at ½ℏω per mode, not free |
@@ -68,3 +68,36 @@ Several figures circulated during framing — exact winding conservation under a
 - **Rates, not fractions.** A plateau is an end state; decay rates and cross-sections are probabilities per unit time. The observable is a growth rate.
 - **Derivation before simulation** where a derivation is available.
 - **Define terms on first use.** The audience rule in [CLAUDE.md](../../CLAUDE.md) applies to this project's files as much as to its chapters.
+
+## H. Provenance of the per-sheet node
+
+Nothing in the repo proposes grouping a node's edges by sheet, and nothing rules it out. The uniform form S = (2/N)·J − I over all of a node's registers is simply what has always been written, and [grid-duality ch. 6](../grid-duality/06-3d-extension-and-lattice-closures.md) generalises it to any coordination and dimension without ever asking whether a node that touches several sheets should pool them. So the per-sheet node is a genuine departure rather than a recovery of something earlier, and the burden is on it.
+
+What it buys over the uniform rule is worth stating precisely, because an intermediate draft of the README confused the two. Under the **uniform** rule, energy does reach a node's orthogonal edges, and sectors stay apart only in the weaker sense that a smooth symmetric state develops no circulation. Under the **per-sheet** rule, energy never reaches those edges at all in linear operation. The first is a statement about modes; the second is a statement about where energy is. They predict differently as soon as a state is not smooth and symmetric, which is exactly the regime a collision creates.
+
+What it costs: sheets in ma-domain *share* dimensions ([leakage-rate.md §3](../ma-domain/work/leakage-rate.md) has the electron on Ma(m1, m2) and the muon on Ma(m1, m3)). A node where both meet must then carry two separate m1-edges, one per sheet, rather than one shared edge. That duplication changes the node's coordination, and coordination sets impedance and wave speed in the scatter — so the rule has to be checked against [grid-duality's test bench](../grid-duality/03-test-bench.md) before any physics is read off it. On the two-dimension arena of README §3a the question does not arise; it arrives with the third.
+
+## I. Energy, amplitude and frequency on the GRID
+
+A question worth settling, since it bears on how overflow is accounted.
+
+For many waves, energy goes as **amplitude² × frequency²**, not amplitude² alone. A mass on a spring with displacement A·cos(ωt) has velocity Aω·sin(ωt) and energy ½mA²ω². So a 1 V peak-to-peak *displacement* at 1 kHz carries 10 000 times the energy of the same displacement at 10 Hz.
+
+Whether the ω² appears depends entirely on what the stored variable *is*.
+
+- If a register holds a **displacement**, energy carries the ω² factor.
+- If a register holds a **travelling-wave amplitude in power-normalised units** — the forward and backward waves a± on a lossless transmission line — then power is |a±|² with no frequency factor at all, because the normalisation has already absorbed it.
+
+GRID is the second kind, and this is forced rather than chosen: the scatter S = (2/N)·J − I is orthogonal, so the quantity it conserves exactly, tick after tick, is the plain sum of squared register values. That sum is what "energy" means on this substrate. No frequency factor enters, and none can without breaking the conservation the scatter already provides.
+
+Two consequences. First, energy bookkeeping and amplitude bookkeeping are the *same* bookkeeping here, so an overflow rule that balances the sum of squares is not importing anything foreign. Second, the separate idea that **energy per cycle is ℏω** — Postulate 1 of [zpe_derivation.md](../ma-domain/work/zpe_derivation.md) — is a quantum statement layered on top of this classical ledger, not a competing account of it. The two live at different levels and do not conflict.
+
+## J. The standard name for the mechanism
+
+What §3 of the README describes has a name in ordinary physics: a **parametric process** — a driven oscillation decaying into a pair of counter-propagating partners with opposite wavenumber, +n and −n. Optical down-conversion and the Faraday ripple instability are the textbook cases.
+
+The identification is worth recording for two reasons, and worth keeping out of the README for one.
+
+*Why it is useful.* It says what quantity to compute. For a parametric process the meaningful observable is the **growth rate** of the pair — how fast the ring's content builds, which is what the README's objective 2 asks for in plain terms — and the standard method is to linearise about the driven state and ask which pairs are unstable. It also warns against a trap: such a process saturates at a level set by the nonlinearity, *independently of how small the initial nudge was*, so a final amount says nothing about how fast the process runs and a smaller seed only delays the plateau logarithmically.
+
+*Why it stays here.* The name is a label, not an argument, and reaching for it early replaced a mechanical picture the project is built on with a formalism that obscured it. The README should be readable without it. Use it when the simulation produces something to analyse, not before.
