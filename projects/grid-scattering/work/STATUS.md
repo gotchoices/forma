@@ -3,27 +3,32 @@
 Living document. Tracks what is settled, what is running, and what is queued.
 Project framing: [../README.md](../README.md). Supporting detail: [../Appendix.md](../Appendix.md).
 
-**Where things stand (2026-10-07).** The arena is built and the mechanism fires. Energy crosses from the line into a ring on overflow, the crossing is **resonant** (50–100× at nc = mλ, sharp to one node), the resonance selects the predicted mode, and at the strongest resonance the reverse channel opens on its own. The junction-geometry question is settled analytically, and with it the review's F1. Nothing yet shows a particle that *moves*, which is the next thing to find out.
+**Where things stand (2026-10-07).** Rebuilt after an external review found three fatal problems, all in material added during earlier review rounds rather than in the project's own thesis. The arena is now a **cylinder** (product lattice, rings joined along x) rather than the comb it had become; the overflow rule is an **exactly conserving rotation** (drift 0.0); and the junction-geometry argument that had closed off weak coupling is **retracted**, which restores motion by ordinary Kaluza–Klein dispersion and retires the saturation-soliton patch.
 
----
+Everything previously listed as settled has been re-measured. Transfer and one-point circulation hold up. **Resonance survives at about 1.5×, not the 50–100× previously claimed** — those figures came from a lossy rule whose losses were largest off-resonance.
 
 ## Settled
 
-- [x] **Arena.** One linear array x; a ring at every x coordinate; line and ring joined only during an overflow, at one point. An (nx × nc) product grid is *wrong* — it is nc parallel lines, so a photon saturates every ring at once and injects uniformly, giving winding 0 and no particle. [first-run.md](first-run.md)
-- [x] **The mechanism transfers.** Collision above the ceiling, overflow into the ring, ~89% of it circulating with no seed needed — one-point injection is inherently non-uniform. [first-run.md](first-run.md)
-- [x] **Transfer is resonant.** 50–100× enhancement at nc = mλ, one node either side kills it; needs a *sustained* drive, since a single pulse injects once and has nothing to interfere with. [first-run.md](first-run.md)
-- [x] **Resonance selects the predicted mode.** nc/λ = 1, 2, 3 → n = 1, 2, 3. [first-run.md](first-run.md)
-- [x] **Reverse channel exists.** 1181 ring → line events at the strongest resonance, with no extra rule. [first-run.md](first-run.md)
-- [x] **Junction geometry.** Uniform is forced at a symmetric Y junction; at an X junction there are exactly four symmetric rules and no continuous knob, so weak coupling must be nonlinear. [junction-geometry.md](junction-geometry.md)
-- [x] **F1 answered.** A moving particle is a soliton bound by saturation; the geometry permits both motions, the nonlinearity binds them. [junction-geometry.md](junction-geometry.md)
-- [x] **Maxwell not at risk.** The partition is S against a sheet, not dimension against dimension, so the spatial sector is unchanged. [junction-geometry.md](junction-geometry.md)
+- [x] **Arena is a cylinder.** Product lattice; rings joined along x, so anything made on one can travel. The comb is retracted — privileged attachment point, broken c-symmetry, no x-edges on ring nodes.
+- [x] **Overflow conserves exactly.** Rotation between register groups; audited drift 0.0.
+- [x] **Nothing crosses below the ceiling, or with no drive.**
+- [x] **One-point overflow circulates.** 99.95% of crossed energy in winding modes rather than the non-circulating one; the tie is broken by the state, not the rule.
+- [x] **Junction rules form a continuous family.** Only unitarity binds a node; momentum need not balance there. Weak always-on coupling is therefore available, θ = 0 being the ideal node. [junction-geometry.md](junction-geometry.md)
+- [x] **Maxwell not at risk.** The partition is space against a sheet, not dimension against dimension.
+
+## Retracted
+
+- [x] ~~Resonance at 50–100×~~ → **~1.5×**, measured with a conserving rule.
+- [x] ~~A moving particle is a soliton bound by saturation~~ → contradicts the project's own ceiling calibration; motion comes from weak coupling and KK dispersion instead.
+- [x] ~~Four discrete junction rules~~ → an artifact of imposing per-node momentum conservation, using the wrong measure for momentum.
 
 ## Queued — experiments
 
 Ordered so each can fail cheaply and early. Pre-register the expected answer before running.
 
 - [ ] **E1 — Does energy stay in the ring?** Inject, stop driving, watch the ring. With the reverse channel on there should be a **lifetime**; measure it, and see whether it depends on how much is stored and on which mode. This is the first thing that could become a decay *rate*, which objective 2 needs.
-- [ ] **E2a — Implement momentum-carrying overflow.** The rule says the excess carries its x-momentum across; the script injects symmetrically and so can only make particles at rest. Prerequisite for E2–E4.
+- [ ] **E0 — Seed-average the resonance.** The surviving ~1.5× sits on a background that wanders 0.25–0.31. Average over seeds and give it an error bar before it is called a result at all.
+- [ ] **E2a — Implement momentum-carrying overflow.** The excess should carry its x-momentum across; it currently does not. Prerequisite for E2–E4.
 - [ ] **E2 — The angled shot: a standing wave in c with motion in x.** Inject into both groups at the same instant and node, with a controlled ratio — most of the shot going straight, a component making the turn. Does the result translate as **one object**, keeping its winding?
   *Pre-register:* with saturation on, it should hold together; with it off, the x-part should run ahead at the lattice speed and the c-part stay put, shearing apart within a few ticks. If it holds together with saturation **off**, §4 of junction-geometry.md is wrong and should be rewritten.
 - [ ] **E3 — Does it have inertia?** If E2 gives a bound helix, sweep its x-momentum and winding number and fit the total energy. *Target:* ω² = c²k² + ω₀², the relation that makes compact momentum behave as mass. [grid-matter ch. 4](../../grid-matter/04-matter-waves-and-de-broglie.md) has it to <2% for the pooled scatter, so the comparison is direct.

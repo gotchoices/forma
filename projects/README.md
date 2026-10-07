@@ -121,16 +121,15 @@ Each project's README should:
   GRID lab, **collapse dissolved**; the one open core is **entangled Born / Bell**.
   **Status: active; work-file-driven; a chapter arc is drafted in its README.**
 - [grid-scattering/](grid-scattering/) — **What sets the rate at which energy
-  crosses between GRID's compact sectors, and into space?** Proposes that a node
-  treats space-edges and sheet-edges as separate groups that do **not** exchange
-  below a saturation ceiling, and that overflow above it is what carries energy
-  across. The junction geometry is settled: at a symmetric Y junction the uniform
-  scatter is forced, but at the X junction where space meets a sheet there are
-  exactly four symmetric rules and no continuous knob — so weak coupling must be
-  nonlinear, and a moving particle is a soliton bound by saturation. First runs
-  show transfer that is **resonant** (50–100× when the ring circumference is a
-  whole multiple of the drive wavelength), selecting the predicted mode, with the
-  reverse channel opening unprompted. Fills the gap [ma-domain](ma-domain/) names
-  in `work/leakage-rate.md`. *Not a revival of `grid-saturation`: that concerned
-  binding, this concerns transfer.* **Status: arena running; objective 2 (does a
+  crosses between GRID's compact sectors, and into space?** Tests saturation and
+  overflow as the mechanism: below a ceiling, space and a compact sheet exchange
+  little or nothing; above it, overflow carries energy across in bulk, and a
+  resonance condition decides what forms. The ceiling is not free — ordinary
+  light must pass below it, which makes the Schwinger limit a prediction rather
+  than an input. On a cylinder arena with an exactly conserving rule, transfer
+  and circulation hold up and resonance survives weakly (~1.5×); an earlier
+  50–100× was a dissipation artifact and is withdrawn. Fills the gap
+  [ma-domain](ma-domain/) names in `work/leakage-rate.md`. *Not a revival of
+  `grid-saturation`: that concerned binding, this concerns transfer.*
+  **Status: rebuilt after review; objective 2 (does a particle move?) is next.**
   particle move?) is next.**

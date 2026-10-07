@@ -1,6 +1,30 @@
-# First run — overflow moves energy onto a ring, and it resonates
+# First run — RESULTS WITHDRAWN
 
-**Script:** [`../scripts/line_and_ring.py`](../scripts/line_and_ring.py)
+> **Withdrawn 2026-10-07.** Everything measured in this file used an overflow
+> rule that moved amplitude rather than energy. An external audit found it
+> destroys 80–145 units of energy per run — more than the rings and the line
+> hold together — and destroys **most where there is no resonance**. The
+> headline ratios (50–100× at resonance, 12–58× over detuning) were therefore
+> reading differential dissipation between the two arms being compared, not
+> selection. This is the same selective-dissipation artifact recorded in
+> [../Appendix.md](../Appendix.md) §E, and the project's own §G rule should
+> have caught it.
+>
+> The arena was also wrong: a comb (one x line with a ring hung off each
+> position at a fixed point) rather than the cylinder the framing describes.
+> It gave every ring a privileged attachment point, breaking the translation
+> symmetry along c whose conserved quantity is the winding, and left ring nodes
+> with no x-edges, so nothing made there could travel.
+>
+> Re-measured on the cylinder with an exactly conserving rotation: transfer and
+> one-point circulation hold up; **resonance survives at about 1.5×, not
+> 50–100×**. See [../README.md](../README.md) §3. The script this file refers to
+> has been replaced by [../scripts/cylinder.py](../scripts/cylinder.py).
+>
+> Kept for the record, and because the two bugs at the bottom are still worth
+> knowing.
+
+**Script:** `line_and_ring.py`, since deleted; replaced by [`../scripts/cylinder.py`](../scripts/cylinder.py)
 **Status:** First real result. The mechanism transfers, the transfer is **resonant**, the resonance selects the predicted mode, and at the strongest resonance the reverse channel fires on its own.
 
 ---

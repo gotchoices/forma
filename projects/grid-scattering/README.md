@@ -17,19 +17,17 @@ forma has the gap written down twice. [ma-domain leakage-rate.md](../ma-domain/w
 
 ## 2. The junction, and what it is allowed to do
 
-A node where space meets a compact sheet has four edges, not three — an **X** junction rather than a **Y**. That difference turns out to decide everything, and it is settled analytically in [work/junction-geometry.md](work/junction-geometry.md).
+A node where space meets a compact direction carries four registers — two space, two compact. The question is what it may do with them, and the answer is less constrained than an earlier draft of this project claimed. Working: [work/junction-geometry.md](work/junction-geometry.md).
 
-**At a symmetric Y junction there is no freedom.** The uniform rule S = (2/N)·J − I is the only symmetric rule that conserves both energy and momentum. The intuitive alternative — reflect a little, split the rest evenly between the two outgoing edges — balances momentum but loses a quarter of the energy. So the uniform rule is not momentum-preserving by accident; it is forced, and there is nothing at a Y junction for a node to be "aware" of. (It also does backscatter: −1/3 of the amplitude returns along the arrival edge, and that term is exactly what balances the momentum.)
+The only genuine per-node constraint is **unitarity** — energy in equals energy out. Momentum need not balance at a node, because the lattice is fixed and can absorb it; that is what crystal momentum means. (An earlier version of this project imposed per-node momentum conservation, using a measure that was itself wrong — a wave's momentum goes with energy flux, as amplitude *squared*, not as amplitude. Both errors are retracted in the working file.)
 
-**At an X junction there is freedom.** Pure **straight-through** — in on +x, out on +x, nothing crossing into c — is equally unitary and equally momentum-conserving. But the freedom is **discrete**: scanning every symmetric real rule that satisfies both conservation laws yields exactly four, isolated. There is no continuous knob, so "the orthogonal edges get a little, but not much" cannot be written as a symmetric linear rule.
+Requiring only unitarity leaves a **continuous family** of rules, with cross-coupling between the two groups tunable smoothly from zero. So the project's posit is one end of a dial rather than a rival to the usual scatter:
 
-### The posit, stated as one
+> **Below the ceiling, space and a sheet exchange little or nothing. The ideal node exchanges exactly nothing; a physical one may leak slightly. Above the ceiling, overflow carries energy across in bulk.**
 
-> **Below the ceiling, the rule between space and a sheet is straight-through. Within space, and within a sheet, the ordinary scatter is unchanged.**
+The partition is **space against a sheet**, not dimension against dimension. Within space the ordinary scatter applies unchanged, so the spatial sector — and Maxwell with it — is untouched. Compact directions simply take little part until the dynamics goes nonlinear.
 
-The partition is **space against a sheet**, not dimension against dimension. Space stays the GRID already shown to give Maxwell; nodes mix their spatial edges exactly as before. Compact dimensions simply do not participate until the dynamics goes nonlinear.
-
-What is forced and what is posited should be kept apart. Being discrete and finite forces a **bound** — a register holds only so much. It does not force the excess to **redirect** into another group; a bounded register could equally clip and discard, or wrap. That the excess crosses into the other group is this project's posit, and it is the thing under test.
+What is forced and what is posited should be kept apart. Being discrete and finite forces a **bound**: a register holds only so much. It does not force the excess to **redirect** into the other group rather than being clipped away or wrapped. That redirection is this project's posit and the thing under test.
 
 ## 3. What crosses, and what it makes
 
@@ -41,7 +39,7 @@ What is forced and what is posited should be kept apart. Being discrete and fini
 
 **What forms.** Two counter-propagating waves on the ring. Equal energy both ways around a loop is a standing wave, and a standing wave captive on a loop is what [metric-mass](../metric-mass/) commits to as a particle at rest — the ±n superposition, one particle rather than two.
 
-**And it can move.** Straight-through alone would leave an x-travelling wave and a circulating wave simply coexisting, shearing apart within a few ticks. What binds them is the nonlinearity: at a particle's core the amplitude is above the ceiling, so the groups exchange there continuously, and that exchange holds x-momentum and compact winding together as one object. **A moving particle would then be a soliton held together by saturation.** That is an argument, not yet a demonstration — it is exactly what objective 2 tests. In the tails, below the ceiling, nothing crosses — which is why sheets stay separate in ordinary propagation. One mechanism does creation, decay, and binding.
+**And it can move.** A weak but non-zero exchange gives one wave operator spanning both directions, hence the joint relation ω² = c²k² + ω₀² — which is what makes compact momentum behave as inertia and lets a massive mode travel. This is the standard Kaluza–Klein result, already measured for the pooled scatter in [grid-matter ch. 4](../grid-matter/04-matter-waves-and-de-broglie.md). Saturation is therefore not needed to hold a particle together; it does the **bulk** crossing that makes and unmakes one, while weak coupling carries it about once made. *(An earlier draft claimed the binding was itself saturation, with a particle's core permanently above the ceiling. That is withdrawn — it contradicts this project's own ceiling calibration, under which an electron's core sits below the ceiling.)*
 
 **Two conditions, not one.** Saturation is only the first: enough amplitude for energy to leak into a sheet at all. It does not make a particle. The second is **frequency** — the drive must resonate with the ring, or the leaked energy sloshes in and comes straight back. The resonant frequency is set by the ring and nothing else: measured at ω = 2π/nc across four ring sizes, with 12–58× more energy retained than at 8% detuning.
 
@@ -51,13 +49,21 @@ Each sheet therefore carries its own threshold, because each has its own circumf
 
 ### The arena, cut down
 
-One linear array x; a ring at every x coordinate; line and ring joined only during an overflow, at one point. A product (nx × nc) grid is *wrong* — it is nc parallel lines, so a photon saturates every ring at once and injects uniformly, giving winding zero and no particle.
+A **cylinder**: one extended direction x and one compact direction c as a product lattice, so every node sits on both the x line and the c ring through it, and rings at neighbouring x are joined along x. That last point is what lets anything made on a ring afterwards move.
+
+A photon is uniform around c, so if every c-position saturates together the injection is uniform and the winding is zero. The rule therefore lets only the single largest-|T| position at each x overflow, with the tie broken by the background. The symmetry is broken by the **state**, never by the rule — which keeps winding conserved, and winding is charge once the field is complex.
+
+*(An earlier arena hung a ring off each x position at a fixed point. That was wrong twice: it gave every ring a privileged attachment, breaking the translation symmetry along c whose conserved quantity is the winding; and its ring nodes had no x-edges, so nothing made there could ever travel.)*
 
 ### What has been measured
 
-Transfer happens, and it is **resonant**: 50–100× enhancement when the circumference is a whole multiple of the drive wavelength, sharp enough that one node either side kills it, selecting exactly the predicted mode (nc/λ = 1, 2, 3 → n = 1, 2, 3). At the strongest resonance the reverse channel opens unprompted. Details and the two bugs found on the way: [work/first-run.md](work/first-run.md).
+On the cylinder, with an **exactly energy-conserving** overflow rule (a rotation between the register groups; drift 0.0 to machine precision):
 
-This answers a standing objection that the arena has no selection mechanism — that a lossless ring accepts every pattern, so sweeping circumference measures nothing. That is correct for a **single pulse**, and was measured: ring content was identical at every circumference from 8 to 40. It is false under a **sustained** drive, where successive injections interfere. The selection is not the ring rejecting a pattern; it is coherent accumulation.
+- Nothing crosses with no drive, and nothing crosses below the ceiling. ✓
+- Above the ceiling energy crosses, and with one-point overflow **99.95%** of it circulates rather than sitting in the non-circulating mode. ✓
+- **Resonance survives, but weakly.** At the predicted circumference the winding fraction is a clean local maximum — 0.370 at nc = λ against 0.252 and 0.250 either side — about **1.5×**, against a background that itself wanders between 0.25 and 0.31. It needs averaging over seeds before it can be called settled.
+
+**Earlier figures of 50–100× are withdrawn.** They were measured with a lossy rule that destroyed more energy than the system held, and destroyed most of it *off* resonance — so the ratio was reading differential dissipation, not selection. An external audit caught it; the project's own Appendix G rule ("no transfer claim from a ratio unless measured against an energy-conserving control") should have caught it first. Details and the full retraction: [work/first-run.md](work/first-run.md).
 
 ## 3a. What this arena cannot settle
 

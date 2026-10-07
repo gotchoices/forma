@@ -21,7 +21,7 @@ The project began from a set of premises in a notes file. Stated here with their
 | | Premise | Standing |
 |---|---|---|
 | P1 | One grid; a node's edges are partitioned by sheet | **The project's central claim** (README §2). An intermediate draft dropped it, on the grounds that winding conservation follows from the uniform rule anyway — but that argued past the proposal rather than against it: the uniform rule keeps *modes* apart statistically, while P1 keeps *energy* out of an orthogonal sheet entirely. They are different models with different predictions, and P1 is the one being tested |
-| P2 | Sheets are closed | **Kept as a consequence of P1**, in linear operation only. Above the saturation ceiling they are not closed, which is the entire mechanism. The open question it raises: radiation into space at rate ~α has to come out of the *saturating* regime, since the linear one forbids it outright |
+| P2 | Sheets are closed | **Kept, with the strictness relaxed.** Closed exactly in the ideal node (θ = 0); a physical node may leak weakly, and the junction rules form a continuous family in which that is available ([work/junction-geometry.md](work/junction-geometry.md)). The weak leak is what carries ordinary propagation of a made particle; saturation carries the bulk crossing. Radiation into space at ~α can then come from either regime, which an earlier strict reading forbade outright |
 | P3 | Saturation opens the cross-sheet channel | **Reframed.** The nonlinearity is what makes transfer possible at all; the question is its *rate*, not whether it opens a gate |
 | P4 | Transfer is pairwise, gated by fit | **Split.** The ±n pairing survives as winding conservation. The particle/antiparticle reading does **not**: metric-mass reads ±n as two halves of *one* particle. "Fit within a width" is dropped — the width of a decaying state is an output (ℏ/τ), not a gate |
 | P5 | Background fluctuation is the trigger | **Kept, demoted from discovery.** Classically a seed is needed; it is the known semiclassical stand-in for quantum spontaneity, and its size is fixed at ½ℏω per mode, not free |
@@ -71,9 +71,11 @@ Several figures circulated during framing — exact winding conservation under a
 
 ## H. Provenance of the per-sheet node
 
-**Superseded by [work/junction-geometry.md](work/junction-geometry.md)**, which settles the question analytically rather than by provenance. Retained for one point that file does not repeat.
+**Largely superseded by [work/junction-geometry.md](work/junction-geometry.md)**, which settles the question analytically. Two points that file does not repeat:
 
-Nothing in the repo proposed grouping a node's edges before this project, and nothing ruled it out. The uniform form S = (2/N)·J − I over all of a node's registers is simply what has always been written, and [grid-duality ch. 6](../grid-duality/06-3d-extension-and-lattice-closures.md) generalises it to any coordination and dimension without asking whether a node touching several sheets should pool them. The cost is that sheets in ma-domain *share* dimensions ([leakage-rate.md §3](../ma-domain/work/leakage-rate.md) has the electron on Ma(m1, m2) and the muon on Ma(m1, m3)): a node where both meet must carry two separate m1-edges, which changes its coordination, and coordination sets impedance and wave speed. That has to be checked against [grid-duality's test bench](../grid-duality/03-test-bench.md) before any physics is read off it. On the two-dimension arena of README §3 the question does not arise; it arrives with the third.
+Nothing in the repo proposed grouping a node's edges before this project, and nothing ruled it out. The uniform form S = (2/N)·J − I over all of a node's registers is simply what has always been written, and [grid-duality ch. 6](../grid-duality/06-3d-extension-and-lattice-closures.md) generalises it without asking whether a node touching several sheets should pool them.
+
+The cost arrives at the third dimension: sheets in ma-domain *share* dimensions ([leakage-rate.md §3](../ma-domain/work/leakage-rate.md) has the electron on Ma(m1, m2) and the muon on Ma(m1, m3)), so a node where both meet must carry two separate m1-edges. That changes its coordination, and coordination sets impedance and wave speed — to be checked against [grid-duality's test bench](../grid-duality/03-test-bench.md) before any physics is read off it. On the two-dimension arena of README §3 the question does not arise.
 
 ## I. Energy, amplitude and frequency on the GRID
 

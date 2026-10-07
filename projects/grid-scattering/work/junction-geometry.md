@@ -1,86 +1,48 @@
 # Junction geometry — what a node may do with edges that belong to different sheets
 
-**Status:** Result. Replaces the "grouping" premise of README §2 with a geometric statement, and resolves the review's F1 (a particle cannot move) without weakening the project's thesis.
-
-The question: a node touches edges belonging to S and edges belonging to a compact sheet. What is it allowed to do with them? The answer turns out to be sharply constrained, and the constraint is the useful part.
+**Status:** Revised 2026-10-07. **An earlier version of this file was wrong**, and the correction matters: it claimed the choice of junction rule was pinned to four discrete options, which closed off weak coupling and forced an unsound patch elsewhere. The constraint it leaned on was not a real one. What follows is the corrected account.
 
 ---
 
-## 1. At a symmetric Y junction there is no freedom
+## 1. The error, stated plainly
 
-Three edges at 120°. Two candidate rules, checked against both conservation laws:
+The earlier version argued that a junction rule must conserve **momentum at the node**, and derived from that a discrete set of exactly four admissible rules. Two things were wrong.
 
-| rule | unitary | momentum |
+**The momentum measure was wrong.** A wave's momentum goes with its **energy flux**, as amplitude *squared* — not as amplitude. Under the correct measure:
+
+| rule | Σ S·d (amplitude-weighted, what was used) | Σ \|S\|²·d (energy flux, physical) |
 |---|---|---|
-| uniform, S = (2/N)·J − I → (−1/3, 2/3, 2/3) | **yes** | yes |
-| "reflection plus half to each outgoing edge" → (−1/2, 1/2, 1/2) | **no** | yes |
+| uniform (2/N)·J − I | (−1, 0) ✓ | **(0, 0)** ✗ |
+| straight-through | (−1, 0) ✓ | (−1, 0) ✓ |
 
-The intuitive reading — the two outgoing legs split the signal evenly — conserves momentum but loses a quarter of the energy. At a symmetric junction, symmetry together with unitarity and momentum conservation pins the rule uniquely.
+So the uniform scatter does not conserve momentum at a node at all. It isotropises, which is what a diffusive scatter does.
 
-**So the uniform rule is not momentum-preserving by accident.** It is the only symmetric rule that preserves both. There is no room at a Y junction to be "aware" of anything.
+**And the constraint was not required in the first place.** The nodes are fixed. A fixed lattice can absorb momentum — that is what crystal momentum means, conserved globally modulo reciprocal-lattice vectors rather than node by node. The only genuine per-node constraint is **unitarity**: energy in equals energy out.
 
-## 2. At an X junction there is freedom
+## 2. What follows once the false constraint is dropped
 
-Four edges at 90°, which is what a node looks like where one extended direction meets one compact one.
+The four-solution result goes with it. Requiring only unitarity leaves a **continuous family**. Taking S = exp(θA) with A an antisymmetric circulant gives an exactly unitary rule at every θ, with cross-coupling between the groups that rises smoothly from zero:
 
-| rule | unitary | momentum |
-|---|---|---|
-| uniform, S = (2/N)·J − I | yes | yes |
-| **straight-through** (a permutation: in on +x, out on +x) | **yes** | **yes** |
+| θ | 0.0 | 0.1 | 0.3 | 0.6 |
+|---|---|---|---|---|
+| cross-coupling | 0.000 | 0.099 | 0.282 | 0.466 |
 
-Pass-through is a perfectly legitimate scattering matrix. A signal travelling along x continues along x; a signal circulating in c keeps circulating; neither enters the other. This is the geometric content the project wanted, and it costs nothing in conservation terms.
+So **weak always-on coupling is available**, and the two rules that had looked like rivals are the ends of one dial: θ = 0 is the ideal node that never crosses below the ceiling, small θ the physical one that leaks a little. That is exactly the distinction already drawn in the project's own framing — the ideal node, with a real system expected to approximate it and leak slightly.
 
-## 3. But the freedom is discrete
+## 3. What this fixes
 
-Scanning every C4-symmetric real rule on the X junction that is both unitary and momentum-conserving gives **exactly four solutions**, and they are isolated points:
+**Motion.** A shared coupling, however weak, gives one wave operator spanning both directions, hence the joint relation ω² = c²k² + ω₀² — which is what makes compact momentum behave as inertia and lets a massive mode travel. This is the standard Kaluza–Klein result and [grid-matter ch. 4](../../grid-matter/04-matter-waves-and-de-broglie.md) already measures it for the pooled scatter.
 
-| reflection | perpendicular | forward | |
-|---:|---:|---:|---|
-| −1.00 | 0.00 | 0.00 | total reflection (a wall) |
-| −0.50 | −0.50 | +0.50 | sign variant |
-| −0.50 | +0.50 | +0.50 | uniform (2/N)·J − I |
-| 0.00 | 0.00 | +1.00 | straight-through |
+**It also retires a patch.** A previous version of this file argued that a moving particle must be a soliton held together by saturation at its core. **That claim is withdrawn.** It was introduced to supply motion when weak coupling looked unavailable, and it fails on its own terms: the project calibrates the ceiling so that ordinary light passes below it, and an electron has roughly a threshold photon's energy in roughly a threshold photon's volume, so its core sits *below* the ceiling too — the opposite of what the argument needed. With weak coupling restored, nothing needs the soliton.
 
-**There is no continuous knob.** One cannot write "the orthogonal edges receive a little, but not much" as a symmetric linear rule: either nothing crosses, or half of it does. Any weak-but-nonzero coupling has to break the symmetry, go complex, or **go nonlinear**.
+Saturation returns to the job it was proposed for: **bulk** transfer across the boundary, which is creation and decay. Ordinary propagation of an already-made particle is carried by the weak linear coupling.
 
-This rules out the obvious patch — weak always-on linear coupling — and forces something better.
+## 4. Why Maxwell is not at risk
 
-## 4. Consequence: the nonlinearity is what binds a moving particle
+The partition is **space against a sheet**, not dimension against dimension. Within space the ordinary scatter applies and nodes mix their spatial edges exactly as before, so the spatial sector is unchanged and Maxwell is untouched. Only the space↔sheet channel is weak. A hazard raised earlier — that a permutation rule is ballistic transport and loses interference — applies only to the dimension-by-dimension reading, which is not the proposal.
 
-If weak coupling must be nonlinear, and the project's nonlinearity is saturation, then:
+## 5. What is still open
 
-> **A moving particle is a soliton held together by saturation.** At its core the amplitude is above the ceiling, so the S-edges and the sheet-edges *do* exchange there, continuously. That exchange is what binds x-momentum and compact winding into a single object. In the tails, below the ceiling, there is no exchange — which is why sheets stay separate in ordinary propagation.
-
-This answers the review's **F1**. Under straight-through alone, an x-travelling wave and a circulating wave simply coexist and shear apart; the X geometry *permits* both motions but does not *bind* them. The binding is the nonlinearity, and the particle is therefore permanently in the nonlinear regime at its centre.
-
-Two things recommend this reading. It is how solitons work generally — a nonlinearity holding a mode together against dispersion. And it agrees with [grid-matter](../../grid-matter/02-why-simple-binding-fails.md), which found that binding a particle requires a nonlinearity and that the linear substrate cannot do it.
-
-It also makes the saturation thesis load-bearing for **motion**, not only for creation and decay. One mechanism, three jobs.
-
-## 5. Why Maxwell is not at risk
-
-A hazard was raised and then dissolved: a pure permutation rule is ballistic transport, and [grid-duality](../../grid-duality/) set aside its lattice-gas candidate precisely because ballistic transport fails Maxwell and single-particle interference — no partial transmission at a junction means no diffraction.
-
-That hazard applies only if **every dimension** is its own group. It is not the proposal. The partition is **S against a sheet**, not dimension against dimension:
-
-- Within S, the ordinary uniform scatter applies — nodes mix their spatial edges exactly as before, and Maxwell is untouched because nothing about the spatial sector has changed.
-- Within a compact sheet, likewise.
-- Only **between** S and a sheet is the rule straight-through below the ceiling.
-
-So space remains the GRID that was already shown to give Maxwell, with compact dimensions that do not participate until the dynamics goes nonlinear.
-
-A note on the reduced arena: in the 1D × 1D testbed each group holds only two edges, so within-group scattering is trivially pass-through. That is a property of the reduction, not of the proposal, and it means the testbed cannot speak to Maxwell either way. It is not trying to.
-
-## 6. On asynchrony
-
-[grid-gravity](../../grid-gravity/work/ledger.md) carries "no clock and no synchronization: junctions scatter each arrival on their own" as posit **P1**, so an event-driven node is an existing idea in the repo rather than a new one.
-
-But it does not by itself deliver angle-awareness. [requirements-and-dof.md §2](../../grid-gravity/work/requirements-and-dof.md) notes that summing over arrivals *recovers* the standard scatter exactly: the shared value is (2/N)·Σ arrivals. Per-arrival handling and synchronous handling give the same rule. What changes the rule is the rule — one of §3's four options — and that choice is available with or without a clock.
-
-Dropping the master clock is a larger change with its own consequences ([grid-duality](../../grid-duality/README.md) treats the clock as foundational). This project does not need it.
-
-## 7. What is still open
-
-- **Does the bound helix actually form?** §4 is an argument, not a demonstration. The test is to inject into both groups at once and see whether the result translates as one object, with saturation on and with it off.
-- **Does it have inertia?** If a helical state exists, its group velocity against winding number should reproduce ω² = c²k² + ω₀². That relation is what makes compact momentum act as mass, and [grid-matter ch. 4](../../grid-matter/04-matter-waves-and-de-broglie.md) already has it for the pooled scatter — so the comparison is direct.
-- **How small is "essentially nothing"?** The ideal node never crosses below the ceiling. A physical system might leak slightly, whether from sub-threshold structure or from rare background-driven saturation events. Whether that residue is needed, and whether it is what α measures, is open.
+- **How small is θ?** The ideal node is θ = 0; a physical one leaks. Whether that residue is required, and whether it is what α measures, is unsettled. It is also now a *measurable* parameter rather than a posit.
+- **Does the joint dispersion actually form on this lattice?** §3 is an inference from the shared operator, not a measurement. The test is to sweep a mode's winding and x-momentum and fit ω² = c²k² + ω₀².
+- **Does saturation still do its job at θ > 0?** All the overflow measurements so far are at θ = 0.
