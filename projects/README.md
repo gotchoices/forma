@@ -121,14 +121,16 @@ Each project's README should:
   GRID lab, **collapse dissolved**; the one open core is **entangled Born / Bell**.
   **Status: active; work-file-driven; a chapter arc is drafted in its README.**
 - [grid-scattering/](grid-scattering/) — **What sets the rate at which energy
-  crosses between GRID's compact sectors, and into space?** The linear scatter
-  conserves the winding number around a compact dimension exactly — which *is*
-  charge conservation, and which means the linear substrate can never make a
-  particle. Whatever does must be nonlinear. Tests a saturating-node rule that
-  ejects overflow around the compact ring in both directions at once; in
-  standard terms a **parametric process** producing a ±n pair, whose **growth
-  rate** is the quantity to derive and to check against rates forma already
-  reproduces (Sargent's Q⁵, lepton universality, the neutron's 880 s). Fills the
-  gap [ma-domain](ma-domain/) names in `work/leakage-rate.md`. *Not a revival of
-  `grid-saturation`: that concerned binding, this concerns transfer.*
-  **Status: framing; the first work item is a derivation.**
+  crosses between GRID's compact sectors, and into space?** Proposes that a node
+  treats space-edges and sheet-edges as separate groups that do **not** exchange
+  below a saturation ceiling, and that overflow above it is what carries energy
+  across. The junction geometry is settled: at a symmetric Y junction the uniform
+  scatter is forced, but at the X junction where space meets a sheet there are
+  exactly four symmetric rules and no continuous knob — so weak coupling must be
+  nonlinear, and a moving particle is a soliton bound by saturation. First runs
+  show transfer that is **resonant** (50–100× when the ring circumference is a
+  whole multiple of the drive wavelength), selecting the predicted mode, with the
+  reverse channel opening unprompted. Fills the gap [ma-domain](ma-domain/) names
+  in `work/leakage-rate.md`. *Not a revival of `grid-saturation`: that concerned
+  binding, this concerns transfer.* **Status: arena running; objective 2 (does a
+  particle move?) is next.**

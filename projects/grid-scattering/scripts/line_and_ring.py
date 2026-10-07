@@ -45,8 +45,17 @@ def step(xin, rin, sat, one_way=False):
     Tx = xin[0] + xin[1]                       # x-node totals
     ex = np.sign(Tx) * np.maximum(np.abs(Tx) - sat, 0.0)
     xout[0] -= ex / 2; xout[1] -= ex / 2
-    rout[0, :, 0] += ex / 2                    # into the ring at the junction,
-    rout[1, :, 0] += ex / 2                    # both directions at once
+    # Amplitude bookkeeping: the excess e leaves x and arrives split e/2 each
+    # way around the ring. This is NOT energy-conserving -- two registers at e/2
+    # carry e^2/2 where the removed amplitude e would carry e^2 -- and the sign
+    # of the loss is fixed, so the drift is a known bias rather than a
+    # measurement. Splitting e/sqrt(2) each way overshoots instead: it injects
+    # more amplitude than was removed and runs away once the reverse channel
+    # opens (tested: nc=12 reaches 1e16). Exact conservation needs either
+    # explicit energy accounting (a square root, foreign to an amplitude
+    # substrate) or a rotation. Left as-is and reported; see work/STATUS.md.
+    rout[0, :, 0] += ex / 2
+    rout[1, :, 0] += ex / 2
 
     nback = 0
     if not one_way:
@@ -116,12 +125,13 @@ def main():
     P = np.abs(np.fft.fft(fld)) ** 2
     Ering = float((rin[:, mid, :] ** 2).sum())
     Eline = float((xin ** 2).sum())
+    Etot = Ering_all = float((rin ** 2).sum()) + Eline
     print(f"nc={a.nc}  lambda={lam:.2f}  nc/lambda={a.nc / lam:.3f}  sat={a.sat}")
     print(f"  peak |T_x| {peakT:.4f} vs ceiling {a.sat}"
           + ("   <-- NEVER REACHED" if a.sat > 0 and peakT < a.sat else ""))
     print(f"  overflow events: line->ring {fwd}, ring->line {back}")
     print(f"  ring energy at the collision node: peak {hist.max():.4e}, final {Ering:.4e}")
-    print(f"  line energy remaining {Eline:.4e}")
+    print(f"  line energy remaining {Eline:.4e}   total (line+all rings) {Etot:.4e}")
     if P[1:].sum() > 0:
         top = np.argsort(P[1:a.nc // 2 + 1])[::-1][:3] + 1
         print(f"  winding n=0 {P[0]:.3e}   n!=0 {P[1:].sum():.3e}   "
