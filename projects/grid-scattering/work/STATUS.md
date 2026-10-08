@@ -3,24 +3,30 @@
 Living document. Tracks what is settled, what is running, and what is queued.
 Project framing: [../README.md](../README.md). Supporting detail: [../Appendix.md](../Appendix.md).
 
-**Where things stand (2026-10-07).** Rebuilt after an external review found three fatal problems, all in material added during earlier review rounds rather than in the project's own thesis. The arena is now a **cylinder** (product lattice, rings joined along x) rather than the comb it had become; the overflow rule is an **exactly conserving rotation** (drift 0.0); and the junction-geometry argument that had closed off weak coupling is **retracted**, which restores motion by ordinary Kaluza–Klein dispersion and retires the saturation-soliton patch.
+**PARKED (2026-10-07) on a stated obstruction.** The mechanism works for what it was built for — energy crosses on overflow, the crossing is resonant at the predicted circumference, the reverse channel runs unprompted, and the rule conserves energy exactly. **But a particle made here cannot move through space**, and that is measured rather than feared ([measurements.md](measurements.md) §M4). Three attempts to supply motion have failed, each for the same underlying reason, and the reason is the project's own posit: motion of a compact mode needs space and the compact direction joined in one wave operator, which strict separation removes.
 
-Everything previously listed as settled has been re-measured. Transfer and one-point circulation hold up. **Resonance survives at about 1.5×, not the 50–100× previously claimed** — those figures came from a lossy rule whose losses were largest off-resonance.
+Parked rather than closed. The missing piece is specific: **a binding nonlinearity on the field value**, which [grid-matter](../../grid-matter/work/focusing-from-phase.md) already has and which already produces a mobile particle on this lattice. Revival conditions are in [../README.md](../README.md) §6.
 
 ## Settled
 
-- [x] **Arena is a cylinder.** Product lattice; rings joined along x, so anything made on one can travel. The comb is retracted — privileged attachment point, broken c-symmetry, no x-edges on ring nodes.
-- [x] **Overflow conserves exactly.** Rotation between register groups; audited drift 0.0.
-- [x] **Nothing crosses below the ceiling, or with no drive.**
-- [x] **One-point overflow circulates.** 99.95% of crossed energy in winding modes rather than the non-circulating one; the tie is broken by the state, not the rule.
-- [x] **Junction rules form a continuous family.** Only unitarity binds a node; momentum need not balance there. Weak always-on coupling is therefore available, θ = 0 being the ideal node. [junction-geometry.md](junction-geometry.md)
-- [x] **Maxwell not at risk.** The partition is space against a sheet, not dimension against dimension.
+- [x] **Arena is a cylinder** (product lattice, rings joined along x).
+- [x] **Overflow conserves exactly** — rotation between register groups, audited drift ~10⁻¹⁶.
+- [x] **Nothing crosses below the ceiling, with no drive, or with no background** (the last is the equivariance check: the state breaks the symmetry, never the rule).
+- [x] **Crossing is resonant at ~5×** at the predicted circumference, with 3× seed scatter. [measurements.md](measurements.md) §M3.
+- [x] **The reverse channel runs unprompted**, and is what lets a ring shed energy.
+- [x] **Local rule adopted.** The earlier non-local `--one-point` argmax both departed from GRID locality and suppressed the resonance.
+
+## The obstruction
+
+- [x] **A particle cannot move.** At rest it radiates symmetrically and decays in place (x-centroid 0.0000 at every amplitude); launched with x-momentum it shears apart (x content travels 41 nodes, compact content stays at 0). [measurements.md](measurements.md) §M4.
 
 ## Retracted
 
-- [x] ~~Resonance at 50–100×~~ → **~1.5×**, measured with a conserving rule.
-- [x] ~~A moving particle is a soliton bound by saturation~~ → contradicts the project's own ceiling calibration; motion comes from weak coupling and KK dispersion instead.
-- [x] ~~Four discrete junction rules~~ → an artifact of imposing per-node momentum conservation, using the wrong measure for momentum.
+- [x] ~~Resonance at 50–100×, and 12–58× over detuning~~ → **~5×**, conserving rule, proper energy metric.
+- [x] ~~A moving particle is a soliton bound by saturation~~ → contradicts the project's own ceiling calibration.
+- [x] ~~Weak always-on coupling restores KK motion~~ → a rotation is a mass term, not a derivative coupling; at θ = 0.1 light gains a gap ω = 0.1 at k = 0.
+- [x] ~~Four discrete junction rules~~ → artifact of imposing per-node momentum conservation with the wrong measure.
+- [x] ~~"The fatal items were all added during review rounds"~~ → not accurate. The amplitude-moving rule was in the project's own framing from the start; the error was publishing ratios from it.
 
 ## Queued — experiments
 

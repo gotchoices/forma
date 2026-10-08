@@ -62,8 +62,9 @@ def step(f, sat, gain, theta, one_point):
     o = f.copy()
     if theta:
         o = rotate_groups(o, np.full(o.shape[1:], theta))
-    nfire = 0
+    nfire = nback = 0
     if sat > 0:
+        # forward: x-group over the ceiling rotates energy into c
         T = np.abs(o[0] + o[1])
         over = np.maximum(T - sat, 0.0)
         if one_point:
@@ -71,9 +72,16 @@ def step(f, sat, gain, theta, one_point):
             keep[np.arange(over.shape[0]), T.argmax(axis=1)] = True
             over = over * keep
         nfire = int((over > 0).sum())
-        if nfire:
-            o = rotate_groups(o, gain * over)
-    return propagate(o), nfire
+        # reverse: c-group over the ceiling rotates energy back into x.
+        # Same rule, opposite sign of rotation -- this is the decay channel,
+        # and it is also the only way anything made on a ring can reach the
+        # next x position.
+        Tc = np.abs(o[2] + o[3])
+        back = np.maximum(Tc - sat, 0.0)
+        nback = int((back > 0).sum())
+        if nfire or nback:
+            o = rotate_groups(o, gain * (over - back))
+    return propagate(o), nfire + nback
 
 
 def run(a):
@@ -107,8 +115,11 @@ def main():
     p.add_argument("--sat", type=float, default=0.8, help="ceiling on a group's |T|; 0 disables")
     p.add_argument("--gain", type=float, default=0.5, help="radians of rotation per unit of excess")
     p.add_argument("--theta", type=float, default=0.0, help="weak always-on x<->c exchange (radians/tick)")
-    p.add_argument("--one-point", action="store_true", default=True)
-    p.add_argument("--all-points", dest="one_point", action="store_false")
+    p.add_argument("--one-point", action="store_true", default=False,
+                   help="non-local: only the largest-|T| c-position per x may fire. "
+                        "Off by default -- it is an argmax around the whole ring, "
+                        "which GRID's local update does not permit, and it also "
+                        "SUPPRESSES the resonance (see work/STATUS.md).")
     p.add_argument("--amp", type=float, default=0.5)
     p.add_argument("--omega", type=float, default=0.2618, help="drive; wavelength = 2*pi/omega nodes")
     p.add_argument("--width", type=float, default=14.0)
@@ -128,12 +139,18 @@ def main():
     print(f"step() energy audit: {e0:.6f} -> {e1:.6f}   drift {abs(e1-e0)/e0:.2e}")
 
     f, fired = run(a)
-    P = np.abs(np.fft.fft(f[2] + f[3], axis=1)) ** 2
+    # Energy metric. Both compact registers are kept (an earlier version used
+    # only their sum, discarding half the state) and Parseval's 1/nc is applied,
+    # so these are register energies and the fraction cannot exceed 1.
+    Pp = np.abs(np.fft.fft(f[2], axis=1)) ** 2 / a.nc
+    Pm = np.abs(np.fft.fft(f[3], axis=1)) ** 2 / a.nc
+    P = Pp + Pm
+    Ec = float(P.sum()); Ewind = float(P[:, 1:].sum()); Etot = float((f ** 2).sum())
     lam = 2 * np.pi / a.omega
     print(f"nc={a.nc}  lambda={lam:.2f}  nc/lambda={a.nc/lam:.3f}  sat={a.sat}  theta={a.theta}")
     print(f"  overflow events {fired}")
-    print(f"  compact content   n=0 {P[:,0].sum():.4e}   n!=0 {P[:,1:].sum():.4e}")
-    print(f"  total energy {float((f**2).sum()):.4e}")
+    print(f"  compact energy {Ec:.4e} of total {Etot:.4e}   (fraction {Ec/max(Etot,1e-30):.4f})")
+    print(f"  of that, winding k_c!=0: {Ewind:.4e}   (fraction of total {Ewind/max(Etot,1e-30):.4f})")
 
 
 if __name__ == "__main__":

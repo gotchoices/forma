@@ -3,7 +3,7 @@
 **What sets the rate at which energy crosses between GRID's compact sectors — and into space?**
 
 **Type:** Exploratory project (see [../README.md](../README.md))
-**Status:** Arena built and running. Energy crosses on overflow, the crossing is resonant, and the junction geometry is settled analytically. Nothing yet shows a particle that *moves* — that is objective 2 and the next thing to find out. Checklist: [work/STATUS.md](work/STATUS.md).
+**Status: parked on a stated obstruction.** The mechanism makes a particle and the crossing is resonant, both measured with an exactly conserving rule. But **a particle made here cannot move through space**, and that is not a gap — it is measured ([work/measurements.md](work/measurements.md) §M4) and it has a structural cause (§3b). Checklist and revival conditions: [work/STATUS.md](work/STATUS.md).
 
 **Scope.** The point is to test one mechanism: **saturation and overflow as the means by which energy crosses a sheet boundary.** The project is not required to stay harmonious with earlier forma work — where it departs, it says so and the departure is part of what is being tested. If the mechanism works it changes how several things are read; if it fails, it gets parked and the failure is the result. Supporting material is in [Appendix.md](Appendix.md).
 
@@ -33,17 +33,19 @@ What is forced and what is posited should be kept apart. Being discrete and fini
 
 **Scope of the ceiling (posit).** Each node has two degrees of freedom: it can saturate in its space group, in its sheet group, or in both. The test is on each group's own sum — not per edge, which grid-matter ruled out, and not on the node as a whole. A whole-node test is the live alternative, and it would let a ring wave and a passing space wave push a node over together; that is a different model and is not what is implemented.
 
-**What the overflow does.** The excess leaves the saturating group and enters the other at one point, half each way, so it departs in both directions at once and meets itself on the far side of the ring. It must also **carry its x-momentum with it** — otherwise every particle is created at rest, which by §2 it could never leave. *This part of the rule is stated but not yet implemented; the current script injects symmetrically, so it can only make particles at rest. Implementing it is the first step of objective 2.*
+**What the overflow does.** The excess rotates out of the saturating group into the other, at the node where it happens, and runs both ways around the ring to meet itself on the far side. It does not carry x-momentum across; see §3b for why that could not be patched.
 
-**Energy bookkeeping, honestly.** Splitting an excess e into e/2 each way carries e²/2, not e², so the rule loses energy on every overflow with a fixed sign. That drift is a known bias rather than a measurement. The obvious repair — e/√2 each way — overshoots: it injects more amplitude than it removed and runs away once the reverse channel opens (tested; the ring reaches 10¹⁶). Exact conservation needs either explicit energy accounting, which imports a square root into an amplitude substrate, or a rotation. The drift is reported and the repair is queued.
+**Energy bookkeeping.** The crossing is a rotation between the register groups, which is exactly energy-conserving by construction and accounts for whatever the ring already holds. Audited drift is ~10⁻¹⁶. An earlier rule moved *amplitude* instead, which destroyed energy on every overflow — most of it off resonance — and corrupted a whole round of measurements.
 
 **What forms.** Two counter-propagating waves on the ring. Equal energy both ways around a loop is a standing wave, and a standing wave captive on a loop is what [metric-mass](../metric-mass/) commits to as a particle at rest — the ±n superposition, one particle rather than two.
 
-**And it can move.** A weak but non-zero exchange gives one wave operator spanning both directions, hence the joint relation ω² = c²k² + ω₀² — which is what makes compact momentum behave as inertia and lets a massive mode travel. This is the standard Kaluza–Klein result, already measured for the pooled scatter in [grid-matter ch. 4](../grid-matter/04-matter-waves-and-de-broglie.md). Saturation is therefore not needed to hold a particle together; it does the **bulk** crossing that makes and unmakes one, while weak coupling carries it about once made. *(An earlier draft claimed the binding was itself saturation, with a particle's core permanently above the ceiling. That is withdrawn — it contradicts this project's own ceiling calibration, under which an electron's core sits below the ceiling.)*
+**But it cannot move.** See §3b. Two attempts to supply motion have been withdrawn: a soliton bound by saturation at its core (which contradicts this project's own ceiling calibration), and a weak always-on rotation between the groups (which gives the photon a mass gap equal to the coupling angle). The second is measured, not argued: at θ = 0.1 light at k = 0 sits at ω = 0.1 instead of 0.
 
-**Two conditions, not one.** Saturation is only the first: enough amplitude for energy to leak into a sheet at all. It does not make a particle. The second is **frequency** — the drive must resonate with the ring, or the leaked energy sloshes in and comes straight back. The resonant frequency is set by the ring and nothing else: measured at ω = 2π/nc across four ring sizes, with 12–58× more energy retained than at 8% detuning.
+**Two conditions, not one.** Saturation is only the first: enough amplitude for energy to leak into a sheet at all. It does not make a particle. The second is **frequency** — the drive must resonate with the ring. Measured, with the conserving rule and over three seeds: the winding fraction at the resonant circumference is **0.045 against 0.006–0.014** around it, so roughly **5×**, with a 3× spread between seeds ([work/measurements.md](work/measurements.md) §M3).
 
-Each sheet therefore carries its own threshold, because each has its own circumference. And since the ring size fixes both the particle's mass and the wavelength that fits it, that threshold lands at the particle's own mass scale automatically — forced, not fitted. It also says why an intense laser makes no pairs: it saturates easily and energy does cross, but an optical frequency is nowhere near the electron ring's resonance, so nothing launches and the energy returns.
+If that holds up it would mean each sheet carries its own threshold, set by its own circumference — and since the ring size fixes both the particle's mass and the wavelength that fits it, the threshold would land at the particle's own mass scale automatically. It would also say why an intense laser makes no pairs: it saturates easily and energy crosses, but an optical frequency is nowhere near the electron ring's resonance.
+
+**This is a lead, not a result.** A 5× selection with that much seed scatter is not strong enough to gate a threshold, and the amplitude-versus-frequency problem of §3a is therefore still open. Earlier figures of 12–58× and 50–100× are **withdrawn** — they came from a lossy rule whose losses were largest off resonance.
 
 **The ceiling is not a free parameter.** Any ordinary travelling photon is by definition below it — otherwise light would saturate as it propagates and the vacuum would not be transparent. The ceiling is calibrated by an observable: *light must pass*. Three things follow with no further assumption. A lone photon never saturates, which is why pair production needs **two** photons, or a photon plus a nucleus's field standing in for the second. A collision is special precisely because two amplitudes sum at one node. And the **Schwinger limit becomes a prediction** rather than an input — it is where a single field, with no collision, finally reaches the ceiling alone.
 
@@ -65,13 +67,24 @@ On the cylinder, with an **exactly energy-conserving** overflow rule (a rotation
 
 **Earlier figures of 50–100× are withdrawn.** They were measured with a lossy rule that destroyed more energy than the system held, and destroyed most of it *off* resonance — so the ratio was reading differential dissipation, not selection. An external audit caught it; the project's own Appendix G rule ("no transfer claim from a ratio unless measured against an energy-conserving control") should have caught it first. Details and the full retraction: [work/first-run.md](work/first-run.md).
 
+## 3b. The obstruction the project is parked on
+
+**A particle made in this arena cannot travel through space.** Measured, not inferred ([work/measurements.md](work/measurements.md) §M4): a ring excitation at rest radiates symmetrically and decays in place, its x-centroid moving 0.0000 at every amplitude tried; and one launched *with* x-momentum shears apart — the x content travels 41 nodes while the compact content stays at 0.
+
+The cause is structural, and it is the project's own posit. Motion of a compact-sector mode needs space and the compact direction joined in **one wave operator** — the shared Laplacian that gives ω² = c²k² + ω₀² and makes compact momentum behave as inertia. Strict separation removes exactly that. The two are mutually exclusive, and no weak-coupling compromise bridges them: a rotation between register groups is algebraically a *mass* term, not a derivative coupling, so making it small gives a small photon mass rather than approaching the right dispersion.
+
+**What is missing is a binding mechanism, not a transfer mechanism.** Saturation moves energy across a boundary; it does not hold a lump together. [grid-matter](../grid-matter/work/focusing-from-phase.md) has the other half — on the same (x, compact-c) lattice it demonstrates a **stable, mobile breather** (speed 0.15, translating coherently, surviving the Peierls–Nabarro barrier). Its binding comes from the field *value* being a compact phase, so the potential m²(1 − cos φ) is focusing. That is a property of the field, not of a ceiling, and this arena does not have it: its field is a real amplitude.
+
+So the revival condition is specific rather than vague: **a binding nonlinearity on the field value, combined with saturation as the transfer channel.** Whether that belongs here or in grid-matter is an open question — grid-matter already owns the binding half.
+
 ## 3a. What this arena cannot settle
 
 Named here rather than discovered later.
 
 - **The one bridge still owed: amplitude against frequency per quantum.** The ceiling has to sit *below* two colliding 511 keV gammas and *above* a bright optical beam — a tight constraint, and the thing that separates them cannot be photon count, since the beam has vastly more. It has to be frequency. The bridge is that a single quantum ℏω localised in about one wavelength carries energy density ∝ ω⁴, hence amplitude ∝ ω²: a gamma then has ~10¹¹ times an optical photon's amplitude *per quantum*, which puts two of them in the same range as a bright beam of ~10²⁰ optical photons. Self-consistent, and it is what makes the calibration above possible — but it imports ℏ into a classical arena. That is [grid-quantization](../grid-quantization/)'s territory, and by this project's principle-versus-scale rule ℏ enters as a unit rather than as something derived here.
 
-- **A prediction this creates, which could fail.** A resonance gives a *peak*, not a step. Real pair production is also peaked — the Breit–Wheeler cross-section rises above threshold and falls again — but broadly, where the measured resonance here is sharp (12–58× over 8%). The ring in the arena is lossless and strongly driven, so its sharpness is a free parameter that the reverse channel should broaden. Whether the width can be made to match is a real test.
+- **Resonance width, unmeasured.** A resonance gives a *peak*, not a step. Real pair production is peaked too — Breit–Wheeler rises above threshold and falls — but broadly. The arena's width has never been measured, only its height (~5×, §M3), so there is nothing yet to compare.
+- **Carried over and still unanswered:** at 2× and 3× the threshold frequency the ring takes an n = 2 or 3 *rest* mode rather than a moving pair; two threshold photons make one ±n object where Bethe–Heitler needs a single photon of 2mₑc²; the resonance condition uses lab-frame frequencies rather than the invariant √(ω₁ω₂); and the Schwinger "prediction" is fixed by dimensional analysis up to a convention factor of about 16, so it is weaker than the index claimed.
 
 - **Equipartition.** A classical nonlinear lattice relaxes toward equal energy per degree of freedom, which here would mean roughly half of all light becoming ring content. The state-density ordering that would prevent it ([Appendix.md](Appendix.md), P6) is a *quantum* counting argument and needs the quantum above. So the two-way-traffic equilibrium cannot be interpreted yet.
 - **Nothing protects a particle.** A single real-valued ring has no conserved quantity shielding a mode, so any lifetime measured here is that of an unprotected neutral excitation — closer to a π⁰ than a neutron.
@@ -80,37 +93,32 @@ Named here rather than discovered later.
 ## 4. Objectives
 
 1. **Make a particle, then get it back.** Drive the collision to overflow; does a standing wave establish on the ring and outlive the drive, and does the ring later saturate and return its energy to the line? Creation and decay from one rule. *(Done for creation; the return channel is seen but not characterised.)*
-2. **Make it move.** Inject into both groups at once — most of the shot going straight, a component turning — and see whether the result travels as one object. Then whether its energy follows ω² = c²k² + ω₀², the relation that makes compact momentum behave as mass. This is the direct test of §3's soliton claim.
+2. **Make it move.** ~~Attempted and failed~~ — see §3b. This is the obstruction the project is parked on, and it is where any revival starts.
 3. **Find out how fast it builds.** Whether repeated overflow accumulates, and how that depends on drive strength and ring size. A rate, not a final amount.
 4. **Long-range: reach the observed rates.** Sargent's Q⁵ law, lepton universality and the neutron's 880 s lifetime are what [leakage-rate.md](../ma-domain/work/leakage-rate.md) already recovers from phase space. They are **not reachable from this arena** — it has one ring, no lepton or hadron sheets, no neutrino line, and no quanta — and no correspondence is yet stated between a classical overflow rate and "matrix element × phase space". Carried as the eventual target, not as a near-term test.
 
-**Success** is objective 2: a bound object that moves and has inertia. **A failure worth having** is a bound state that cannot be made to move, or one whose energy does not follow the relativistic form.
+**The outcome so far is the second of the two anticipated here:** a bound state that cannot be made to move. That was pre-registered as a failure worth having, and it is the one that occurred.
 
 **Deferred, and listed so the narrowing is visible.** The originating notes also set out the energy ladder and the durability of ordinary matter, neutron decay, simultaneous creation of an electron and a neutrino, and the stability ordering across particle classes. None has an objective here. They need sheets this arena does not have, and in most cases the quantum of §3a.
 
-## 5. First work item
+## 5. Where the work stands
 
-**Simulate, then model.** [AGENTS.md](../AGENTS.md) prefers a derivation where one is available, and allows computation first where the insight to derive is missing. It is missing here: the overflow rule is not yet written down concretely enough to analyse, and the cheapest way to find out what it does is to run it.
+The arena is built, the rule conserves exactly, and the measurements have provenance in [work/measurements.md](work/measurements.md). What was established: nothing crosses below the ceiling or without a background; above it energy crosses and circulates; the crossing is resonant at the predicted circumference at roughly 5×; and the reverse channel runs unprompted. What was not: a particle that moves (§3b).
 
-Run the arena of §3 and watch three things that are easy to confuse:
+## 6. Revival conditions
 
-- **Does it ring?** Energy landing on the loop should start oscillating within about one trip around. The easy part; it would be surprising if it failed.
-- **Does it stay?** After the pulses pass, does the ring keep its wave? Sweep circumference against drive wavelength — a fit should persist, a misfit decay.
-- **Does it build?** With repeated overflows, does the ring's content grow, and how fast? This is the one that becomes a rate.
+The project is parked rather than closed. It would be worth restarting on any of these:
 
-Control with clipping switched off. Report rates, not final amounts: where a nonlinearity stops says nothing about how fast it got there, and a ratio against a flat baseline just grows with run length.
-
-## 6. Next steps
-
-1. **Build the saturating rule and run §5.** A clip that freezes the lattice or bleeds energy is no use; clearing that is step one of step one.
-2. Then rates, and only then. Two deferred questions — when the substrate must stop being real-valued, and how the per-sheet node behaves once sheets share a dimension — are parked in [Appendix.md](Appendix.md). Neither blocks the simulation, and per the scope note above neither has to be settled in forma's existing terms first.
+1. **A binding nonlinearity on the field value.** The specific missing piece (§3b). grid-matter's compact-phase potential already produces a mobile particle on this lattice; combining that with saturation as the transfer channel is the obvious experiment, and it may belong in grid-matter rather than here.
+2. **A coupling that leaves k = 0 alone.** Motion needs a derivative coupling whose strength grows with compact wavenumber, so that light stays massless while a wound mode acquires inertia. Whether such a rule exists, and whether it can still be called weak, is a well-posed question nobody has answered.
+3. **A reason the ceiling is not global.** The obstruction depends on a particle's core sitting below the ceiling, which follows from calibrating the ceiling so ordinary light passes. A per-sheet or per-group ceiling would change that, and would need its own justification.
 
 ## 7. Relation to other projects
 
 **Not a revival of grid-saturation.** grid-matter was renamed from `grid-saturation` because its entry hypothesis — that the saturation bound *binds a particle* — was refuted. This project concerns **transfer**, not binding, and grid-matter's own work file keeps that distinction open: *"This is 'not yet,' not 'refuted.'"*
 
 - [ma-domain](../ma-domain/) — the principal consumer: [leakage-rate.md](../ma-domain/work/leakage-rate.md) names the missing law, [threshold-dynamics.md §6.2](../ma-domain/work/threshold-dynamics.md) the missing mechanism.
-- [grid-matter](../grid-matter/) — the saturation history and the (x, c) cylinder testbed; its M1 run verified the cylinder as a faithful arena.
+- [grid-matter](../grid-matter/) — the saturation history, the (x, c) cylinder testbed, and **the binding half this project lacks**: its compact-phase potential produces a stable, mobile breather on this lattice. Its M1 run verified the *pooled* scatter, not the rule used here.
 - [metric-mass](../metric-mass/) — the target object: a particle is a standing wave around the compact dimension, the ±n superposition, one particle rather than two.
 - [grid-duality](../grid-duality/) — closed; the scatter, the candidate-model format and the test bench any new rule must pass.
 - [grid-primitive](../grid-primitive/), [grid-quantization](../grid-quantization/) — the edge/node primitive, and the home for any zero-point question that survives.
