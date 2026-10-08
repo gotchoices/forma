@@ -3,7 +3,7 @@
 **What sets the rate at which energy crosses between GRID's compact sectors — and into space?**
 
 **Type:** Exploratory project (see [../README.md](../README.md))
-**Status: parked on a stated obstruction.** The mechanism makes a particle and the crossing is resonant, both measured with an exactly conserving rule. But **a particle made here cannot move through space**, and that is not a gap — it is measured ([work/measurements.md](work/measurements.md) §M4) and it has a structural cause (§3b). Checklist and revival conditions: [work/STATUS.md](work/STATUS.md).
+**Status: active.** The mechanism makes a particle, the crossing is resonant, and the rule conserves energy exactly. The motion obstruction that parked this project briefly is **resolved** (§3b): a coupling keyed to the compact winding gives wound modes a mass and sub-luminal propagation while leaving light exactly massless. Checklist: [work/STATUS.md](work/STATUS.md); all numbers with provenance in [work/measurements.md](work/measurements.md).
 
 **Scope.** The point is to test one mechanism: **saturation and overflow as the means by which energy crosses a sheet boundary.** The project is not required to stay harmonious with earlier forma work — where it departs, it says so and the departure is part of what is being tested. If the mechanism works it changes how several things are read; if it fails, it gets parked and the failure is the result. Supporting material is in [Appendix.md](Appendix.md).
 
@@ -67,15 +67,29 @@ On the cylinder, with an **exactly energy-conserving** overflow rule (a rotation
 
 **Earlier figures of 50–100× are withdrawn.** They were measured with a lossy rule that destroyed more energy than the system held, and destroyed most of it *off* resonance — so the ratio was reading differential dissipation, not selection. An external audit caught it; the project's own Appendix G rule ("no transfer claim from a ratio unless measured against an energy-conserving control") should have caught it first. Details and the full retraction: [work/first-run.md](work/first-run.md).
 
-## 3b. The obstruction the project is parked on
+## 3b. Motion — the obstruction, and what resolved it
 
-**A particle made in this arena cannot travel through space.** Measured, not inferred ([work/measurements.md](work/measurements.md) §M4): a ring excitation at rest radiates symmetrically and decays in place, its x-centroid moving 0.0000 at every amplitude tried; and one launched *with* x-momentum shears apart — the x content travels 41 nodes while the compact content stays at 0.
+For a while this project could not move a particle, and that looked structural. It was not; it was a statement about two rules.
 
-The cause is structural, and it is the project's own posit. Motion of a compact-sector mode needs space and the compact direction joined in **one wave operator** — the shared Laplacian that gives ω² = c²k² + ω₀² and makes compact momentum behave as inertia. Strict separation removes exactly that. The two are mutually exclusive, and no weak-coupling compromise bridges them: a rotation between register groups is algebraically a *mass* term, not a derivative coupling, so making it small gives a small photon mass rather than approaching the right dispersion.
+**What failed, and why.** A particle bound by saturation at its core contradicts the ceiling calibration — by "light must pass", an electron's core sits *below* the ceiling. And a **constant** rotation between the register groups gives light a mass gap equal to the rotation angle: at θ = 0.1, light at k = 0 sits at ω = 0.1 instead of 0. Both withdrawn.
 
-**What is missing is a binding mechanism, not a transfer mechanism.** Saturation moves energy across a boundary; it does not hold a lump together. [grid-matter](../grid-matter/work/focusing-from-phase.md) has the other half — on the same (x, compact-c) lattice it demonstrates a **stable, mobile breather** (speed 0.15, translating coherently, surviving the Peierls–Nabarro barrier). Its binding comes from the field *value* being a compact phase, so the potential m²(1 − cos φ) is focusing. That is a property of the field, not of a ceiling, and this arena does not have it: its field is a real amplitude.
+**What works.** Make the coupling angle **g·(1 − cos k_c)** — a second difference along the compact direction. It is exactly zero for a field that does not wind, and grows with the winding. A constant rotation is algebraically a *mass* term; one carrying a c-difference is a *derivative* coupling, and that is the whole difference.
 
-So the revival condition is specific rather than vague: **a binding nonlinearity on the field value, combined with saturation as the transfer channel.** Whether that belongs here or in grid-matter is an open question — grid-matter already owns the binding half.
+Measured two independent ways, simulation agreeing with exact Bloch analysis to ~3 × 10⁻⁴ ([work/measurements.md](work/measurements.md) §M5):
+
+| | |
+|---|---|
+| light (unwound) | ω = \|k_x\| **exactly**, at every wavenumber — no gap |
+| wound rest frequency | 0.2968, 0.7375, 1.3329 for n = 1, 2, 3 — a mass tower |
+| dispersion against √(k² + ω₀²) | 0.0%, 0.7%, 0.5%, −0.6% |
+| group velocity | **+0.159** — between 0 and 1 |
+| energy drift | 3.55 × 10⁻¹⁶ |
+
+So a wound mode has inertia and travels below the speed of light, while light itself is untouched. That is the Kaluza–Klein structure, with the separation posit intact for light and relaxed only in proportion to winding.
+
+**What this costs the posit.** Space and a sheet no longer exchange *nothing* below the ceiling; they exchange in proportion to how much the field twists. Light still passes through exactly untouched, so the original framing survives where it was motivated. Saturation keeps its own job: the bulk crossing that makes and unmakes a particle.
+
+**Two things it owes.** Each winding splits into **two** branches, and the lower one is nearly massless (ω = 0.035 at n = 1) — an unexplained light state of the same shape as the unobserved-mode problem in [3-torus.md](../ma-domain/work/3-torus.md). And the coupling is applied in the c-Fourier basis, where its real-space kernel decays fast but is not finitely supported, so strict node-locality is unproven. A travelling *packet* also has not been demonstrated — three attempts failed on seeding, though the dispersion it must obey is now measured.
 
 ## 3a. What this arena cannot settle
 
@@ -93,11 +107,11 @@ Named here rather than discovered later.
 ## 4. Objectives
 
 1. **Make a particle, then get it back.** Drive the collision to overflow; does a standing wave establish on the ring and outlive the drive, and does the ring later saturate and return its energy to the line? Creation and decay from one rule. *(Done for creation; the return channel is seen but not characterised.)*
-2. **Make it move.** ~~Attempted and failed~~ — see §3b. This is the obstruction the project is parked on, and it is where any revival starts.
+2. **Make it move.** The linear half is done (§3b): wound modes have mass and travel sub-luminally, light stays massless. What remains is a travelling *packet*, and the same with saturation switched on.
 3. **Find out how fast it builds.** Whether repeated overflow accumulates, and how that depends on drive strength and ring size. A rate, not a final amount.
 4. **Long-range: reach the observed rates.** Sargent's Q⁵ law, lepton universality and the neutron's 880 s lifetime are what [leakage-rate.md](../ma-domain/work/leakage-rate.md) already recovers from phase space. They are **not reachable from this arena** — it has one ring, no lepton or hadron sheets, no neutrino line, and no quanta — and no correspondence is yet stated between a classical overflow rate and "matrix element × phase space". Carried as the eventual target, not as a near-term test.
 
-**The outcome so far is the second of the two anticipated here:** a bound state that cannot be made to move. That was pre-registered as a failure worth having, and it is the one that occurred.
+**Success** is objective 2 end to end: a bound object that moves, with inertia, under the full rule. The linear sector now delivers the inertia; the nonlinear sector is untested.
 
 **Deferred, and listed so the narrowing is visible.** The originating notes also set out the energy ladder and the durability of ordinary matter, neutron decay, simultaneous creation of an electron and a neutrino, and the stability ordering across particle classes. None has an objective here. They need sheets this arena does not have, and in most cases the quantum of §3a.
 

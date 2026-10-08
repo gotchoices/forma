@@ -3,9 +3,9 @@
 Living document. Tracks what is settled, what is running, and what is queued.
 Project framing: [../README.md](../README.md). Supporting detail: [../Appendix.md](../Appendix.md).
 
-**PARKED (2026-10-07) on a stated obstruction.** The mechanism works for what it was built for — energy crosses on overflow, the crossing is resonant at the predicted circumference, the reverse channel runs unprompted, and the rule conserves energy exactly. **But a particle made here cannot move through space**, and that is measured rather than feared ([measurements.md](measurements.md) §M4). Three attempts to supply motion have failed, each for the same underlying reason, and the reason is the project's own posit: motion of a compact mode needs space and the compact direction joined in one wave operator, which strict separation removes.
+**ACTIVE (2026-10-07).** Briefly parked on the motion obstruction, now resolved. A coupling keyed to the compact winding — angle g·(1 − cos k_c), a second difference along c — gives wound modes a mass tower, relativistic dispersion and sub-luminal group velocity, while leaving light **exactly** massless. Confirmed by simulation and exact Bloch analysis agreeing to ~3 × 10⁻⁴. All numbers: [measurements.md](measurements.md).
 
-Parked rather than closed. The missing piece is specific: **a binding nonlinearity on the field value**, which [grid-matter](../../grid-matter/work/focusing-from-phase.md) already has and which already produces a mobile particle on this lattice. Revival conditions are in [../README.md](../README.md) §6.
+The lesson worth keeping: the park was an inductive overreach. Two coupling rules failed and that was written up as "a particle cannot move". The rule that works was named in the review as an open question and simply had not been tried.
 
 ## Settled
 
@@ -16,9 +16,14 @@ Parked rather than closed. The missing piece is specific: **a binding nonlineari
 - [x] **The reverse channel runs unprompted**, and is what lets a ring shed energy.
 - [x] **Local rule adopted.** The earlier non-local `--one-point` argmax both departed from GRID locality and suppressed the resonance.
 
-## The obstruction
+- [x] **Wound modes have mass and move; light stays massless.** Gradient coupling, confirmed two ways. [measurements.md](measurements.md) §M5.
 
-- [x] **A particle cannot move.** At rest it radiates symmetrically and decays in place (x-centroid 0.0000 at every amplitude); launched with x-momentum it shears apart (x content travels 41 nodes, compact content stays at 0). [measurements.md](measurements.md) §M4.
+## Open
+
+- [ ] **The second branch.** Each winding splits in two and the lower branch is nearly massless (ω = 0.035 at n = 1). Unexplained, and the same shape as the unobserved-mode problem in [3-torus.md](../../ma-domain/work/3-torus.md).
+- [ ] **Strict locality of the coupling.** Applied in the c-Fourier basis; the real-space kernel decays fast but is not finitely supported.
+- [ ] **A travelling packet.** The dispersion is measured but a bound packet has not been propagated — three attempts failed on seeding.
+- [ ] **Saturation with the coupling on.** Everything in §M5 is the linear sector.
 
 ## Retracted
 

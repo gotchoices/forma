@@ -58,8 +58,37 @@ def rotate_groups(f, ang):
     return o
 
 
-def step(f, sat, gain, theta, one_point):
+def gradient_couple(f, g):
+    """Exact unitary x<->c rotation whose angle grows with the compact winding.
+
+    angle(k_c) = g * (1 - cos k_c)
+
+    This is a *derivative* coupling: the angle carries a second difference
+    along c, so it is exactly zero for a field that does not wind, and light
+    passes untouched with no mass gap. A constant rotation (the earlier --theta)
+    is instead a mass term, and it gives the photon a gap equal to the angle.
+
+    Applied in the c-Fourier basis, where the rotation is diagonal. The symbol
+    is real and even, so the field stays real and the map stays orthogonal at
+    any g. The real-space kernel decays quickly but is not finitely supported,
+    so this is effectively rather than strictly node-local --- an open point.
+    """
+    if not g:
+        return f
+    nc = f.shape[2]
+    F = np.fft.fft(f, axis=2)
+    th = g * (1.0 - np.cos(2 * np.pi * np.fft.fftfreq(nc)))
+    c, s = np.cos(th), np.sin(th)
+    G = np.empty_like(F)
+    G[0] = c * F[0] - s * F[2]; G[2] = s * F[0] + c * F[2]
+    G[1] = c * F[1] - s * F[3]; G[3] = s * F[1] + c * F[3]
+    return np.real(np.fft.ifft(G, axis=2))
+
+
+def step(f, sat, gain, theta, one_point, grad=0.0):
     o = f.copy()
+    if grad:
+        o = gradient_couple(o, grad)
     if theta:
         o = rotate_groups(o, np.full(o.shape[1:], theta))
     nfire = nback = 0
@@ -93,7 +122,7 @@ def run(a):
 
     fired = 0
     for t in range(a.steps):
-        f, n = step(f, a.sat, a.gain, a.theta, a.one_point)
+        f, n = step(f, a.sat, a.gain, a.theta, a.one_point, a.grad)
         fired += n
         env = (a.amp * min(1.0, t / 80.0) if a.cw
                else a.amp * np.exp(-((t - 60.0) / a.width) ** 2))
@@ -114,7 +143,13 @@ def main():
     p.add_argument("--steps", type=int, default=900)
     p.add_argument("--sat", type=float, default=0.8, help="ceiling on a group's |T|; 0 disables")
     p.add_argument("--gain", type=float, default=0.5, help="radians of rotation per unit of excess")
-    p.add_argument("--theta", type=float, default=0.0, help="weak always-on x<->c exchange (radians/tick)")
+    p.add_argument("--theta", type=float, default=0.0,
+                   help="CONSTANT x<->c rotation. Gives light a mass gap equal to "
+                        "the angle; kept only to reproduce that negative result.")
+    p.add_argument("--grad", type=float, default=0.0,
+                   help="gradient coupling: angle = grad*(1-cos k_c). Zero for "
+                        "unwound fields, so light stays massless; gives wound "
+                        "modes a rest frequency and sub-luminal motion.")
     p.add_argument("--one-point", action="store_true", default=False,
                    help="non-local: only the largest-|T| c-position per x may fire. "
                         "Off by default -- it is an argmax around the whole ring, "
@@ -134,7 +169,7 @@ def main():
     rng = np.random.default_rng(99)
     probe = rng.standard_normal((4, 40, a.nc))
     e0 = float((probe ** 2).sum())
-    q, _ = step(probe, a.sat, a.gain, a.theta, a.one_point)
+    q, _ = step(probe, a.sat, a.gain, a.theta, a.one_point, a.grad)
     e1 = float((q ** 2).sum())
     print(f"step() energy audit: {e0:.6f} -> {e1:.6f}   drift {abs(e1-e0)/e0:.2e}")
 
