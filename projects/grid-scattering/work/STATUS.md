@@ -1,62 +1,127 @@
 # STATUS — grid-scattering checklist
 
-Living document. Tracks what is settled, what is running, and what is queued.
-Project framing: [../README.md](../README.md). Supporting detail: [../Appendix.md](../Appendix.md).
+Living document. Project framing: [../README.md](../README.md). All numbers with
+provenance: [measurements.md](measurements.md). Supporting detail:
+[../Appendix.md](../Appendix.md).
 
-**ACTIVE (2026-10-07).** Briefly parked on the motion obstruction, now resolved. A coupling keyed to the compact winding — angle g·(1 − cos k_c), a second difference along c — gives wound modes a mass tower, relativistic dispersion and sub-luminal group velocity, while leaving light **exactly** massless. Confirmed by simulation and exact Bloch analysis agreeing to ~3 × 10⁻⁴. All numbers: [measurements.md](measurements.md).
+**PARKED (2026-10-07), with one result and one refutation.** The nonlinear
+channel has a ceiling and carries energy across it, and needs a
+symmetry-breaking seed it cannot supply itself. The **frequency selection the
+project was built around is refuted** — the structure belongs to the simulation
+box, not the ring. **Motion is not this project's result**: the ordinary pooled
+scatter gives it exactly, and the project's own channel destroys it above a
+threshold.
 
-The lesson worth keeping: the park was an inductive overreach. Two coupling rules failed and that was written up as "a particle cannot move". The rule that works was named in the review as an open question and simply had not been tried.
+**The lesson worth keeping.** Three coupling rules were built to keep the
+compact sectors from mixing and to supply motion. No rule was needed for the
+first — a Bloch label does it — and the ordinary pooled scatter does the second
+better than any of the three, while also being local and reciprocal. The whole
+line was solving a problem the project created for itself. The second lesson is
+about error bars: a ~5× effect was called "settled" from three overlapping
+seeds, and eight seeds at a single frequency span a factor of 4.4.
 
 ## Settled
 
 - [x] **Arena is a cylinder** (product lattice, rings joined along x).
-- [x] **Overflow conserves exactly** — rotation between register groups, audited drift ~10⁻¹⁶.
-- [x] **Nothing crosses below the ceiling, with no drive, or with no background** (the last is the equivariance check: the state breaks the symmetry, never the rule).
-- [x] **Crossing is resonant at ~5×** at the predicted circumference, with 3× seed scatter. [measurements.md](measurements.md) §M3.
-- [x] **The reverse channel runs unprompted**, and is what lets a ring shed energy.
-- [x] **Local rule adopted.** The earlier non-local `--one-point` argmax both departed from GRID locality and suppressed the resonance.
-
-- [x] **Wound modes have mass and move; light stays massless.** Gradient coupling, confirmed two ways. [measurements.md](measurements.md) §M5.
+- [x] **Overflow conserves exactly** — orthogonal rotation between register
+      groups, audited drift 1.2 × 10⁻¹⁶. [§M1](measurements.md)
+- [x] **The linear sector moves nothing across, at any amplitude** — exactly
+      zero, and forced rather than posited. [§M2](measurements.md)
+- [x] **The ceiling gates the channel** — nothing fires below it, winding leaves
+      the background floor just above it. [§M4](measurements.md)
+- [x] **The crossing needs a seed the rule cannot supply** — over a million
+      overflow events give precisely zero winding with the background off.
+      Exact, by equivariance. [§M4](measurements.md)
+- [x] **The reverse channel runs unprompted.**
+- [x] **Local rule adopted.** The earlier non-local `--one-point` argmax both
+      departed from GRID locality and suppressed the effect it was credited with.
+- [x] **The pooled scatter is the linear sector.** KK dispersion to 0.1% exact /
+      2.6% for a packet, even in k_x exactly, group velocity exactly zero at
+      rest, massless light, mass tower 1 : 1.99 : 2.96 — node-local and
+      reciprocal. Not a result of this project. [§M3](measurements.md)
 
 ## Open
 
-- [ ] **The second branch.** Each winding splits in two and the lower branch is nearly massless (ω = 0.035 at n = 1). Unexplained, and the same shape as the unobserved-mode problem in [3-torus.md](../../ma-domain/work/3-torus.md).
-- [ ] **Strict locality of the coupling.** Applied in the c-Fourier basis; the real-space kernel decays fast but is not finitely supported.
-- [ ] **A travelling packet.** The dispersion is measured but a bound packet has not been propagated — three attempts failed on seeding.
-- [ ] **Saturation with the coupling on.** Everything in §M5 is the linear sector.
+- [ ] **A reciprocal overflow rule.** The rotation pairs `+x` with `+c` and `−x`
+      with `−c` — the same non-reciprocal pairing that broke the gradient
+      coupling. Harmless in the window (even in k_x to 5 × 10⁻⁵) but it leaks
+      asymmetry in the pinned regime. Coupling each compact register to *both* x
+      registers is a one-line change. **Cheapest open experiment.**
+- [ ] **Why the overflow pins a moving packet.** Above drive amplitude ≈ 0.9 the
+      speed collapses to zero with energy still exactly conserved. Likely a
+      strong amplitude-dependent local scatterer, i.e. self-localisation, but
+      that has not been shown. [§M6](measurements.md)
+- [ ] **Does the ring empty in quanta or continuously?** E1 below.
+- [ ] **How small is "essentially nothing"?** An ideal node never crosses below
+      the ceiling; a real one might leak, from sub-threshold structure or rare
+      background-driven saturation. Whether that residue is required, and
+      whether it is what α measures, is unsettled.
 
 ## Retracted
 
-- [x] ~~Resonance at 50–100×, and 12–58× over detuning~~ → **~5×**, conserving rule, proper energy metric.
-- [x] ~~A moving particle is a soliton bound by saturation~~ → contradicts the project's own ceiling calibration.
-- [x] ~~Weak always-on coupling restores KK motion~~ → a rotation is a mass term, not a derivative coupling; at θ = 0.1 light gains a gap ω = 0.1 at k = 0.
-- [x] ~~Four discrete junction rules~~ → artifact of imposing per-node momentum conservation with the wrong measure.
-- [x] ~~"The fatal items were all added during review rounds"~~ → not accurate. The amplitude-moving rule was in the project's own framing from the start; the error was publishing ratios from it.
+- [x] ~~Resonance at 50–100×~~, ~~12–58% over detuning~~, ~~~5× at the predicted
+      circumference~~ → **refuted entirely.** The frequency structure tracks the
+      x-box, not the ring: changing nc 24→36 moves the tower by a third and
+      leaves the sweep unchanged within error bars. [§M5](measurements.md)
+- [x] ~~Each sheet carries its own threshold, set by its circumference, landing
+      at the particle's own mass scale~~ → built on the above.
+- [x] ~~An intense optical laser makes no pairs because it misses the electron
+      ring's resonance~~ → same.
+- [x] ~~The linear half of the posit (sectors kept apart below the ceiling is a
+      distinguishing choice)~~ → not a choice; forced by Bloch for *any* linear
+      rule. [§M2](measurements.md)
+- [x] ~~Wound modes have mass and move (gradient coupling)~~ → the band is not
+      even in k_x and a mode at rest drifts at +0.107. The reported 0.0–0.7%
+      agreement came from sampling only k_x ∈ [0, 0.10]. [§M7](measurements.md)
+- [x] ~~Weak always-on coupling restores KK motion~~ → a constant rotation is a
+      mass term; at θ = 0.1 light gains a gap ω = 0.1 at k = 0.
+- [x] ~~A moving particle is a soliton bound by saturation~~ → contradicts the
+      project's own ceiling calibration.
+- [x] ~~Four discrete junction rules~~ → artifact of imposing per-node momentum
+      conservation, with the wrong measure, when it is not required at all.
+- [x] ~~"The fatal items were all added during review rounds"~~ → not accurate.
+      The amplitude-moving rule was in the project's own framing from the start.
 
 ## Queued — experiments
 
-Ordered so each can fail cheaply and early. Pre-register the expected answer before running.
+Ordered so each can fail cheaply. Pre-register the expected answer before
+running.
 
-- [ ] **E1 — Does energy stay in the ring?** Inject, stop driving, watch the ring. With the reverse channel on there should be a **lifetime**; measure it, and see whether it depends on how much is stored and on which mode. This is the first thing that could become a decay *rate*, which objective 2 needs.
-- [ ] **E0 — Seed-average the resonance.** The surviving ~1.5× sits on a background that wanders 0.25–0.31. Average over seeds and give it an error bar before it is called a result at all.
-- [ ] **E2a — Implement momentum-carrying overflow.** The excess should carry its x-momentum across; it currently does not. Prerequisite for E2–E4.
-- [ ] **E2 — The angled shot: a standing wave in c with motion in x.** Inject into both groups at the same instant and node, with a controlled ratio — most of the shot going straight, a component making the turn. Does the result translate as **one object**, keeping its winding?
-  *Pre-register:* with saturation on, it should hold together; with it off, the x-part should run ahead at the lattice speed and the c-part stay put, shearing apart within a few ticks. If it holds together with saturation **off**, §4 of junction-geometry.md is wrong and should be rewritten.
-- [ ] **E3 — Does it have inertia?** If E2 gives a bound helix, sweep its x-momentum and winding number and fit the total energy. *Target:* ω² = c²k² + ω₀², the relation that makes compact momentum behave as mass. [grid-matter ch. 4](../../grid-matter/04-matter-waves-and-de-broglie.md) has it to <2% for the pooled scatter, so the comparison is direct.
-- [ ] **E4 — Does mass grow with velocity?** With E3 in hand, push the helix harder and check E² = (pc)² + (mc²)² — relativistic dispersion, with the rest mass set by the winding. **This is special relativity, not general**; gravity stays with [grid-gravity](../../grid-gravity/). A pass here would be the project's strongest result.
-- [ ] **E5 — Re-run the scatter discriminator on the current arena.** The clean per-sheet-vs-pooled A/B was measured on the superseded product grid. Needs repeating with a pooled junction as the control arm.
-- [x] **E6 — Sweep ω at fixed nc.** Done. The resonance is at ω = 2π·m/nc exactly, confirmed at nc = 12, 18, 24, 36 with 12–58× retention over an 8% detuning. The threshold frequency is set by the **ring**, not by the ceiling — which is what lets one amplitude ceiling coexist with a different threshold per sheet.
-- [ ] **E8 — Resonance width.** A resonance gives a peak; Breit–Wheeler is peaked but broad, and the arena's is sharp. Measure the width against the reverse-channel strength and see whether it can be broadened to match.
-- [ ] **E7 — Report energy drift.** Now measurable (background jitter defaults off) but not printed. Amplitude is moved, energy goes as amplitude squared, so the books will not balance; the size and sign of the gap is data.
+- [ ] **E1 — Reciprocal overflow.** Replace the `+x↔+c` / `−x↔−c` pairing with
+      each compact register coupling to both x registers, same ceiling and gain.
+      *Pre-register:* the §M6 pinning should weaken or vanish, and
+      |v(−k) + v(+k)| should stay at the 10⁻⁵ level into the previously pinned
+      regime. If the pinning survives a reciprocal rule, it is self-localisation
+      and the mechanism genuinely obstructs motion.
+- [ ] **E2 — Does energy stay in the ring?** Inject, stop driving, watch the
+      ring. With the reverse channel on there should be a **lifetime**; measure
+      it, and whether it depends on how much is stored and on which mode. This
+      is the first thing that could become a decay *rate*, which objective 1
+      needs to be more than "creation works".
+- [ ] **E3 — The accumulation rate (objective 3).** Does repeated overflow build
+      up, and how does that depend on drive strength and ring size? Needs E2
+      first, since a build-up rate is meaningless without the loss rate.
+- [ ] **E4 — Equipartition control.** The hard-driven runs thermalise to roughly
+      half the energy wound, which is what a classical nonlinear lattice does
+      and what §5 of the README says cannot yet be interpreted. Measure the
+      approach to it so that any future selection claim can be stated as a
+      departure from equipartition rather than as a raw fraction.
+- [ ] **E5 — Pooled against grouped, on the current arena.** The discriminator
+      that would show whether grouping buys anything observable at all. It was
+      last measured on the superseded arena, and §M2 has since removed its
+      original motivation, so it is now a check on whether the project has any
+      linear-sector content left.
+- [ ] **E6 — Resonance width, if E-anything revives frequency selection.** A
+      resonance gives a peak, not a step; Breit–Wheeler is peaked but broad.
+      Blocked on a geometry whose box modes are out of range of its ring modes
+      (README §7.2).
 
 ## Queued — writing
 
-- [ ] Fold junction-geometry.md's result into README §2: grouping is no longer the mechanism, junction geometry plus nonlinearity is.
-- [ ] Retire [Appendix §H](../Appendix.md) (the per-sheet node's provenance), superseded by junction-geometry.md.
-- [ ] Update the index entry in [../../README.md](../../README.md) once §2 changes.
-
-## Open questions
-
-- **How small is "essentially nothing"?** The ideal node never crosses below the ceiling. A real one might leak — from sub-threshold structure, or from rare background-driven saturation. Whether that residue is required, and whether it is what α measures, is unsettled.
-- **Does the ring empty in quanta or continuously?** E1 should show which.
-- **Is the arena below the minimum?** thoughts.md defines a group as a *sheet*, meaning a plane. The 1D × 1D reduction makes each group a single line. Deliberate, and fine for the crossing question, but a 2D compact sheet will be needed before anything about sheet-internal structure can be said.
+- [ ] Update the index entry in [../../README.md](../../README.md) to match the
+      parked verdict. *(Done 2026-10-07; re-check if the verdict moves.)*
+- [ ] Retire [Appendix §H](../Appendix.md) (the per-sheet node's provenance) —
+      superseded by [junction-geometry.md](junction-geometry.md), which has
+      itself now been cut back to what survives.
+- [ ] [first-run.md](first-run.md) is a withdrawn round kept for the audit
+      trail. Leave it, but it should not be cited for any number.

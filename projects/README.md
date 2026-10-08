@@ -122,14 +122,22 @@ Each project's README should:
   **Status: active; work-file-driven; a chapter arc is drafted in its README.**
 - [grid-scattering/](grid-scattering/) — **What sets the rate at which energy
   crosses between GRID's compact sectors, and into space?** Tests saturation and
-  overflow as the mechanism: below a ceiling, space and a compact sheet exchange
-  little or nothing; above it, overflow carries energy across in bulk, and a
-  resonance condition decides what forms. The ceiling is not free — ordinary
-  light must pass below it, which makes the Schwinger limit a prediction rather
-  than an input. On a cylinder arena with an exactly conserving rule, transfer
-  and circulation hold up and resonance survives weakly (~1.5×); an earlier
-  50–100× was a dissipation artifact and is withdrawn. Fills the gap
-  [ma-domain](ma-domain/) names in `work/leakage-rate.md`. *Not a revival of
-  `grid-saturation`: that concerned binding, this concerns transfer.*
-  **Status: rebuilt after review; objective 2 (does a particle move?) is next.**
-  particle move?) is next.**
+  overflow as the mechanism: above a ceiling, overflow carries energy across in
+  bulk between a node's space group and its sheet group. The ceiling is not free
+  — ordinary light must pass below it, which makes the Schwinger limit a
+  prediction rather than an input. Fills the gap [ma-domain](ma-domain/) names in
+  `work/leakage-rate.md`. *Not a revival of `grid-saturation`: that concerned
+  binding, this concerns transfer.*
+  **Status: parked — one result, one refutation.** The channel is exactly
+  energy-conserving, is gated by the ceiling, and needs a symmetry-breaking seed
+  it provably cannot supply itself (a symmetric state under a symmetric rule
+  stays symmetric: a million overflow events give zero winding with the
+  background off). **Refuted:** the frequency selection the project was built
+  around — the structure tracks the simulation box, not the ring, so the ~5×,
+  12–58% and 50–100× figures and the per-sheet threshold inference are all
+  withdrawn. **Motion is not this project's result:** the ordinary pooled scatter
+  supplies Kaluza–Klein dispersion exactly (even in k_x, zero group velocity at
+  rest, massless light) while being local and reciprocal, three bespoke
+  couplings built before it was tried all failed, and the project's own channel
+  *pins* a moving packet above a threshold. Revival is cheapest at a reciprocal
+  overflow rule.

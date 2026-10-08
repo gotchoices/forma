@@ -16,10 +16,19 @@
 > symmetry along c whose conserved quantity is the winding, and left ring nodes
 > with no x-edges, so nothing made there could travel.
 >
-> Re-measured on the cylinder with an exactly conserving rotation: transfer and
-> one-point circulation hold up; **resonance survives at about 1.5×, not
-> 50–100×**. See [../README.md](../README.md) §3. The script this file refers to
-> has been replaced by [../scripts/cylinder.py](../scripts/cylinder.py).
+> Re-measured on the cylinder with an exactly conserving rotation: transfer
+> holds up, but **resonance does not survive at all.** A later sweep with seed
+> error bars showed the frequency structure tracks the simulation **box**, not
+> the ring — changing the ring size moves every mass-tower frequency by a third
+> and leaves the sweep unchanged. So the intermediate "about 1.5×" and "~5×"
+> figures are withdrawn too, and this file's Results 2, 3 and 4 have no
+> surviving content. See [measurements.md](measurements.md) §M5. The script this
+> file refers to has been replaced by
+> [../scripts/cylinder.py](../scripts/cylinder.py).
+>
+> The non-local `--one-point` rule used for the circulation figure here is also
+> withdrawn: it was an argmax around the whole ring, which violates locality,
+> and it *suppressed* the effect it was credited with.
 >
 > Kept for the record, and because the two bugs at the bottom are still worth
 > knowing.
