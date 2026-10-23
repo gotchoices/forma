@@ -66,6 +66,13 @@ Each project's README should:
   meson spectrum, Yukawa mediator for strong force, corrugated-
   torus geometry candidate. **Status: active; work-file-driven;
   initial computational results pending.**
+- [sheet-neutrino/](sheet-neutrino/) — What compact structure can
+  host the neutrino: massive but very light, free of any detectable
+  charge distribution, spin-½ as seen from ordinary space, and
+  oscillating between three mass states? Compares 1D rings, the 2D
+  torus (Family A), and the Klein bottle without committing to any.
+  **Status: framed; reference files and first spectrum checks in
+  place.**
 - [grid-quantization/](grid-quantization/) — A GRID-only account of
   why light is quantized, and whether h and α can be *derived* (not
   assumed) from lattice recirculation loops. Tests the
