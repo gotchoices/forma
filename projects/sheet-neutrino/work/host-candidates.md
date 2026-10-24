@@ -137,6 +137,15 @@ Three fermion-class states come most naturally from **six lobes with the mirror 
 
 Open: a selection rule for the 1–4 extra stationary tracks, ν₃'s spin (its one-lap track returns unchanged each lap), a wave-localization check, and fewer parameters (the minimal fit, a plain tilted figure-8, uses three shape numbers for one ratio).
 
+### G. Lepton-domain circle
+
+Developed in [lepton-domain-circle.md](lepton-domain-circle.md) (draft for review). The neutrino lives on a grand circle of three segments, one per charged lepton. Each segment is a Klein-glued sheet pairing a large neutrino dimension with a small dimension **shared with that lepton's electron sheet**, which forms a lepton domain within [ma-domain](../../ma-domain/README.md)'s architecture.
+- **Light mode:** travels only along the large direction. The flip reverses its polarization along the small dimension, so each segment inverts the wave; three segments give (−1)³ = −1 per circuit, which is spin-½-like and not 3/2.
+- **Flavor and mass:** flavor = segment, mass = whole-circle mode.
+- **Spectrum:** 3-fold symmetry gives an exactly degenerate lowest pair plus a separated state. A few percent difference between the segments (the generations) splits the pair. The measured ratio is reached for any junction strength, with Σm ≈ 107–192 meV.
+- **Commitments:** sheets are glued along shared circles, not multiplied; energy in the small dimension becomes an electron at the junction; Compton size and gravitational size are distinct.
+- **Open:** the glued-sheet reading for ma-domain; where flavor coupling happens (it decides whether the k = 3/2 state can be ν₃); the junction itself; lepton number vs. Majorana-like behavior.
+
 ### F. Pool (not yet examined)
 
 - A 1D line coupled to the electron or proton sheet rather than standing alone
@@ -156,6 +165,7 @@ Open: a selection rule for the 1–4 extra stationary tracks, ν₃'s spin (its 
 | D″. Klein + lobe-peaked bias (T5) | fits, 2 parameters | f ≲ 0.029, r² ≈ 22f | ≈ 129–150 | (3/2 − f) states above ν₃ | forced by topology | antiperiodic, gap open |
 | E2. Lobed Klein (channels) | not computed | shape (± phase) | — | unused lobe states | forced by topology | mirror-antisymmetric lobe states |
 | E3. Modulated Klein tube (tracks) | fits (minimal: tilted figure-8, 3 shape numbers) | two-lap track length split ≈ 5% | 108–114 | 1 extra track (minimal fit) to 4 | per track: Q = −Q or 2π − 2π | ν₁, ν₂ inverted per lap; ν₃ not |
+| G. Lepton-domain circle | fits (junction g, asymmetry d) | segment asymmetry 1–17% | 107–192 | 4th state above ν₃ | no small-dim winding; Klein flip | polarization flip, (−1)³ per circuit |
 | 1D ring, ν₃ = merged ±2 (T3) | **excluded**: pair splitting 1.5×10⁻⁴ eV² vs bound 1.2×10⁻⁵ | f ≈ 0.023 | 115 | ±2 partner | as A | as A/B |
 
 All fitting hosts use one tuned small parameter to fit one ratio. That is a fit, not a prediction. They differ in what they predict beyond it: Σm, the presence of extra light states, and Majorana versus Dirac. Those are the comparison points.

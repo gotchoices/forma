@@ -35,8 +35,10 @@ Background distilled from the discussion that framed this project:
 |---|---|
 | [work/host-candidates.md](work/host-candidates.md) | The candidate hosts side by side (1D rings, torus, Klein bottle variants, lobed Klein), with spectrum checks |
 | [work/klein-tracks.md](work/klein-tracks.md) | ν₁, ν₂, ν₃ as closed tracks on a modulated Klein tube (the sheet-proton mechanism transplanted): geometry, structural results, fits |
+| [work/lepton-domain-circle.md](work/lepton-domain-circle.md) | Host G (draft): a grand neutrino circle of three Klein-glued segments, each sharing a small dimension with one charged lepton's sheet |
 | [work/mechanisms.md](work/mechanisms.md) | Catalog of candidate mechanisms by role: neutrality, the small ν₁/ν₂ split, ν₃ structure, spin ½, matter/antimatter, mixing; plus predictions and tests |
 | [scripts/spectra.py](scripts/spectra.py) | Splitting ratio and absolute masses for ring, torus, and Klein-bottle hosts; merged-ν₃, shaped-loop, and lobe-bias checks |
+| [scripts/lepton_circle.py](scripts/lepton_circle.py) | Modes of the three-segment lepton-domain circle; segment asymmetry needed for the measured ratio |
 | [scripts/klein_tracks.py](scripts/klein_tracks.py) | Closed tracks and track-length masses on a modulated Klein tube; shape search for the measured ratio |
 
 ## Phases
