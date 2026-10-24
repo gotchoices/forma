@@ -15,8 +15,9 @@ The electron and proton each live on a 2D compact sheet in MaSt. The neutrino ha
 1. **The host is open.** A 1D compact line, a 2D torus, a Klein bottle, and other options are all live candidates. None is assumed.
 2. **External behavior is fixed by data; internal mechanism is not.** The neutrino must *behave* as spin-½ when viewed from ordinary space: it carries away half-integer angular momentum, has the spin-½ rotation behavior, and obeys Fermi statistics. *How* a host stores that angular momentum internally may look nothing like spin-½ on a 2D sheet. See [reference/experimental-constraints.md §2](reference/experimental-constraints.md#2-spin-what-is-measured-and-what-is-inferred).
 3. **Intrinsic before extrinsic.** Properties that something living on the host can measure are preferred over properties that depend on how the host is drawn in a larger space. An extrinsic feature counts only if something physically couples to it. See [reference/geometry-background.md](reference/geometry-background.md).
-4. **Fits are not predictions.** A host that reproduces one ratio with one tuned parameter has fit it. Predictions are what it says about quantities it was not tuned to: absolute masses, the sum Σm, mixing angles, and whether the neutrino is Majorana.
-5. **Negative results are recorded as "not yet."** A blocked host is recorded with the specific form that failed, and stays open to revival.
+4. **Data, not prior fits, is the target.** Hosts must agree with measurements: the mass splittings, the absolute mass bounds, the count of light states, and the neutrality limits. Earlier solutions such as R49's Family A are one candidate each, not constraints.
+5. **Fits are not predictions.** A host that reproduces one ratio with one tuned parameter has fit it. Predictions are what it says about quantities it was not tuned to: absolute masses, the sum Σm, mixing angles, and whether the neutrino is Majorana.
+6. **Negative results are recorded as "not yet."** A blocked host is recorded with the specific form that failed, and stays open to revival.
 
 ## Reference files
 
@@ -47,6 +48,14 @@ Background distilled from the discussion that framed this project:
 - Majorana or Dirac: what each host predicts, and the link to neutrinoless double-beta decay
 - Selection: why three modes are "loud" and the rest sterile (R61's open question 3)
 - Absolute mass scale and the cosmological bound on Σm
+
+## Chapter arc
+
+Only the introductory chapters are fixed. Later chapters will be decided as the work develops.
+
+1. [**What any host must do**](01-host-requirements.md): the requirements set by measurement, stated without reference to any particular host.
+2. **The twisted ring**: modes on a closed loop, the effect of a twist in its closure, and how one small parameter produces the observed splitting pattern.
+3. *Open.*
 
 ## What success looks like
 
