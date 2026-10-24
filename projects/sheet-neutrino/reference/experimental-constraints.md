@@ -32,7 +32,7 @@ Pion decay, π⁺ → μ⁺ + ν (spin 0 → spin ½ + ν), gives the same concl
 |---|---|
 | Goldhaber et al. (1958) | Direct measurement of neutrino helicity (the spin's projection along its direction of motion): left-handed, consistent with −½ |
 | LEP: decays of the Z boson to unseen particles | Counts N_ν = 2.984 ± 0.008 light neutrino species, assuming spin-½ couplings. Spin 3/2 would change the rate. |
-| Cosmology (cosmic microwave background, Big Bang nucleosynthesis) | Effective number of light species N_eff ≈ 3.0, assuming fermion weighting and two spin states per neutrino. Spin 3/2 carries more states and would shift the count. |
+| Cosmology (cosmic microwave background, Big Bang nucleosynthesis) | N_eff ≈ 3.0 light species. *Model-dependent context, not used as a requirement:* derived within a cosmological model. |
 | Weak-interaction spectra | Beta-decay electron spectra and muon-decay distributions match spin-½ predictions to high precision |
 
 There is no direct "Stern–Gerlach" measurement, which would deflect particles by their magnetic moment, because no neutrino magnetic moment has been detected (§3).
@@ -46,7 +46,7 @@ Conservation dictates what the neutrino must carry and how it must behave as see
 **Required externally, whatever the host:**
 1. **Carry half-integer angular momentum away.** The neutrino leaves the decay and travels macroscopic distances, so the electron and proton sheets cannot account for the missing angular momentum. It moves with the neutrino.
 2. **Transform as spin ½.** Under a 360° rotation in ordinary space, the state changes sign; a 720° rotation restores it. This follows mathematically from half-integer angular momentum. It was measured directly for neutrons by neutron interferometry (Rauch et al., 1975), but has not been measured for neutrinos.
-3. **Obey Fermi statistics.** No two identical neutrinos can occupy the same state. In relativistic quantum theory, the spin-statistics theorem ties this to half-integer spin. Cosmological counting (the factor 7/8 in N_eff) is sensitive to it.
+3. **Exclusion (Fermi statistics) follows.** Swapping two identical particles is geometrically equivalent to a 360° relative rotation, so the sign change in item 2 implies that two identical neutrinos cannot share a state (the spin-statistics theorem). Not directly tested for neutrinos; listed as a consequence, not a separate requirement.
 4. **Show the observed helicity.** Neutrinos that interact are left-handed, and antineutrinos right-handed.
 
 **Not required:** that the internal storage looks like spin-½ on a 2D sheet, for example spin from a 1:2 winding ratio as in the WvM model (see [R25](../../../studies/R25-neutrino-spin/README.md)). A 1D host, or a host whose angular momentum is handed off from the electron or proton sheet during the decay, may realize items 1–4 by a different internal route.
@@ -74,12 +74,12 @@ A particle can be neutral overall but have internal regions of + and − charge,
 | Ratio Δm²₃₁/Δm²₂₁ | ≈ 33.6 |
 | Ordering | Normal (ν₃ heaviest) mildly preferred over inverted; not settled |
 | Direct mass limit (KATRIN, tritium beta decay) | m_ν < 0.45 eV |
-| Sum Σm from cosmology | ≲ 0.07 eV (DESI + CMB within the standard cosmological model, 2024–25); looser in extended models |
+| Sum Σm from cosmology | ≲ 0.07 eV within the standard cosmological model (DESI + CMB, 2024–25). *Model-dependent context, not a requirement.* |
 | Minimum Σm allowed by the splittings | ≈ 0.06 eV (normal ordering, m₁ = 0) |
 
 **The pattern is a near-degenerate pair plus a distant third.** Δm²₂₁ is about 1/34 of Δm²₃₁. A host must produce a small parameter that splits a pair slightly. This is a structural requirement, not just a number to fit.
 
-**The cosmological window is narrow.** Between the oscillation minimum (≈ 0.06 eV) and the cosmological bound (≈ 0.07 eV) there is little room. Hosts that predict Σm ≈ 0.1 eV or more are in tension with current standard-model cosmology, though not with direct measurements.
+**Cosmology as context.** If the standard cosmological model holds, the window between the oscillation minimum (≈ 0.06 eV) and its bound (≈ 0.07 eV) is narrow. Because that bound is derived within a model, this project records hosts' Σm against it for comparison but does not treat it as a requirement.
 
 ## 5. Oscillation and mixing
 

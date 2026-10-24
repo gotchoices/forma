@@ -6,7 +6,7 @@ Working file. It compares candidate neutrino hosts against the requirements in [
 
 1. **Spectrum:** three fermion-class mass states with Δm²₃₁/Δm²₂₁ ≈ 33.6. That means a near-degenerate pair plus a distant third.
 2. **Neutrality:** no charge density anywhere, not just zero net charge.
-3. **Half-integer angular momentum,** behaving as spin ½ from outside (rotation sign change, Fermi statistics, observed helicity). The internal mechanism is open.
+3. **Half-integer angular momentum,** behaving as spin ½ relative to space while traveling alone (rotation sign change, from which exclusion follows; observed helicity). The internal mechanism is open.
 4. **Oscillation:** the produced flavor states must be mixtures of the three mass states. Ideally the host predicts the mixing angles.
 5. **No extra light states that couple to weak interactions,** since the Z-decay width counts three.
 
@@ -37,7 +37,7 @@ For a 1D ring with any twist δ, taking three consecutive modes n = 0, 1, 2 (mas
 
 ### A. 1D ring, near-periodic (δ ≈ 0.022)
 
-- **Spectrum:** fits, with modes +1, −1, +2. Predicts m = 28.6, 29.9, 57.9 meV and Σm = 116 meV, in tension with recent cosmological bounds (~70 meV, model-dependent). Normal ordering.
+- **Spectrum:** fits, with modes +1, −1, +2. Predicts m = 28.6, 29.9, 57.9 meV and Σm = 116 meV, above the cosmology-model bound of ~70 meV (context only, see [constraints §4](../reference/experimental-constraints.md#4-masses)). Normal ordering.
 - **Problem:** the n = 0 mode, with mass ∝ δ ≈ 0.022, lies *below* the pair: a fourth, nearly massless state. It must be excluded by a rule or be sterile.
 - **Neutrality:** a line has no surface, so there is no geodesic curvature and no G1 charge density. Whether a 1D winding carries charge at all is open, because MaSt's charge rule (R48: tube winding n₁ = ±1) is stated for a 2D sheet with distinct tube and ring directions.
 - **Spin:** no internal route yet. Candidate external route: angular momentum handed off from the electron or proton sheet during beta decay (README pool).
@@ -45,7 +45,7 @@ For a 1D ring with any twist δ, taking three consecutive modes n = 0, 1, 2 (mas
 
 ### B. 1D ring, near-antiperiodic (δ = ½ − e, e ≈ 0.029)
 
-- **Spectrum:** fits, with modes n = 0, −1, +1, giving masses ∝ ½ − e, ½ + e, 3/2 − e. Predicts m = 17.0, 19.1, 53.1 meV and Σm = 89 meV, closer to the cosmological bound but still above it. Normal ordering.
+- **Spectrum:** fits, with modes n = 0, −1, +1, giving masses ∝ ½ − e, ½ + e, 3/2 − e. Predicts m = 17.0, 19.1, 53.1 meV and Σm = 89 meV, closer to the cosmology-model bound but still above it (context only). Normal ordering.
 - **Better than A:** the three chosen states are exactly the three lowest. There is no stray lighter mode.
 - **Spin:** the closure is almost antiperiodic, which is the ring-oscillator / spin-½ sign flip (geometry-background §6). The gap between an internal sign flip and spin under spatial rotation remains open.
 - **New question:** why is the antiperiodicity broken by a small e ≈ 0.029? The pair ν₁, ν₂ would be exactly degenerate at e = 0.

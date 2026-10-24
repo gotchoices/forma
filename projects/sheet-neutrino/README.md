@@ -47,7 +47,7 @@ Background distilled from the discussion that framed this project:
 - Mixing angles: whether any host predicts the three observed mixing angles
 - Majorana or Dirac: what each host predicts, and the link to neutrinoless double-beta decay
 - Selection: why three modes are "loud" and the rest sterile (R61's open question 3)
-- Absolute mass scale and the cosmological bound on Σm
+- Absolute mass scale
 
 ## Chapter arc
 

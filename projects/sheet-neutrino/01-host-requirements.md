@@ -57,10 +57,11 @@ Rotate a spin-½ particle by a full 360° and its quantum state does not return 
 
 *Signals analogy:* a ring oscillator, a loop of an odd number of inverters. A signal sent once around the loop comes back inverted, and only after two trips is it restored.
 
-### Fermi statistics
+### Exclusion follows from the sign change
 
-Particles with half-integer spin are **fermions**: no two identical fermions can occupy the same state (the **Pauli exclusion principle**). Particles with whole-number spin are **bosons** and have no such restriction. In relativistic quantum theory, the **spin-statistics theorem** ties the two together: half-integer spin means fermion. Neutrino statistics leave a measurable imprint on the early universe, which is weighted differently for fermions than for bosons (§7).
-<!--EC I'm not sure what this paragraph is good for.  I don't want to defer to rules (like Pauli) unless we have a physical _reason_ behind the rule (like conservation).  And I don't want to defer to theories (big bang, early universe) as though they are fundamental/given. -->
+For electrons, a further behavior is well established: no two electrons can occupy the same state. This is the **Pauli exclusion principle**, and it is what gives atoms their shell structure. It is not an independent rule. Swapping two identical particles is geometrically equivalent to rotating one of them by 360° relative to the other, so a particle that changes sign under a 360° rotation also changes sign when two copies are swapped, and a state with two copies in the same place cancels itself. (The formal statement is the **spin-statistics theorem**.)
+
+For neutrinos, exclusion has not been tested directly in any way that does not lean on theory. It is listed here as a consequence of the sign change, not as a separate requirement.
 
 ### Helicity
 
@@ -70,20 +71,22 @@ Particles with half-integer spin are **fermions**: no two identical fermions can
 
 Pauli's argument permits ½, 3/2, 5/2, … Several independent measurements single out ½:
 - the helicity measurement above;
-- the rate at which Z bosons decay to unseen particles, which counts the light neutrino species and assumes spin-½ couplings;
-- the early-universe count of light particles (§7);
+- the rate at which Z bosons decay to unseen particles (§7), which is interpreted assuming spin-½ couplings;
 - the precise shapes of beta-decay and muon-decay energy spectra.
 
 None of these is a direct spin measurement. No neutrino magnetic moment has ever been detected, so the standard way of measuring spin, deflection in a magnetic field gradient, is unavailable. The evidence is indirect but consistent, and spin ½ is the only value that fits all of it.
 
-<!--EC seems like _some_ aspect of the 1/2 spin could be contained in the way a (possibly) 1D neutrino host is disposed in relation to a hadron sheet, for example.  In a 1D neutrino, it might not need to full contain (internally) the 1/2 aspect of the information but rather it might require the context of the _relationship_ between the neutrino host and the electron/proton host sheets. 
+### What "from outside" means
 
-Does "from the outside" mean "from the perspective of the electron and proton/neutron?
--->
+"From outside" means as measured by apparatus in ordinary 3D space: rotating the experiment, comparing the spin direction with the direction of travel, and detecting the neutrino in a target far from where it was made. In MaSt terms it means relative to space (S), not relative to the neutrino's own host.
+
+That leaves room for spin ½ to reside in a *relationship* rather than wholly inside the host. There is, however, a limit on which relationships qualify. A neutrino made in the Sun reaches a detector on Earth, eight light-minutes away, still showing left-handed helicity. The spin-½ character cannot depend on the neutrino's continued relation to the particular electron or proton sheets it was created with, because those are left behind.
+
+The relationship that does travel with the neutrino is its relationship to space itself. A 1D host whose orientation within S carries part of the half-integer character, so that a 360° rotation in S does not return the host to an equivalent configuration, would satisfy the requirement without holding it all internally. The electron and proton sheets of the source and of the detector matter at the moments of creation and detection, where angular momentum is handed over, but not in between.
 
 ### What this requires of a host
 
-From outside, the host must show the 360° sign change, fermion statistics, and the observed helicity. Again, this constrains behavior as seen from ordinary space, not the internal mechanism.
+From outside, the host, together with its relationship to space, must show the 360° sign change and the observed helicity, and must keep showing them while it travels alone. This constrains behavior as seen from ordinary space, not the internal mechanism.
 
 ## §5. Requirement 3: neutral everywhere, not just in total
 
@@ -109,11 +112,21 @@ For the neutrino, neither quantity has been detected:
 
 A particle's natural internal size is of order its **Compton wavelength**, λ = h/(mc), where h = 2πℏ is Planck's constant. Lighter particles have larger Compton wavelengths. For a neutrino mass of 0.05 eV, λ is about 25 μm, tens of micrometers. If structure on that scale contained separated + and − regions like the neutron's, the charge radius and magnetic moment would be enormous, not merely detectable.
 
+This reasoning assumes the host is about as large as the Compton wavelength, as MaSt's sheets are. A host much smaller than its Compton wavelength would loosen the constraint, though even then a unit charge separation would have to stay below about 10⁻³ fm.
+
+### A test case: nested tori of opposite charge
+
+Consider two tori, one inside the other, one carrying charge +e and the other −e. Seen from far away, the total is zero. Is the combination neutral enough?
+
+A probe that scatters off the particle, such as an electron bouncing off it, does not see "regions." It sees how the charge is distributed in radius, which is exactly what ⟨r²⟩ measures. For charge +e at radius r₁ and −e at radius r₂, ⟨r²⟩ = r₁² − r₂². With r ≈ 25 μm, the limit of 10⁻³² cm² requires the two radii to agree to within about 2×10⁻³² m, roughly 10¹⁹ times smaller than the tori themselves.
+
+Circulation makes it harder still. If the + charge circulates one way and the − charge the other, the two currents point the same way and their magnetic moments add. They cancel only if both charges circulate in the same sense, at the same radius.
+
+So nested tori work only in the limit where the two coincide: + and − occupying the same place and moving together. That is not a loophole in the requirement but a way of meeting it, since such a structure has zero charge density at every point.
+
 ### What this requires of a host
 
-Neutrality by cancellation of separated charges is effectively ruled out. The host must generate no charge density anywhere, or cancel it at every point, not just in total.
-
-<!--EC Have we jumped to conclusions here, or been too dogmatic?  For example, consider two tori, one inside the other, where one has + charge and the other has -.  Would this structure act like a neutrino because there are no localized + or - regions measurable? -->
+Neutrality by cancellation between **separated** charges is ruled out to extraordinary precision. The host must generate no charge density anywhere, or carry + and − contributions that coincide at every point, in position and in motion.
 
 ## §6. Requirement 4: the mass spectrum
 
@@ -153,28 +166,27 @@ The ratio of about 34 has a structural meaning: **two of the mass states are nea
 The masses themselves are bounded from both sides:
 - **From below:** the splittings require at least one mass to be ≳ 50 meV. With normal ordering and the lightest mass zero, the sum is Σm ≈ 0 + 8.7 + 50 ≈ 59 meV.
 - **From above, directly:** the KATRIN experiment, which measures the endpoint of tritium beta decay, limits the mass to below 0.45 eV.
-- **From above, through cosmology:** neutrino mass slows the growth of large-scale structure in the universe. Recent analyses that combine galaxy surveys (DESI) with the cosmic microwave background limit Σm to below about 70 meV within the standard cosmological model. This bound depends on that model, and it loosens in extended models.
-
-Between about 59 and 70 meV, the window is narrow if the standard cosmological model holds.
+Cosmological analyses also quote a much tighter limit, Σm below about 70 meV. That number is derived *within* a cosmological model (the expansion history of the universe and the growth of structure in it), not measured independently of one. It is recorded here as context, not used as a requirement.
 
 ### What this requires of a host
 
-Three fermion-class states whose squared-mass differences match the table, arranged as a near-degenerate pair plus a separated third, with absolute masses inside the window above.
+Three states whose squared-mass differences match the table, arranged as a near-degenerate pair plus a separated third, with Σm of at least about 59 meV and masses below the direct limit.
 
-## §7. Requirement 5: exactly three light neutrinos that interact
+## §7. Requirement 5: exactly three neutrinos that interact
 
-Two independent counts agree that there are three light neutrino species that take part in weak interactions:
+### The count
 
-- **Z-boson decays.** The Z boson, a carrier of the weak force, can decay into any light neutrino-antineutrino pair. Measuring how often it decays into unseen particles at the LEP collider gave N_ν = 2.984 ± 0.008.
-- **The early universe.** The expansion rate of the early universe depends on how many light particles were present. Fits to the cosmic microwave background and to the primordial abundances of light elements give N_eff ≈ 3.0. This count weights fermions by a factor of 7/8 relative to bosons, so it is also sensitive to neutrinos being fermions.
-<!--EC I'm hesitant to bring big-bang theory into what we're doing here since it is purely theoretical.  I think Forma views bosons as spurious ringing on the manifold (and not a particle in the physicalist view).
+The Standard Model has three neutrino flavors, one for each charged lepton. That number was built into the model to match observation; the model does not explain it. The measurement that checks it comes from the **Z boson**, a carrier of the weak force with a mass of about 91 GeV.
 
-What do we mean by "light neutrino" as opposed to just "neutrino"?  I think the standard model just recognizes 3 neutrino flavors.  Are there non-light neutrinos?
- -->
+A Z boson can decay into any neutrino-antineutrino pair whose combined mass is less than its own, so any neutrino lighter than about 45 GeV (half the Z mass). Those decays are invisible to detectors, but they shorten the Z's lifetime and so broaden its resonance peak. Measuring the shape of that peak at the LEP collider gave the number of such neutrino types as N_ν = 2.984 ± 0.008. Converting the peak width into a count uses the weak-interaction theory's prediction of how much each neutrino type contributes, so the result is a measurement interpreted through that theory.
+
+### "Light" and heavy neutrinos
+
+"Light" here means lighter than about 45 GeV, the reach of the Z-decay count. All three known neutrinos are lighter than that by more than ten orders of magnitude. Heavier neutral particles that behave like neutrinos ("heavy neutral leptons") are proposed in some theories and searched for, but none has been found. So in practice "light neutrino" and "neutrino" refer to the same three, and the qualifier only marks the limit of what the Z count can see.
 
 ### What this requires of a host
 
-A host may have more light modes than three, but any extra modes must not couple to the weak interaction in the ordinary way. Such modes are called **sterile**.
+A host may have more modes than three, but any extra modes below about 45 GeV must not couple to the Z in the ordinary way. Such non-coupling modes are called **sterile**.
 
 ## §8. Not yet requirements
 
@@ -189,10 +201,10 @@ Three properties are measured or measurable, but no theory currently predicts th
 | # | Requirement | Firmness | Constrains |
 |---|---|---|---|
 | 1 | Carry half-integer angular momentum away | essentially certain (conservation) | what the host carries, not how |
-| 2 | Behave as spin ½ from outside: sign change, Fermi statistics, helicity | very strong, indirect | external behavior, not internal mechanism |
-| 3 | No charge density anywhere | strong (limits ~10⁵ below the neutron's) | rules out neutrality by cancellation |
-| 4 | Squared-mass differences 7.5×10⁻⁵ and 2.5×10⁻³ eV²: a near-degenerate pair plus a distant third, Σm in a narrow window | measured; upper Σm bound model-dependent | the host's mode spectrum |
-| 5 | Exactly three light, weakly interacting states | measured | extra light modes must be sterile |
+| 2 | Behave as spin ½ relative to space, while traveling alone: 360° sign change (exclusion follows), helicity | very strong, indirect | external behavior; may reside partly in the host's relation to space |
+| 3 | No charge density anywhere; any + and − must coincide in position and motion | strong (limits ~10⁵ below the neutron's) | rules out cancellation between separated charges |
+| 4 | Squared-mass differences 7.5×10⁻⁵ and 2.5×10⁻³ eV²: a near-degenerate pair plus a distant third; Σm ≳ 59 meV; below the direct limit | measured | the host's mode spectrum |
+| 5 | Exactly three types lighter than ~45 GeV that couple to the Z | measured, interpreted through weak-interaction theory | extra modes must be sterile |
 | — | Mixing angles, Majorana or Dirac, lightest mass | measured or open; no theory predicts them | opportunities, not requirements |
 
 The chapter list is in the [README](README.md#chapter-arc).
