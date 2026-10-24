@@ -8,8 +8,9 @@ Hosts covered (all flat; mass² in units of (1/L)², L the loop length):
   ring    1D loop with twisted closure ψ(x+L) = e^{2πiδ} ψ(x).
           Modes m ∝ |n + δ|.  δ = 0 periodic, δ = ½ antiperiodic.
   torus   R49/R61 formula µ² = (n_r·ε)² + (n_t − n_r·s)²  (Family A check).
-  klein   Flat rectangular Klein bottle, odd (half-integer ring) family:
-          µ² = (m + ½)² + (n·r)²,  n ≥ 1, r = L_ring / L_tube.
+  klein   Flat rectangular Klein bottle, odd (half-integer ring) family,
+          optionally with a Wilson-loop flux f around the ring:
+          µ² = (m + ½ + f)² + (n·r)²,  n ≥ 1, r = L_ring / L_tube.
 
 Inputs: command-line options (see --help).  Outputs: printed tables only.
 """
@@ -46,6 +47,8 @@ def main():
     p.add_argument("--eps", type=float, nargs="+", default=[2.0, 5.0],
                    help="torus aspect ratios to check")
     p.add_argument("--nmax", type=int, default=40, help="mode cutoff for sweeps")
+    p.add_argument("--klein-r", type=float, nargs="+", default=[0.82, 1.0, 2.0, 5.0],
+                   help="tube/ring ratios for the Klein-plus-flux check")
     a = p.parse_args()
 
     print("== Torus (R49/R61 formula), Family A modes (1,1)(−1,1)(1,2)")
@@ -74,6 +77,13 @@ def main():
                      for m, n in itertools.product(range(a.nmax), range(1, a.nmax))})[:3]
         best = max(best, ratio(lv))
     print(f"  max ratio over r∈[0.05,20] = {best:.3f}")
+
+    print("\n== Flat Klein bottle + ring Wilson-loop flux, three lowest odd levels")
+    fk = 1 / (a.target + 1)                           # solves (1−f)/f = target
+    for r in a.klein_r:
+        lv = sorted((m + .5 + fk)**2 + (n * r)**2
+                    for m in range(-a.nmax, a.nmax) for n in range(1, a.nmax))[:3]
+        report(f"  f={fk:.4f}, r={r}", lv, a.dm21)
 
 
 if __name__ == "__main__":

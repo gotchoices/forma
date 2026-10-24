@@ -33,6 +33,44 @@ For a 1D ring with any twist δ, taking three consecutive modes n = 0, 1, 2 (mas
 
 **Central question for any host: what physically sets the small splitting parameter?**
 
+## 3a. A candidate source: substrate chirality as a Wilson-loop flux
+
+[grid-primitive ch. 9](../../grid-primitive/09-chirality-asymmetry.md) shows that a small direction-asymmetry in the grid (antisymmetric chirality χ_anti) acts on waves exactly like a constant background gauge field A. Two properties follow:
+- **In open space it is undetectable.** A constant A can be removed by redefining the wave's phase, so light still travels at c in every direction.
+- **Around a compact loop it is physical.** The phase that can't be removed is the loop integral W = ∮A·dx = A·L, a gauge-invariant **Wilson-loop phase**. In closure terms, this is exactly the twist δ = W/2π of [geometry-background §6](../reference/geometry-background.md#6-twisted-and-antiperiodic-closure).
+
+So a direction bias built into the grid is a natural physical source for the small parameter in §3. The asymmetry is linear but direction-dependent (non-reciprocal), not non-linear. ma-domain's NC configuration already uses this mechanism for a 1D curve ([config-neutrino.md §NC.5](../../ma-domain/work/config-neutrino.md)).
+
+*Signals analogy:* the Sagnac effect in a ring-laser gyroscope. Rotating the ring adds a direction-dependent phase per lap, which splits the clockwise and counterclockwise resonances by a small, precise amount. ν₁/ν₂ would be the two circulation senses of the neutrino loop, split by the grid's built-in bias.
+
+**Fit to the measured ratio (33.6):**
+
+| Host | Modes | Flux f needed | Ordering |
+|---|---|---|---|
+| 1D ring | −1, +1, −2 | ≈ 0.022 | normal |
+| 1D ring | 0, −1, +1 | ≈ 0.0075 | inverted |
+| 1D ring, near-antiperiodic | ½ ± f, 3/2 − f | ≈ 0.029 | normal |
+| Flat Klein bottle, flux around the ring | odd family: ±½ + f, 3/2 − f (tube n = 1) | ≈ 0.029 | normal |
+
+**The Klein bottle is no longer blocked on the spectrum.** The Klein identification (x, y) ~ (x + L_ring, −y) forbids a constant A along the flipped tube direction but allows one along the ring. A flux there splits exactly the degeneracy the flip leaves behind, the ±k_ring pair. The tube contributes a common offset that cancels in differences, as ε does in Family A. Result: ratio 33.6 from the three lowest states at f ≈ 0.029, for any tube/ring ratio r ≳ 0.8 (checked at r = 1, 2, 5). Neutrality is unaffected, because the flux does not touch the tube-direction standing waves. Cost: the fourth state (3/2 + f) sits just above ν₃ and must be sterile. Unlike the 1D ring, the tube offset raises every absolute mass: at r ≈ 0.82 (the smallest r before a tube-n = 2 state intrudes) the masses are 34, 35, 61 meV (Σm ≈ 130 meV), rising to Σm ≈ 145 meV at r = 1 and 550 meV at r = 5. The direct mass limit caps r at roughly 12.
+
+### A cross-sheet check: does the same bias split particle and antiparticle?
+
+If χ_anti is a property of the grid, it acts on every compact loop, including the electron and proton sheets. Since W = A·L grows with loop length, a uniform A gives each sheet a flux proportional to its size: f_sheet ≈ f_ν · (L_sheet / L_ν). On a 2D sheet the phase shifts mode energies by an amount ∝ m·W_α + n·W_β, which flips sign between matter (m, n) and antimatter (−m, −n) (grid-primitive §8). That would make particle and antiparticle masses differ by a relative amount of order f_sheet.
+
+Order-of-magnitude estimate, with f_ν = 0.022 and L_ν ≈ 40 μm (R61's scale):
+
+| Sheet | Size L | Implied f_sheet | Measured particle/antiparticle equality |
+|---|---|---|---|
+| electron | ~2.4 pm | ~10⁻⁹ | electron/positron masses equal to < 8×10⁻⁹ |
+| proton | ~1.3 fm | ~10⁻¹² | proton/antiproton charge-to-mass equal to ~1.6×10⁻¹¹ (BASE) |
+
+Both implied values fall below current limits. The electron's is within about an order of magnitude of the limit. Taken at face value, this is a **falsifiable consequence** reachable by precision experiments. With ma-domain's larger loop (L_ν ≳ 4 cm) the implied values drop by about 10³ more.
+
+**Caveats:** this assumes A has the same strength along every compact direction (the sheets occupy different dimensions, so A could have independent components on each, with no linkage), that the geometric projection factors are of order 1, and that the joint-sign partners on the 2D sheets are particle and antiparticle. The same question arises on the neutrino side: if ±n on the loop are neutrino and antineutrino, the flux makes their spectra differ, which oscillation experiments compare.
+
+**On matter dominance:** a tiny mass split by itself gives at most a tiny population difference. If the grid's bias explains why matter is preferred, it more likely acts through how particles are *created* (a directional preference in the process) than through the mass split. That remains open ([metric-charge ch. 6 §6.7](../../metric-charge/06-handedness-and-pairs.md)).
+
 ## 4. Candidates
 
 ### A. 1D ring, near-periodic (δ ≈ 0.022)
@@ -84,7 +122,8 @@ For a 1D ring with any twist δ, taking three consecutive modes n = 0, 1, 2 (mas
 | A. 1D near-periodic | fits | δ ≈ 0.022 | 116 | yes (n = 0) | no surface; 1D charge rule open | external, open |
 | B. 1D near-antiperiodic | fits | e ≈ 0.029 | 89 | no | no surface; 1D charge rule open | near-antiperiodic, gap open |
 | C. 2D torus (Family A) | fits | shear s ≈ 0.022 | 118 | excluded by fermion rule | Majorana pairing, proof open | R49 fermion rule |
-| D. Flat Klein bottle | blocked (≤ 3) | none available | — | — | forced by topology | antiperiodic, gap open |
+| D. Flat Klein bottle, no flux | blocked (≤ 3) | none available | — | — | forced by topology | antiperiodic, gap open |
+| D′. Flat Klein bottle + ring flux (§3a) | fits | f ≈ 0.029 | ≥ 130 (rises with r) | 4th state just above ν₃ | forced by topology | antiperiodic, gap open |
 
 All fitting hosts use one tuned small parameter to fit one ratio. That is a fit, not a prediction. They differ in what they predict beyond it: Σm, the presence of extra light states, and Majorana versus Dirac. Those are the comparison points.
 
