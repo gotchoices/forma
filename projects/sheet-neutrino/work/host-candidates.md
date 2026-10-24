@@ -148,7 +148,7 @@ Three fermion-class states come most naturally from **six lobes with the mirror 
 | D′. Flat Klein bottle + ring flux (§3a) | fits | f ≈ 0.029 | ≥ 130 (rises with r) | 4th state just above ν₃ | forced by topology | antiperiodic, gap open |
 | D″. Klein + lobe-peaked bias (T5) | fits, 2 parameters | f ≲ 0.029, r² ≈ 22f | ≈ 129–150 | (3/2 − f) states above ν₃ | forced by topology | antiperiodic, gap open |
 | E. Lobed Klein (multi-track) | not computed | shape (± phase) | — | unused lobe states | forced by topology | mirror-antisymmetric lobe states |
-| 1D ring, ν₃ = merged ±2 (T3) | fits | f ≈ 0.023 | 115 | ±2 partner (beat at 1.5×10⁻⁴ eV²) | as A | as A/B |
+| 1D ring, ν₃ = merged ±2 (T3) | **excluded**: pair splitting 1.5×10⁻⁴ eV² vs bound 1.2×10⁻⁵ | f ≈ 0.023 | 115 | ±2 partner | as A | as A/B |
 
 All fitting hosts use one tuned small parameter to fit one ratio. That is a fit, not a prediction. They differ in what they predict beyond it: Σm, the presence of extra light states, and Majorana versus Dirac. Those are the comparison points.
 
@@ -161,5 +161,5 @@ All fitting hosts use one tuned small parameter to fit one ratio. That is a fit,
 5. Resolve the notation and calibration inconsistencies listed in [../reference/prior-work.md](../reference/prior-work.md#known-inconsistencies-to-resolve) before relying on Family A's absolute masses.
 6. Under the closure framing ([mechanisms §0](mechanisms.md#0-framing-charge-is-a-property-of-closure)), what per-arc distribution does a closed track carry, and is it zero for every candidate host?
 7. Does a standing-wave mode carry a magnetic moment under MaSt's assignment of current to modes?
-8. For the merged-ν₃ idea (T3): what makes the ±2 pair act as one while ±1 acts as two, and do published reactor and long-baseline data already exclude a ν₃ doublet split by ≈ 1.5×10⁻⁴ eV²?
+8. ~~Merged-ν₃ (T3): do published data exclude a ν₃ doublet split by ≈ 1.5×10⁻⁴ eV²?~~ **Answered: yes**, by about a factor of 12 in its equal-weight form ([mechanisms.md](mechanisms.md) §3, T3 issue 2).
 9. For the lobed Klein bottle (E2): do six mirror-paired lobes give a near-degenerate pair plus a distant third, and what mixing matrix follows?

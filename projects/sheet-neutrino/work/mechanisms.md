@@ -51,13 +51,13 @@ In the harmonic hosts, ν₃ ≈ 2 × ν₁. This is a feature of those models, 
 |---|---|---|
 | T1 | **Next harmonic, flux included.** ν₃ is n = 2 with the same per-lap phase: mass ∝ 2 − f. The phase's relative effect shrinks with harmonic number (f/n) but never vanishes, because every circulating mode feels the loop's phase. | math |
 | T2 | **Exactly double.** Hypothesis that ν₃ = 2 × the unsplit fundamental. It fixes the absolute scale: m ≈ 28.2, 29.5, 57.7 meV, Σm ≈ 115 meV. It differs from T1 by about 0.5 meV, below any planned experiment's reach. | hypothesis |
-| T3 | **Merged ±2 doublet.** ν₃ is the +2/−2 pair, unresolved and seen as one. The equal-weight average of (2 − f)² and (2 + f)² is 4 + f², so T3 *produces* T2 without the phase vanishing. Same masses as T2. In the literature such a near-degenerate pair is a *pseudo-Dirac* pair. | speculative |
+| T3 | **Merged ±2 doublet** (*excluded in equal-weight form; see issue 2*). ν₃ is the +2/−2 pair, unresolved and seen as one. The equal-weight average of (2 − f)² and (2 + f)² is 4 + f², so T3 *produces* T2 without the phase vanishing. Same masses as T2. In the literature such a near-degenerate pair is a *pseudo-Dirac* pair. | speculative |
 | T4 | **Shape-protected standing wave.** On a loop with 4-fold shape symmetry, the shape couples +2 with −2 into standing waves, which feel the phase only at second order. The n = ±1 pair stays circulating and keeps its first-order split. A 3-fold shape does not do this. | math |
 | T5 | **Lobe-peaked bias on a Klein bottle.** If the ring bias varies across the tube, concentrated at the lobe centers (allowed, since it is mirror-symmetric), the second tube harmonic has a node at each lobe center and feels less of it. | speculative (bias profile a new hypothesis) |
 
 **T3 issues:**
 1. With a uniform phase the ±2 pair is split *more* than ±1 in squared mass (Δm² = 2 × Δm²₂₁ ≈ 1.5×10⁻⁴ eV²). Merging therefore needs a reason other than small splitting, such as the weak interaction coupling only to one combination.
-2. **Test:** that splitting gives an extra oscillation with length ≈ 49 km at reactor energies (3 MeV), right at the baseline of the JUNO reactor experiment (~53 km), and ≈ 16,500 km at 1 GeV. Its amplitude in reactor data is small because electron neutrinos contain little ν₃. Whether existing data already exclude it has not been checked.
+2. **Test, and result: excluded in its equal-weight form.** That splitting gives an extra oscillation with length ≈ 49 km at reactor energies (3 MeV), at the JUNO baseline (~53 km), and ≈ 16,500 km at 1 GeV. A pair of nearly equal-mass states that the weak interaction couples to equally is a **pseudo-Dirac** pair. For ν₃, a combined fit of atmospheric (Super-Kamiokande), reactor (Daya Bay), and long-baseline (MINOS, T2K) data limits its splitting to **δm₃² ≲ 1.2×10⁻⁵ eV²**, with a JUNO forecast of 6×10⁻⁵ eV² (Anamiati, Fonseca & Hirsch, [PRD 97, 095008 (2018)](https://arxiv.org/abs/1710.06249), Table 1). T3 needs 1.5×10⁻⁴ eV², about 12 times above the bound. A cosmological analysis gives \|δm₃²\| < 2×10⁻⁶ eV² ([Fong & Porto 2025](https://arxiv.org/abs/2512.19782)), which is model-dependent context only. **Loophole:** the bounds weaken or vanish if the weak interaction couples to only one member of the pair. But then the other member is fully sterile, ν₃ is a single state at 2 ± f, and the averaging that gave exact doubling is lost, so T3 reduces to T1. *Status of T3 as stated: excluded.*
 3. **State count:** four or more light states. Only three flavor combinations may couple to the Z.
 4. **Mixing:** if the rule that merges ±2 equally also applied to ±1, electron neutrinos would be a 50/50 mix of ν₁ and ν₂ (solar angle 45°). The measured angle is about 33–34°.
 
@@ -110,7 +110,7 @@ Fitting ν₃ = merged (ring ±½, tube harmonic 2) with the phase fully suppres
 | Lightest mass ≈ 28 meV, Σm ≈ 115 meV | T2/T3 (also T1: 116 meV) | future direct-mass experiments; cosmology as context |
 | Σm ≈ 89 meV | 1D near-antiperiodic | same |
 | Σm ≥ 130 meV | Klein + uniform ring phase | direct-mass experiments (still under the KATRIN limit) |
-| Extra oscillation at Δm² ≈ 1.5×10⁻⁴ eV² | T3 | JUNO reactor spectrum; long-baseline ν_μ data |
+| Extra oscillation at Δm² ≈ 1.5×10⁻⁴ eV² | T3 | already excluded: δm₃² ≲ 1.2×10⁻⁵ eV² (atmospheric + reactor + long-baseline) |
 | Electron/positron mass difference ~10⁻⁹; proton/antiproton ~10⁻¹² | S2 with one grid-wide bias | precision particle/antiparticle comparisons |
 | Neutrino and antineutrino spectra differ slightly | S2 (if ±n are ν and ν̄) | comparing ν and ν̄ oscillation parameters |
 | Neutrino is its own antiparticle | Klein (N2), mildly broken by S2 | neutrinoless double-beta decay searches |
