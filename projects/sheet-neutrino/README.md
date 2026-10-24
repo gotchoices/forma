@@ -34,8 +34,10 @@ Background distilled from the discussion that framed this project:
 | File | Contents |
 |---|---|
 | [work/host-candidates.md](work/host-candidates.md) | The candidate hosts side by side (1D rings, torus, Klein bottle variants, lobed Klein), with spectrum checks |
+| [work/klein-tracks.md](work/klein-tracks.md) | ν₁, ν₂, ν₃ as closed tracks on a modulated Klein tube (the sheet-proton mechanism transplanted): geometry, structural results, fits |
 | [work/mechanisms.md](work/mechanisms.md) | Catalog of candidate mechanisms by role: neutrality, the small ν₁/ν₂ split, ν₃ structure, spin ½, matter/antimatter, mixing; plus predictions and tests |
 | [scripts/spectra.py](scripts/spectra.py) | Splitting ratio and absolute masses for ring, torus, and Klein-bottle hosts; merged-ν₃, shaped-loop, and lobe-bias checks |
+| [scripts/klein_tracks.py](scripts/klein_tracks.py) | Closed tracks and track-length masses on a modulated Klein tube; shape search for the measured ratio |
 
 ## Phases
 

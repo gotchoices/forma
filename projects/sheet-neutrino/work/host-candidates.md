@@ -130,6 +130,13 @@ Three fermion-class states come most naturally from **six lobes with the mirror 
 - **Mixing:** flavor = lobe, mass = pattern across lobes (M2) makes mixing large by construction. This is the one candidate so far with a structural route to *predicting* mixing angles.
 - **Costs:** more shape parameters; every unused lobe state must not interact; ma-domain's result that symmetric shapes cannot split a protected pair must be rechecked for mirror pairs.
 
+**E3. Modulated tube with distinct tracks (the sheet-proton mechanism).** The cross-section changes shape around the ring and returns *mirrored* after one lap. A wave rides a closed track, with mass = 2πℏc / L_track as on the proton sheet. There are always two one-lap tracks (the mirror points t₀ = 0, π); every other track closes after two laps. Results ([klein-tracks.md](klein-tracks.md)):
+- the geometry makes a one-lap track about **twice as heavy** as a two-lap track;
+- two-lap tracks carry the spin-½-like sign flip, and every track is neutral;
+- fits reach Δm²₃₁/Δm²₂₁ = 33.6 with reasonably round cross-sections, giving masses ≈ 25–28, 27–29, 56–57 meV and Σm ≈ 108–114 meV.
+
+Open: a selection rule for the 1–4 extra stationary tracks, ν₃'s spin (its one-lap track returns unchanged each lap), a wave-localization check, and fewer parameters (the minimal fit, a plain tilted figure-8, uses three shape numbers for one ratio).
+
 ### F. Pool (not yet examined)
 
 - A 1D line coupled to the electron or proton sheet rather than standing alone
@@ -147,7 +154,8 @@ Three fermion-class states come most naturally from **six lobes with the mirror 
 | D. Flat Klein bottle, no flux | blocked (≤ 3) | none available | — | — | forced by topology | antiperiodic, gap open |
 | D′. Flat Klein bottle + ring flux (§3a) | fits | f ≈ 0.029 | ≥ 130 (rises with r) | 4th state just above ν₃ | forced by topology | antiperiodic, gap open |
 | D″. Klein + lobe-peaked bias (T5) | fits, 2 parameters | f ≲ 0.029, r² ≈ 22f | ≈ 129–150 | (3/2 − f) states above ν₃ | forced by topology | antiperiodic, gap open |
-| E. Lobed Klein (multi-track) | not computed | shape (± phase) | — | unused lobe states | forced by topology | mirror-antisymmetric lobe states |
+| E2. Lobed Klein (channels) | not computed | shape (± phase) | — | unused lobe states | forced by topology | mirror-antisymmetric lobe states |
+| E3. Modulated Klein tube (tracks) | fits (minimal: tilted figure-8, 3 shape numbers) | two-lap track length split ≈ 5% | 108–114 | 1 extra track (minimal fit) to 4 | per track: Q = −Q or 2π − 2π | ν₁, ν₂ inverted per lap; ν₃ not |
 | 1D ring, ν₃ = merged ±2 (T3) | **excluded**: pair splitting 1.5×10⁻⁴ eV² vs bound 1.2×10⁻⁵ | f ≈ 0.023 | 115 | ±2 partner | as A | as A/B |
 
 All fitting hosts use one tuned small parameter to fit one ratio. That is a fit, not a prediction. They differ in what they predict beyond it: Σm, the presence of extra light states, and Majorana versus Dirac. Those are the comparison points.
