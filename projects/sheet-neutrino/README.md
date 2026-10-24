@@ -33,8 +33,9 @@ Background distilled from the discussion that framed this project:
 
 | File | Contents |
 |---|---|
-| [work/host-candidates.md](work/host-candidates.md) | The candidate hosts side by side, with spectrum checks |
-| [scripts/spectra.py](scripts/spectra.py) | Splitting ratio and absolute masses for ring, torus, and Klein-bottle hosts |
+| [work/host-candidates.md](work/host-candidates.md) | The candidate hosts side by side (1D rings, torus, Klein bottle variants, lobed Klein), with spectrum checks |
+| [work/mechanisms.md](work/mechanisms.md) | Catalog of candidate mechanisms by role: neutrality, the small ν₁/ν₂ split, ν₃ structure, spin ½, matter/antimatter, mixing; plus predictions and tests |
+| [scripts/spectra.py](scripts/spectra.py) | Splitting ratio and absolute masses for ring, torus, and Klein-bottle hosts; merged-ν₃, shaped-loop, and lobe-bias checks |
 
 ## Phases
 

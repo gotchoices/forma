@@ -76,11 +76,12 @@ The **Gauss–Bonnet theorem** says ∫ K dA = 2πχ: the total Gaussian curvatu
 
 Intrinsically, the flat Klein bottle is the plane with the identification **(x, y) ~ (x + L_ring, −y)** plus periodicity in y. Going once around the ring mirrors the tube direction.
 
-- It is **non-orientable:** there is no consistent global handedness.
+- It is **non-orientable:** there is no consistent global handedness. Consequently signed turning (left vs. right) has no global sign on it: a quantity defined by signed turning is carried into its negative by one ring lap.
 - It **cannot be embedded in 3D**; it can be in 4D. Every 3D picture is an immersion that crosses itself.
 - **Two common drawings** show the same surface:
   - *Bottle:* the neck passes through the wall.
   - *Figure-8 "bagel":* a figure-8 cross-section, rotated 180° as it goes around the ring. Its two lobes are the two halves of **one** tube circle, and the 180° rotation swaps them every lap. The waist line where the drawing crosses itself is two separate circles (y = 0 and y = L_tube/2) drawn on top of each other; intrinsically they never touch.
+  - In the figure-8 drawing the cross-section closes with turning +2π on one lobe and −2π on the other, for a total turning number of 0. Neither lobe is closed by itself.
   - Neither drawing is flat. The flat Klein bottle exists only intrinsically.
 - **Double cover:** unrolled over two ring laps, the Klein bottle becomes an ordinary torus with ring length 2L_ring. A path parallel to the ring closes only after two laps, passing once through each "lobe." The two waist circles are the exceptions; they close in one lap.
 

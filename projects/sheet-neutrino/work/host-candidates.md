@@ -1,6 +1,6 @@
 # Host candidates
 
-Working file. It compares candidate neutrino hosts against the requirements in [../reference/experimental-constraints.md](../reference/experimental-constraints.md). The numbers come from [../scripts/spectra.py](../scripts/spectra.py). The terms (twisted closure, Klein bottle, sheared torus) are introduced in [../reference/geometry-background.md](../reference/geometry-background.md).
+Working file. It compares candidate neutrino hosts against the requirements in [../reference/experimental-constraints.md](../reference/experimental-constraints.md). The numbers come from [../scripts/spectra.py](../scripts/spectra.py). The terms (twisted closure, Klein bottle, sheared torus) are introduced in [../reference/geometry-background.md](../reference/geometry-background.md). The mechanisms the hosts combine (neutrality N1–N5, splitting S1–S3, ν₃ structure T1–T5, spin P1–P4, mixing M1–M2) are cataloged in [mechanisms.md](mechanisms.md).
 
 ## 1. What a host must deliver
 
@@ -99,16 +99,38 @@ Both implied values fall below current limits. The electron's is within about an
 
 ### D. Flat Klein bottle
 
-- **Neutrality:** forced by topology. Every mode is a standing wave in the flipped direction (zero net winding, R48 F5), and is its own charge conjugate (Majorana).
-- **Spin:** the fermion-class (odd) modes are antiperiodic around the ring.
-- **Spectrum:** blocked in its simplest form. The lowest three fermion-class levels give a ratio of at most 3. The ± pair that Family A relies on is merged into one standing wave, and shear in the flipped direction is not physical.
-- **Fallbacks:**
-  - a skewed ("rhombic") lattice that might split the surviving ±k_ring pair;
-  - slight curvature, which reintroduces G1 charge density and so conflicts with neutrality;
-  - non-lowest modes with a selection rule.
-- **Chirality:** the space has no global handedness. Compatibility with the neutrino's definite helicity is unchecked.
+- **Geometry:** physically a flat Klein bottle. The figure-8 tube is how its closure looks when drawn in 3D, with lobes at +2π and −2π, not a physical curvature ([mechanisms §0](mechanisms.md#0-framing-charge-is-a-property-of-closure)). Self-crossing in the drawing is harmless if the grid passes through itself without interacting.
+- **Neutrality:** forced by topology, in three equivalent views: standing waves (N2), zero turning number (N3), and no global orientation, so Q = −Q = 0 (N4). Every mode is also its own charge conjugate (Majorana).
+- **Spin:** the fermion-class (odd) modes return inverted after one ring lap. The two lobes carry opposite-sign halves (P3).
+- **Spectrum, no phase:** blocked. The lowest three fermion-class levels give a ratio of at most 3, and shear in the flipped direction has no physical effect.
+- **Spectrum with a ring phase (D′, §3a):** fits at f ≈ 0.029. The tube offset makes Σm ≥ 130 meV, ν₃ ≈ 3 × the pair, and a fourth state sits just above ν₃. The variant with a lobe-peaked bias (T5) instead makes ν₃ the merged second tube harmonic, with ν₃/ν₁ ≈ 1.6–1.8.
+- **Other fallbacks (not needed for the fit):** a skewed ("rhombic") lattice; non-lowest modes with a selection rule.
+- **Open:**
+  - Helicity on a surface with no global handedness (P2 may resolve it).
+  - The magnetic moment of a standing-wave mode.
+  - What "antineutrino" means once the ring phase breaks time-reversal symmetry.
 
-### E. Pool (not yet examined)
+### E. Lobed Klein bottle (multi-track)
+
+The proton sheet hosts the proton and neutron as distinct tracks of similar but different mass on a modulated (clover) cross-section. The analog here puts ν₁, ν₂ (and possibly ν₃) on distinct tracks or channels of a Klein bottle, with the splitting set by geometry (S3) rather than, or alongside, the ring phase.
+
+**E1. The two waist circles.** A Klein bottle has exactly two closed paths that close in a single ring lap: the circles at y = 0 and y = L_tube/2, which are the waist lines of the figure-8 drawing. Every other ring-parallel path needs two laps. If the cross-section is not symmetric under a half-turn, the two waist circles differ slightly, giving a natural near-degenerate pair. **Conflict:** the fermion-class (odd) modes vanish exactly on these circles, since sin(qy) = 0 there. Only the even modes live on them, so the track picture and the wave picture disagree here.
+
+**E2. Lobed cross-section, localized channels.** A corrugated cross-section creates channels where waves localize in the high-curvature lobes ([sheet-proton lb-mode-localization](../../sheet-proton/work/lb-mode-localization.md)). N lobes give N channels of nearly equal energy, split by leakage between neighbors. The Klein mirror maps lobes onto lobes, and the fermion-class states are the mirror-antisymmetric combinations:
+
+| Lobes | Mirror line | Mirror pairs | Fermion-class lobe states |
+|---|---|---|---|
+| 3 | through one lobe | 1 | 1 |
+| 4 | between lobes | 2 | 2 |
+| 6 | between lobes | 3 | **3** |
+| 7 | through one lobe | 3 | **3** |
+
+Three fermion-class states come most naturally from **six lobes with the mirror line between lobes**, which echoes sheet-proton's six-piece (3 major + 3 minor) cross-section. That is a counting coincidence, not a result.
+- **Spectrum:** not computed. A uniform 6-lobe ring gives the wrong pattern, so the major/minor alternation and possibly the ring phase must produce the near-degenerate pair plus distant third.
+- **Mixing:** flavor = lobe, mass = pattern across lobes (M2) makes mixing large by construction. This is the one candidate so far with a structural route to *predicting* mixing angles.
+- **Costs:** more shape parameters; every unused lobe state must not interact; ma-domain's result that symmetric shapes cannot split a protected pair must be rechecked for mirror pairs.
+
+### F. Pool (not yet examined)
 
 - A 1D line coupled to the electron or proton sheet rather than standing alone
 - Hosts where the three mass states come from different structures rather than one spectrum
@@ -124,6 +146,9 @@ Both implied values fall below current limits. The electron's is within about an
 | C. 2D torus (Family A) | fits | shear s ≈ 0.022 | 118 | excluded by fermion rule | Majorana pairing, proof open | R49 fermion rule |
 | D. Flat Klein bottle, no flux | blocked (≤ 3) | none available | — | — | forced by topology | antiperiodic, gap open |
 | D′. Flat Klein bottle + ring flux (§3a) | fits | f ≈ 0.029 | ≥ 130 (rises with r) | 4th state just above ν₃ | forced by topology | antiperiodic, gap open |
+| D″. Klein + lobe-peaked bias (T5) | fits, 2 parameters | f ≲ 0.029, r² ≈ 22f | ≈ 129–150 | (3/2 − f) states above ν₃ | forced by topology | antiperiodic, gap open |
+| E. Lobed Klein (multi-track) | not computed | shape (± phase) | — | unused lobe states | forced by topology | mirror-antisymmetric lobe states |
+| 1D ring, ν₃ = merged ±2 (T3) | fits | f ≈ 0.023 | 115 | ±2 partner (beat at 1.5×10⁻⁴ eV²) | as A | as A/B |
 
 All fitting hosts use one tuned small parameter to fit one ratio. That is a fit, not a prediction. They differ in what they predict beyond it: Σm, the presence of extra light states, and Majorana versus Dirac. Those are the comparison points.
 
@@ -134,3 +159,7 @@ All fitting hosts use one tuned small parameter to fit one ratio. That is a fit,
 3. How does a host receive half-integer angular momentum in beta decay and carry it away as spin ½ (§2.3 of the constraints file)?
 4. Can any host predict the mixing angles? The near-maximal θ₂₃ ≈ 45° is suggestive of an equal mixture of two states.
 5. Resolve the notation and calibration inconsistencies listed in [../reference/prior-work.md](../reference/prior-work.md#known-inconsistencies-to-resolve) before relying on Family A's absolute masses.
+6. Under the closure framing ([mechanisms §0](mechanisms.md#0-framing-charge-is-a-property-of-closure)), what per-arc distribution does a closed track carry, and is it zero for every candidate host?
+7. Does a standing-wave mode carry a magnetic moment under MaSt's assignment of current to modes?
+8. For the merged-ν₃ idea (T3): what makes the ±2 pair act as one while ±1 acts as two, and do published reactor and long-baseline data already exclude a ν₃ doublet split by ≈ 1.5×10⁻⁴ eV²?
+9. For the lobed Klein bottle (E2): do six mirror-paired lobes give a near-degenerate pair plus a distant third, and what mixing matrix follows?
