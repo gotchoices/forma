@@ -19,11 +19,11 @@ Working file, **draft for review**. Host G in [host-candidates.md](host-candidat
 | G1 | **The flip belongs to the neutrino sheet.** It is a relationship between the neutrino line and the small dimension, and it does not act on the electron sheet that shares the small dimension. |
 | G2 | **Flavor = segment; mass state = whole-circle mode.** A neutrino is created and detected on the segment attached to its charged lepton. That packet is a mixture of whole-circle modes, whose frequencies beat in flight (oscillation). |
 | G3 | **The large-dimension mode is preferred.** Energy enough to excite the small dimension may instead form an electron, on the small dimension and its companion dimension in that electron sheet. To be shown. |
-| G4 | **Compton size and gravitational size are different quantities.** Compton size is the wavelength scale, which shrinks as energy grows (λ = h/mc). Gravitational size grows with energy (for example r_s = 2Gm/c²). The neutrino line's Compton size (≈ 25–35 μm, §4) does not by itself bear on short-range gravity tests. Whether gravity propagates into the line is a separate question. |
+| G4 | **Compton size is not a gravitational size.** Compton size is a wavelength, shrinking as energy grows (λ = h/mc); gravitational size is a mass concept. The neutrino line's length is set by its Compton wavelength (≈ 25–35 μm, §4). Short-range gravity tests constrain it only if gravity propagates into the line, which is open. |
 
 ## 3. Consequences
 
-- **Neutrality.** Charge needs net circulation around the small dimension. A mode with no net circulation there is neutral, even if it moves somewhat across the small dimension.
+- **Neutrality.** The fundamental mode travels only along the large dimension, with no circulation around the small one, so it carries no charge.
 - **Spin-½-like closure.** Each segment flips the sign once, and sign flips multiply: (−1)³ = −1 per circuit. The circle closes with one net sign flip, not with spin 3/2.
 - **Majorana-like.** As on any 1D ring, the two circulation directions are indistinguishable, and a standing wave goes both ways at once ([neutrino-1D.md §3.3](../../ma-domain/work/neutrino-1D.md)).
 - **The near-degenerate pair.** The masses are modes of the whole circle, not of individual segments. With segment lengths l₁, l₂, l₃ nearly equal, the circle's 3-fold symmetry keeps the two lowest modes nearly degenerate. The measured small split then needs the lengths to differ by a few percent (§4).
@@ -59,7 +59,7 @@ ma-domain has the effectively-1D "tiny-tube" reading of a 2D sheet ([neutrino-1D
 ## 6. Open questions
 
 1. **G1 in ma-domain's terms.** ma-domain computes masses from one metric over all its dimensions. Does a flip that belongs to one pair of dimensions sit consistently in that description?
-2. **How the flip reaches a light mode.** A wave uniform across the small dimension does not by itself notice the flip. Polarization along the small dimension is one way it could; the mechanism is open.
+2. **How the flip reaches the fundamental mode.** That mode is uniform across the small dimension, which a flip by itself leaves unchanged, so the flip must act on some internal orientation of the wave. Polarization is the natural candidate.
 3. **Where flavor coupling happens.** The k = 3/2 state has nodes at the junctions. If coupling happens at the junctions, it couples to no flavor and ν₃ must be another state. If coupling happens along the segments, it couples normally.
 4. **What sets l₁, l₂, l₃,** and what the junction is.
 5. **G3:** does small-dimension energy form an electron?
