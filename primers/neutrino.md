@@ -302,6 +302,55 @@ call the components "mass eigenstates in superposition" or
 "frequency components of a compound signal" is a matter of
 language, not physics.
 
+### One quantum, three components
+
+The three components are not three particles.  A neutrino
+is a single quantum whose state is spread over three
+frequency components.  A detector registers one event: the
+neutrino is found as one flavor, with probability set by
+how well the composite matches that flavor's pattern at the
+detector.
+
+The components are not equally weighted.  An electron
+neutrino is roughly 68% ν₁, 30% ν₂, and 2% ν₃ (the squared
+entries of the PMNS row for νₑ).
+
+### Coupled-oscillator analogy
+
+Three pendulums joined by weak springs have three normal
+modes: patterns in which all three swing at one shared
+frequency.  Start one pendulum swinging and the others
+still: that starting pattern is a mix of the normal modes.
+As the modes drift in phase, the swinging passes to the
+other pendulums and back.
+
+In this analogy each pendulum is a flavor, each normal mode
+is a mass eigenstate, and the energy passing between
+pendulums is flavor oscillation.
+
+### A single mass state
+
+A neutrino can be in one mass eigenstate alone.  It then
+has a single frequency, so it does not oscillate, and it is
+not a flavor: detected anywhere, it shows up as each flavor
+with fixed probabilities.
+
+This happens in nature.  High-energy neutrinos from the Sun
+are produced as νₑ, but the slowly decreasing density on
+their way out of the Sun (the MSW effect above) converts
+them almost entirely into ν₂.  They cross space as ν₂ and
+arrive with a νₑ probability of about |U_e2|² ≈ 0.3, the
+"one-third" measured by the SNO experiment.
+
+### Wave-packet separation
+
+The three components also travel at slightly different
+speeds, heavier ones slower.  Over very long distances
+their wave packets drift apart until they no longer overlap.
+After that, each packet is a single mass state, the
+oscillation washes out, and detectors see only
+distance-averaged flavor probabilities.
+
 
 ## 5. The mass eigenstates
 
