@@ -61,4 +61,34 @@ The junction must scatter strongly, and its strength must not shrink with the el
 
 - **Impedance steps between segments.** Each segment is a ribbon whose width is set by its shared electron dimension, and the e, μ, τ dimensions differ in size. Where ribbons of different width meet, a wave sees an impedance step and partly reflects, as at the joint between two transmission lines of different impedance. The reflection depends on the *ratio* of widths, not on how small they are.
 
-**Next experiment (Stage 1b):** model the segments as GRID ribbons of different widths and repeat the spectrum and mixing analysis.
+## Stage 1b: ribbons of different widths
+
+**Model.** Each segment is a GRID ribbon of w parallel chains, closed transversely by rungs. Each junction is one node joining the chain ends of two segments. For a wave uniform across the ribbon, GRID's node rule gives exactly the transmission-line impedance-step reflection, **R = (w_a − w_b)/(w_a + w_b)**, so the long-wavelength physics reduces to a ring with those reflections at its junctions.
+
+**Validation.** The full ribbon graph and the reduced ring give the same frequency ratios to four digits. The frequencies themselves differ by one constant factor (0.686), because the ribbon carries waves more slowly. Run with `--lens … --widths … [--ribbon]`.
+
+**Scan.** Width ratios w₂/w₁, w₃/w₁ ∈ {1, 1.25, 1.5, 2, 3, 5}, segment lengths 40 ± 10 edges, Klein flips off and on (`--width-scan`, ≈ 45 min). Configurations within 2% of the measured ratio were scored against the measured mixing matrix (rms difference of |U|², best row ordering).
+
+| Flips | Hits | Best mixing distance | ω₃/ω₁ | Width contrast in hits |
+|---|---|---|---|---|
+| off | 18 | 0.19 | ≈ 2.0 | 1 to 1.25 |
+| on | 337 | 0.14 | ≈ 3.2 | 1 to 1.25 |
+
+Best case (flips on, segments 32/40/48, widths 1/1.25/1):
+
+| Flavor | ν₁ | ν₂ | ν₃ |
+|---|---|---|---|
+| 1 | 0.54 | 0.25 | 0.20 |
+| 2 | 0.01 | 0.57 | 0.42 |
+| 3 | 0.44 | 0.18 | 0.38 |
+| *measured ν_e* | *0.68* | *0.30* | *0.02* |
+
+**Findings:**
+1. **The impedance step works as a junction,** and its strength is independent of how small the electron dimension is: the Stage 1 obstruction is removed.
+2. **The mass ratio needs only a small width contrast,** about 25%. Larger contrasts split the pair too much.
+3. **At that contrast the modes stay spread over the whole circle.** Fit fractions are at most about 0.44 per segment, nothing like 80%, and flavor localization is 0.4–0.7.
+4. **The mixing has the wrong structure.** ν₃ makes up 20–40% of *every* flavor, while the measured ν_e contains only 2% ν₃ (the small angle θ₁₃). A mode spread evenly over all three segments cannot be nearly absent from one of them.
+
+**Status:** the ring-with-impedance-steps form of host G reproduces the mass ratio but not the mixing. Two possible ways forward:
+- the mixing result depends on defining a flavor as "the combination most concentrated on a segment"; coupling at specific points (the junctions) might behave differently;
+- a small θ₁₃ needs ν₃ to have a node, or near-node, on one flavor's site. That could come from structure beyond three uniform segments.
