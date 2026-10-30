@@ -143,7 +143,8 @@ Developed in [lepton-domain-circle.md](lepton-domain-circle.md) (draft for revie
 - **Closure:** one sign flip per segment gives (−1)³ = −1 per circuit, which is spin-½-like and not 3/2.
 - **Flavor and mass:** flavor = segment; mass state = whole-circle mode.
 - **Spectrum:** nearly equal segments give a near-degenerate lowest pair. The measured ratio needs the segment lengths to differ by a few percent (Σm ≈ 107–192 meV, fit).
-- **Open:** how the flip sits in ma-domain's description; how the flip reaches a light mode; where flavor coupling happens; what sets the segment lengths.
+- **GRID test ([grid-circle.md](grid-circle.md)):** built as a GRID graph, with the electron circle as a small loop at each junction, the circle gives the exactly degenerate pair. But the junction's strength scales as loop size / ring size, so at physical scale (about 10⁻⁷) it is transparent: segment lengths cannot split the pair, and flavor states cannot localize. The small-loop junction is obstructed; impedance steps between segment ribbons of different widths are the next candidate.
+- **Open:** how the flip sits in ma-domain's description; how the flip reaches a light mode; what the junction is; where flavor coupling happens.
 
 ### F. Pool (not yet examined)
 
