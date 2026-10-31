@@ -1,0 +1,36 @@
+  restart 5/30: best loss so far 2.12e-12
+  restart 10/30: best loss so far 1.22e-13
+  restart 15/30: best loss so far 1.22e-13
+  restart 20/30: best loss so far 1.22e-13
+/Users/kyle/share/devel/forma/projects/sheet-neutrino/scripts/junction_fit.py:49: RuntimeWarning: divide by zero encountered in scalar divide
+  J = np.array([[(t * t - rr * rp) / t, rp / t], [-rr / t, 1 / t]], complex)
+/Users/kyle/share/devel/forma/projects/sheet-neutrino/scripts/junction_fit.py:49: RuntimeWarning: invalid value encountered in scalar divide
+  J = np.array([[(t * t - rr * rp) / t, rp / t], [-rr / t, 1 / t]], complex)
+/Users/kyle/share/devel/forma/projects/sheet-neutrino/scripts/junction_fit.py:53: RuntimeWarning: invalid value encountered in matmul
+  return J[None] @ P
+  restart 25/30: best loss so far 1.22e-13
+  restart 30/30: best loss so far 3.58e-14
+
+#### flavor=point, flips=off, phases=off, sin²θ23=0.5
+
+== fit 1  (loss 3.58e-14)
+  segment lengths (fractions of circle): 0.494, 0.251, 0.255
+  junction reflections r: -0.992, -0.100, -1.000
+  implied width ratios w_next/w_prev at each junction: 248.448, 1.223, 4689.912  (product 1424595.156; widths alone require 1)
+  modes k = 0.4893, 0.5424, 1.4418;  ratio = 33.60;  k3/k1 = 2.947
+  |U|² (rows: flavor at junction/segment 1, 2, 3; columns ν1 ν2 ν3):
+    0.678  0.300  0.022
+    0.230  0.281  0.489
+    0.093  0.418  0.489
+  target: e-row 0.678 0.300 0.022;  |U_μ3|² 0.489, |U_τ3|² 0.489
+
+== fit 2  (loss 1.22e-13)
+  segment lengths (fractions of circle): 0.049, 0.436, 0.516
+  junction reflections r: -0.006, +0.993, +1.000
+  implied width ratios w_next/w_prev at each junction: 1.011, 0.003, 0.000  (product 0.000; widths alone require 1)
+  modes k = 0.4723, 0.5281, 1.4489;  ratio = 33.60;  k3/k1 = 3.068
+  |U|² (rows: flavor at junction/segment 1, 2, 3; columns ν1 ν2 ν3):
+    0.678  0.300  0.022
+    0.093  0.418  0.489
+    0.230  0.281  0.489
+  target: e-row 0.678 0.300 0.022;  |U_μ3|² 0.489, |U_τ3|² 0.489

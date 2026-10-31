@@ -1,0 +1,30 @@
+  restart 5/30: best loss so far 1.57e-04
+  restart 10/30: best loss so far 1.57e-04
+  restart 15/30: best loss so far 1.32e-13
+  restart 20/30: best loss so far 1.32e-13
+  restart 25/30: best loss so far 1.32e-13
+  restart 30/30: best loss so far 1.92e-14
+
+#### junction=neck, flavor=point, flips=on, phases=off, sin²θ23=0.5
+
+== fit 1  (loss 1.92e-14)
+  segment lengths (fractions of circle): 0.459, 0.288, 0.218
+  neck narrowness ρ = segment width / neck width: 83.6, 42.9, 78.4
+  neck lengths (fractions of circle): 0.0162, 0.0073, 0.0122
+  neck reflection |R| at ν1's wavenumber: 0.721, 0.234, 0.590
+  modes k = 0.2439, 0.2719, 0.7388;  ratio = 33.60;  k3/k1 = 3.030
+  |U|² (rows: flavor at segment 1, 2, 3; columns ν1 ν2 ν3):
+    0.678  0.300  0.022
+    0.093  0.418  0.489
+    0.230  0.281  0.489
+
+== fit 2  (loss 1.32e-13)
+  segment lengths (fractions of circle): 0.176, 0.475, 0.277
+  neck narrowness ρ = segment width / neck width: 156.9, 30.7, 8.0
+  neck lengths (fractions of circle): 0.0075, 0.0305, 0.0340
+  neck reflection |R| at ν1's wavenumber: 0.686, 0.602, 0.210
+  modes k = 0.2567, 0.2907, 0.8321;  ratio = 33.60;  k3/k1 = 3.242
+  |U|² (rows: flavor at segment 1, 2, 3; columns ν1 ν2 ν3):
+    0.093  0.418  0.489
+    0.678  0.300  0.022
+    0.230  0.281  0.489

@@ -1,0 +1,30 @@
+  restart 5/30: best loss so far 4.54e-03
+  restart 10/30: best loss so far 3.46e-05
+  restart 15/30: best loss so far 5.51e-12
+  restart 20/30: best loss so far 5.51e-12
+  restart 25/30: best loss so far 5.51e-12
+  restart 30/30: best loss so far 4.19e-13
+
+#### flavor=point, flips=on, phases=on, sin²θ23=0.5
+
+== fit 1  (loss 4.19e-13)
+  segment lengths (fractions of circle): 0.216, 0.514, 0.270
+  junction reflections r: -0.872, -0.564, +0.821;  phases α: -0.96, +0.11, -0.20
+  implied width ratios w_next/w_prev at each junction: 14.625, 3.592, 0.098  (product 5.174; widths alone require 1)
+  modes k = 0.3848, 0.4393, 1.2874;  ratio = 33.60;  k3/k1 = 3.346
+  |U|² (rows: flavor at junction/segment 1, 2, 3; columns ν1 ν2 ν3):
+    0.093  0.418  0.489
+    0.230  0.281  0.489
+    0.678  0.300  0.022
+  target: e-row 0.678 0.300 0.022;  |U_μ3|² 0.489, |U_τ3|² 0.489
+
+== fit 2  (loss 5.51e-12)
+  segment lengths (fractions of circle): 0.410, 0.182, 0.408
+  junction reflections r: +0.186, +0.938, -0.891;  phases α: +7.85, -0.38, +3.48
+  implied width ratios w_next/w_prev at each junction: 0.686, 0.032, 17.352  (product 0.382; widths alone require 1)
+  modes k = 0.4534, 0.5089, 1.4148;  ratio = 33.60;  k3/k1 = 3.121
+  |U|² (rows: flavor at junction/segment 1, 2, 3; columns ν1 ν2 ν3):
+    0.093  0.418  0.489
+    0.678  0.300  0.022
+    0.230  0.281  0.489
+  target: e-row 0.678 0.300 0.022;  |U_μ3|² 0.489, |U_τ3|² 0.489

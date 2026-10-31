@@ -143,7 +143,7 @@ Developed in [lepton-domain-circle.md](lepton-domain-circle.md) (draft for revie
 - **Closure:** one sign flip per segment gives (−1)³ = −1 per circuit, which is spin-½-like and not 3/2.
 - **Flavor and mass:** flavor = segment; mass state = whole-circle mode.
 - **Spectrum:** nearly equal segments give a near-degenerate lowest pair. The measured ratio needs the segment lengths to differ by a few percent (Σm ≈ 107–192 meV, fit).
-- **GRID test ([grid-circle.md](grid-circle.md)):** built as a GRID graph, with the electron circle as a small loop at each junction, the circle gives the exactly degenerate pair. But the junction's strength scales as loop size / ring size, so at physical scale (about 10⁻⁷) it is transparent: segment lengths cannot split the pair, and flavor states cannot localize. The small-loop junction is obstructed. Impedance steps between ribbons of different widths (Stage 1b) fix the junction and reproduce the mass ratio with about 25% width contrast, but the modes stay spread over the circle: ν₃ makes up 20–40% of every flavor, against the measured 2% in ν_e. The mixing is not yet reproduced.
+- **GRID test ([grid-circle.md](grid-circle.md)):** built as a GRID graph, with the electron circle as a small loop at each junction, the circle gives the exactly degenerate pair. But the junction's strength scales as loop size / ring size, so at physical scale (about 10⁻⁷) it is transparent: segment lengths cannot split the pair, and flavor states cannot localize. The small-loop junction is obstructed. Impedance steps between ribbons of different widths (Stage 1b) fix the junction and reproduce the mass ratio with about 25% width contrast, but the modes stay spread over the circle: ν₃ makes up 20–40% of every flavor, against the measured 2% in ν_e. The mixing is not yet reproduced by width steps. With arbitrary junctions ([junction-fit.md](junction-fit.md)), exact fits to the mass ratio and the CP-independent mixing entries exist. Every fit has two strongly reflecting junctions and one weak one (coupled cavities joined by narrow necks), gives ν₃ ≈ 3 × ν₁ (Σm ≈ 86–92 meV), and every fit predicts CP-conserving oscillation (neutrinos and antineutrinos oscillate identically; see [experimental-constraints §5](../reference/experimental-constraints.md#5-oscillation-and-mixing)) unless a non-reciprocal element (the grid's direction bias) acts. GRID necks (narrow ribbon sections, tens-to-a-hundred times narrower, 1–3% of the circle long) reproduce the fit exactly with the Klein flips on; without flips the search found only a near miss.
 - **Open:** how the flip sits in ma-domain's description; how the flip reaches a light mode; what the junction is; where flavor coupling happens.
 
 ### F. Pool (not yet examined)
@@ -169,6 +169,33 @@ Developed in [lepton-domain-circle.md](lepton-domain-circle.md) (draft for revie
 | 1D ring, ν₃ = merged ±2 (T3) | **excluded**: pair splitting 1.5×10⁻⁴ eV² vs bound 1.2×10⁻⁵ | f ≈ 0.023 | 115 | ±2 partner | as A | as A/B |
 
 All fitting hosts use one tuned small parameter to fit one ratio. That is a fit, not a prediction. They differ in what they predict beyond it: Σm, the presence of extra light states, and Majorana versus Dirac. Those are the comparison points.
+
+## 5a. Solution set and the two mass points
+
+**Every allowed mass set lies on one curve.** Oscillation fixes the two splittings, Δm²₂₁ ≈ 7.53×10⁻⁵ eV² and Δm²₃₁ ≈ 2.51×10⁻³ eV², so in normal ordering all three masses follow from one number. A convenient choice is R = ν₃/ν₁:
+
+<!-- m₁ = √(Δm²₃₁ / (R² − 1)),  m₂ = √(m₁² + Δm²₂₁),  m₃ = √(m₁² + Δm²₃₁) -->
+$$
+m_1 = \sqrt{\frac{\Delta m^2_{31}}{R^2 - 1}},\qquad m_2 = \sqrt{m_1^2 + \Delta m^2_{21}},\qquad m_3 = \sqrt{m_1^2 + \Delta m^2_{31}}
+$$
+
+Rest-frame frequencies are f = mc²/h (1 meV ≈ 0.242 THz), and Compton wavelengths λ = c/f.
+
+| ν₃/ν₁ | f₁, f₂, f₃ (THz) | λ₁, λ₃ (μm) | m₁, m₂, m₃ (meV) | Σm (meV) | Hosts |
+|---|---|---|---|---|---|
+| 2.0 | 6.99, 7.30, 13.99 | 43, 21 | 28.9, 30.2, 57.9 | 117 | Family A; 1D twisted ring; "exactly double" (f₃ ≈ f₁ + f₂) |
+| 2.14 | 6.40, 6.74, 13.70 | 47, 22 | 26.5, 27.9, 56.7 | 111 | Klein tracks (minimal figure-8) |
+| 3.0 | 4.28, 4.77, 12.85 | 70, 23 | 17.7, 19.7, 53.1 | 91 | lepton-domain circle with fitted junctions or GRID necks |
+| 3.3 | 3.85, 4.39, 12.71 | 78, 24 | 15.9, 18.1, 52.6 | 87 | lepton-domain circle, free junctions |
+
+**Two clusters.** Hosts whose ν₃ is the second harmonic of the ν₁/ν₂ fundamental land near **ν₃ ≈ 2 ν₁**, the Family A point. The lepton-domain circle, the only host so far that also reproduces the measured mixing, lands near **ν₃ ≈ 3 ν₁**, the ratio of a half-wave cavity's first two resonances.
+
+**What separates them:**
+- f₃ is nearly the same in both (12.7–14.0 THz), because ν₃'s mass is dominated by the large splitting.
+- f₁ and f₂ differ by a factor of about 1.6 (≈ 7 THz vs. ≈ 4.3 THz).
+- An absolute mass measurement (the lightest mass, or Σm ≈ 117 vs. ≈ 90 meV) would decide. Both exceed the standard-cosmology bound (≈ 70 meV, model-dependent context). Direct laboratory experiments do not yet reach this range.
+
+**On Family A specifically.** Its mass point is what any "fundamental plus second harmonic" host gives, so it is well supported as a *spectrum*. As a complete host it still has the neutrality conflict noted in §4C and no account of the mixing.
 
 ## 6. Open questions
 

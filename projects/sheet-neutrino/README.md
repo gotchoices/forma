@@ -37,8 +37,10 @@ Background distilled from the discussion that framed this project:
 | [work/klein-tracks.md](work/klein-tracks.md) | ν₁, ν₂, ν₃ as closed tracks on a modulated Klein tube (the sheet-proton mechanism transplanted): geometry, structural results, fits |
 | [work/lepton-domain-circle.md](work/lepton-domain-circle.md) | Host G (draft): a grand neutrino circle of three Klein-glued segments, each sharing a small dimension with one charged lepton's sheet |
 | [work/grid-circle.md](work/grid-circle.md) | Stage 1 GRID simulation of host G: exact modes and mixing of the circle as a GRID graph; the small-loop junction is too weak at physical scale |
+| [work/junction-fit.md](work/junction-fit.md) | Host G, inverse design: what the three junctions must do to reproduce the masses and mixing, a construction to visualize, and a CP prediction |
 | [work/mechanisms.md](work/mechanisms.md) | Catalog of candidate mechanisms by role: neutrality, the small ν₁/ν₂ split, ν₃ structure, spin ½, matter/antimatter, mixing; plus predictions and tests |
 | [scripts/spectra.py](scripts/spectra.py) | Splitting ratio and absolute masses for ring, torus, and Klein-bottle hosts; merged-ν₃, shaped-loop, and lobe-bias checks |
+| [scripts/junction_fit.py](scripts/junction_fit.py) | Continuum three-segment circle with general junctions; fits the junctions to the mass ratio and mixing |
 | [scripts/grid_circle.py](scripts/grid_circle.py) | GRID (Scattering-model) graph of the lepton-domain circle: exact mode frequencies, fit fractions, mixing |
 | [scripts/lepton_circle.py](scripts/lepton_circle.py) | Modes of the three-segment lepton-domain circle; segment asymmetry needed for the measured ratio |
 | [scripts/klein_tracks.py](scripts/klein_tracks.py) | Closed tracks and track-length masses on a modulated Klein tube; shape search for the measured ratio |

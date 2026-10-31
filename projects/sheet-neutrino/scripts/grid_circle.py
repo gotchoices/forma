@@ -118,7 +118,7 @@ def build_ribbon(lens, widths, flips):
         cols.append(grid)
     for s, (l, w) in enumerate(zip(lens, widths)):
         g = cols[s]
-        nxt_j = junction[(s + 1) % 3]
+        nxt_j = junction[(s + 1) % len(lens)]
         for j in range(w):                              # junction → first column
             tails.append(junction[s]); heads.append(g[0, j]); signs.append(1.0); region.append(s)
         for i in range(l - 1):                          # along the segment

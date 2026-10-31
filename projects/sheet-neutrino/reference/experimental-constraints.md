@@ -95,7 +95,12 @@ The mixture is described by the **PMNS matrix** (after Pontecorvo, Maki, Nakagaw
 | θ₂₃ (atmospheric) | ≈ 42–49° | near maximal (45°); which side of 45° is unsettled |
 | θ₁₃ (reactor) | ≈ 8.5° | small |
 
-There is also a CP-violating phase (CP: the combined charge-conjugation and mirror symmetry), currently poorly measured. No accepted theory predicts these angles, so any host that did would be significant.
+There is also a phase δ (delta) in the mixing matrix, poorly measured so far, that controls **CP violation**:
+- **C (charge conjugation)** swaps every particle for its antiparticle.
+- **P (parity)** is a mirror reflection of space.
+- **CP** is the two together. For neutrinos it maps a left-handed neutrino onto a right-handed antineutrino.
+
+If nature is **CP-symmetric**, neutrinos and antineutrinos oscillate identically, for example the probability of ν_μ → ν_e equals that of ν̄_μ → ν̄_e. **CP violation** means they differ. In the mixing matrix this is set by δ: δ = 0 or π means no CP violation, and any other value means CP violation, largest at δ = π/2 or 3π/2. Equivalently, since physics is symmetric under CP combined with time reversal T, CP violation is the same thing as **T violation**: oscillation running differently backward in time. Current status: in normal ordering the data are consistent with CP conservation within 1σ; in inverted ordering CP violation is favored at more than 3.6σ (NuFIT 6.0, [arXiv:2410.05380](https://arxiv.org/abs/2410.05380); the 2025 T2K + NOvA joint analysis agrees). The DUNE and Hyper-Kamiokande experiments are designed to settle it. No accepted theory predicts δ.
 
 **Requirements for oscillation components:**
 1. They must have different masses; degenerate components never dephase.

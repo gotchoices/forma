@@ -102,7 +102,7 @@ Fitting ν₃ = merged (ring ±½, tube harmonic 2) with the phase fully suppres
 
 | ID | Idea | Status |
 |---|---|---|
-| M1 | **3-fold symmetry gives tribimaximal mixing.** A 3-fold symmetric loop gives θ₁₂ ≈ 35.3°, θ₂₃ = 45°, θ₁₃ = 0 as its symmetric limit. Breaking the symmetry is expected to supply θ₁₃ and the CP phase ([ma-domain neutrino-1D §6](../../ma-domain/work/neutrino-1D.md)). Measured: 33–34°, 42–49°, 8.5°. | partial; PMNS not computed |
+| M1 | **3-fold symmetry gives tribimaximal mixing.** A 3-fold symmetric loop gives θ₁₂ ≈ 35.3°, θ₂₃ = 45°, θ₁₃ = 0 as its symmetric limit. Breaking the symmetry is expected to supply θ₁₃ and the CP phase δ (the phase that makes neutrinos and antineutrinos oscillate differently; [experimental-constraints §5](../reference/experimental-constraints.md#5-oscillation-and-mixing)) ([ma-domain neutrino-1D §6](../../ma-domain/work/neutrino-1D.md)). Measured: 33–34°, 42–49°, 8.5°. | partial; PMNS not computed |
 | M2 | **Flavor = lobe, mass = pattern across lobes.** If e, μ, τ are localized channels (lobes) and mass states are the patterns that spread across them, mixing is large by construction, as observed for neutrinos (unlike quarks). An exactly symmetric version mixes too evenly (large θ₁₃), so the deviation from symmetry must be what sets the small angle. See host E. | speculative |
 
 ## 7. Predictions and tests
