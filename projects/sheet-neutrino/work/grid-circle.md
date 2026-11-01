@@ -89,6 +89,6 @@ Best case (flips on, segments 32/40/48, widths 1/1.25/1):
 3. **At that contrast the modes stay spread over the whole circle.** Fit fractions are at most about 0.44 per segment, nothing like 80%, and flavor localization is 0.4–0.7.
 4. **The mixing has the wrong structure.** ν₃ makes up 20–40% of *every* flavor, while the measured ν_e contains only 2% ν₃ (the small angle θ₁₃). A mode spread evenly over all three segments cannot be nearly absent from one of them.
 
-**Status:** the ring-with-impedance-steps form of host G reproduces the mass ratio but not the mixing. Two possible ways forward:
+**Status:** within this scan (width ratios up to 5), the ring-with-impedance-steps form reproduces the mass ratio but not the mixing. *Correction:* larger width ratios, of tens to hundreds, do reproduce both exactly with the flips off ([junction-fit.md](junction-fit.md), Test 3). Two possible ways forward:
 - the mixing result depends on defining a flavor as "the combination most concentrated on a segment"; coupling at specific points (the junctions) might behave differently;
 - a small θ₁₃ needs ν₃ to have a node, or near-node, on one flavor's site. That could come from structure beyond three uniform segments.

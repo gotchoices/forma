@@ -1,0 +1,65 @@
+  order e-mu-tau   dims m1-m1-m2   flips off  best loss 4.51e-01  m1 ≈ 4.51e+03 fm
+  order e-mu-tau   dims m1-m1-m2   flips on   best loss 1.38e+00  m1 ≈ 2.19e+15 fm
+  order e-mu-tau   dims m1-m1-m3   flips off  best loss 8.41e-02  m1 ≈ 1.76e+06 fm
+  order e-mu-tau   dims m1-m1-m3   flips on   best loss 1.37e+00  m1 ≈ 4.51e+03 fm
+  order e-mu-tau   dims m1-m3-m2   flips off  best loss 1.80e-02  m1 ≈ 3.56e+04 fm
+  order e-mu-tau   dims m1-m3-m2   flips on   best loss 5.94e-01  m1 ≈ 2.41e+06 fm
+  order e-mu-tau   dims m1-m3-m3   flips off  best loss 4.51e-01  m1 ≈ 4.51e+03 fm
+  order e-mu-tau   dims m1-m3-m3   flips on   best loss 5.81e-01  m1 ≈ 4.51e+03 fm
+  order e-mu-tau   dims m2-m1-m2   flips off  best loss 2.02e+00  m1 ≈ 4.55e+03 fm
+  order e-mu-tau   dims m2-m1-m2   flips on   best loss 1.00e+03  m1 ≈ 1.36e+04 fm
+  order e-mu-tau   dims m2-m1-m3   flips off  best loss 1.24e-01  m1 ≈ 4.51e+03 fm
+  order e-mu-tau   dims m2-m1-m3   flips on   best loss 6.79e-01  m1 ≈ 8.93e+05 fm
+  order e-mu-tau   dims m2-m3-m2   flips off  best loss 4.46e-01
+  order e-mu-tau   dims m2-m3-m2   flips on   best loss 2.82e-01
+  order e-mu-tau   dims m2-m3-m3   flips off  best loss 9.84e-02
+  order e-mu-tau   dims m2-m3-m3   flips on   best loss 5.74e-02
+  order e-tau-mu   dims m1-m2-m1   flips off  best loss 1.12e+00  m1 ≈ 5.85e+04 fm
+  order e-tau-mu   dims m1-m2-m1   flips on   best loss 5.46e-01  m1 ≈ 1.15e+04 fm
+  order e-tau-mu   dims m1-m2-m3   flips off  best loss 1.70e-01  m1 ≈ 4.51e+03 fm
+  order e-tau-mu   dims m1-m2-m3   flips on   best loss 6.56e-01  m1 ≈ 1.88e+07 fm
+  order e-tau-mu   dims m1-m3-m1   flips off  best loss 1.16e+00  m1 ≈ 4.51e+03 fm
+  order e-tau-mu   dims m1-m3-m1   flips on   best loss 5.46e-01  m1 ≈ 1.72e+04 fm
+  order e-tau-mu   dims m1-m3-m3   flips off  best loss 4.51e-01  m1 ≈ 4.51e+03 fm
+  order e-tau-mu   dims m1-m3-m3   flips on   best loss 5.81e-01  m1 ≈ 4.51e+03 fm
+  order e-tau-mu   dims m2-m2-m1   flips off  best loss 5.89e-01  m1 ≈ 3.6e+13 fm
+  order e-tau-mu   dims m2-m2-m1   flips on   best loss 8.54e-01  m1 ≈ 1.38e+04 fm
+  order e-tau-mu   dims m2-m2-m3   flips off  best loss 4.35e-01
+  order e-tau-mu   dims m2-m2-m3   flips on   best loss 1.35e+00
+  order e-tau-mu   dims m2-m3-m1   flips off  best loss 1.70e-01  m1 ≈ 4.51e+03 fm
+  order e-tau-mu   dims m2-m3-m1   flips on   best loss 7.25e-01  m1 ≈ 1.16e+06 fm
+  order e-tau-mu   dims m2-m3-m3   flips off  best loss 9.84e-02
+  order e-tau-mu   dims m2-m3-m3   flips on   best loss 5.74e-02
+
+== order e-mu-tau, dims m1-m3-m2, flips off, m1 = 3.56e+04 fm  (loss 1.80e-02)
+  segment lengths (fractions of circle): 0.394, 0.409, 0.196
+  junction reflections r: -1.000, +1.000, +0.985
+  implied width ratios w_next/w_prev at each junction: 1999999.000, 0.000, 0.007  (product 0.413; widths alone require 1)
+  modes k = 1.2197, 1.2236, 1.3204;  ratio = 27.29;  k3/k1 = 1.083
+  |U|² (rows: flavor at junction/segment 1, 2, 3; columns ν1 ν2 ν3):
+    0.166  0.294  0.539
+    0.667  0.332  0.001
+    0.167  0.374  0.460
+  target: e-row 0.678 0.300 0.022;  |U_μ3|² 0.489, |U_τ3|² 0.489
+
+== order e-mu-tau, dims m2-m3-m3, flips on  (loss 5.74e-02)
+  segment lengths (fractions of circle): 0.001, 0.999, 0.000
+  junction reflections r: +0.985, -0.985, +0.000
+  implied width ratios w_next/w_prev at each junction: 0.007, 136.166, 1.000  (product 1.000; widths alone require 1)
+  modes k = 0.4459, 0.5005, 1.3478;  ratio = 31.31;  k3/k1 = 3.023
+  |U|² (rows: flavor at junction/segment 1, 2, 3; columns ν1 ν2 ν3):
+    0.064  0.340  0.596
+    0.384  0.266  0.351
+    0.552  0.394  0.054
+  target: e-row 0.678 0.300 0.022;  |U_μ3|² 0.489, |U_τ3|² 0.489
+
+== order e-tau-mu, dims m2-m3-m3, flips on  (loss 5.74e-02)
+  segment lengths (fractions of circle): 0.001, 0.999, 0.000
+  junction reflections r: +0.985, -0.985, +0.000
+  implied width ratios w_next/w_prev at each junction: 0.007, 136.166, 1.000  (product 1.000; widths alone require 1)
+  modes k = 0.4459, 0.5005, 1.3478;  ratio = 31.31;  k3/k1 = 3.023
+  |U|² (rows: flavor at junction/segment 1, 2, 3; columns ν1 ν2 ν3):
+    0.064  0.340  0.596
+    0.384  0.266  0.351
+    0.552  0.394  0.054
+  target: e-row 0.678 0.300 0.022;  |U_μ3|² 0.489, |U_τ3|² 0.489

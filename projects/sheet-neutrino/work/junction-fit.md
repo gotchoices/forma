@@ -38,7 +38,7 @@ Exact fits were found in every run: point flavors with flips off, with flips on,
 **Three findings hold across all fits:**
 
 1. **Two junctions strongly reflecting, one weak.** In every fit, two junctions reflect strongly (|r| ≈ 0.82–1.000) and the third weakly or moderately (|r| ≈ 0.006–0.68). The circle behaves as coupled chambers, not as a uniform ring. Every fit also gives ν₃/ν₁ ≈ 3 (2.9–3.35) and Σm ≈ 86–92 meV, close to the ½ : ½ : 3/2 pattern of a half-wave cavity, even with the flips off.
-2. **Width changes cannot do this.** The strongest reflections imply width ratios of hundreds to one, and the ratios' product around the circle is far from 1, which width changes alone require. The junctions need physics beyond a change of ribbon width (see the construction below).
+2. **These particular fits are not width changes,** since their reflections' implied width ratios do not multiply to 1 around the circle. *Correction:* that does not mean width changes cannot work. A dedicated widths-only fit (Test 3 below) finds exact solutions too.
 3. **The mixing comes out CP-conserving.** The entries that were not fitted, the remaining μ- and τ-row values, come out exactly as δ = 0 or π requires: μ and τ rows (0.230, 0.281, 0.489) and (0.093, 0.418, 0.489), in either order. This is structural. These junctions are reciprocal (they treat the two travel directions alike), which for a single-channel wave is the same as time-reversal symmetry, and time-reversal symmetry forbids CP violation in oscillation. **Prediction:** with reciprocal junctions, neutrino oscillation conserves CP. A nonzero CP phase would need a non-reciprocal element. The one Forma has is the grid's direction bias χ_anti ([grid-primitive ch. 9](../../grid-primitive/09-chirality-asymmetry.md)), which ma-domain already proposed as the source of δ_CP. Current data mildly favor CP violation but still allow δ = π in normal ordering; DUNE and Hyper-Kamiokande will test it.
 
 ## A construction to visualize
@@ -104,6 +104,24 @@ The fits predict CP-conserving oscillation, because their junctions are reciproc
 **Result: not needed now.** Every fit here has the near-degenerate pair as the two *lowest* states, which is normal ordering, and in normal ordering CP conservation is allowed. The model's two commitments, normal ordering and no CP violation, are consistent with each other and with current data. Inverted ordering has not been tried in this model.
 
 **What would make it needed.** A measurement establishing δ ≠ 0, π in normal ordering (DUNE and Hyper-Kamiokande are designed to reach this). If inverted ordering were established instead, which JUNO is designed to settle, the model as fitted would fail on ordering first. CP violation would then be required as well.
+
+## Test 3: width changes alone, and ma-domain's actual dimensions
+
+**Widths only.** Each junction is a direct width step, so the three reflections come from just two width ratios.
+
+| Flips | Result | Widths (segment 1 : 2 : 3) | ν₃/ν₁ |
+|---|---|---|---|
+| off | **exact** (4×10⁻¹⁴) | 1 : 111 : 251 | 1.72 |
+| off | **exact** (5×10⁻¹³) | 1 : 52 : 86 | 2.08 |
+| on | near miss (6×10⁻⁵; ν_e gets 1.7% ν₃ vs. 2.2%) | 1 : 1.35 : 0.74 | 3.10 |
+
+So **no neck is needed** if the Klein flips are off: two strong width steps (ratios of tens to hundreds) and one moderate step (ratio about 1.6–2.3) suffice. The earlier Stage 1b scan stopped at 5:1 ratios and missed these. With flips on, plain width steps came close but not exact; necks (Test 1) fit exactly.
+
+**ma-domain's K4 dimensions** ([../scripts/k4_widths.py](../scripts/k4_widths.py)). In ma-domain's most compact candidate the charged leptons sit on e = (m₁, m₂), μ = (m₁, m₃), τ = (m₂, m₃), with m₂ ≈ 0.0073 fm, m₃ ≈ 1 fm, and m₁ free from 4,505 fm to 2×10¹⁵ fm. Each neutrino segment shares one dimension of its lepton's sheet, with ribbon width proportional to that dimension's size. Only the two segment lengths (and m₁, where used) are fitted against four data numbers: a real test.
+- **Result: no combination fits.** All 32 combinations of shared dimension, segment order, and flips fail; the best loss is 0.018, mixing errors around 0.1.
+- **Why:** the K4 size ratios are either very large (m₃/m₂ ≈ 136, m₁/m₃ ≥ 4,500) or exactly 1, where two segments share a dimension. The fits need two steps of tens to hundreds and one of about 2.
+- **The same obstruction appears in ma-domain's other candidates.** Their electron triangles also contain one tiny dimension (≈ 0.007 fm), so any choice of three distinct shared dimensions includes a step of over 10,000.
+- This rests on taking width ∝ dimension size, the natural GRID mapping: a wider small circle means more parallel chains. A softer mapping, for example width ∝ √size, would bring ma-domain's canonical candidate within range, but nothing yet motivates it.
 
 ## Status and next steps
 

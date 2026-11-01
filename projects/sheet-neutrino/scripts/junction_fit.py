@@ -206,6 +206,13 @@ def evaluate(x, a, full=False):
         Ls, rs, rho, nfrac = neck_elements(x)
         alphas = np.zeros(6)
         seg_idx = [0, 2, 4]
+    elif a.junction == "widths":
+        # direct width steps only: widths (1, e^x2, e^x3); r = (w_prev − w_next)/(w_prev + w_next)
+        Ls = np.array([x[0], x[1], 1.0]) * 2 * np.pi / (x[0] + x[1] + 1.0)
+        w = np.array([1.0, np.exp(x[2]), np.exp(x[3])])
+        rs = np.array([(w[i - 1] - w[i]) / (w[i - 1] + w[i]) for i in range(3)])
+        alphas = np.zeros(3)
+        seg_idx = [0, 1, 2]
     else:
         Ls = np.array([x[0], x[1], 1.0]) * 2 * np.pi / (x[0] + x[1] + 1.0)
         rs = np.tanh(x[2:5])
@@ -274,7 +281,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--flavor", choices=["segment", "point"], default="point")
-    p.add_argument("--junction", choices=["free", "neck"], default="free",
+    p.add_argument("--junction", choices=["free", "neck", "widths"], default="free",
                    help="free: arbitrary reflection r; neck: narrow section (width ratio ρ, length)")
     p.add_argument("--flips", action="store_true", help="Klein flips on (antiperiodic closure)")
     p.add_argument("--phases", action="store_true", help="allow junction reflection phases α")
@@ -295,6 +302,8 @@ def main():
     for i in range(a.restarts):
         if a.junction == "neck":
             x0 = np.concatenate([rng.uniform(0.3, 2.0, 2), rng.uniform(0, 5, 3), rng.normal(0, 1.5, 3)])
+        elif a.junction == "widths":
+            x0 = np.concatenate([rng.uniform(0.3, 2.0, 2), rng.uniform(-7, 7, 2)])
         else:
             x0 = np.concatenate([rng.uniform(0.3, 2.0, 2), rng.normal(0, 1.2, 3),
                                  rng.uniform(-np.pi, np.pi, 3) if a.phases else []])[:n_par]
