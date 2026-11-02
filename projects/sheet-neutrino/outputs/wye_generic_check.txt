@@ -1,0 +1,21 @@
+lepton-mass widths (e,tau,mu): 8.46e-04
+random widths [ 35.82 550.47   1.  ]: loss 1.35e-01
+random widths [294.8    2.16   1.  ]: loss 6.61e-03
+random widths [495.85   1.   607.6 ]: loss 1.22e-03
+random widths [1.91366e+03 1.00000e+00 2.05600e+01]: loss 6.62e-04
+random widths [819.53   1.    37.17]: loss 6.86e-04
+random widths [ 1.68  1.   92.02]: loss 2.13e-03
+random widths [483.66 172.53   1.  ]: loss 8.73e-02
+random widths [1.45454e+03 1.00000e+00 2.73804e+03]: loss 1.92e-01
+random widths [ 1.   44.95  4.89]: loss 3.01e-02
+random widths [  3.52 262.31   1.  ]: loss 1.18e-01
+random widths [1.00000e+00 1.42500e+01 2.66778e+03]: loss 8.32e-04
+random widths [ 4.69  1.   46.  ]: loss 4.53e-03
+random widths [48.37  1.    6.36]: loss 1.20e-02
+random widths [  1.   301.84 888.55]: loss 4.35e-03
+random widths [885.53   1.   707.68]: loss 1.03e-01
+random widths [  1.   261.13  10.5 ]: loss 8.39e-02
+random widths [1.   1.06 5.1 ]: loss 1.28e-01
+random widths [  1.   314.15 226.14]: loss 8.51e-02
+random widths [ 42.18   1.   103.28]: loss 4.33e-03
+random widths [232.78  46.59   1.  ]: loss 2.41e-01

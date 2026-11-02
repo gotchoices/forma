@@ -33,6 +33,20 @@ No separate neutrino line. The neutrino is a mode circulating in only one dimens
 - [ ] Check the electron's excited states when m₁ is at the neutrino scale (states just above the electron mass); metric-charge's closure rule should limit them.
 - [ ] Address the τ problem: m₁ belongs to the e and μ sheets but not to τ = (m₂, m₃), so the three neutrino flavors do not map one-to-one onto sheets containing m₁.
 
+### 1d. Spectrum-based lepton search
+
+- [x] N = 3 flat torus, strict rule (lightest charged = e, μ, τ; lightest neutral = neutrinos): **no fit**; charged towers populate the gaps between e, μ, τ ([lepton-manifold.md](work/lepton-manifold.md)).
+- [x] N = 3, loose rule (electron lightest charged, neutrinos lightest neutral; μ, τ any charged mode): **no fit**. A neutrino-scale dimension on a charged sheet yields charged states below the electron; isolated, it gives only a 1 : 2 : 3 ladder.
+- [x] Rule decided: **start loose, tighten later.**
+- [ ] (superseded) **Decide the identification rule:** strict ("lightest states are the observed particles"), or ma-domain's looser rule (unobserved higher modes allowed if they decay); if looser, state what is tolerated and why it is unseen.
+- [x] N = 4, loose rule: **no fit** (loss ≈ 13). Neutral side lands on m₁ ≈ 0; charged side needs an electron *wye* (three tubes on one tiny ring), which uses all four dimensions.
+- [x] Rules: harmonics are not new particles; charged modes below a target are a problem; heavier ones tolerated (user decision).
+- [x] **Charged wye + neutrino circle, widths = charged-lepton tube sizes, 2 free lengths: near-fit** (loss ≈ 8.5×10⁻⁴). Exact mass ratio, ν_e row and ν₃ column within ≈ 0.01; misses θ₁₃ (≈ 2° vs 8.5°) ([lepton-manifold.md](work/lepton-manifold.md)).
+- [x] Genericity: **not specific.** About 15–30% of random hierarchical width sets fit as well; the requirement is a strong hierarchy (one wide, one narrow, middle ratio ≈ 15–40), which the lepton masses satisfy.
+- [ ] What could lift θ₁₃ to 8.5°: segment sharing the ring instead of the tube, a small asymmetry, tapers, or the flips.
+- [ ] Verify the charged wye itself under the loose rule (lepton_search with the wye topology fixed).
+- [ ] Then the simplest step-junction neutrino line if the torus alone fails.
+
 ### 1c. A massless or very light ν₁ (unexplored family)
 
 The data allow m₁ = 0 (masses 0, 8.7, 50 meV; f₂ ≈ 2.1 THz, f₃ ≈ 12.1 THz; Σm ≈ 59 meV, the only family so far under the ≈ 70 meV cosmology figure). This needs no near-degenerate mass pair, but f₃/f₂ ≈ 5.8.
