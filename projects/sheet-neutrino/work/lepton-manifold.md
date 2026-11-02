@@ -77,6 +77,24 @@ The economical combination is the charged **wye** (three tubes, one shared tiny 
 - **Genericity check** ([../scripts/wye_generic_check.py](../scripts/wye_generic_check.py), [output](../outputs/wye_generic_check.txt)): 20 random width sets spanning the same range, fitted the same way. Three did as well or better (6.6–8.3×10⁻⁴), three more came within about 3×, and the rest were worse (4×10⁻³ to 0.24). The good sets share a strong **hierarchy**: one very wide segment, one very narrow, and a middle ratio of roughly 15–40, such as (1913 : 1 : 21) or (820 : 1 : 37), alongside the lepton masses' (3477 : 1 : 17). **So the near-fit is not specific to the lepton masses.** They fall in a favorable region that covers roughly 15–30% of random hierarchical width sets: a pass, not a striking coincidence.
 - **Assumptions:** width ∝ tube size; each segment shares its lepton's *tube* dimension; flavor couples at a point (the junction); flips off. ν₃/ν₁ ≈ 2.06 here, although the modes are not harmonics.
 
+### Lifting θ₁₃: segments sharing the wye's ring
+
+[../scripts/wye_theta13.py](../scripts/wye_theta13.py), [output](../outputs/wye_theta13.txt). Each segment shares either its lepton's tube (width C/m) or the wye's shared tiny ring (width r, the wye's own unconstrained size, r ≤ 0.7 fm). All 8 tube/ring choices × 2 segment orders × 2 flavor definitions were tried; the fitted parameters are the 2 segment lengths, plus r when used.
+
+**Best case:** point flavor, order e–τ–μ, the **electron's segment shares the ring** (τ, μ share tubes), with **r = 0.47 fm** (interior). Loss 4.8×10⁻⁵ with 3 parameters against 4 data numbers.
+
+| | ν_e row (ν₁, ν₂, ν₃) | \|U_μ3\|², \|U_τ3\|² | θ₁₃ |
+|---|---|---|---|
+| model | 0.679, 0.302, 0.019 | 0.494, 0.486 | ≈ 7.9° |
+| measured | 0.678, 0.300, 0.022 | 0.489, 0.489 | 8.5° |
+
+Mass ratio exact; masses ≈ 28.0, 29.3, 57.6 meV. If this holds, the neutrino data **pin the wye's ring at ≈ 0.47 fm**, a charged-lepton dimension the charged-lepton fit leaves free.
+
+**Cautions:**
+- It is the best of 32 discrete combinations (look-elsewhere effect).
+- It depends on the flavor definition: with segment-concentrated flavors the same layout gives θ₁₃ ≈ 0 (loss 9×10⁻⁴). Earlier results held under both definitions; this one does not.
+- It treats the electron's segment differently from μ's and τ's (ring vs. tube) without a structural reason, contrary to the preference for treating the three sheets alike.
+
 **The assumption this exposes.** "The lightest states are the observed particles" is stricter than ma-domain's working assumption, which allows unobserved higher modes that decay away ([ma-domain README](../../ma-domain/README.md), working assumptions). By the strict rule ma-domain's K4 would also fail: its μ sheet has an fm-scale ring, which places sibling charged states near 1.2 GeV, below the τ. A decision is needed: keep the strict rule (and look for geometries that satisfy it), or adopt ma-domain's looser rule (and specify which extra states are tolerated, and why they are not seen).
 
 ## What this leaves

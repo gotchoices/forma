@@ -43,7 +43,9 @@ No separate neutrino line. The neutrino is a mode circulating in only one dimens
 - [x] Rules: harmonics are not new particles; charged modes below a target are a problem; heavier ones tolerated (user decision).
 - [x] **Charged wye + neutrino circle, widths = charged-lepton tube sizes, 2 free lengths: near-fit** (loss ≈ 8.5×10⁻⁴). Exact mass ratio, ν_e row and ν₃ column within ≈ 0.01; misses θ₁₃ (≈ 2° vs 8.5°) ([lepton-manifold.md](work/lepton-manifold.md)).
 - [x] Genericity: **not specific.** About 15–30% of random hierarchical width sets fit as well; the requirement is a strong hierarchy (one wide, one narrow, middle ratio ≈ 15–40), which the lepton masses satisfy.
-- [ ] What could lift θ₁₃ to 8.5°: segment sharing the ring instead of the tube, a small asymmetry, tapers, or the flips.
+- [x] θ₁₃: **electron segment sharing the wye's ring (r ≈ 0.47 fm) gives θ₁₃ ≈ 7.9°, loss 4.8×10⁻⁵** (point flavor, order e–τ–μ). Cautions: best of 32 combos; flavor-definition dependent; e treated unlike μ, τ ([lepton-manifold.md](work/lepton-manifold.md)).
+- [ ] Look-elsewhere check for the ring-sharing result (random layouts with one free ring size).
+- [ ] **Common twist for all three charged sheets** in lepton_search (one σ_eff in place of three shears), optionally a half-twisted sheet as a neutrino host ((2, 1) resonant, neutral under the closure rule as written); user prefers the same twist on all three electron sheets.
 - [ ] Verify the charged wye itself under the loose rule (lepton_search with the wye topology fixed).
 - [ ] Then the simplest step-junction neutrino line if the torus alone fails.
 

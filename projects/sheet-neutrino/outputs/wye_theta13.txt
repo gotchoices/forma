@@ -1,0 +1,65 @@
+  point   order e-mu-tau   share TTT: loss 8.96e-04, |U_e3|² 0.001
+  point   order e-mu-tau   share TTR: loss 8.96e-04, |U_e3|² 0.001, ring r = 0.695 fm
+  point   order e-mu-tau   share TRT: loss 9.42e-04, |U_e3|² 0.000, ring r = 0.0551 fm
+  point   order e-mu-tau   share TRR: loss 4.50e-01, |U_e3|² 0.000, ring r = 0.7 fm
+  point   order e-mu-tau   share RTT: loss 2.00e-04, |U_e3|² 0.029, ring r = 0.0001 fm
+  point   order e-mu-tau   share RTR: loss 1.09e+00, |U_e3|² 0.034, ring r = 0.0595 fm
+  point   order e-mu-tau   share RRT: loss 1.93e-02, |U_e3|² 0.013, ring r = 0.57 fm
+  point   order e-mu-tau   share RRR: loss 1.00e+03, ring r = 0.000144 fm
+  point   order e-tau-mu   share TTT: loss 8.46e-04, |U_e3|² 0.001
+  point   order e-tau-mu   share TTR: loss 8.47e-04, |U_e3|² 0.001, ring r = 0.0543 fm
+  point   order e-tau-mu   share TRT: loss 1.87e-02, |U_e3|² 0.001, ring r = 0.7 fm
+  point   order e-tau-mu   share TRR: loss 4.50e-01, |U_e3|² 0.000, ring r = 0.7 fm
+  point   order e-tau-mu   share RTT: loss 4.84e-05, |U_e3|² 0.019, ring r = 0.47 fm
+  point   order e-tau-mu   share RTR: loss 4.54e-03, |U_e3|² 0.001, ring r = 0.588 fm
+  point   order e-tau-mu   share RRT: loss 3.17e-01, |U_e3|² 0.147, ring r = 0.7 fm
+  point   order e-tau-mu   share RRR: loss 1.00e+03, ring r = 0.000144 fm
+  segment order e-mu-tau   share TTT: loss 8.72e-03, |U_e3|² 0.000
+  segment order e-mu-tau   share TTR: loss 8.84e-03, |U_e3|² 0.000, ring r = 0.502 fm
+  segment order e-mu-tau   share TRT: loss 9.15e-04, |U_e3|² 0.001, ring r = 0.0603 fm
+  segment order e-mu-tau   share TRR: loss 4.51e-01, |U_e3|² 0.000, ring r = 0.0101 fm
+  segment order e-mu-tau   share RTT: loss 3.82e-01, |U_e3|² 0.000, ring r = 0.0001 fm
+  segment order e-mu-tau   share RTR: loss 1.03e+00, |U_e3|² 0.019, ring r = 0.258 fm
+  segment order e-mu-tau   share RRT: loss 1.77e-02, |U_e3|² 0.004, ring r = 0.607 fm
+  segment order e-mu-tau   share RRR: loss 1.00e+03, ring r = 0.000144 fm
+  segment order e-tau-mu   share TTT: loss 2.18e-03, |U_e3|² 0.000
+  segment order e-tau-mu   share TTR: loss 9.15e-04, |U_e3|² 0.001, ring r = 0.0604 fm
+  segment order e-tau-mu   share TRT: loss 2.30e-02, |U_e3|² 0.000, ring r = 0.7 fm
+  segment order e-tau-mu   share TRR: loss 4.51e-01, |U_e3|² 0.000, ring r = 0.0101 fm
+  segment order e-tau-mu   share RTT: loss 9.26e-04, |U_e3|² 0.000, ring r = 0.000158 fm
+  segment order e-tau-mu   share RTR: loss 1.17e-01, |U_e3|² 0.032, ring r = 0.603 fm
+  segment order e-tau-mu   share RRT: loss 2.62e-01, |U_e3|² 0.115, ring r = 0.0146 fm
+  segment order e-tau-mu   share RRR: loss 1.00e+03, ring r = 0.000144 fm
+
+== point, order e-tau-mu, share RTT, r = 0.47 fm  (loss 4.84e-05)
+  segment lengths (fractions of circle): 0.509, 0.166, 0.325
+  junction reflections r: +0.923, -0.195, -0.888
+  implied width ratios w_next/w_prev at each junction: 0.040, 1.485, 16.812  (product 1.000; widths alone require 1)
+  modes k = 0.9540, 0.9988, 1.9617;  ratio = 33.60;  k3/k1 = 2.056
+  |U|² (rows: flavor at junction/segment 1, 2, 3; columns ν1 ν2 ν3):
+    0.226  0.288  0.486
+    0.095  0.410  0.494
+    0.679  0.302  0.019
+  target: e-row 0.678 0.300 0.022;  |U_μ3|² 0.489, |U_τ3|² 0.489
+
+== point, order e-mu-tau, share RTT, r = 0.0001 fm  (loss 2.00e-04)
+  segment lengths (fractions of circle): 0.191, 0.429, 0.380
+  junction reflections r: +1.000, -1.000, +0.888
+  implied width ratios w_next/w_prev at each junction: 0.000, 117283.526, 0.059  (product 1.000; widths alone require 1)
+  modes k = 1.1637, 1.1734, 1.4529;  ratio = 33.14;  k3/k1 = 1.249
+  |U|² (rows: flavor at junction/segment 1, 2, 3; columns ν1 ν2 ν3):
+    0.671  0.300  0.029
+    0.085  0.427  0.488
+    0.244  0.273  0.483
+  target: e-row 0.678 0.300 0.022;  |U_μ3|² 0.489, |U_τ3|² 0.489
+
+== point, order e-tau-mu, share TTT  (loss 8.46e-04)
+  segment lengths (fractions of circle): 0.347, 0.601, 0.052
+  junction reflections r: -0.990, +0.999, -0.888
+  implied width ratios w_next/w_prev at each junction: 206.820, 0.000, 16.812  (product 1.000; widths alone require 1)
+  modes k = 0.8064, 0.8445, 1.6638;  ratio = 33.60;  k3/k1 = 2.063
+  |U|² (rows: flavor at junction/segment 1, 2, 3; columns ν1 ν2 ν3):
+    0.688  0.311  0.001
+    0.173  0.326  0.500
+    0.139  0.363  0.498
+  target: e-row 0.678 0.300 0.022;  |U_μ3|² 0.489, |U_τ3|² 0.489
