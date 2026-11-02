@@ -31,7 +31,7 @@ N2–N4 are three views of one fact about the Klein bottle and need not be count
 
 ## 2. The small ν₁/ν₂ split
 
-The measured ratio Δm²₃₁/Δm²₂₁ ≈ 33.6 needs a near-degenerate pair plus a distant third. Evenly spaced harmonics give at most 4 ([host-candidates §3](host-candidates.md#3-a-general-limit-consecutive-modes-cannot-make-336)). Something must split a pair slightly.
+The measured ratio Δm²₃₁/Δm²₂₁ ≈ 33.6 needs m₁² and m₂² close compared with their gap to m₃². Every host here realizes that as a near-degenerate *mass* pair, which places m₁ around 15–30 meV; a massless or very light ν₁ is also allowed by the data and is not yet explored. Evenly spaced harmonics give at most 4 ([host-candidates §3](host-candidates.md#3-a-general-limit-consecutive-modes-cannot-make-336)). Something must split a pair slightly.
 
 | ID | Mechanism | Host | Status |
 |---|---|---|---|

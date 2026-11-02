@@ -159,7 +159,17 @@ The sign of Δm²₃₁ is not yet known. In **normal ordering**, ν₃ is the h
 
 ### The pattern
 
-The ratio of about 34 has a structural meaning: **two of the mass states are nearly degenerate, and the third is well separated.** A host must contain something that splits a pair slightly while setting the third state much further away. A spectrum with roughly even spacing will not do.
+The ratio of about 34 has a structural meaning, in **squared** mass: m₁² and m₂² are close compared with their distance to m₃². What that means for the masses themselves depends on the unmeasured lightest mass:
+
+| m₁ (meV) | m₂ (meV) | m₃ (meV) | m₃/m₁ |
+|---|---|---|---|
+| 0 | 8.7 | 50.1 | ∞ |
+| 5 | 10.0 | 50.3 | 10 |
+| 17.7 | 19.7 | 53.1 | 3.0 |
+| 28.9 | 30.2 | 57.9 | 2.0 |
+| 100 | 100.4 | 111.8 | 1.1 |
+
+Only for m₁ above roughly 15–20 meV are ν₁ and ν₂ close in mass. No particular value of m₃/m₁ is required. A host must reproduce the ratio of the squared-mass gaps; how close its lightest two masses come out depends on where it sits on this curve.
 
 ### Absolute masses: a narrow window
 
@@ -170,7 +180,7 @@ Cosmological analyses also quote a much tighter limit, Σm below about 70 meV. T
 
 ### What this requires of a host
 
-Three states whose squared-mass differences match the table, arranged as a near-degenerate pair plus a separated third, with Σm of at least about 59 meV and masses below the direct limit.
+Three states whose squared-mass differences match the table (the first two close in squared mass compared with the third), with Σm of at least about 59 meV and masses below the direct limit.
 
 ## §7. Requirement 5: exactly three neutrinos that interact
 
@@ -203,7 +213,7 @@ Three properties are measured or measurable, but no theory currently predicts th
 | 1 | Carry half-integer angular momentum away | essentially certain (conservation) | what the host carries, not how |
 | 2 | Behave as spin ½ relative to space, while traveling alone: 360° sign change (exclusion follows), helicity | very strong, indirect | external behavior; may reside partly in the host's relation to space |
 | 3 | No charge density anywhere; any + and − must coincide in position and motion | strong (limits ~10⁵ below the neutron's) | rules out cancellation between separated charges |
-| 4 | Squared-mass differences 7.5×10⁻⁵ and 2.5×10⁻³ eV²: a near-degenerate pair plus a distant third; Σm ≳ 59 meV; below the direct limit | measured | the host's mode spectrum |
+| 4 | Squared-mass differences 7.5×10⁻⁵ and 2.5×10⁻³ eV²: the first two close in *squared* mass relative to the third; Σm ≳ 59 meV; below the direct limit | measured | the host's mode spectrum |
 | 5 | Exactly three types lighter than ~45 GeV that couple to the Z | measured, interpreted through weak-interaction theory | extra modes must be sterile |
 | — | Mixing angles, Majorana or Dirac, lightest mass | measured or open; no theory predicts them | opportunities, not requirements |
 

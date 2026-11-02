@@ -77,7 +77,7 @@ A particle can be neutral overall but have internal regions of + and − charge,
 | Sum Σm from cosmology | ≲ 0.07 eV within the standard cosmological model (DESI + CMB, 2024–25). *Model-dependent context, not a requirement.* |
 | Minimum Σm allowed by the splittings | ≈ 0.06 eV (normal ordering, m₁ = 0) |
 
-**The pattern is a near-degenerate pair plus a distant third.** Δm²₂₁ is about 1/34 of Δm²₃₁. A host must produce a small parameter that splits a pair slightly. This is a structural requirement, not just a number to fit.
+**The pattern, in squared mass, is a close pair plus a distant third.** (In mass itself the pair is close only if the lightest mass is above roughly 15–20 meV; at m₁ = 0 the masses are 0, 8.7, 50 meV.) Δm²₂₁ is about 1/34 of Δm²₃₁. A host must produce a small parameter that splits a pair slightly. This is a structural requirement, not just a number to fit.
 
 **Cosmology as context.** If the standard cosmological model holds, the window between the oscillation minimum (≈ 0.06 eV) and its bound (≈ 0.07 eV) is narrow. Because that bound is derived within a model, this project records hosts' Σm against it for comparison but does not treat it as a requirement.
 

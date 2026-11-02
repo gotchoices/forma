@@ -4,7 +4,7 @@ Working file. It compares candidate neutrino hosts against the requirements in [
 
 ## 1. What a host must deliver
 
-1. **Spectrum:** three fermion-class mass states with Δm²₃₁/Δm²₂₁ ≈ 33.6. That means a near-degenerate pair plus a distant third.
+1. **Spectrum:** three fermion-class mass states with Δm²₃₁/Δm²₂₁ ≈ 33.6: m₁² and m₂² close compared with their gap to m₃². Whether m₁ and m₂ are close in *mass* depends on the lightest mass, which is unmeasured (see [chapter 1 §6](../01-host-requirements.md)).
 2. **Neutrality:** no charge density anywhere, not just zero net charge.
 3. **Half-integer angular momentum,** behaving as spin ½ relative to space while traveling alone (rotation sign change, from which exclusion follows; observed helicity). The internal mechanism is open.
 4. **Oscillation:** the produced flavor states must be mixtures of the three mass states. Ideally the host predicts the mixing angles.

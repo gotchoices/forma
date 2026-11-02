@@ -19,6 +19,8 @@ The electron and proton each live on a 2D compact sheet in MaSt. The neutrino ha
 5. **Fits are not predictions.** A host that reproduces one ratio with one tuned parameter has fit it. Predictions are what it says about quantities it was not tuned to: absolute masses, the sum Σm, mixing angles, and whether the neutrino is Majorana.
 6. **Negative results are recorded as "not yet."** A blocked host is recorded with the specific form that failed, and stays open to revival.
 
+**Task queue:** [STATUS.md](STATUS.md).
+
 ## Reference files
 
 Background distilled from the discussion that framed this project:

@@ -35,6 +35,8 @@ Options:
     --scan-seeds N   random restarts per discrete combo, scan phase (default 2)
     --threshold PCT  max |Delta%| for a fit to count as compliant (default 1.0)
     --out PATH       output report path (default outputs/cand_<name>.txt)
+    --pin DIM=L      fix a dimension's size in fm (repeatable), e.g. --pin m1=4.24e10;
+                     the pinned dim is held at that value in every fit
 
 Performance: the residual and its Jacobian are vectorized numpy; the
 Jacobian is exact (analytic), so least_squares runs no finite differences.
@@ -312,7 +314,8 @@ def build_fit(spec: Spec, assignment: list, tube_first: tuple):
 
 
 def fit_combo(spec: Spec, assignment: list, tube_first: tuple,
-              n_seeds: int, rng_offset: int = 0, max_nfev: int = 300):
+              n_seeds: int, rng_offset: int = 0, max_nfev: int = 300,
+              pins: dict | None = None):
     """Fit one discrete combo from n_seeds random restarts.
 
     Returns a list of {x, max_err, pred} for every restart that converged,
@@ -323,11 +326,16 @@ def fit_combo(spec: Spec, assignment: list, tube_first: tuple,
     n_sheets = len(spec.sheets)
     lo = [LOG_L_LO] * n_dims + [SIGMA_LO] * n_sheets
     hi = [LOG_L_HI] * n_dims + [SIGMA_HI] * n_sheets
+    pinned = {spec.dims.index(d): log10(v) for d, v in (pins or {}).items()}
+    for i, lv in pinned.items():          # hold pinned dims in a tiny interval
+        lo[i], hi[i] = lv - 1e-9, lv + 1e-9
     sols = []
     for s in range(n_seeds):
         rng = np.random.default_rng(s + rng_offset)
         x0 = np.concatenate([rng.uniform(-4, 14, n_dims),
                              rng.uniform(0.3, 2.7, n_sheets)])
+        for i, lv in pinned.items():
+            x0[i] = lv
         try:
             res = least_squares(residual, x0, jac=jac, bounds=(lo, hi),
                                 method="trf", max_nfev=max_nfev)
@@ -411,7 +419,8 @@ def characterize_params(spec: Spec, solutions: list) -> list:
 # Solve one candidate
 # ---------------------------------------------------------------------------
 
-def solve(spec: Spec, scan_seeds: int, map_seeds: int, threshold: float) -> dict:
+def solve(spec: Spec, scan_seeds: int, map_seeds: int, threshold: float,
+          pins: dict | None = None) -> dict:
     r1 = check_r1(spec)
     dof = dof_analysis(spec)
 
@@ -423,7 +432,7 @@ def solve(spec: Spec, scan_seeds: int, map_seeds: int, threshold: float) -> dict
     scan = []
     step = max(1, total // 20)
     for i, (assignment, tube_first) in enumerate(combos):
-        sols = fit_combo(spec, assignment, tube_first, scan_seeds)
+        sols = fit_combo(spec, assignment, tube_first, scan_seeds, pins=pins)
         if sols:
             scan.append({"assignment": assignment, "tube_first": tube_first,
                          "best_err": sols[0]["max_err"]})
@@ -436,7 +445,7 @@ def solve(spec: Spec, scan_seeds: int, map_seeds: int, threshold: float) -> dict
     compliant = [c for c in scan if c["best_err"] <= threshold]
 
     result = {
-        "spec": spec, "r1": r1, "dof": dof,
+        "spec": spec, "r1": r1, "dof": dof, "pins": dict(pins or {}),
         "n_combos_scanned": len(scan),
         "n_combos_compliant": len(compliant),
         "best_err": scan[0]["best_err"] if scan else None,
@@ -453,7 +462,7 @@ def solve(spec: Spec, scan_seeds: int, map_seeds: int, threshold: float) -> dict
           file=sys.stderr, flush=True)
     best = compliant[0]
     sols = fit_combo(spec, best["assignment"], best["tube_first"],
-                     map_seeds, rng_offset=1000)
+                     map_seeds, rng_offset=1000, pins=pins)
     good = [s for s in sols if s["max_err"] <= threshold]
     if good:
         result["manifold"] = {
@@ -486,6 +495,10 @@ def format_report(result: dict) -> str:
         L.append(f"  {spec.note}")
     L.append("=" * 78)
     L.append("")
+    if result.get("pins"):
+        L.append("PINNED (held fixed in every fit): " + ", ".join(
+            f"L[{d}] = {v:.4g} fm" for d, v in result["pins"].items()))
+        L.append("")
     L.append(f"Topology: {len(spec.dims)} dims, {len(spec.sheets)} sheets")
     for sh in spec.sheets:
         L.append(f"  Ma{tuple(sh['pair'])}  [{sh['sector']}]")
@@ -654,7 +667,13 @@ def main(argv=None):
                     help="max |Delta%%| for a compliant fit (default 1.0)")
     ap.add_argument("--out", default=None,
                     help="output report path (default outputs/cand_<name>.txt)")
+    ap.add_argument("--pin", action="append", default=[], metavar="DIM=L",
+                    help="fix a dimension's size in fm (repeatable)")
     args = ap.parse_args(argv)
+    pins = {}
+    for p in args.pin:
+        d, v = p.split("=")
+        pins[d.strip()] = float(v)
 
     here = Path(__file__).resolve().parent
     out_dir = here.parent / "outputs"
@@ -676,7 +695,7 @@ def main(argv=None):
     for spec_path in spec_paths:
         spec = load_spec(str(spec_path))
         print(f"solving {spec.name} ...", file=sys.stderr, flush=True)
-        result = solve(spec, args.scan_seeds, args.seeds, args.threshold)
+        result = solve(spec, args.scan_seeds, args.seeds, args.threshold, pins=pins)
         report = format_report(result)
         print(report)
         out_path = Path(args.out) if (args.out and len(spec_paths) == 1) \
