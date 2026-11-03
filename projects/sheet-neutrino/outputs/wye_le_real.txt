@@ -1,0 +1,1 @@
+real tube sizes: best loss 8.46e-04  (('e', 'tau', 'mu'), 'TTT', None, np.float64(0.0014604863631612565))

@@ -10,12 +10,14 @@ All live lines of inquiry, so none is dropped while another is pursued. Details 
 |---|---|---|
 | **Neutrino circle around the electron triangle** (segments = electron sheets, junctions = shared dimensions, junction type from tube/ring roles) | bookkeeping done (one tube–tube, one ring–ring, one mixed spoke in every assignment); size-ratio junction rules fail (best loss 0.099) | a junction rule not based on raw size ratios: role-based strengths, tapers, or curvature |
 | **Hub as flavor coupler** (star coupling through the quark hub) | common coupling fails; per-channel fits (under-determined) | derive couplings from geometry: sizes, hub's tube/ring role in each quark sheet, clover lobe vs saddle for sign |
-| **Wye + circle, electron segment on the ring** (θ₁₃ ≈ 7.9°, r ≈ 0.47 fm) | near-fit, with caveats | look-elsewhere check |
+| **Wye + circle, electron segment on the ring** (θ₁₃ ≈ 7.9°, r ≈ 0.47 fm) | **not significant**: 5 of 12 random hierarchies fit as well or better | parked |
 | **Half-twisted neutrino sheets** (exact splittings, r ≈ 0.12 fm) | works, but charged states at m_μ/2, … | are those states free particles? |
 | **Common twist for all charged sheets** in the lepton search | queued | implement |
 | **Massless or very light ν₁** (0, 8.7, 50 meV) | unexplored | hosts with a zero-frequency mode |
 | **Junction mechanics** (tapers, necks, pinch) | deferred | bounded taper test |
 | **GRID stages 2–3** (flavor exchange; L/E in flight) | deferred | after a host is chosen |
+| **Whole-manifold neutrino** (light neutral modes of the full, non-flat manifold; mixing from shape or curvature, no junctions) | proposed: flat tori cannot mix modes, so every piecewise model needed supplied couplings | plan, with two decisions: charge of 3+-dimension modes, and the meaning of flavor |
+| **View 1 (flat n-manifold) vs. view 2 (3D space with embedded, curved sheets)** | framing | view 2 supplies curvature (hence mixing) and a reason for threes, but must face the electron's measured pointlike size (< 10⁻¹⁸ m) |
 | **Spin ½ relative to space** | open conceptual gap | needs new insight |
 | **Chapter 2** and consolidation | pending | draft |
 
@@ -61,7 +63,7 @@ No separate neutrino line. The neutrino is a mode circulating in only one dimens
 - [x] **Charged wye + neutrino circle, widths = charged-lepton tube sizes, 2 free lengths: near-fit** (loss ≈ 8.5×10⁻⁴). Exact mass ratio, ν_e row and ν₃ column within ≈ 0.01; misses θ₁₃ (≈ 2° vs 8.5°) ([lepton-manifold.md](work/lepton-manifold.md)).
 - [x] Genericity: **not specific.** About 15–30% of random hierarchical width sets fit as well; the requirement is a strong hierarchy (one wide, one narrow, middle ratio ≈ 15–40), which the lepton masses satisfy.
 - [x] θ₁₃: **electron segment sharing the wye's ring (r ≈ 0.47 fm) gives θ₁₃ ≈ 7.9°, loss 4.8×10⁻⁵** (point flavor, order e–τ–μ). Cautions: best of 32 combos; flavor-definition dependent; e treated unlike μ, τ ([lepton-manifold.md](work/lepton-manifold.md)).
-- [ ] Look-elsewhere check for the ring-sharing result (random layouts with one free ring size).
+- [x] Look-elsewhere check for the ring-sharing result: **not significant** (5 of 12 random hierarchies fit as well or better).
 - [x] **(1, 2) electrons + (2, 1) neutrinos** ([lepton-manifold.md](work/lepton-manifold.md)): impossible on one sheet (a Klein seam neutralizes both; one shift resonates only one); works on separate sheets with a common half twist on one large tube. With rings (T_μ, T_τ, r) the splittings fit exactly and pin **r ≈ 0.12 fm**, but the half-twisted sheets add charged states at m_μ/2 ≈ 53 MeV and other half-integer multiples.
 - [x] **Quark hub as flavor coupler** ([lepton-manifold.md](work/lepton-manifold.md)): a common (symmetric) hub coupling fails (θ₁₃ ≈ 35°); per-channel couplings fit, but under-determined, with e weak and μ, τ strong and of opposite sign.
 - [ ] Is there a geometric reason for weak-e / opposite-sign μ, τ hub couplings (spoke orientation, mode overlaps)? If the couplings can be derived from K5's dimension sizes, the hub model becomes predictive.

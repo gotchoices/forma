@@ -97,6 +97,8 @@ Mass ratio exact; masses ≈ 28.0, 29.3, 57.6 meV. If this holds, the neutrino d
 - It depends on the flavor definition: with segment-concentrated flavors the same layout gives θ₁₃ ≈ 0 (loss 9×10⁻⁴). Earlier results held under both definitions; this one does not.
 - It treats the electron's segment differently from μ's and τ's (ring vs. tube) without a structural reason, contrary to the preference for treating the three sheets alike.
 
+**Look-elsewhere check: not significant** ([../scripts/wye_lookelsewhere.py](../scripts/wye_lookelsewhere.py); outputs `wye_le_real.txt`, `wye_le_s1–4.txt`). The same search (8 sharing choices × 2 orders, free ring size bounded by the smallest tube) was repeated with random hierarchical tube sizes spanning the same range. **5 of 12 random trials beat the real-mass result** (best losses 5×10⁻⁸ to 2.2×10⁻⁵ against 4.8×10⁻⁵), even with weaker search settings, under which the real masses reached only 8.5×10⁻⁴. With one free ring size the model fits nearly any strong hierarchy, so the θ₁₃ ≈ 7.9° fit and the "pinned" r ≈ 0.47 fm carry **no evidence** for a link to the charged-lepton masses.
+
 ## (1, 2) electrons and (2, 1) neutrinos on different twists
 
 **Question (user).** Can sheets that share a large and a small dimension give charged (1, 2) electrons and, through a Klein seam, (2, 1) neutrinos?

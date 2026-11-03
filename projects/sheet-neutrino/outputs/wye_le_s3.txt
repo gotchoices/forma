@@ -1,0 +1,3 @@
+trial 1: tubes [0.698 1.403 4.811] fm  best loss 2.69e-04  (('e', 'mu', 'tau'), 'TTR', np.float64(0.009135380970872948), np.float64(0.03338474589120467))
+trial 2: tubes [ 1.503  0.698 80.396] fm  best loss 6.47e-06  (('e', 'tau', 'mu'), 'RTT', np.float64(0.30533265291076966), np.float64(0.020201508897110948))
+trial 3: tubes [278.593   2.566   0.698] fm  best loss 7.14e-04  (('e', 'mu', 'tau'), 'TTT', None, np.float64(0.003179482534954319))
