@@ -131,6 +131,20 @@ Mass ratio exact; masses ≈ 28.0, 29.3, 57.6 meV. If this holds, the neutrino d
 
 **What the unequal fit suggests.** The electron channel couples weakly to the hub, while μ and τ couple strongly with **opposite signs**, the structure associated with near-maximal μ–τ mixing. If something geometric gave the μ and τ spokes opposite orientations relative to the hub, the pattern would have a reason. That is speculative, and with 6 parameters against 5 numbers the fit itself proves nothing.
 
+## Neutrino circle around the electron triangle
+
+**Idea (user).** Each neutrino segment *is* one electron sheet and each junction is the spoke two neighboring sheets share, so the circle traces K4's electron triangle. Junction types then follow from the spokes' tube/ring roles.
+
+**Bookkeeping** ([../scripts/triangle_circle.py](../scripts/triangle_circle.py), [output](../outputs/triangle_circle.txt)). In all five of K4's distinct fitted assignments:
+- the electron triangle has exactly **one tube–tube spoke, one ring–ring spoke, and one mixed spoke**;
+- the hub is the **ring of the u/d quark sheet** and the tube of the other two.
+
+Both asymmetries are built in.
+
+**Test.** Junction reflections come from rules fixed in advance, r = (w_A − w_B)/(w_A + w_B), with each sheet's w taken as its non-shared dimension ("other"), its tube ("tube"), or its ring ("ring"). Fitted: two segment lengths, m₁ within K4's range, m₃ within 0.91–1.05 fm. Five assignments × three rules × flips off/on, point flavors.
+
+**Result: no rule fits.** The best (ring rule, flips off) has loss 0.099: mass ratio right (33.65), mixing wrong by 0.2–0.5. **Why:** K4's spoke sizes differ by enormous factors (0.007 fm, ≈ 1 fm, ≥ 4,500 fm), so any size-ratio rule yields junctions that are either near-total mirrors or fully transparent, never the moderate strengths the fits need. Same obstruction as the K4 width test. **Status: not yet** for size-ratio junction rules. The triangle mapping itself is not refuted; a junction rule that does not depend on raw size ratios (role-based strengths, tapers, curvature) remains open.
+
 **The assumption this exposes.** "The lightest states are the observed particles" is stricter than ma-domain's working assumption, which allows unobserved higher modes that decay away ([ma-domain README](../../ma-domain/README.md), working assumptions). By the strict rule ma-domain's K4 would also fail: its μ sheet has an fm-scale ring, which places sibling charged states near 1.2 GeV, below the τ. A decision is needed: keep the strict rule (and look for geometries that satisfy it), or adopt ma-domain's looser rule (and specify which extra states are tolerated, and why they are not seen).
 
 ## What this leaves

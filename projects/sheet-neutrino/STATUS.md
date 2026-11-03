@@ -2,6 +2,23 @@
 
 Living document. Queued and open tasks, highest priority first. Results go into the work files linked from the [README](README.md).
 
+## Open directions (index)
+
+All live lines of inquiry, so none is dropped while another is pursued. Details are in the sections below and the linked work files.
+
+| Direction | Status | Next step |
+|---|---|---|
+| **Neutrino circle around the electron triangle** (segments = electron sheets, junctions = shared dimensions, junction type from tube/ring roles) | bookkeeping done (one tube–tube, one ring–ring, one mixed spoke in every assignment); size-ratio junction rules fail (best loss 0.099) | a junction rule not based on raw size ratios: role-based strengths, tapers, or curvature |
+| **Hub as flavor coupler** (star coupling through the quark hub) | common coupling fails; per-channel fits (under-determined) | derive couplings from geometry: sizes, hub's tube/ring role in each quark sheet, clover lobe vs saddle for sign |
+| **Wye + circle, electron segment on the ring** (θ₁₃ ≈ 7.9°, r ≈ 0.47 fm) | near-fit, with caveats | look-elsewhere check |
+| **Half-twisted neutrino sheets** (exact splittings, r ≈ 0.12 fm) | works, but charged states at m_μ/2, … | are those states free particles? |
+| **Common twist for all charged sheets** in the lepton search | queued | implement |
+| **Massless or very light ν₁** (0, 8.7, 50 meV) | unexplored | hosts with a zero-frequency mode |
+| **Junction mechanics** (tapers, necks, pinch) | deferred | bounded taper test |
+| **GRID stages 2–3** (flavor exchange; L/E in flight) | deferred | after a host is chosen |
+| **Spin ½ relative to space** | open conceptual gap | needs new insight |
+| **Chapter 2** and consolidation | pending | draft |
+
 ## 1. Lepton manifold: search for fits (priority)
 
 Leptons might be hosted on **4 dimensions**: the 3 dimensions shared among the 3 2D electron sheets (the corners of ma-domain's K4 electron delta), plus a fourth neutrino line.

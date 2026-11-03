@@ -1,0 +1,81 @@
+== Role bookkeeping across K4 assignments
+  TRRTTR ['u/d', 'b/t', 's/c', 'e', 'mu', 'tau']:
+    electron spokes: m1 tube–tube (T(e), T(mu)); m2 ring–ring (R(e), R(tau)); m3 mixed (R(mu), T(tau))
+    hub role in quark sheets: u/d: ring, b/t: tube, s/c: tube
+  TRRTTT ['u/d', 's/c', 'b/t', 'e', 'mu', 'tau']:
+    electron spokes: m1 tube–tube (T(e), T(mu)); m2 mixed (R(e), T(tau)); m3 ring–ring (R(mu), R(tau))
+    hub role in quark sheets: u/d: ring, s/c: tube, b/t: tube
+  RTRRTT ['s/c', 'u/d', 'b/t', 'e', 'tau', 'mu']:
+    electron spokes: m1 mixed (R(e), T(tau)); m2 tube–tube (T(e), T(mu)); m3 ring–ring (R(tau), R(mu))
+    hub role in quark sheets: s/c: tube, u/d: ring, b/t: tube
+  TRRTTT ['u/d', 's/c', 'b/t', 'mu', 'e', 'tau']:
+    electron spokes: m1 tube–tube (T(mu), T(e)); m2 mixed (R(mu), T(tau)); m3 ring–ring (R(e), R(tau))
+    hub role in quark sheets: u/d: ring, s/c: tube, b/t: tube
+  TRRTTR ['u/d', 'b/t', 's/c', 'mu', 'e', 'tau']:
+    electron spokes: m1 tube–tube (T(mu), T(e)); m2 ring–ring (R(mu), R(tau)); m3 mixed (R(e), T(tau))
+    hub role in quark sheets: u/d: ring, b/t: tube, s/c: tube
+
+== Fits (point flavor)
+  TRRTTR e-sheet=['e', 'mu', 'tau'] rule other flips off: loss 6.80e-01  (circle e-mu-tau, junctions ['m2', 'm1', 'm3'], m1 ≈ 2.22e+06 fm)
+  TRRTTR e-sheet=['e', 'mu', 'tau'] rule other flips on : loss 6.98e-01  (circle e-mu-tau, junctions ['m2', 'm1', 'm3'], m1 ≈ 1.67e+06 fm)
+  TRRTTR e-sheet=['e', 'mu', 'tau'] rule tube  flips off: loss 4.49e-01  (circle e-mu-tau, junctions ['m2', 'm1', 'm3'], m1 ≈ 4.51e+03 fm)
+  TRRTTR e-sheet=['e', 'mu', 'tau'] rule tube  flips on : loss 1.38e+00  (circle e-mu-tau, junctions ['m2', 'm1', 'm3'], m1 ≈ 3.1e+13 fm)
+  TRRTTR e-sheet=['e', 'mu', 'tau'] rule ring  flips off: loss 1.91e+00  (circle e-mu-tau, junctions ['m2', 'm1', 'm3'], m1 ≈ 8.22e+04 fm)
+  TRRTTR e-sheet=['e', 'mu', 'tau'] rule ring  flips on : loss 6.63e-01  (circle e-mu-tau, junctions ['m2', 'm1', 'm3'], m1 ≈ 5.02e+14 fm)
+  TRRTTT e-sheet=['e', 'mu', 'tau'] rule other flips off: loss 6.80e-01  (circle e-mu-tau, junctions ['m2', 'm1', 'm3'], m1 ≈ 2.22e+06 fm)
+  TRRTTT e-sheet=['e', 'mu', 'tau'] rule other flips on : loss 6.98e-01  (circle e-mu-tau, junctions ['m2', 'm1', 'm3'], m1 ≈ 1.67e+06 fm)
+  TRRTTT e-sheet=['e', 'mu', 'tau'] rule tube  flips off: loss 5.05e-01  (circle e-mu-tau, junctions ['m2', 'm1', 'm3'], m1 ≈ 2.04e+14 fm)
+  TRRTTT e-sheet=['e', 'mu', 'tau'] rule tube  flips on : loss 1.38e+00  (circle e-mu-tau, junctions ['m2', 'm1', 'm3'], m1 ≈ 3.1e+13 fm)
+  TRRTTT e-sheet=['e', 'mu', 'tau'] rule ring  flips off: loss 9.91e-02  (circle e-mu-tau, junctions ['m2', 'm1', 'm3'], m1 ≈ 7.23e+14 fm)
+  TRRTTT e-sheet=['e', 'mu', 'tau'] rule ring  flips on : loss 7.31e-01  (circle e-mu-tau, junctions ['m2', 'm1', 'm3'], m1 ≈ 4.51e+03 fm)
+  RTRRTT e-sheet=['e', 'tau', 'mu'] rule other flips off: loss 6.80e-01  (circle e-tau-mu, junctions ['m2', 'm1', 'm3'], m1 ≈ 2.22e+06 fm)
+  RTRRTT e-sheet=['e', 'tau', 'mu'] rule other flips on : loss 6.98e-01  (circle e-tau-mu, junctions ['m2', 'm1', 'm3'], m1 ≈ 1.67e+06 fm)
+  RTRRTT e-sheet=['e', 'tau', 'mu'] rule tube  flips off: loss 1.00e+03  (circle e-tau-mu, junctions ['m2', 'm1', 'm3'], m1 ≈ 1.36e+04 fm)
+  RTRRTT e-sheet=['e', 'tau', 'mu'] rule tube  flips on : loss 1.00e+03  (circle e-tau-mu, junctions ['m2', 'm1', 'm3'], m1 ≈ 1.36e+04 fm)
+  RTRRTT e-sheet=['e', 'tau', 'mu'] rule ring  flips off: loss 5.89e-01  (circle e-tau-mu, junctions ['m2', 'm1', 'm3'], m1 ≈ 2.08e+13 fm)
+  RTRRTT e-sheet=['e', 'tau', 'mu'] rule ring  flips on : loss 1.55e+00  (circle e-tau-mu, junctions ['m2', 'm1', 'm3'], m1 ≈ 4.51e+03 fm)
+  TRRTTT e-sheet=['mu', 'e', 'tau'] rule other flips off: loss 4.28e-01  (circle e-mu-tau, junctions ['m3', 'm1', 'm2'], m1 ≈ 4.81e+03 fm)
+  TRRTTT e-sheet=['mu', 'e', 'tau'] rule other flips on : loss 1.07e+00  (circle e-mu-tau, junctions ['m3', 'm1', 'm2'], m1 ≈ 1.05e+05 fm)
+  TRRTTT e-sheet=['mu', 'e', 'tau'] rule tube  flips off: loss 5.05e-01  (circle e-mu-tau, junctions ['m3', 'm1', 'm2'], m1 ≈ 2.04e+14 fm)
+  TRRTTT e-sheet=['mu', 'e', 'tau'] rule tube  flips on : loss 1.38e+00  (circle e-mu-tau, junctions ['m3', 'm1', 'm2'], m1 ≈ 3.1e+13 fm)
+  TRRTTT e-sheet=['mu', 'e', 'tau'] rule ring  flips off: loss 1.10e+00  (circle e-mu-tau, junctions ['m3', 'm1', 'm2'], m1 ≈ 5.26e+05 fm)
+  TRRTTT e-sheet=['mu', 'e', 'tau'] rule ring  flips on : loss 5.93e-01  (circle e-mu-tau, junctions ['m3', 'm1', 'm2'], m1 ≈ 9.18e+07 fm)
+  TRRTTR e-sheet=['mu', 'e', 'tau'] rule other flips off: loss 4.28e-01  (circle e-mu-tau, junctions ['m3', 'm1', 'm2'], m1 ≈ 4.81e+03 fm)
+  TRRTTR e-sheet=['mu', 'e', 'tau'] rule other flips on : loss 1.07e+00  (circle e-mu-tau, junctions ['m3', 'm1', 'm2'], m1 ≈ 1.05e+05 fm)
+  TRRTTR e-sheet=['mu', 'e', 'tau'] rule tube  flips off: loss 4.49e-01  (circle e-mu-tau, junctions ['m3', 'm1', 'm2'], m1 ≈ 4.51e+03 fm)
+  TRRTTR e-sheet=['mu', 'e', 'tau'] rule tube  flips on : loss 1.38e+00  (circle e-mu-tau, junctions ['m3', 'm1', 'm2'], m1 ≈ 3.1e+13 fm)
+  TRRTTR e-sheet=['mu', 'e', 'tau'] rule ring  flips off: loss 4.38e-01  (circle e-mu-tau, junctions ['m3', 'm1', 'm2'], m1 ≈ 3.32e+10 fm)
+  TRRTTR e-sheet=['mu', 'e', 'tau'] rule ring  flips on : loss 1.05e+00  (circle e-mu-tau, junctions ['m3', 'm1', 'm2'], m1 ≈ 2.17e+15 fm)
+
+== TRRTTT, rule ring, flips off, circle e-mu-tau, junction spokes ['m2', 'm1', 'm3'], m1 = 7.23e+14 fm, m3 = 0.918 fm  (loss 9.91e-02)
+  segment lengths (fractions of circle): 0.184, 0.489, 0.327
+  junction reflections r: +0.984, -0.984, +0.000
+  implied width ratios w_next/w_prev at each junction: 0.008, 124.968, 1.000  (product 1.000; widths alone require 1)
+  modes k = 0.9791, 1.0218, 1.9582;  ratio = 33.65;  k3/k1 = 2.000
+  |U|² (rows: flavor at junction/segment 1, 2, 3; columns ν1 ν2 ν3):
+    0.003  0.561  0.437
+    0.363  0.303  0.333
+    0.634  0.136  0.230
+  target: e-row 0.678 0.300 0.022;  |U_μ3|² 0.489, |U_τ3|² 0.489
+
+== TRRTTT, rule other, flips off, circle e-mu-tau, junction spokes ['m3', 'm1', 'm2'], m1 = 4.81e+03 fm, m3 = 0.956 fm  (loss 4.28e-01)
+  segment lengths (fractions of circle): 0.483, 0.241, 0.276
+  junction reflections r: -1.000, +0.985, +1.000
+  implied width ratios w_next/w_prev at each junction: 654372.223, 0.008, 0.000  (product 1.000; widths alone require 1)
+  modes k = 0.9071, 1.0352, 2.0698;  ratio = 13.91;  k3/k1 = 2.282
+  |U|² (rows: flavor at junction/segment 1, 2, 3; columns ν1 ν2 ν3):
+    0.148  0.302  0.550
+    0.802  0.001  0.197
+    0.050  0.697  0.253
+  target: e-row 0.678 0.300 0.022;  |U_μ3|² 0.489, |U_τ3|² 0.489
+
+== TRRTTR, rule other, flips off, circle e-mu-tau, junction spokes ['m3', 'm1', 'm2'], m1 = 4.81e+03 fm, m3 = 0.956 fm  (loss 4.28e-01)
+  segment lengths (fractions of circle): 0.483, 0.241, 0.276
+  junction reflections r: -1.000, +0.985, +1.000
+  implied width ratios w_next/w_prev at each junction: 654372.223, 0.008, 0.000  (product 1.000; widths alone require 1)
+  modes k = 0.9071, 1.0352, 2.0698;  ratio = 13.91;  k3/k1 = 2.282
+  |U|² (rows: flavor at junction/segment 1, 2, 3; columns ν1 ν2 ν3):
+    0.148  0.302  0.550
+    0.802  0.001  0.197
+    0.050  0.697  0.253
+  target: e-row 0.678 0.300 0.022;  |U_μ3|² 0.489, |U_τ3|² 0.489
