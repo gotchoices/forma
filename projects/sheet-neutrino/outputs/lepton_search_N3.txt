@@ -1,90 +1,95 @@
-N=3: 26 topologies × 2 closure rules
+N=3, rule=strict: 26 topologies × 2 closure rules
   [asym] topology 1/26 sheets [(1, 2)]: loss 8.028e+02
   [asym] topology 2/26 sheets [(2, 1)]: loss 8.028e+02
   [asym] topology 3/26 sheets [(0, 2)]: loss 8.028e+02
   [asym] topology 4/26 sheets [(0, 2), (1, 2)]: loss 3.033e+02
-  [asym] topology 5/26 sheets [(0, 2), (2, 1)]: loss 3.016e+02
+  [asym] topology 5/26 sheets [(0, 2), (2, 1)]: loss 7.056e+02
   [asym] topology 6/26 sheets [(2, 0)]: loss 8.028e+02
-  [asym] topology 7/26 sheets [(2, 0), (1, 2)]: loss 2.900e+02
+  [asym] topology 7/26 sheets [(2, 0), (1, 2)]: loss 7.279e+02
   [asym] topology 8/26 sheets [(2, 0), (2, 1)]: loss 8.028e+02
   [asym] topology 9/26 sheets [(0, 1)]: loss 8.028e+02
-  [asym] topology 10/26 sheets [(0, 1), (1, 2)]: loss 7.280e+02
+  [asym] topology 10/26 sheets [(0, 1), (1, 2)]: loss 7.056e+02
   [asym] topology 11/26 sheets [(0, 1), (2, 1)]: loss 4.957e+02
   [asym] topology 12/26 sheets [(0, 1), (0, 2)]: loss 8.028e+02
-  [asym] topology 13/26 sheets [(0, 1), (0, 2), (1, 2)]: loss 5.283e+02
-  [asym] topology 14/26 sheets [(0, 1), (0, 2), (2, 1)]: loss 2.955e+01
+  [asym] topology 13/26 sheets [(0, 1), (0, 2), (1, 2)]: loss 3.090e+02
+  [asym] topology 14/26 sheets [(0, 1), (0, 2), (2, 1)]: loss 3.090e+02
   [asym] topology 15/26 sheets [(0, 1), (2, 0)]: loss 7.056e+02
-  [asym] topology 16/26 sheets [(0, 1), (2, 0), (1, 2)]: loss 7.496e+02
-  [asym] topology 17/26 sheets [(0, 1), (2, 0), (2, 1)]: loss 7.496e+02
+  [asym] topology 16/26 sheets [(0, 1), (2, 0), (1, 2)]: loss 3.476e+02
+  [asym] topology 17/26 sheets [(0, 1), (2, 0), (2, 1)]: loss 3.090e+02
   [asym] topology 18/26 sheets [(1, 0)]: loss 8.028e+02
   [asym] topology 19/26 sheets [(1, 0), (1, 2)]: loss 8.028e+02
-  [asym] topology 20/26 sheets [(1, 0), (2, 1)]: loss 7.408e+02
-  [asym] topology 21/26 sheets [(1, 0), (0, 2)]: loss 3.120e+02
-  [asym] topology 22/26 sheets [(1, 0), (0, 2), (1, 2)]: loss 2.980e+01
-  [asym] topology 23/26 sheets [(1, 0), (0, 2), (2, 1)]: loss 7.496e+02
+  [asym] topology 20/26 sheets [(1, 0), (2, 1)]: loss 7.069e+02
+  [asym] topology 21/26 sheets [(1, 0), (0, 2)]: loss 6.846e+02
+  [asym] topology 22/26 sheets [(1, 0), (0, 2), (1, 2)]: loss 3.090e+02
+  [asym] topology 23/26 sheets [(1, 0), (0, 2), (2, 1)]: loss 6.846e+02
   [asym] topology 24/26 sheets [(1, 0), (2, 0)]: loss 2.677e+02
-  [asym] topology 25/26 sheets [(1, 0), (2, 0), (1, 2)]: loss 7.855e+01
-  [asym] topology 26/26 sheets [(1, 0), (2, 0), (2, 1)]: loss 2.855e+02
+  [asym] topology 25/26 sheets [(1, 0), (2, 0), (1, 2)]: loss 3.090e+02
+  [asym] topology 26/26 sheets [(1, 0), (2, 0), (2, 1)]: loss 3.090e+02
   [sym] topology 1/26 sheets [(1, 2)]: loss 8.028e+02
   [sym] topology 2/26 sheets [(2, 1)]: loss 8.028e+02
   [sym] topology 3/26 sheets [(0, 2)]: loss 8.028e+02
   [sym] topology 4/26 sheets [(0, 2), (1, 2)]: loss 4.469e+02
-  [sym] topology 5/26 sheets [(0, 2), (2, 1)]: loss 7.408e+02
+  [sym] topology 5/26 sheets [(0, 2), (2, 1)]: loss 7.806e+02
   [sym] topology 6/26 sheets [(2, 0)]: loss 8.028e+02
-  [sym] topology 7/26 sheets [(2, 0), (1, 2)]: loss 7.496e+02
+  [sym] topology 7/26 sheets [(2, 0), (1, 2)]: loss 7.408e+02
   [sym] topology 8/26 sheets [(2, 0), (2, 1)]: loss 8.028e+02
   [sym] topology 9/26 sheets [(0, 1)]: loss 8.028e+02
-  [sym] topology 10/26 sheets [(0, 1), (1, 2)]: loss 7.680e+02
+  [sym] topology 10/26 sheets [(0, 1), (1, 2)]: loss 7.679e+02
   [sym] topology 11/26 sheets [(0, 1), (2, 1)]: loss 2.748e+02
   [sym] topology 12/26 sheets [(0, 1), (0, 2)]: loss 8.028e+02
-  [sym] topology 13/26 sheets [(0, 1), (0, 2), (1, 2)]: loss 7.496e+02
-  [sym] topology 14/26 sheets [(0, 1), (0, 2), (2, 1)]: loss 7.496e+02
+  [sym] topology 13/26 sheets [(0, 1), (0, 2), (1, 2)]: loss 3.090e+02
+  [sym] topology 14/26 sheets [(0, 1), (0, 2), (2, 1)]: loss 3.090e+02
   [sym] topology 15/26 sheets [(0, 1), (2, 0)]: loss 7.408e+02
-  [sym] topology 16/26 sheets [(0, 1), (2, 0), (1, 2)]: loss 7.496e+02
-  [sym] topology 17/26 sheets [(0, 1), (2, 0), (2, 1)]: loss 7.496e+02
+  [sym] topology 16/26 sheets [(0, 1), (2, 0), (1, 2)]: loss 5.505e+02
+  [sym] topology 17/26 sheets [(0, 1), (2, 0), (2, 1)]: loss 3.090e+02
   [sym] topology 18/26 sheets [(1, 0)]: loss 8.028e+02
   [sym] topology 19/26 sheets [(1, 0), (1, 2)]: loss 8.028e+02
-  [sym] topology 20/26 sheets [(1, 0), (2, 1)]: loss 7.680e+02
+  [sym] topology 20/26 sheets [(1, 0), (2, 1)]: loss 7.496e+02
   [sym] topology 21/26 sheets [(1, 0), (0, 2)]: loss 7.408e+02
-  [sym] topology 22/26 sheets [(1, 0), (0, 2), (1, 2)]: loss 7.496e+02
-  [sym] topology 23/26 sheets [(1, 0), (0, 2), (2, 1)]: loss 7.496e+02
+  [sym] topology 22/26 sheets [(1, 0), (0, 2), (1, 2)]: loss 3.090e+02
+  [sym] topology 23/26 sheets [(1, 0), (0, 2), (2, 1)]: loss 5.907e+02
   [sym] topology 24/26 sheets [(1, 0), (2, 0)]: loss 5.519e+02
-  [sym] topology 25/26 sheets [(1, 0), (2, 0), (1, 2)]: loss 7.496e+02
-  [sym] topology 26/26 sheets [(1, 0), (2, 0), (2, 1)]: loss 6.081e+02
+  [sym] topology 25/26 sheets [(1, 0), (2, 0), (1, 2)]: loss 3.090e+02
+  [sym] topology 26/26 sheets [(1, 0), (2, 0), (2, 1)]: loss 3.090e+02
 
 #### best topologies
-
-== closure asym, sheets (tube→ring) [(0, 1), (0, 2), (2, 1)]: loss 2.955e+01
-  sizes L (fm): 3.612e+12, 11.32, 3.089e+12
-  shears σ: +0.3333, +0.1459, +0.6667
-  lightest charged (MeV): 36.5113, 36.5113, 73.0226, 109.534, 109.534
-  lightest neutral (meV): 7.423, 11.69, 49.69, 3.651e+10, 3.651e+10, 3.651e+10
-  Δm²21 = 8.158e-05 eV², Δm²31 = 2.414e-03 eV², ratio 29.59
-
-== closure asym, sheets (tube→ring) [(1, 0), (0, 2), (1, 2)]: loss 2.980e+01
-  sizes L (fm): 1.402e+15, 6.2e+12, 14.55
-  shears σ: +2.3779, +0.6667, -0.3333
-  lightest charged (MeV): 28.4013, 28.4013, 56.8025, 85.2038, 85.2038
-  lightest neutral (meV): 8.654, 11.53, 48.96, 2.84e+10, 2.84e+10, 2.84e+10
-  Δm²21 = 5.799e-05 eV², Δm²31 = 2.322e-03 eV², ratio 40.04
-
-== closure asym, sheets (tube→ring) [(1, 0), (2, 0), (1, 2)]: loss 7.855e+01
-  sizes L (fm): 377.2, 5.392e+11, 2.911e+12
-  shears σ: -0.5000, +1.5000, -2.2053
-  lightest charged (MeV): 1.64345, 1.64345, 1.64345, 3.2869, 4.93034
-  lightest neutral (meV): 261.8, 265.4, 272.6, 1.643e+09, 1.643e+09, 1.643e+09
-  Δm²21 = 1.882e-03 eV², Δm²31 = 5.770e-03 eV², ratio 3.06
 
 == closure asym, sheets (tube→ring) [(1, 0), (2, 0)]: loss 2.677e+02
   sizes L (fm): 1.485e+04, 8.772e+13, 4.23e+14
   shears σ: -0.2857, +0.5714
-  lightest charged (MeV): 0.0357732, 0.059622, 0.10732, 0.119244, 0.131168
+  matched e, μ, τ (MeV): 0.0357732, 0.059622, 0.10732
+  extra charged states below the τ: 13 (0.1192, 0.1312, 0.1431, 0.1908, 0.2027, 0.2146, 0.2266, 0.2743, 0.2862, 0.2981, 0.31, 0.3577 … MeV)
   lightest neutral (meV): 1.192e+07, 1.192e+07, 1.192e+07, 2.385e+07, 2.385e+07, 3.577e+07
   Δm²21 = 2.875e-04 eV², Δm²31 = 2.247e-02 eV², ratio 78.16
 
 == closure sym, sheets (tube→ring) [(0, 1), (2, 1)]: loss 2.748e+02
   sizes L (fm): 2.711e+12, 2891, 7.927e+11
   shears σ: +0.7143, +1.4286
-  lightest charged (MeV): 0.122525, 0.183787, 0.183787, 0.24505, 0.4901
+  matched e, μ, τ (MeV): 0.122525, 0.183787, 0.183787
+  extra charged states below the τ: 25 (0.245, 0.4901, 0.5514, 0.6739, 0.7351, 0.7964, 0.7964, 0.9802, 1.041, 1.041, 1.103, 1.164 … MeV)
   lightest neutral (meV): 6.126e+07, 6.126e+07, 6.126e+07, 1.225e+08, 3.063e+08, 4.288e+08
   Δm²21 = 1.712e-04 eV², Δm²31 = 4.063e-02 eV², ratio 237.32
+
+== closure asym, sheets (tube→ring) [(0, 2), (1, 2)]: loss 3.033e+02
+  sizes L (fm): 2.391e+11, 2.169e+09, 3.109e+04
+  shears σ: -0.1429, -0.2857
+  matched e, μ, τ (MeV): 0.0284816, 0.0341779, 0.0455705
+  extra charged states below the τ: 13 (0.05127, 0.06836, 0.07405, 0.08544, 0.09114, 0.1082, 0.1139, 0.1253, 0.131, 0.1481, 0.1538, 0.1652 … MeV)
+  lightest neutral (meV): 5.696e+06, 5.696e+06, 5.696e+06, 1.139e+07, 1.709e+07, 1.709e+07
+  Δm²21 = 7.877e-03 eV², Δm²31 = 4.052e-02 eV², ratio 5.14
+
+== closure asym, sheets (tube→ring) [(1, 0), (2, 0), (1, 2)]: loss 3.090e+02
+  sizes L (fm): 0.03639, 3235, 7.403e+10
+  shears σ: -1.2804, -2.4853, +1.0332
+  matched e, μ, τ (MeV): 0.383301, 0.383301, 0.383301
+  extra charged states below the τ: 0
+  lightest neutral (meV): 7.666e+08, 7.666e+08, 7.666e+08, 7.666e+08, 1.15e+09, 1.15e+09
+  Δm²21 = 1.221e-04 eV², Δm²31 = 2.563e-03 eV², ratio 21.00
+
+== closure asym, sheets (tube→ring) [(0, 1), (0, 2), (1, 2)]: loss 3.090e+02
+  sizes L (fm): 3235, 6.569e+10, 1.736e-05
+  shears σ: +0.9299, -1.2062, -1.8179
+  matched e, μ, τ (MeV): 0.3833, 0.3833, 0.3833
+  extra charged states below the τ: 0
+  lightest neutral (meV): 7.666e+08, 7.666e+08, 7.666e+08, 7.666e+08, 1.15e+09, 1.15e+09
+  Δm²21 = 1.221e-04 eV², Δm²31 = 2.563e-03 eV², ratio 21.00

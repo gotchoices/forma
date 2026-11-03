@@ -32,6 +32,8 @@ So 1b needs m₁ to be the unsheared direction of a lepton sheet. Among K4's fou
 
 ## A spectrum-based search (leptons only, no assigned modes)
 
+> **Formula correction (2026-11-02).** The first runs below applied every sheet's shear to every mode (a product-space reading). The search treats modes as living on single sheets, so it now matches ma-domain's solver: a sheet mode feels only its own sheet's shear, and a single-axis mode feels the shear of every sheet whose tube is its dimension. The N = 3 and N = 4 runs were repeated with the corrected formula and **the conclusions stand**: no fit at N = 3 (strict, loss ≈ 268; loose, ≈ 84) or N = 4 (loose, ≈ 34). As before, the neutral side fits easily, at N = 4 landing on the massless-ν₁ pattern (≈ 0.1, 8.7, 50.1 meV), while the charged leptons cannot be placed. Numbers quoted below are from the first runs; the reasons given are unchanged.
+
 [../scripts/lepton_search.py](../scripts/lepton_search.py) searches flat 3-dimensional tori (sizes plus shears on any subset of dimension pairs, with each sheet's orientation and the closure rule in both its as-written and symmetrized forms). It requires that the **three lightest charged states are e, μ, τ** and the **three lightest neutral states match the neutrino splittings**, with no particle assigned to a mode by hand. Harmonics (non-primitive circulations) are not counted as new particles. Output: [../outputs/lepton_search_N3.txt](../outputs/lepton_search_N3.txt).
 
 **Result: no 3-dimensional topology fits.**
@@ -94,6 +96,23 @@ Mass ratio exact; masses ≈ 28.0, 29.3, 57.6 meV. If this holds, the neutrino d
 - It is the best of 32 discrete combinations (look-elsewhere effect).
 - It depends on the flavor definition: with segment-concentrated flavors the same layout gives θ₁₃ ≈ 0 (loss 9×10⁻⁴). Earlier results held under both definitions; this one does not.
 - It treats the electron's segment differently from μ's and τ's (ring vs. tube) without a structural reason, contrary to the preference for treating the three sheets alike.
+
+## (1, 2) electrons and (2, 1) neutrinos on different twists
+
+**Question (user).** Can sheets that share a large and a small dimension give charged (1, 2) electrons and, through a Klein seam, (2, 1) neutrinos?
+
+**On one sheet, no:**
+- A Klein seam mirrors one direction, which turns every mode circulating in it into a standing wave. That neutralizes (1, 2) and (2, 1) alike, the electron included.
+- One sheet has one shift twist, and only one of (1, 2) (σ_eff = 2) or (2, 1) (σ_eff = ½) can be at resonance.
+- If one sheet held both a meV mode ν and the electron e, the combinations e ± ν would also be modes within meV of the electron. For e = (1, 2), ν = (2, 1), the mode e − ν = (1, −1) is charged. *Provisional reading:* a charged state that close to the electron would act as a second electron species, which atomic structure (exactly two electron states per orbital) appears to rule out. Keep this open: such a partner might not behave as an independent electron state.
+
+**On different sheets, yes.** Electron sheets with a common shift (σ_e = 2) put the charged (1, 2) mode at resonance. Neutrino sheets with a common **half twist** (σ_ν = ½ + ε) on one large tube B put the (2, 1) mode near resonance, and it is neutral under the closure rule as written (2 does not divide 1). This *relies on the asymmetric closure rule*; with a symmetric rule (2, 1) would be charged.
+
+**Test** ([../scripts/halftwist_check.py](../scripts/halftwist_check.py)): five dimensions, the charged wye (tubes C/m_e, C/m_μ, C/m_τ on a shared ring r) plus one large tube B carrying three half-twisted neutrino sheets.
+- Each neutrino mass is m² = (2C/B)² + (2εC/ring)². The splittings are fixed by the rings, so the ratio 33.6 pins r.
+- Using the three lepton tubes as rings predicts a splitting ratio of (m_τ² − m_e²)/(m_μ² − m_e²) ≈ 283 (fails), and a neutrino sheet ringed by the electron tube carries a charged state at m_e/2, below the electron (fails).
+- **Rings (T_μ, T_τ, r) work:** **r ≈ 0.12 fm** (second solution 3.83 fm); neutrinos 20, 21.8, 54.1 meV for a chosen lightest mass of 20 meV; both splittings exact; the electron is the lightest charged state.
+- **Cost:** extra charged states at half-integer multiples of the μ and τ masses, from the half-twisted sheets' (1, n) modes: m_μ/2 ≈ 52.8 MeV (below the muon), 3m_μ/2 ≈ 158.5 MeV, …, and m_τ/2 ≈ 888 MeV. Taken literally, a 53 MeV charged particle would have been observed. Whether these modes are free particles is open.
 
 **The assumption this exposes.** "The lightest states are the observed particles" is stricter than ma-domain's working assumption, which allows unobserved higher modes that decay away ([ma-domain README](../../ma-domain/README.md), working assumptions). By the strict rule ma-domain's K4 would also fail: its μ sheet has an fm-scale ring, which places sibling charged states near 1.2 GeV, below the τ. A decision is needed: keep the strict rule (and look for geometries that satisfy it), or adopt ma-domain's looser rule (and specify which extra states are tolerated, and why they are not seen).
 

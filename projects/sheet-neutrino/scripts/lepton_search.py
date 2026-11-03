@@ -13,8 +13,10 @@ What it does
 Physics rules (the irreducible assumptions)
   1. A mode is a vector of whole-number circulations n (one per dimension).
      Sheet s = (T_s, R_s) with shear σ_s shifts the momentum along R_s by
-     −σ_s·n_T (ma-domain's per-sheet formula, generalized):
-         k_d = (n_d − Σ_{s: R_s = d} σ_s n_{T_s}) / L_d,   m = C·|k|,  C = 2πħc.
+     −σ_s·n_T (ma-domain's per-sheet formula), m = C·|k|, C = 2πħc.
+     Glued-sheet reading, as in ma-domain's solver: a sheet mode feels only
+     its own sheet's shear; a single-axis mode on dimension d feels the shear
+     of every sheet whose tube is d.
   2. Modes exist only as single-axis modes (one nonzero circulation) or on a
      sheet (nonzero circulations on exactly that sheet's two dimensions).
      Pairs that are not sheets host no two-dimensional modes (ma-domain).
@@ -68,13 +70,15 @@ def canonical(v):
 
 
 def mode_table(N, sheets, K, closure):
-    """Allowed primitive canonical modes: (vectors, charged flags)."""
-    vecs, charged = [], []
+    """Allowed primitive canonical modes: (vectors, charged flags, owner).
+
+    owner[i] = sheet index for a sheet mode, −1 for a single-axis mode."""
+    vecs, charged, owner = [], [], []
     for d in range(N):                                   # single-axis
         v = [0] * N
         v[d] = 1
-        vecs.append(v); charged.append(False)
-    for (T, R) in sheets:                                # sheet modes
+        vecs.append(v); charged.append(False); owner.append(-1)
+    for s_idx, (T, R) in enumerate(sheets):              # sheet modes
         for a, b in itertools.product(range(-K, K + 1), repeat=2):
             if a == 0 or b == 0:
                 continue
@@ -86,16 +90,18 @@ def mode_table(N, sheets, K, closure):
                 ch = b % a == 0
             else:
                 ch = (b % a == 0) or (a % b == 0)
-            vecs.append(v); charged.append(ch)
-    return np.array(vecs, float), np.array(charged)
+            vecs.append(v); charged.append(ch); owner.append(s_idx)
+    return np.array(vecs, float), np.array(charged), np.array(owner)
 
 
-def masses(params, N, sheets, vecs):
+def masses(params, N, sheets, vecs, owner):
     L = 10.0 ** params[:N]
     sig = params[N:]
     shift = np.zeros_like(vecs)
+    single = owner < 0
     for s, (T, R) in enumerate(sheets):
-        shift[:, R] += sig[s] * vecs[:, T]
+        own = (owner == s) | single                      # own sheet, or single-axis on T
+        shift[own, R] += sig[s] * vecs[own, T]
     k = (vecs - shift) / L
     return C_MEV_FM * np.sqrt((k ** 2).sum(axis=1))      # MeV
 
@@ -110,8 +116,8 @@ def match_leptons(mc, rule):
     return np.array([mc[0], mu, tau])
 
 
-def score(params, N, sheets, vecs, charged, detail=False, rule="strict"):
-    m = masses(params, N, sheets, vecs)
+def score(params, N, sheets, vecs, charged, owner, detail=False, rule="strict"):
+    m = masses(params, N, sheets, vecs, owner)
     mc = np.sort(m[charged])
     mn = np.sort(m[~charged]) * 1e6                       # neutral in eV
     if len(mc) < 3 or len(mn) < 3:
@@ -162,10 +168,10 @@ def main():
     print(f"N={a.dims}, rule={a.rule}: {len(topos)} topologies × {len(closures)} closure rules", flush=True)
     for cl in closures:
         for i, sheets in enumerate(topos):
-            vecs, charged = mode_table(a.dims, sheets, a.K, cl)
+            vecs, charged, owner = mode_table(a.dims, sheets, a.K, cl)
             bounds = [tuple(a.logL)] * a.dims + [tuple(a.sigma)] * len(sheets)
             res = differential_evolution(score, bounds, args=(a.dims, sheets, vecs, charged,
-                                                              False, a.rule),
+                                                              owner, False, a.rule),
                                          maxiter=a.maxiter, popsize=a.popsize, seed=a.seed,
                                          tol=1e-10, polish=True)
             results.append((res.fun, cl, sheets, res.x))
@@ -174,8 +180,8 @@ def main():
     results.sort(key=lambda r: r[0])
     print("\n#### best topologies")
     for loss, cl, sheets, x in results[:a.top]:
-        vecs, charged = mode_table(a.dims, sheets, a.K, cl)
-        _, mc, mn, picked = score(x, a.dims, sheets, vecs, charged, detail=True, rule=a.rule)
+        vecs, charged, owner = mode_table(a.dims, sheets, a.K, cl)
+        _, mc, mn, picked = score(x, a.dims, sheets, vecs, charged, owner, detail=True, rule=a.rule)
         print(f"\n== closure {cl}, sheets (tube→ring) {sheets}: loss {loss:.3e}")
         print("  sizes L (fm): " + ", ".join(f"{10 ** v:.4g}" for v in x[:a.dims]))
         print("  shears σ: " + ", ".join(f"{v:+.4f}" for v in x[a.dims:]))
