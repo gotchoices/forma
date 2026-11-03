@@ -114,6 +114,23 @@ Mass ratio exact; masses ≈ 28.0, 29.3, 57.6 meV. If this holds, the neutrino d
 - **Rings (T_μ, T_τ, r) work:** **r ≈ 0.12 fm** (second solution 3.83 fm); neutrinos 20, 21.8, 54.1 meV for a chosen lightest mass of 20 meV; both splittings exact; the electron is the lightest charged state.
 - **Cost:** extra charged states at half-integer multiples of the μ and τ masses, from the half-twisted sheets' (1, n) modes: m_μ/2 ≈ 52.8 MeV (below the muon), 3m_μ/2 ≈ 158.5 MeV, …, and m_τ/2 ≈ 888 MeV. Taken literally, a 53 MeV charged particle would have been observed. Whether these modes are free particles is open.
 
+## The quark hub as the flavor coupler (star instead of ring)
+
+**Idea (user).** The manifold is a collection of n-dimensional sub-manifolds, not only 2D sheets; ma-domain's K5 already frames it this way, as one 5-torus with modes on any subset of dimensions ([k5-manifold.md](../../ma-domain/work/k5-manifold.md)). Could the small dimension at the center of the quark wye, the hub (≈ 180–490 fm), take part in neutrino oscillation?
+
+**How it could.** A neutrino cannot circulate around the hub (that costs about 2.5 MeV or more), but each flavor channel can couple *through* it, as a brief virtual excursion. That couples every channel to every other: a **star** pattern, in place of the ring of junctions in the circle model. The coupling strength is set by the hub's size and mode overlaps rather than by fit, and the structure resembles the seesaw mechanism (light scale ≈ coupling²/heavy scale).
+
+**Test** ([../scripts/hub_coupling.py](../scripts/hub_coupling.py)). Light mass² matrix M² = diag(a_e, a_μ, a_τ) + hub term, with flavor = channel (e row fixed; μ and τ may swap). Real matrix, so the mixing is CP-conserving.
+
+| Hub term | Parameters vs. data | Result |
+|---|---|---|
+| common coupling, c·J (all-to-all, equal) | 4 vs 5 | **fails** (loss ≈ 0.18): sin²θ₁₃ ≈ 0.32 vs 0.022 |
+| one coupling per channel, g gᵀ | 6 vs 5 | exact (under-determined); couplings e : μ : τ ≈ 0.19 : −1 : +0.83; masses 14.3, 16.7, 52.1 meV |
+
+**Why the common coupling fails.** An equal all-to-all term pushes the equal-weight combination *away* from the others, making it the outlying state ν₃ with about ⅓ in every flavor, hence a large θ₁₃. A trimaximal (TM2) pattern would need the equal-weight state to be ν₂, inside the close pair, which a uniform hub term cannot arrange.
+
+**What the unequal fit suggests.** The electron channel couples weakly to the hub, while μ and τ couple strongly with **opposite signs**, the structure associated with near-maximal μ–τ mixing. If something geometric gave the μ and τ spokes opposite orientations relative to the hub, the pattern would have a reason. That is speculative, and with 6 parameters against 5 numbers the fit itself proves nothing.
+
 **The assumption this exposes.** "The lightest states are the observed particles" is stricter than ma-domain's working assumption, which allows unobserved higher modes that decay away ([ma-domain README](../../ma-domain/README.md), working assumptions). By the strict rule ma-domain's K4 would also fail: its μ sheet has an fm-scale ring, which places sibling charged states near 1.2 GeV, below the τ. A decision is needed: keep the strict rule (and look for geometries that satisfy it), or adopt ma-domain's looser rule (and specify which extra states are tolerated, and why they are not seen).
 
 ## What this leaves

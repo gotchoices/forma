@@ -1,0 +1,27 @@
+
+== couplings common, sin²θ23 = 0.45: loss 1.809e-01
+  bare mass² (eV²): 1.159e-02, 1.161e-02, 1.171e-02;  hub term c = +8.157e-04 eV²
+  masses (meV): 107.70, 108.05, 118.69;  Δm²21 = 7.599e-05, Δm²31 = 2.487e-03 eV²
+  |U|² (rows e, μ, τ channels; columns ν1 ν2 ν3):
+    e  0.543  0.137  0.320
+    μ  0.454  0.221  0.325
+    τ  0.003  0.642  0.355
+  sin²θ12 = 0.201 (measured 0.307), sin²θ13 = 0.3204 (0.0220); ν2 column = 0.137, 0.221, 0.642 (trimaximal: 0.333 each)
+
+== couplings common, sin²θ23 = 0.5: loss 1.790e-01
+  bare mass² (eV²): 9.132e-03, 9.255e-03, 9.150e-03;  hub term c = +8.170e-04 eV²
+  masses (meV): 95.61, 96.00, 107.85;  Δm²21 = 7.588e-05, Δm²31 = 2.491e-03 eV²
+  |U|² (rows e, μ, τ channels; columns ν1 ν2 ν3):
+    e  0.545  0.135  0.320
+    μ  0.003  0.642  0.355
+    τ  0.452  0.223  0.325
+  sin²θ12 = 0.199 (measured 0.307), sin²θ13 = 0.3203 (0.0220); ν2 column = 0.135, 0.642, 0.223 (trimaximal: 0.333 each)
+
+== couplings common, sin²θ23 = 0.55: loss 1.809e-01
+  bare mass² (eV²): 9.428e-03, 9.552e-03, 9.446e-03;  hub term c = +8.157e-04 eV²
+  masses (meV): 97.14, 97.53, 109.20;  Δm²21 = 7.599e-05, Δm²31 = 2.487e-03 eV²
+  |U|² (rows e, μ, τ channels; columns ν1 ν2 ν3):
+    e  0.543  0.137  0.320
+    μ  0.003  0.642  0.355
+    τ  0.454  0.221  0.325
+  sin²θ12 = 0.201 (measured 0.307), sin²θ13 = 0.3204 (0.0220); ν2 column = 0.137, 0.642, 0.221 (trimaximal: 0.333 each)
