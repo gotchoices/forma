@@ -1,0 +1,41 @@
+== Per-sheet (ma-domain) masses of the hosted (1, 2) modes
+  s/c  on (d3→d1), σ=2.0: T(1,2) = 4.133 MeV
+  b/t  on (d3→d2), σ=2.0: T(1,2) = 4.133 MeV
+  u/d  on (d4→d3), σ=2.0: T(1,2) = 3.052e-08 MeV
+  tau  on (d1→d2), σ=1.9932: T(1,2) = 1690 MeV
+  e    on (d4→d1), σ=1.9996: T(1,2) = 0.4959 MeV
+  mu   on (d4→d2), σ=2.0: T(1,2) = 3.052e-08 MeV
+  nu   on (d5→d4), σ=0.0507: T(1,2) = 6.001e-08 MeV
+
+== Single-torus reading: lightest 25 modes (|n_i| ≤ 3)
+    7.9354e-09 MeV   n = (0, 0, 0, 0, 1)   circulates in 1 dims
+        12.408 MeV   n = (0, 0, 1, -1, -3)   circulates in 3 dims
+        12.408 MeV   n = (0, 0, 1, -1, -2)   circulates in 3 dims
+        12.408 MeV   n = (0, 0, 1, -1, -1)   circulates in 3 dims
+        12.408 MeV   n = (0, 0, 1, -1, 0)   circulates in 2 dims
+        12.408 MeV   n = (0, 0, 1, -1, 1)   circulates in 3 dims
+        12.408 MeV   n = (0, 0, 1, -1, 2)   circulates in 3 dims
+        12.408 MeV   n = (0, 0, 1, -1, 3)   circulates in 3 dims
+        24.817 MeV   n = (0, 0, 2, -2, -3)   circulates in 3 dims
+        24.817 MeV   n = (0, 0, 2, -2, -1)   circulates in 3 dims
+        24.817 MeV   n = (0, 0, 2, -2, 1)   circulates in 3 dims
+        24.817 MeV   n = (0, 0, 2, -2, 3)   circulates in 3 dims
+        37.225 MeV   n = (0, 0, 3, -3, -2)   circulates in 3 dims
+        37.225 MeV   n = (0, 0, 3, -3, -1)   circulates in 3 dims
+        37.225 MeV   n = (0, 0, 3, -3, 1)   circulates in 3 dims
+        37.225 MeV   n = (0, 0, 3, -3, 2)   circulates in 3 dims
+          1689 MeV   n = (1, 2, 3, -3, -3)   circulates in 5 dims
+          1689 MeV   n = (1, 2, 3, -3, -2)   circulates in 5 dims
+          1689 MeV   n = (1, 2, 3, -3, -1)   circulates in 5 dims
+          1689 MeV   n = (1, 2, 3, -3, 0)   circulates in 4 dims
+          1689 MeV   n = (1, 2, 3, -3, 1)   circulates in 5 dims
+          1689 MeV   n = (1, 2, 3, -3, 2)   circulates in 5 dims
+          1689 MeV   n = (1, 2, 3, -3, 3)   circulates in 5 dims
+        1689.2 MeV   n = (1, 2, 2, -2, -3)   circulates in 5 dims
+        1689.2 MeV   n = (1, 2, 2, -2, -2)   circulates in 5 dims
+  nearest to e (0.511 MeV): 12.41 MeV, n = (0, 0, 1, -1, -3), 3 dims
+  nearest to mu (105.66 MeV): 37.23 MeV, n = (0, 0, 3, -3, -2), 3 dims
+  nearest to tau (1776.9 MeV): 1691 MeV, n = (1, 2, -3, 3, -3), 5 dims
+  tau's sheet mode (1, 2, 0, 0, 0) in the single-torus reading: 1690 MeV
+  e's sheet mode (2, 0, 0, 1, 0) in the single-torus reading: 1.011e+06 MeV
+  mu's sheet mode (0, 2, 0, 1, 0) in the single-torus reading: 2479 MeV

@@ -17,7 +17,10 @@ All live lines of inquiry, so none is dropped while another is pursued. Details 
 | **Junction mechanics** (tapers, necks, pinch) | deferred | bounded taper test |
 | **GRID stages 2–3** (flavor exchange; L/E in flight) | deferred | after a host is chosen |
 | **Whole-manifold neutrino** (light neutral modes of the full, non-flat manifold; mixing from shape or curvature, no junctions) | proposed: flat tori cannot mix modes, so every piecewise model needed supplied couplings | plan, with two decisions: charge of 3+-dimension modes, and the meaning of flavor |
+| **Glued sheets vs. one torus** | **finding:** read as a single 5-torus, K5's sheet modes do not survive (electron mode ≈ 1 TeV; lightest states circulate in 3+ dimensions); K4/K5 fits are glued-reading results ([lepton-manifold.md](work/lepton-manifold.md)) | choose: (a) stay glued and derive couplings, or (b) a full single-torus lepton search under each charge rule (would reopen ma-domain's fits; ma-domain left unchanged for now) |
 | **View 1 (flat n-manifold) vs. view 2 (3D space with embedded, curved sheets)** | framing | view 2 supplies curvature (hence mixing) and a reason for threes, but must face the electron's measured pointlike size (< 10⁻¹⁸ m) |
+| **Charge rule for modes circulating in 3+ dimensions** (decision A) | open; candidate rules: (a) any pair passes closure, (b) every pair passes, (c) neutral, (d) Kaluza–Klein additive (one charge per dimension; electric charge a fixed combination, as Q = T₃ + Y/2), (e) a third circulation adds a moment-like property, not charge | census of light 3D modes in K5; run all rules and see whether results depend on the choice |
+| **Promotion ladder as multipoles** (user observation) | idea: mass (no polarity) → charge (monopole) → dipole; a *rotating* dipole radiates circularly polarized light, so the ladder may close back on light; gravity radiates first at quadrupole order, one rung above EM | speculative; recorded |
 | **Spin ½ relative to space** | open conceptual gap | needs new insight |
 | **Chapter 2** and consolidation | pending | draft |
 
@@ -89,7 +92,7 @@ The data allow m₁ = 0 (masses 0, 8.7, 50 meV; f₂ ≈ 2.1 THz, f₃ ≈ 12.1 
 ## 3. Open questions carried by every candidate
 
 - [ ] Spin ½ relative to ordinary space: why a 360° rotation in space corresponds to one internal circuit ([mechanisms §4](work/mechanisms.md)).
-- [ ] Magnetic moment of a standing-wave mode under MaSt's assignment of current to modes.
+- [x] Magnetic moment of a neutral (standing-wave or single-axis) mode: under the closure framing a neutral mode carries no charge, so nothing circulates and the moment is ≈ 0, consistent with the limit μ_ν < 6×10⁻¹² μ_B. (Rotating charge gives magnetism: charge e on a loop of Compton size gives μ ≈ ecλ_C ∝ 1/m, the Bohr-magneton scale and the observed μ_μ/μ_e = m_e/m_μ.)
 - [ ] Flavor coupling: where along the host a charged lepton couples (point vs. segment); both definitions agree so far.
 - [ ] Klein tracks (host E3): selection rule for the extra stationary tracks, and a wave-localization check ([klein-tracks.md](work/klein-tracks.md)).
 

@@ -147,6 +147,27 @@ Both asymmetries are built in.
 
 **Result: no rule fits.** The best (ring rule, flips off) has loss 0.099: mass ratio right (33.65), mixing wrong by 0.2–0.5. **Why:** K4's spoke sizes differ by enormous factors (0.007 fm, ≈ 1 fm, ≥ 4,500 fm), so any size-ratio rule yields junctions that are either near-total mirrors or fully transparent, never the moderate strengths the fits need. Same obstruction as the K4 width test. **Status: not yet** for size-ratio junction rules. The triangle mapping itself is not refuted; a junction rule that does not depend on raw size ratios (role-based strengths, tapers, curvature) remains open.
 
+## Glued sheets vs. one torus: K5 read as a single 5-torus
+
+[../scripts/k5_census.py](../scripts/k5_census.py), [output](../outputs/k5_census.txt). ma-domain's K5 (K4 plus a neutrino dimension) is fitted with ma-domain's per-sheet formula, in which each sheet's shear acts only on that sheet's modes. Read instead as **one 5-torus**, a lap of a dimension that is the tube of several sheets shifts *all* of those sheets' rings at once. In K5, d₄ is the tube of the e, μ, and u/d sheets.
+
+**Census** (every primitive circulation vector with |nᵢ| ≤ 3; ranged sizes at representative values; shears rounded, so individual per-sheet masses are not accurate, but the conclusions depend only on the shears being ≈ 2):
+- **The electron's mode** (once around d₄, twice around d₁) is forced to carry momentum around d₂ (0.007 fm) and lands near **1 TeV** rather than 0.511 MeV.
+- **The muon's mode** is dragged likewise and lands near **2.5 GeV**.
+- **The lightest states** in the single-torus reading circulate in **three or more dimensions** (≈ 12, 25, 37 MeV, …; four- and five-dimension modes near the τ mass). None of it resembles the lepton spectrum.
+
+**What follows:**
+- **K4/K5's fits hold in the glued-sheets reading** (G1: sheets joined only through shared circles), not in a single-torus reading as they stand.
+- **The whole-manifold picture is a real fork:**
+
+| Reading | K4/K5 fits | Source of mixing | Charge rule for 3+-dimension modes |
+|---|---|---|---|
+| Glued sheets | valid | connections between sheets (junctions, hub) | rarely matters |
+| Single torus | would need a new fit in which particles are multi-dimension modes | the manifold itself | central |
+
+- A consistent single-torus search would enumerate *all* circulation patterns with the full shifts, plus a charge rule (decision A) for each. The first version of `lepton_search` mixed the two readings, applying single-torus shifts to single-sheet modes only, which is why it was corrected to the glued reading.
+- This is recorded here only; ma-domain is left unchanged.
+
 **The assumption this exposes.** "The lightest states are the observed particles" is stricter than ma-domain's working assumption, which allows unobserved higher modes that decay away ([ma-domain README](../../ma-domain/README.md), working assumptions). By the strict rule ma-domain's K4 would also fail: its μ sheet has an fm-scale ring, which places sibling charged states near 1.2 GeV, below the τ. A decision is needed: keep the strict rule (and look for geometries that satisfy it), or adopt ma-domain's looser rule (and specify which extra states are tolerated, and why they are not seen).
 
 ## What this leaves

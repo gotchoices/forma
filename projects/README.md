@@ -69,10 +69,13 @@ Each project's README should:
 - [sheet-neutrino/](sheet-neutrino/) — What compact structure can
   host the neutrino: massive but very light, free of any detectable
   charge distribution, spin-½ as seen from ordinary space, and
-  oscillating between three mass states? Compares 1D rings, the 2D
-  torus (Family A), and the Klein bottle without committing to any.
-  **Status: framed; reference files and first spectrum checks in
-  place.**
+  oscillating between three mass states? Compares 1D rings, tori,
+  Klein-bottle variants, a lepton-domain circle, and hosts on
+  ma-domain's dimensions. Main lesson: a flat manifold cannot mix
+  modes, so flavor couplings must come from non-flatness or from
+  connections between sheets. **Status: paused as an open question
+  (glued sheets vs. one torus); several hosts fit, none yet
+  predictive.**
 - [grid-quantization/](grid-quantization/) — A GRID-only account of
   why light is quantized, and whether h and α can be *derived* (not
   assumed) from lattice recirculation loops. Tests the
