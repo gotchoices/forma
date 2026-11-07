@@ -27,6 +27,7 @@ The project began from a set of premises in a notes file. Stated here with their
 | P5 | Background fluctuation is the trigger | **Kept, demoted from discovery.** Classically a seed is needed; it is the known semiclassical stand-in for quantum spontaneity, and its size is fixed at ½ℏω per mode, not free |
 | P6 | Domains are ordered by state density, not energy | **Kept.** A decay releasing more energy leaves more kinetic energy for the products, hence more phase space |
 | P7 | Conservation closes an exit, not lack of room | **Kept, with the fork relocated.** A translation-invariant rule conserves every translation label exactly. So the question is not "hard law or rare coincidence" but **whether baryon number is a symmetry label of the GRID rule**. If it is, the rate is exactly zero |
+| P8 | Excess above a node's capacity is stored in compact dimensions (possibly as zero-point energy) and falls back when there is room: "discrete *plus* conservation" | **Untested.** Recorded from the originating notes' closing thoughts, together with their image of short-lived high-energy particles as a "capacitor" of stored energy at the top of the energy ladder. An earlier posit kept the excess in per-node storage that leaked out on later cycles; this version stores it in the compact sector instead. No objective here yet |
 
 ## C. Corrections carried over from the originating notes
 
