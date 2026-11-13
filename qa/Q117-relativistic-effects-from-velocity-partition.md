@@ -1,8 +1,16 @@
 # Q117. Relativistic effects from velocity partition between Ma and S
 
 **Status:** Answered — MaSt provides a physical mechanism for
-known relativistic effects without changing any predictions
+known relativistic effects without changing any predictions.
+**Two sections amended (see the notes in §3 and §5):** §3's
+time dilation is circular as originally argued, and §5's
+contraction is a picture rather than a mechanism. Both now have
+better-founded replacements elsewhere.
 **Related:**
+  [Q142](Q142-absolute-lattice-frame-vs-relativity.md) (does an absolute lattice frame falsify relativity — the operational version of §3),
+  [Q144](Q144-euclidean-vs-lorentzian-orthogonality.md) (why §5's contraction picture does not work as stated),
+  [`primers/relativity-on-a-lattice.md`](../primers/relativity-on-a-lattice.md) (the non-circular derivation of §3, and where contraction actually comes from),
+  [`grid/sim-lorentz/`](../grid/sim-lorentz/) (the measurements),
   [model-E](../models/model-E.md),
   [Q116](Q116-three-sheets-vs-one-six-torus.md) (T⁶ structure),
   [R53](../studies/R53-three-generations/findings.md) (electron as torus mode)
@@ -71,6 +79,23 @@ Every particle is a light clock.  Time dilation is not an
 abstract geometric property of spacetime — it's a photon
 running out of velocity budget.
 
+> **Note on circularity.** The argument above is correct in form
+> but it *assumes* the velocity budget v²_Ma + v²_S = c² of §2 and
+> then reads γ off it. Since that budget is algebraically
+> equivalent to the result, the section demonstrates consistency
+> rather than deriving anything.
+>
+> A non-circular version exists.
+> [`primers/relativity-on-a-lattice.md`](../primers/relativity-on-a-lattice.md)
+> §9 obtains the same budget from the **measured** isotropy of the
+> lattice — one wave speed in every direction, verified to
+> 2.8 × 10⁻¹¹ at ~300-cell wavelength in
+> [`F1`](../grid/sim-lorentz/F1-isotropy-and-dispersion.md) —
+> rather than postulating it. The budget then follows from
+> something independently established, and the γ that comes out of
+> it is earned. The physical picture of this section survives
+> intact; what changes is where the premise comes from.
+
 ## 4. The energy-momentum relation: a right triangle
 
 **Standard physics:** E² = (mc²)² + (pc)².  Derived from the
@@ -115,6 +140,37 @@ out perpendicular to it.
 This is standard Lorentz contraction, but with a mechanism:
 the photon's wavefronts on the torus are carried along by the
 S-velocity, squeezing the pattern in the direction of travel.
+
+> **Note: this is a picture, not a mechanism.** "Wave crests pile
+> up in the direction of motion" describes the outcome in words
+> that sound causal, but nothing here fixes the factor at 1/γ
+> rather than any other decreasing function of v, and nothing
+> explains why the perpendicular directions are left at exactly 1.
+> Both numbers are hard requirements — the transverse round-trip
+> light measurement demands contraction of exactly 1 across the
+> motion, or the measured light speed comes out wrong.
+>
+> Two replacements are now available, and neither is this
+> argument:
+>
+> - **Where it comes from.** Round-trip resonance: a bound state is
+>   a standing wave whose round-trip phase must close, and under
+>   motion the length that closes the loop is shorter by γ. How an
+>   extended object *reaches* that length under acceleration is
+>   Born rigidity.
+>   [Primer](../primers/relativity-on-a-lattice.md) §11.
+> - **What it measures.** A boosted bound state contracts by 1/γ to
+>   within 0.1% for v ≤ 0.8c
+>   ([`F3`](../grid/sim-lorentz/F3-contraction-and-coasting.md)),
+>   with the high-v residual shown to be lattice discreteness. The
+>   measurement runs on grid-matter's sine-Gordon reduction, not
+>   the raw scatter.
+>
+> A third route — reading contraction off the geometry of helical
+> paths on the compact cylinder — looks compelling and gives
+> exactly d/γ, but computes a Euclidean perpendicular where the
+> physics needs a Minkowski-orthogonal slice. The two answers are
+> reciprocal. See [Q144](Q144-euclidean-vs-lorentzian-orthogonality.md).
 
 ## 6. Massless particles: all velocity in S
 

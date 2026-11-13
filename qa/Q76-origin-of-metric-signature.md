@@ -6,6 +6,7 @@
 [Q32](Q32-energy-geometry-fundamentals.md) (energy/geometry as fundamentals),
 Q71–Q74 (S ↔ Ma perception), Q75 (contingency vs necessity of α),
 [Q138](Q138-time-as-peer-dimension-or-bookkeeping-balance.md) (time as peer dimension vs. bookkeeping balance),
+[Q144](Q144-euclidean-vs-lorentzian-orthogonality.md) (a worked instance: the same figure gives d/γ under Euclidean perpendicularity and γd under Minkowski orthogonality — the signature changes a number),
 [Q141](Q141-emergent-lorentz-invariance-from-grid.md) (emergent Lorentz invariance from the GRID lattice — a separate layer: *given* the Lorentzian signature, how the IR-invariance is realized on a discrete substrate),
 R30 (minimal geometry), R31 (alpha derivation)
 

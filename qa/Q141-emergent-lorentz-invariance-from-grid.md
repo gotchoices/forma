@@ -1,7 +1,8 @@
 # Q141. Emergent Lorentz invariance from the GRID lattice
 
-**Status:** Answered — Lorentz invariance is emergent in the IR with Planck-scale-suppressed corrections; the lattice carries a "preferred frame" at sub-Planck scales that is unobservable above
+**Status:** Answered — Lorentz invariance is emergent in the IR with Planck-scale-suppressed corrections; the lattice carries a "preferred frame" at sub-Planck scales that is unobservable above. **§5 narrowed** — the dispersion evidence supports isotropy only; contraction and dilation are now sourced separately (see [Q142](Q142-absolute-lattice-frame-vs-relativity.md) §9).
 **Related:**
+  [Q142](Q142-absolute-lattice-frame-vs-relativity.md) (does an absolute lattice frame falsify relativity? — narrows §5 of this entry),
   [Q76](Q76-origin-of-metric-signature.md) (origin of metric signature),
   [Q117](Q117-relativistic-effects-from-velocity-partition.md) (relativistic effects from velocity partition — the MaSt-level mechanism),
   [Q138](Q138-time-as-peer-dimension-or-bookkeeping-balance.md) (time as peer dimension vs. bookkeeping balance),
@@ -124,26 +125,66 @@ sense that observers can detect it.
 
 ## 5. Consequences for relativity of simultaneity
 
-The recovery is complete:
+> **Scope correction (see [Q142](Q142-absolute-lattice-frame-vs-relativity.md) §9).**
+> This section originally opened *"The recovery is
+> complete."* It is not, and the evidence cited in §3
+> does not reach that far. Linear isotropic photon
+> dispersion delivers **one** of the requirements — a
+> single wave speed in every direction. Contraction and
+> dilation are properties of *bound states* moving
+> through the lattice, not of the dispersion relation of
+> free light, and they have to be established
+> separately. The bullets below are re-based accordingly:
+> each now says what supports it.
 
 - **No universal "now."** Different observers slice
   spacetime differently above the Planck scale. The
   lattice's slicing is *one* option, not *the* option.
+  *Support:* this follows from the conventionality of
+  simultaneity (standard physics) once a single
+  round-trip light speed is in hand, which §3 supplies.
 - **Time dilation.** Observers moving relative to each
   other (and relative to the lattice) each see the
   other's clocks running slow by the standard γ factor.
-  The MaSt-level mechanism is Q117 — the photon's
-  velocity budget partitioned between Ma circulation
-  (internal clock) and S translation. The GRID-level
-  enabler is the linear photon dispersion of §3, which
-  guarantees Einstein-synchronized clocks at any boost.
-- **Lorentz contraction.** Same source — same evidence,
-  same MaSt-level mechanism via Q117.
+  *Support:* derived in
+  [`primers/relativity-on-a-lattice.md`](../primers/relativity-on-a-lattice.md)
+  §9 from the velocity budget, with the budget itself
+  taken from the **measured** lattice isotropy. The
+  MaSt-level restatement is Q117 — the photon's velocity
+  budget partitioned between Ma circulation (internal
+  clock) and S translation — though Q117 §3 assumes that
+  budget rather than deriving it.
+- **Lorentz contraction.** *Support:* **measured**, not
+  inherited. A boosted bound state contracts by 1/γ to
+  within 0.1% for v ≤ 0.8c
+  ([`grid/sim-lorentz/F3`](../grid/sim-lorentz/F3-contraction-and-coasting.md)),
+  with the residual at higher v shown to be lattice
+  discreteness rather than Lorentz violation. Caveat:
+  that measurement runs on grid-matter's sine-Gordon
+  *reduction*, not the raw scatter. The earlier claim
+  here — *"same source, same evidence, same MaSt-level
+  mechanism via Q117"* — was not supported: Q117 §5
+  offers a picture ("wave crests pile up"), not a
+  derivation, and §3's dispersion result does not bear
+  on contraction at all.
+- **Universality is the exposed requirement.** The γ
+  factors cancel out of a measurement only if every
+  sector carries the *same* γ. GRID has structurally
+  different sectors and nothing yet forces them to
+  agree. First measurement: rest mass is boost-invariant
+  to 0.003% at small momentum, degrading at the lattice
+  scale
+  ([`F2`](../grid/sim-lorentz/F2-boost-and-universality.md)).
+  Holds in the long-wavelength limit; untested outside
+  it. See [Q142](Q142-absolute-lattice-frame-vs-relativity.md) §7.
 - **No preferred frame in observables.** Any
   Lorentz-violation test bounded by current precision
   finds nothing; the GRID prediction is that
   arbitrarily-precise tests would find sub-leading
-  corrections at ~(L_Planck / λ)² ≈ 10⁻⁴⁰.
+  corrections at ~(L_Planck / λ)² ≈ 10⁻⁴⁰. *This is
+  the Lorentz-ether-theory position, set out in
+  [Q142](Q142-absolute-lattice-frame-vs-relativity.md):
+  an undetectable frame is not a refutation.*
 
 ## 6. What this means for the framework
 
