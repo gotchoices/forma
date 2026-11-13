@@ -949,6 +949,14 @@ argument.
 The computational tests named in §15 are tracked in
 [grid/sim-lorentz/](../grid/sim-lorentz/).
 
+The framework-level consequences are recorded as Q entries:
+[Q142](../qa/Q142-absolute-lattice-frame-vs-relativity.md) — why an
+absolute lattice frame does not falsify relativity, and what it
+does oblige;
+[Q144](../qa/Q144-euclidean-vs-lorentzian-orthogonality.md) — the
+signature trap of §10, and what it contributes to the open
+question of why the metric carries a minus sign at all.
+
 Related background: [metric.md](metric.md) for the geometric view
 of the same structure, [kaluza-klein.md](kaluza-klein.md) for
 compact dimensions and how they produce mass,

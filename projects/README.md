@@ -151,3 +151,23 @@ Each project's README should:
   couplings built before it was tried all failed, and the project's own channel
   *pins* a moving packet above a threshold. Revival is cheapest at a reciprocal
   overflow rule.
+
+- [grid-fields/](grid-fields/) — **Does a particle occupy every point, and is
+  that what a field is?** Develops the posit that a massive particle is not
+  localized but reaches everywhere with a diminishing amplitude while keeping a
+  definite locus — so what is conventionally called its *field* is the outer
+  part of the particle itself. Favoured by forma already holding that |ψ|² is an
+  energy density rather than a probability, and by the measured fact that the
+  pooled scatter spreads a massive mode in x while its compact circulation stays
+  coherent. **Status: framed.** The locus is the open gate: a linear dispersive
+  medium gives a universal t^(−1/2) decay with no persistent core, so the posit
+  needs the nonlinear sector, and the discriminating measurement (log-scale
+  x-profiles at long times, not rms widths) is specified but not run. Eight
+  variations are catalogued with their standing objections, including a fork the
+  project must choose: either energy really is spread, and absorption must
+  re-gather it non-locally, or nothing happens in between (Wheeler–Feynman) and
+  the Born-rule derivation must be rebuilt. The two are mutually exclusive,
+  and the fork is a single trade rather than two independent options: the
+  energy problem is the price of deriving Born from |ψ|² = energy density,
+  and destructive interference cannot pay it (two waves that cancel
+  everywhere are one mode, so they were never separately in flight).

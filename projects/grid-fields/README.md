@@ -185,6 +185,115 @@ energy was genuinely spread across a region at least as wide as the
 slit separation — in astronomy, light-years. Afterwards it is
 inside one atom, in femtoseconds. That is not mildly superluminal.
 
+#### Can destructive interference dispose of the energy?
+
+The natural rescue is to let the two spread waves cancel where they
+are not wanted. Two sine waves of the same frequency and opposite
+phase sum to nothing; if the photon's remote tail could be made to
+vanish that way, no energy would have to travel. The idea is worth
+following all the way down, because where it fails is informative.
+
+**Where the energy goes in a real cancellation.** Destructive
+interference never destroys energy, and there are exactly two ways
+a laboratory realises it.
+
+*The waves are already in flight.* Tune a Michelson interferometer
+— an instrument that splits one beam in two, sends the halves down
+separate arms, and recombines them — to a dark output. The beams
+cancel there. The light leaves by the **other** port: a beam
+splitter has two outputs, and darkening one necessarily brightens
+the other. No setting of the mirrors darkens both. That is forced
+by the splitter being lossless, not by careful alignment. Energy
+was *redistributed*, never removed.
+
+*The waves are still attached to their sources.* Drive two antennas
+a small fraction of a wavelength apart in antiphase. The radiated
+field really does cancel in every direction. Here the energy was
+never emitted: each antenna's **radiation resistance** — the
+effective resistance that represents power leaving as radiation —
+is modified by the other's presence, the mutual term cancels the
+self term, and the transmitters draw less power from their
+supplies. In circuit terms, two sources in antiphase across a load
+pass no current, deliver no power, and do not drain.
+
+**Why "cancel everywhere" is not on the menu.** Energy density goes
+as |ψ|², which is quadratic, while the wave equation is linear.
+So the energy of a sum is not the sum of the energies:
+
+> |A + B|² = |A|² + |B|² + 2·Re(A*B)
+
+The last term is the interference. Integrate over all space: for
+any two wave solutions that are **orthogonal** — different
+wavevector, direction, or frequency — that integral is exactly
+zero. Total energy is additive even though local energy density is
+not. Cancelling everywhere would require the cross term to consume
+both energies, which forces B = −A exactly: same frequency, same
+wavevector, same direction, same envelope.
+
+That has a structural consequence:
+
+> **Two waves that cancel everywhere are the same mode, and so can
+> never have been separate and then met.** Co-propagating waves
+> travel together at the same speed and never approach each other.
+> To superpose them they had to be created that way — the antenna
+> case — and then the energy was never in the field at all.
+
+There is no third case. Energy that *was* distributed in the field
+does not become absent; it either moves elsewhere in the field or
+it never left the source.
+
+**What that leaves for collapse.** Two shapes of the proposal
+survive to be tested.
+
+*Cancel on the tails, add at the locus.* This is **allowed**. It is
+the interferometer case — pure redistribution, no objection in
+principle. But interference buys the *pattern*, not the *speed*.
+Energy density obeys a continuity equation,
+
+> ∂u/∂t + ∇·S = 0
+
+where u is energy density and S is the energy flux. Energy cannot
+vanish here and appear there; it must **flow**, bounded by the wave
+speed. Concentrating a spread wave onto its locus therefore takes a
+time of order (extent)/c. This is a sharper statement of the
+objection than "collapse would be superluminal": locality of energy
+transport is a theorem of the wave equation itself, not a separate
+postulate that could be dropped.
+
+The obvious escape — arrange for nearly all the energy to sit at
+the locus already, so only faint side lobes need gathering — is
+closed by the two-slit experiment itself. **Fringe visibility**
+measures how deep the interference pattern's dark bands run, on a
+scale where 1 is perfect:
+
+<!-- V = 2 sqrt(I1 I2) / (I1 + I2) -->
+$$
+V = \frac{2\sqrt{I_1 I_2}}{I_1 + I_2}
+$$
+
+with I₁ and I₂ the intensities arriving from the two slits.
+Single-photon two-slit experiments routinely measure V > 0.9, which
+requires I₁ ≈ I₂ to within roughly a factor of 1.5. The energy has
+to be genuinely split near 50/50 between two macroscopically
+separated places. The experiment that motivates the spread wave is
+the same experiment that forbids the energy from being mostly
+concentrated.
+
+*Combine everywhere into the new state.* The alternative is that
+nothing moves and the remote tail is **relabelled** — the former
+photon tail simply becomes part of the excited electron's own
+field, in place. This is closer to standard absorption, where the
+photon mode is depopulated as the atom's is populated. It fails two
+tests. First, the **second detector**: if the energy is still
+physically out there, another atom can absorb it, and that is
+exactly what never happens — one photon, one click. Committing the
+remote energy to the first absorber is a non-local correlation, and
+correlations carry no energy. Second, **local accounting**:
+detectors measure whole-quantum absorption, so the atom must gain
+the entire ℏω. Energy still located light-years away means |ψ|² is
+no longer the local energy density — which is the identity the
+project's Born-rule derivation runs on.
+
 ### V4 — The fork that has to be chosen
 
 V3's energy problem has two candidate fixes and **they are
@@ -193,10 +302,29 @@ the project.
 
 | | Position | Cost |
 |---|---|---|
-| **A** | Energy is genuinely spread, as |ψ|² = energy density requires | Absorption must re-gather real energy from a large volume to a point, faster than light |
-| **B** | Wheeler–Feynman / transactional: nothing happens in between; emission and absorption are a direct handshake | No re-gathering problem, because the energy never was out there — but then |ψ|² is *not* energy density for a photon in flight, and [the Born-rule derivation](../grid-matter/work/born-detection-theorem.md), which runs through energy density = |ψ|², must be rebuilt from something else |
+| **A** | Energy is genuinely spread, as \|ψ\|² = energy density requires | Absorption must re-gather real energy from a large volume to a point, faster than light |
+| **B** | Wheeler–Feynman / transactional: nothing happens in between; emission and absorption are a direct handshake | No re-gathering problem, because the energy never was out there — but then \|ψ\|² is *not* energy density for a photon in flight, and [the Born-rule derivation](../grid-matter/work/born-detection-theorem.md), which runs through energy density = \|ψ\|², must be rebuilt from something else |
 
 Both are live. Neither is free. Choosing is a project in itself.
+
+**The fork is one trade, not two options.** The interference
+analysis in V3 shows why no third route exists, and that recasts
+the table above. The obstruction to position A is the continuity
+equation, which arrives with the wave dynamics and cannot be
+engineered around by a cleverer superposition. Every other reading
+of quantum mechanics escapes the problem by denying the premise:
+in the standard account the remote energy was never there, only
+probability was. Forma gave that escape up deliberately, in order
+to *derive* the Born rule from energy density = |ψ|² rather than
+postulate it.
+
+So the derivation and the collapse problem are the same commitment
+seen from two sides, and the project's energy problem is the
+**price** of the Born-rule result rather than an incidental
+difficulty beside it. Stated that way, the choice is: keep
+|ψ|² = energy and carry non-local energy transport as a declared
+feature of the framework, or take the Wheeler–Feynman route where
+nothing is in flight and rebuild Born from something else.
 
 ### V5 — Three interaction types
 
@@ -310,7 +438,10 @@ what follows depend on it.
 **Phase 2 — Choose the V4 fork.** Work out what each position
 costs in full. For A, whether any local mechanism can re-gather
 energy, or whether the framework must accept non-local energy
-transport and say so plainly. For B, what replaces energy
+transport and say so plainly — noting that V3's interference
+analysis removes "cancel the tail away" from the list of
+candidates, so a *local* mechanism now means a flux obeying
+∂u/∂t + ∇·S = 0 at finite speed. For B, what replaces energy
 density = |ψ|² as the basis of the Born rule.
 
 **Phase 3 — Interaction overlap, quantitatively.** Whether the
