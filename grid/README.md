@@ -106,4 +106,5 @@ See [STATUS.md](STATUS.md) for the roadmap and progress.
 | [charge-emergence.md](charge-emergence.md) | How charge emerges from bending a 2D lattice: junction leakage, CP synchronization, n₁=1 selection, bidirectional coupling |
 | [hexagonal.md](hexagonal.md) | Hexagonal (wye) vs triangular (delta) lattice: flexibility, scattering, curvature from defects |
 | [sim-schwarzschild/](sim-schwarzschild/) | Complete: horizon is NOT a lattice failure; min BH mass ≈ 0.56 m_P; singularity IS lattice failure |
+| [sim-lorentz/](sim-lorentz/) | Active: tests the Lorentz properties A2 assumes. Isotropy 2.8e-11; c = 1/√6; boosted bound state contracts by 1/γ to 0.1% and coasts without radiating; universality lost at the lattice scale |
 | [INBOX.md](INBOX.md) | Raw ideas and open threads not yet formalized |

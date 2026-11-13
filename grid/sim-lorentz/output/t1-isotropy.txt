@@ -1,0 +1,10 @@
+Wave speed vs. propagation direction on the honeycomb
+(speed in cells per tick; anisotropy = (max-min)/mean)
+
+     |k|  lambda/cells   min speed   max speed   anisotropy
+   0.020         314.2  0.40824772  0.40824772    2.778e-11
+   0.200          31.4  0.40819144  0.40819155    2.787e-07
+   1.000           6.3  0.40673151  0.40680834    1.889e-04
+   2.000           3.1  0.40060185  0.40220606    3.996e-03
+
+long-wavelength speed c = 0.40824829   (1/sqrt(6) = 0.40824829, diff 1.56e-11)

@@ -1,0 +1,8 @@
+Length contraction of a bound state under boost
+chain nx=16000 h=1.0 dt=0.05   m=0.025 omega=0.7
+continuum rest envelope width ~ 56.01 lattice units
+
+     v   gamma     width  w(0)/gam    w err    speed    v err       dE/E
+  0.00  1.0000    150.31    150.31    +0.0%  -0.0000    +0.0%    -0.000%
+  0.90  2.2942     65.29     65.52    -0.3%   0.8996    -0.0%    +0.000%
+  0.95  3.2026     46.27     46.93    -1.4%   0.9491    -0.1%    +0.000%

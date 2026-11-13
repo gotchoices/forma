@@ -210,7 +210,7 @@ extensions — none are critical to the framework.
 | Value of Λ | Open | Appears as integration constant; the famous "cosmological constant problem" |
 | Particle masses | MaSt's territory | GRID provides the substrate; MaSt provides the compact geometry |
 | Gauge invariance from hex geometry? | High if achievable | Could eliminate A4; partially computable (lattice Wilson loops / correlation functions) |
-| Lorentz invariance as theorem? | High if rigorous | Could weaken A2 to A2' (finite causal speed); computable via sim-lorentz (boost a bound state, check γ contraction) |
+| Lorentz invariance as theorem? | High if rigorous | Could weaken A2 to A2' (finite causal speed).  **Partially measured** — [sim-lorentz/](sim-lorentz/) finds isotropy to 2.8e-11, boost-invariant rest mass to 0.003%, and a bound state that contracts by 1/γ to 0.1% while coasting without radiating.  Still open: transverse contraction, Born-rigid acceleration, and whether the scatter produces the sector those tests run in |
 
 **If both A2 and A4 can be derived**, GRID reduces from
 six axioms to four — three structural (4D lattice, causal
